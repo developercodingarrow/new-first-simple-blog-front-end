@@ -1,0 +1,29 @@
+.main_conatiner {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  padding: 0px var(--th-layout-gap);
+  background-color: var(--th-black-color);
+}
+
+.dekstop_navBar_wrapper {
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mobile_navBar_wrapper {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .dekstop_navBar_wrapper {
+    display: none;
+  }
+
+  .mobile_navBar_wrapper {
+    display: block;
+  }
+}

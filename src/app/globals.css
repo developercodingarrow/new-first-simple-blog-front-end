@@ -1,5 +1,6 @@
 :root {
-  --layout-gap: 50px;
+  --th-layout-gap: 100px;
+  --th-black-color: #191919;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -69,6 +70,10 @@ h2 {
   font-family: var(--font-roboto), sans-serif;
   font-weight: 400;
   font-size: 18px;
+}
+
+.children_wrapper {
+  margin-top: 50px;
 }
 
 /* My style end  */

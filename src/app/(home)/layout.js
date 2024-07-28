@@ -1,3 +1,4 @@
+import NavBar from "@/src/components/server-components/Navbar/NavBar";
 import { inter, roboto } from "../../lib/fonts";
 import "../globals.css";
 
@@ -9,7 +10,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${roboto.variable}`}>{children}</body>
+      <body className={`${inter.variable} ${roboto.variable}`}>
+        <div>
+          <NavBar />
+        </div>
+        <div className="children_wrapper">{children}</div>
+      </body>
     </html>
   );
 }
