@@ -1,6 +1,18 @@
 :root {
   --th-layout-gap: 100px;
-  --th-black-color: #191919;
+  --th-black-color: #0e1113;
+  --th-black-hover: #181c1f;
+  --th-black-selected: #2a3236;
+  --th-primary-color: #d93900;
+  --th-primary-hover-color: #ae2c00;
+  --th-seconder-white: #dbe4e9;
+  --th-box-shadow: rgba(14, 63, 126, 0.06) 0px 0px 0px 1px,
+    rgba(42, 51, 70, 0.03) 0px 1px 1px -0.5px,
+    rgba(42, 51, 70, 0.04) 0px 2px 2px -1px,
+    rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px,
+    rgba(42, 51, 70, 0.03) 0px 5px 5px -2.5px,
+    rgba(42, 51, 70, 0.03) 0px 10px 10px -5px,
+    rgba(42, 51, 70, 0.03) 0px 24px 24px -8px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -59,6 +71,11 @@ a {
 
 /* my style start */
 
+a {
+  text-decoration: none;
+  font-family: var(--font-roboto), sans-serif;
+}
+
 h1 {
   font-family: var(--font-roboto), sans-serif;
   font-weight: 700;
@@ -74,6 +91,78 @@ h2 {
 
 .children_wrapper {
   margin-top: 50px;
+}
+
+.large_iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  padding: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.medium_icon_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  padding: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.medium_text_wrapper {
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-family: var(--font-roboto), sans-serif;
+  letter-spacing: 1.2px;
+}
+
+.large_iconWrapper:hover {
+  background-color: var(--th-black-hover);
+}
+
+.link_btn {
+  background-color: var(--th-primary-color);
+  text-transform: capitalize;
+  font-family: var(--font-roboto), sans-serif;
+}
+
+.link_btn:hover {
+  background-color: var(--th-primary-hover-color);
+}
+
+.larg_Link_Btn {
+  padding: 5px 7px;
+  border-radius: 5px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.medium_Link_btn {
+  padding: 5px 7px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+li {
+  font-family: var(--font-roboto), sans-serif;
+  text-transform: capitalize;
+  padding: 8px 16px;
+  font-size: 12px;
+  color: var(--th-seconder-white);
+  list-style: none;
+}
+
+li:hover {
+  background-color: var(--th-black-selected);
 }
 
 /* My style end  */

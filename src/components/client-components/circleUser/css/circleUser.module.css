@@ -1,0 +1,25 @@
+.com_container {
+}
+
+.inner_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon_wrapper {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.user_drawer_Wrapper {
+  position: absolute;
+  top: 45px;
+  right: -50px;
+}

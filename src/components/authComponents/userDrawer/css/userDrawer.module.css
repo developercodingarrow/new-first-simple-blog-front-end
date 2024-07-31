@@ -1,0 +1,20 @@
+.drawer_container {
+  border: 1px solid var(--th-black-hover);
+  background-color: var(--th-black-hover);
+  box-shadow: var(--th-box-shadow);
+  border-radius: 7px;
+  min-width: 200px;
+}
+
+.inner_container {
+  display: flex;
+  flex-direction: column;
+  column-gap: 5px;
+  row-gap: 5px;
+}
+
+.text_icon_link {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}

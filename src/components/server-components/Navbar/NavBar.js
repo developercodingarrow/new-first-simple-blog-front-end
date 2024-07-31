@@ -2,6 +2,9 @@ import React from "react";
 import styles from "./css/navbar.module.css";
 import NavLogo from "./NavLogo";
 import NavBarNavigations from "./NavBarNavigations";
+import CircleUser from "../../client-components/circleUser/CircleUser";
+import HangBug from "../../client-components/cl_Navbar/HangBug";
+
 export default function NavBar() {
   return (
     <div className={styles.main_conatiner}>
@@ -13,11 +16,18 @@ export default function NavBar() {
           <div>
             <NavBarNavigations />
           </div>
-          <div>User</div>
+          <div>
+            <CircleUser />
+          </div>
         </div>
       </div>
       <div className={styles.mobile_navBar_wrapper}>
-        <p>Mobile</p>
+        <div>
+          <HangBug />
+        </div>
+        <div>
+          <NavLogo />
+        </div>
       </div>
     </div>
   );

@@ -14,16 +14,30 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.navBar_right_side {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
 .mobile_navBar_wrapper {
   display: none;
 }
 
 @media only screen and (max-width: 600px) {
+  .main_conatiner {
+    padding: 0px 5px;
+  }
   .dekstop_navBar_wrapper {
     display: none;
   }
 
   .mobile_navBar_wrapper {
-    display: block;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    column-gap: 10px;
+    height: 100%;
+    cursor: pointer;
   }
 }

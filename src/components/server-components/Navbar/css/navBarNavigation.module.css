@@ -1,0 +1,29 @@
+.comp_container {
+}
+
+.inner_container {
+  display: flex;
+  column-gap: 10px;
+}
+
+.navigation_tab {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  font-size: 22px;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  text-transform: capitalize;
+  border-radius: 5px;
+}
+
+.large_iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  padding: 5px;
+}
+
+.large_iconWrapper:hover {
+  background-color: var(--th-black-selected);
+}
