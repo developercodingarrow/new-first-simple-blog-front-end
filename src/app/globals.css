@@ -59,6 +59,7 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: sans-serif;
+  position: relative;
 }
 
 body {
@@ -91,6 +92,7 @@ h2 {
 
 .children_wrapper {
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .large_iconWrapper {
@@ -118,6 +120,13 @@ h2 {
   letter-spacing: 1px;
   font-family: var(--font-roboto), sans-serif;
   letter-spacing: 1.2px;
+}
+
+.small_text_wrapper {
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-family: var(--font-inter), sans-serif;
+  letter-spacing: 1px;
 }
 
 .large_iconWrapper:hover {
