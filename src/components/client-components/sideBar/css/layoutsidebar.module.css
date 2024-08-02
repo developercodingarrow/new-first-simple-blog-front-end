@@ -1,0 +1,12 @@
+.sidebar_container {
+  width: 100%;
+}
+
+.sticky {
+  position: fixed;
+  width: 60%;
+  top: 50px;
+  background-color: white; /* Optional: to ensure it has a background */
+  z-index: 1000; /* Optional: to ensure it appears above other elements */
+  width: 100%; /* Optional: to ensure it takes up the full width */
+}

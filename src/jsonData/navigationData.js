@@ -68,3 +68,58 @@ export const termsLinks = [
     hrfLink: "/",
   },
 ];
+
+export const tabData = [
+  {
+    name: "javaScrip",
+    hrfLink: "javscrpt",
+  },
+  {
+    name: "design",
+    hrfLink: "design",
+  },
+  {
+    name: "html",
+    hrfLink: "html",
+  },
+  {
+    name: "property",
+    hrfLink: "property",
+  },
+  {
+    name: "javaScrip",
+    hrfLink: "javscrpt",
+  },
+  {
+    name: "design",
+    hrfLink: "design",
+  },
+  {
+    name: "html",
+    hrfLink: "html",
+  },
+  {
+    name: "property",
+    hrfLink: "property",
+  },
+  {
+    name: "html",
+    hrfLink: "html",
+  },
+  {
+    name: "property",
+    hrfLink: "property",
+  },
+  {
+    name: "property",
+    hrfLink: "property",
+  },
+  {
+    name: "html",
+    hrfLink: "html",
+  },
+  {
+    name: "property",
+    hrfLink: "property",
+  },
+];
