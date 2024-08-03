@@ -25,8 +25,7 @@
 }
 
 .layout_side_bar {
-  width: 30%;
-  border: 1px solid red;
+  width: 25%;
 }
 
 @media only screen and (max-width: 600px) {

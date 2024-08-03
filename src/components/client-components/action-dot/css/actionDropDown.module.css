@@ -1,0 +1,10 @@
+.com_container {
+  box-shadow: var(--th-box-shadow);
+  padding: 5px;
+  display: flex;
+  column-gap: 5px;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  color: red;
+}

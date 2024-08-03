@@ -1,0 +1,107 @@
+.com_container {
+  border: 1px solid gainsboro;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.auther_container {
+  display: inline-flex;
+  column-gap: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.min_image_wrapper {
+  border-radius: 50px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.min_autherImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+}
+
+.auther_name_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.dekstop_card {
+}
+
+.dekstop_card_body {
+  display: flex;
+  column-gap: 10px;
+}
+
+.dekstop_card_img_wrapper {
+  width: 20%;
+}
+
+.dekstop_card_Img {
+  width: 100%;
+  height: 100%;
+}
+
+.dekstop_card_containt {
+  width: 80%;
+}
+
+.dekstop_card_title {
+  margin-bottom: 10px;
+}
+
+.dekstop_card_meta_decreption_wrapper {
+  margin-bottom: 10px;
+}
+
+.dekstop_card_action_wrapper {
+}
+
+.dekstop_action_left_side {
+  display: flex;
+  column-gap: 10px;
+}
+
+.mobile_card {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .dekstop_card {
+    display: none;
+  }
+
+  .mobile_card {
+    display: block;
+  }
+
+  .mobile_card_title {
+    margin-bottom: 5px;
+  }
+  .mobile_card_body {
+    display: flex;
+    column-gap: 10px;
+    margin-bottom: 5px;
+  }
+
+  .mobile_img_wraper {
+    width: 20%;
+  }
+
+  .mobile_card_Img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .mobile_meta_wrapper {
+    width: 80%;
+    text-align: justify;
+  }
+}

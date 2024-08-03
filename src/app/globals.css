@@ -86,10 +86,15 @@ h1 {
 
 h2 {
   font-family: var(--font-roboto), sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 18px;
 }
 
+h3 {
+  font-family: var(--font-roboto), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
 .children_wrapper {
   margin-top: 50px;
   margin-bottom: 50px;
@@ -172,6 +177,20 @@ li {
 
 li:hover {
   background-color: var(--th-black-selected);
+}
+
+@media only screen and (max-width: 600px) {
+  h2 {
+    font-family: var(--font-roboto), sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  h3 {
+    font-family: var(--font-roboto), sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+  }
 }
 
 /* My style end  */

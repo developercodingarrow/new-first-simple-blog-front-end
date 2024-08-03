@@ -1,5 +1,4 @@
 .tab_container {
-  transition: all 0.3s ease;
   width: 100%;
   border-bottom: 1px solid gainsboro;
   display: flex;

@@ -1,0 +1,12 @@
+.com_component {
+  position: relative;
+}
+
+.action_dot_icon {
+  cursor: pointer;
+}
+
+.action_dropDown_wrapper {
+  position: absolute;
+  top: 20px;
+}

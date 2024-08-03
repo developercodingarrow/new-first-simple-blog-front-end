@@ -1,0 +1,10 @@
+.tag_link {
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: gainsboro;
+  text-transform: capitalize;
+}

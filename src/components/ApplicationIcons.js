@@ -7,7 +7,9 @@ import { BiTag } from "react-icons/bi";
 // Social Media Icons
 import { FaInstagram, FaPinterest, FaFacebookSquare } from "react-icons/fa";
 import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
-
+import { HiOutlineDotsVertical } from "react-icons/hi";
+import { IoArrowForwardCircleOutline } from "react-icons/io5";
+import { GoBlocked } from "react-icons/go";
 export {
   HiOutlineHome,
   MdOutlineAutoGraph,
@@ -22,4 +24,7 @@ export {
   FaFacebookSquare,
   FaLinkedin,
   FaXTwitter,
+  HiOutlineDotsVertical,
+  IoArrowForwardCircleOutline,
+  GoBlocked,
 };

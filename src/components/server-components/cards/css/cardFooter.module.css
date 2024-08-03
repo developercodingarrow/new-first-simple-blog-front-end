@@ -1,0 +1,9 @@
+.com_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer_leftSide {
+  display: flex;
+  column-gap: 5px;
+}
