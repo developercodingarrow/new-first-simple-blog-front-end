@@ -1,17 +1,11 @@
-import NavBar from "@/src/components/server-components/Navbar/NavBar";
+import React from "react";
 import { inter, roboto } from "../../lib/fonts";
 import "../globals.css";
 import AppContextProvider from "@/src/contextApi/AppcontextApi";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 import Footer from "@/src/components/server-components/footer/Footer";
-import GoogleOneTap from "@/src/components/client-components/googleAuth/GoogleOneTap";
-
-export const metadata = {
-  title: "Fisrt blog website",
-  description: "This is first Blog website",
-};
-
-export default function RootLayout({ children }) {
+import NavBar from "@/src/components/server-components/Navbar/NavBar";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+export default function layout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.variable} ${roboto.variable}`}>
@@ -19,9 +13,7 @@ export default function RootLayout({ children }) {
           <GoogleOAuthProvider clientId="575999030621-q9l875mbikilrm28q7sbj7ed3pf3kehq.apps.googleusercontent.com">
             <div>
               <NavBar />
-              <GoogleOneTap />
             </div>
-
             <div className="children_wrapper">{children}</div>
             <Footer />
           </GoogleOAuthProvider>

@@ -6,6 +6,8 @@
   --th-primary-color: #d93900;
   --th-primary-hover-color: #ae2c00;
   --th-seconder-white: #dbe4e9;
+  --th-separator: #dddddd;
+  --th-muted: #afafaf;
   --th-box-shadow: rgba(14, 63, 126, 0.06) 0px 0px 0px 1px,
     rgba(42, 51, 70, 0.03) 0px 1px 1px -0.5px,
     rgba(42, 51, 70, 0.04) 0px 2px 2px -1px,
@@ -132,6 +134,12 @@ h3 {
   letter-spacing: 1px;
   font-family: var(--font-inter), sans-serif;
   letter-spacing: 1px;
+}
+
+.input_errors {
+  color: var(--th-primary-color);
+  font-size: 12px;
+  font-family: var(--font-roboto), sans-serif;
 }
 
 .large_iconWrapper:hover {

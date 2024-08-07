@@ -1,0 +1,19 @@
+.com_container {
+  /* border: 1px solid red; */
+}
+
+.btn_style {
+  width: 100%;
+  padding: 10px;
+  text-transform: capitalize;
+  background-color: var(--th-primary-color);
+  outline: none;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn_style:hover {
+  background-color: var(--th-primary-hover-color);
+}

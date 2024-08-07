@@ -10,6 +10,9 @@ import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
 import { GoBlocked } from "react-icons/go";
+import { IoEyeOff, IoEye } from "react-icons/io5";
+import { TiMessageTyping } from "react-icons/ti";
+
 export {
   HiOutlineHome,
   MdOutlineAutoGraph,
@@ -27,4 +30,7 @@ export {
   HiOutlineDotsVertical,
   IoArrowForwardCircleOutline,
   GoBlocked,
+  IoEyeOff,
+  IoEye,
+  TiMessageTyping,
 };
