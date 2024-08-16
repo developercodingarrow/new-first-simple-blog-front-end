@@ -1,0 +1,17 @@
+.container {
+}
+
+.inner_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action_wrapper {
+  padding: 0px 10px;
+}
+
+.container_wrapper {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+}

@@ -4,6 +4,7 @@ import MainBanner from "@/src/components/server-components/banners/MainBanner";
 import TagTab from "@/src/components/client-components/tab/TagTab";
 import LayoutSideBar from "@/src/components/client-components/sideBar/LayoutSideBar";
 import LandscapeCard from "@/src/components/server-components/cards/LandscapeCard";
+import { tabData } from "@/src/jsonData/navigationData";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
       <div className={styles.layout_wrapper}>
         <div className={styles.content_side}>
           <div className={styles.sticky_tab_wrapper}>
-            <TagTab />
+            <TagTab tabData={tabData} redirectType="query" />
           </div>
           <div className={styles.cards_wraper}>
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((el, index) => {

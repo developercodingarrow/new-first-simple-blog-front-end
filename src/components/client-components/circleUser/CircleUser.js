@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./css/circleUser.module.css";
 import Image from "next/image";
 import { SlUser } from "../../ApplicationIcons";
@@ -8,8 +8,23 @@ import LinkBtn from "../../server-components/serverElements/LinkBtn";
 import UserDrawer from "../../authComponents/userDrawer/UserDrawer";
 
 export default function CircleUser() {
-  const { isUserDrawer, isLogined, handelOpenUserDrawer } =
+  const { isUserDrawer, isLogined, longined, handelOpenUserDrawer } =
     useContext(AppContext);
+
+  // Add a loading state
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (isLogined !== null) {
+      setLoading(false);
+    }
+  }, [isLogined]);
+
+  // If still loading, return null or a spinner
+  if (loading) {
+    return null; // Or you can return a loading spinner
+  }
+
   return (
     <div className={styles.com_container}>
       <div className={styles.inner_container}>

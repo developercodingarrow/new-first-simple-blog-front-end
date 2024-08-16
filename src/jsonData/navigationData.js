@@ -123,3 +123,18 @@ export const tabData = [
     hrfLink: "property",
   },
 ];
+
+export const userDashBordTab = [
+  {
+    name: "profile",
+    hrfLink: "profile",
+  },
+  {
+    name: "published",
+    hrfLink: "public",
+  },
+  {
+    name: "draft",
+    hrfLink: "draft",
+  },
+];

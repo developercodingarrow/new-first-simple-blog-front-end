@@ -4,7 +4,8 @@ import styles from "./css/tagTab.module.css";
 import { tabData } from "@/src/jsonData/navigationData";
 import Link from "next/link";
 
-export default function TagTab() {
+export default function TagTab(props) {
+  const { tabData, redirectType } = props;
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
@@ -23,9 +24,19 @@ export default function TagTab() {
     <div className={`${styles.tab_container} ${isSticky ? styles.sticky : ""}`}>
       {tabData.map((el, index) => {
         return (
-          <Link href={`?tag=${el.hrfLink}`} className={styles.tab_warpper}>
-            {el.name}
-          </Link>
+          <>
+            {redirectType === "query" ? (
+              <Link href={`?tag=${el.hrfLink}`} className={styles.tab_warpper}>
+                {el.name}
+              </Link>
+            ) : (
+              <>
+                <Link href={`${el.hrfLink}`} className={styles.tab_warpper}>
+                  {el.name}
+                </Link>
+              </>
+            )}
+          </>
         );
       })}
     </div>

@@ -1,0 +1,46 @@
+.main_container {
+  margin: 0px 200px;
+}
+
+.inner_conatiner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.editor_side {
+  width: 60%;
+  padding: 20px 0px;
+}
+
+.editor_sideBard {
+  width: 30%;
+  border: 1px solid gray;
+  padding: 20px 0px;
+}
+
+.input_filed_wrapper {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.title_input {
+  width: 100%;
+  padding: 7px 5px;
+  border: 1px solid var(--th-separator);
+  outline: none;
+  border-radius: 5px;
+}
+
+.lable_wrapper {
+  margin-bottom: 10px;
+}
+
+.meta_textArea {
+  width: 100%;
+  padding: 7px 5px;
+  border: 1px solid var(--th-separator);
+  outline: none;
+  border-radius: 5px;
+  height: 70px;
+  resize: none;
+}

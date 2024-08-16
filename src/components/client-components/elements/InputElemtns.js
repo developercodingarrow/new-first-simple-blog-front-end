@@ -4,6 +4,7 @@ import styles from "./css/inputelements.module.css";
 
 function InputElemtns(props, ref) {
   const { lable, inputType, ...inputProps } = props;
+
   return (
     <div className={styles.com_container}>
       <div className={styles.lable_wraper}>

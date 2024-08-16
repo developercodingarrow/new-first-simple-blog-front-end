@@ -1,0 +1,152 @@
+.container {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.279);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner_container {
+  width: 50%;
+  border: 1px solid gainsboro;
+  background-color: #fff;
+  padding: 10px;
+}
+.container_header {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.model_container {
+  display: flex;
+}
+
+.img_upload_container {
+  width: 50%;
+  border: 2px dashed gray;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.file_input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.uplod_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.Img_prev_container {
+  width: 50%;
+  height: auto;
+}
+
+.img_prev_wrapper {
+}
+
+.img_style {
+  width: 100%;
+  height: 100%;
+}
+
+.prev_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid gray;
+}
+
+.img_info_action {
+  display: flex;
+  column-gap: 10px;
+}
+
+.input_container {
+  width: 50%;
+}
+
+.inputs_wrapper_container {
+  padding: 10px;
+}
+
+.lable_wrapper {
+  margin-bottom: 5px;
+}
+
+.input_box_wrapper {
+  margin-bottom: 10px;
+}
+
+.input_wrapper {
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.input_style {
+  width: 100%;
+  padding: 5px 7px;
+  outline: none;
+  border-radius: 10px;
+  border: 0px;
+  font-size: 14px;
+}
+
+.textarea_style {
+  width: 100%;
+  padding: 5px 7px;
+  outline: none;
+  border-radius: 10px;
+  border: 0px;
+  font-size: 14px;
+  width: 100%;
+  resize: none;
+}
+
+.container_footer {
+  border: 1px solid red;
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .inner_container {
+    width: 100%;
+  }
+
+  .model_container {
+    flex-direction: column;
+  }
+
+  .img_upload_container {
+    width: 100%;
+  }
+
+  .Img_prev_container {
+    width: 100%;
+  }
+
+  .input_container {
+    width: 100%;
+  }
+}

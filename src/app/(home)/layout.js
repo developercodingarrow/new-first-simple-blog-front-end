@@ -5,6 +5,8 @@ import AppContextProvider from "@/src/contextApi/AppcontextApi";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Footer from "@/src/components/server-components/footer/Footer";
 import GoogleOneTap from "@/src/components/client-components/googleAuth/GoogleOneTap";
+import ImgModelContextProvider from "@/src/contextApi/ImgModelContextApi";
+import TagContextProvider from "@/src/contextApi/TagContextApi";
 
 export const metadata = {
   title: "Fisrt blog website",
@@ -16,15 +18,19 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.variable} ${roboto.variable}`}>
         <AppContextProvider>
-          <GoogleOAuthProvider clientId="575999030621-q9l875mbikilrm28q7sbj7ed3pf3kehq.apps.googleusercontent.com">
-            <div>
-              <NavBar />
-              <GoogleOneTap />
-            </div>
+          <ImgModelContextProvider>
+            <TagContextProvider>
+              <GoogleOAuthProvider clientId="575999030621-q9l875mbikilrm28q7sbj7ed3pf3kehq.apps.googleusercontent.com">
+                <div>
+                  <NavBar />
+                  <GoogleOneTap />
+                </div>
 
-            <div className="children_wrapper">{children}</div>
-            <Footer />
-          </GoogleOAuthProvider>
+                <div className="children_wrapper">{children}</div>
+                <Footer />
+              </GoogleOAuthProvider>
+            </TagContextProvider>
+          </ImgModelContextProvider>
         </AppContextProvider>
       </body>
     </html>

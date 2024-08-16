@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  width: 100%;
+  border: 1px solid gray;
+  flex-wrap: wrap;
+  background-color: rgba(246, 237, 237, 0.838);
+}
+
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.chip {
+  background-color: #e0e0e0;
+  padding: 5px 10px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.removeChip {
+  margin-left: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.input_wrapper {
+  display: inline-block;
+  width: 50%;
+}
+
+.input {
+  padding: 8px;
+  border-radius: 4px;
+  width: 100%;
+  outline: none;
+  background-color: transparent;
+  border: none;
+}
+
+.search_result_box {
+  background: #fff;
+  box-shadow: var(--th-box-shadow);
+}
