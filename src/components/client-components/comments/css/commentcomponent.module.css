@@ -1,0 +1,87 @@
+.comment_section {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.comment_form,
+.reply_form {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.comment_input,
+.reply_input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.comment_button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #0070f3;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reply_button {
+  border: none;
+  color: #0070f3;
+  cursor: pointer;
+}
+
+.comment_list {
+  margin-top: 20px;
+}
+
+.comment_item {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.comment_profile {
+  display: flex;
+  column-gap: 10px;
+}
+
+.profile_pic_wrapper {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.profile_pic {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.comment_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.user_name {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.user_comment {
+  font-size: 14px;
+  margin-top: 5px;
+  font-family: Arial, sans-serif;
+}
+
+.reply_section {
+  padding-left: 60px;
+  margin-top: 10px;
+}
+
+.reply_item {
+  margin-bottom: 10px;
+}

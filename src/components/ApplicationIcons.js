@@ -17,6 +17,8 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 import { IoCloseCircleSharp } from "react-icons/io5";
 import { IoCloudUpload } from "react-icons/io5";
 import { MdDeleteForever } from "react-icons/md";
+import { FaRegComment } from "react-icons/fa";
+import { CiShare1 } from "react-icons/ci";
 
 export {
   HiOutlineHome,
@@ -43,4 +45,6 @@ export {
   IoCloseCircleSharp,
   IoCloudUpload,
   MdDeleteForever,
+  FaRegComment,
+  CiShare1,
 };

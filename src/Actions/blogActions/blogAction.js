@@ -46,3 +46,8 @@ export const upadteBlogTags = async (formData, slug) => {
   }
   return null;
 };
+
+export const singleBlogs = async (slug) => {
+  const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/get-blog/${slug}`;
+  return performGetAPIAction(url);
+};
