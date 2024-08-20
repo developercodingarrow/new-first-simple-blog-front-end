@@ -6,9 +6,11 @@ import { IoCloseSharp } from "../../ApplicationIcons";
 import SubmitBtn from "../elements/buttons/SubmitBtn";
 import ClickBtn from "../elements/buttons/ClickBtn";
 import { useCustomApiForm } from "@/src/custome-hooks/useCutomeApiform";
+import { updateUserData, isAuth } from "@/src/Actions/authAction";
 
 export default function ModelForm(props) {
   const { inputfileds, modelData, formhandel } = props;
+  const { setisLogined } = useContext(AppContext);
   const dynimicData = [];
   const {
     handleSubmit,
@@ -24,6 +26,13 @@ export default function ModelForm(props) {
     try {
       const res = await formhandel(data);
       console.log(res);
+      if (res.data.status === "success") {
+        console.log("succes");
+
+        updateUserData(res.data.result);
+        const updatedUser = isAuth(); // Fetch the updated user data from localStorage
+        setisLogined(updatedUser);
+      }
     } catch (error) {
       console.log(error);
     }

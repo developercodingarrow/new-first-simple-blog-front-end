@@ -6,6 +6,7 @@ import {
   FaPlus,
 } from "../../ApplicationIcons";
 import Link from "next/link";
+import NavApiActionIcon from "../../client-components/navbar/NavApiActionIcon";
 
 export default function NavBarNavigations() {
   return (
@@ -24,7 +25,7 @@ export default function NavBarNavigations() {
         </Link>
         <Link href={"/"} className={styles.navigation_tab}>
           <div className="large_iconWrapper">
-            <FaPlus />
+            <NavApiActionIcon />
           </div>
         </Link>
       </div>

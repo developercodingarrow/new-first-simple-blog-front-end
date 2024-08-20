@@ -10,7 +10,8 @@ export default function page() {
   const params = useParams();
   const { slug } = params;
 
-  console.log(singleBlog);
+  console.log("single blog data-----", singleBlog);
+  console.log("slug---", slug);
 
   useEffect(() => {
     if (slug) {

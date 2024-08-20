@@ -29,8 +29,6 @@ export default function AppContextProvider({ children }) {
     setisOpenInputModel(true);
   };
 
-  console.log(actionHandler);
-
   const handelcloseInputModal = () => {
     setisOpenInputModel(false);
   };
@@ -55,6 +53,7 @@ export default function AppContextProvider({ children }) {
     <AppContext.Provider
       value={{
         isLogined,
+        setisLogined,
         isUserDrawer,
         handelOpenUserDrawer,
         handelCloseUserDrawer,

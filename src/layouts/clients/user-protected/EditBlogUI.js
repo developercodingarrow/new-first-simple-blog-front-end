@@ -6,6 +6,9 @@ import styles from "./css/editBlogUi.module.css";
 import BlogImgUplod from "@/src/components/client-components/img-upload/blogImguplod/BlogImgUplod";
 import { BlogContext } from "@/src/contextApi/BlogContextApi";
 import AddTagChip from "@/src/components/client-components/chip/AddTagChip";
+import { upadteBlogContent } from "@/src/Actions/blogActions/blogAction";
+import SingleImgModel from "@/src/components/client-components/models/imgModel/SingleImgModel";
+import { handelUploadThumblin } from "@/src/utils/handlers/imageHandlers";
 
 export default function EditBlogUI(props) {
   const { apiData, slug } = props;
@@ -14,6 +17,8 @@ export default function EditBlogUI(props) {
     metaDescription: apiData?.metaDescription || "",
     blogDescreption: apiData?.blogDescreption || "",
   });
+
+  console.log("apiData---", apiData);
 
   // Update state when apiData changes
   useEffect(() => {
@@ -25,6 +30,13 @@ export default function EditBlogUI(props) {
       });
     }
   }, [apiData]);
+  const handelChange = (e) => {
+    setBlogData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+    console.log(blogData);
+  };
 
   const handleQuillChange = (content) => {
     setBlogData((prevData) => ({
@@ -34,8 +46,18 @@ export default function EditBlogUI(props) {
     console.log(blogData);
   };
 
+  const handelUpdateContent = async () => {
+    try {
+      const res = await upadteBlogContent(blogData, slug);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className={styles.main_container}>
+      <SingleImgModel updateHandler={handelUploadThumblin} id={slug} />
       <div className={styles.inner_conatiner}>
         <div className={styles.editor_side}>
           <div className={styles.input_filed_wrapper}>
@@ -49,6 +71,7 @@ export default function EditBlogUI(props) {
                 className={styles.title_input}
                 value={blogData.blogTitle}
                 name="blogTitle" // Make sure to set the name attribute
+                onChange={(e) => handelChange(e)}
               />
             </div>
           </div>
@@ -63,6 +86,7 @@ export default function EditBlogUI(props) {
                 rows={3}
                 name="metaDescription"
                 value={blogData.metaDescription}
+                onChange={(e) => handelChange(e)}
               />
             </div>
           </div>
@@ -89,7 +113,9 @@ export default function EditBlogUI(props) {
           </div>
         </div>
       </div>
-      <button className={styles.submit_button}>Submit Blog</button>
+      <button className={styles.submit_button} onClick={handelUpdateContent}>
+        Submit Blog
+      </button>
     </div>
   );
 }

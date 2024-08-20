@@ -35,6 +35,17 @@ export const authenticate = (data, token, cb) => {
   cb();
 };
 
+export const updateUserData = (data) => {
+  const userData = JSON.stringify(data);
+  // Encrypt the data using AES encryption
+  const encryptedData = CryptoJS.AES.encrypt(
+    userData,
+    encryptionKey
+  ).toString();
+
+  setLocalStorage("user", encryptedData);
+};
+
 // DESTRUCTURE Encipted DATA
 export const getEncryptedData = (encryptedUserData) => {
   try {

@@ -23,7 +23,7 @@ export default function SingleBlogPageUI(props) {
               </div>
             </div>
             <div className={styles.actios_wrapper}>
-              <BlogActionBar />
+              <BlogActionBar blog={ssrData} />
             </div>
           </div>
           <div className={styles.ssr_img_wrapper}>

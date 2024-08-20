@@ -19,8 +19,12 @@ import { IoCloudUpload } from "react-icons/io5";
 import { MdDeleteForever } from "react-icons/md";
 import { FaRegComment } from "react-icons/fa";
 import { CiShare1 } from "react-icons/ci";
+import { IoMdHeart } from "react-icons/io";
+import { IoMdHeartEmpty } from "react-icons/io";
 
 export {
+  IoMdHeart,
+  IoMdHeartEmpty,
   HiOutlineHome,
   MdOutlineAutoGraph,
   FaPlus,

@@ -16,6 +16,7 @@ export default function NavBar() {
           <div>
             <NavBarNavigations />
           </div>
+
           <div>
             <CircleUser />
           </div>

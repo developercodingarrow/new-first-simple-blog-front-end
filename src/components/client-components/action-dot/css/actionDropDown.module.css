@@ -8,3 +8,10 @@
   cursor: pointer;
   color: red;
 }
+
+.action_list_wrapper {
+}
+
+.text_wrapper {
+  margin-bottom: 5px;
+}

@@ -14,6 +14,15 @@ export const createBlogWithImg = async (formData, projectId) => {
   return ImageAPIAction(method, url, formData, authToken);
 };
 
+export const createBlogAction = async (formData) => {
+  if (authToken) {
+    const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/first-action-create-blog`;
+    const method = "post";
+    return performAPIAction(method, url, formData, authToken);
+  }
+  return null;
+};
+
 // UPDATE BLOG THUMBLIN
 export const UpdateBlogThumblin = async (formData, projectId) => {
   console.log(formData);
@@ -22,7 +31,7 @@ export const UpdateBlogThumblin = async (formData, projectId) => {
   return ImageAPIAction(method, url, formData, authToken);
 };
 
-// 1) API FOR USER REGISTRATION ACCOUNT
+// 1) for update blog
 export const getSingleBlog = async (slug) => {
   const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/get-single-blog/${slug}`;
   const method = "get";
@@ -47,7 +56,78 @@ export const upadteBlogTags = async (formData, slug) => {
   return null;
 };
 
+export const upadteBlogContent = async (formData, slug) => {
+  if (authToken) {
+    const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/update-blog-content/${slug}`;
+    const method = "post";
+    return performAPIAction(method, url, formData, authToken);
+  }
+  return null;
+};
+
+// SSR for all user
 export const singleBlogs = async (slug) => {
   const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/get-blog/${slug}`;
   return performGetAPIAction(url);
+};
+
+export const likeAction = async (formData) => {
+  if (authToken) {
+    const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/like`;
+    const method = "post";
+    return performAPIAction(method, url, formData, authToken);
+  }
+  return null;
+};
+
+export const unlikeAction = async (formData) => {
+  if (authToken) {
+    const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/unlike`;
+    const method = "post";
+    return performAPIAction(method, url, formData, authToken);
+  }
+  return null;
+};
+
+export const mypublishedBlog = async () => {
+  if (authToken) {
+    const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/my-published-blogs`;
+    return performGetAPIAction(url, authToken);
+  }
+  return null;
+};
+
+export const myDraftBlog = async () => {
+  if (authToken) {
+    const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/my-draft-blogs`;
+    return performGetAPIAction(url, authToken);
+  }
+  return null;
+};
+
+export const updateToDeaft = async (formData) => {
+  if (authToken) {
+    const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/update-to-draft`;
+    const method = "post";
+    return performAPIAction(method, url, formData, authToken);
+  }
+  return null;
+};
+
+export const updateToPublsih = async (formData) => {
+  if (authToken) {
+    const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/update-to-published`;
+    const method = "post";
+    return performAPIAction(method, url, formData, authToken);
+  }
+  return null;
+};
+
+export const deleteBlogApi = async (formData) => {
+  if (authToken) {
+    const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/delete-blog`;
+    const method = "delete";
+    return performAPIAction(method, url, formData, authToken);
+  }
+  return null;
 };

@@ -4,7 +4,10 @@ import cardImg from "../../../../../public/web-static-img/blog sample image.png"
 import Image from "next/image";
 import Link from "next/link";
 import UserCardFooter from "./UserCardFooter";
-export default function UserCard() {
+export default function UserCard(props) {
+  const { footerActions, actionId, slug } = props;
+
+  console.log("footerActions in UserCard---", footerActions);
   return (
     <div className={styles.main_container}>
       <div className={styles.card_body}>
@@ -18,7 +21,11 @@ export default function UserCard() {
         </div>
       </div>
       <div>
-        <UserCardFooter />
+        <UserCardFooter
+          footerActions={footerActions}
+          actionId={actionId}
+          slug={slug}
+        />
       </div>
     </div>
   );
