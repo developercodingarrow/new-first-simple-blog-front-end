@@ -70,6 +70,29 @@ export const singleBlogs = async (slug) => {
   const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/get-blog/${slug}`;
   return performGetAPIAction(url);
 };
+//  SSR All Blogs
+
+export const tagfillterBlogs = async (query, page) => {
+  const limit = 10; // Static limit value
+  let url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/fllterd-tag-blogs`;
+
+  const queryParams = [];
+  if (query) {
+    queryParams.push(`tag=${query}`);
+  }
+  if (page) {
+    queryParams.push(`page=${page}`);
+  }
+  if (limit) {
+    queryParams.push(`limit=${limit}`);
+  }
+
+  if (queryParams.length > 0) {
+    url += `?${queryParams.join("&")}`;
+  }
+
+  return performGetAPIAction(url, null, { cache: "no-store" });
+};
 
 export const likeAction = async (formData) => {
   if (authToken) {

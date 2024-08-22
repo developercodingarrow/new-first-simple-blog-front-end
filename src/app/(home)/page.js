@@ -5,8 +5,18 @@ import TagTab from "@/src/components/client-components/tab/TagTab";
 import LayoutSideBar from "@/src/components/client-components/sideBar/LayoutSideBar";
 import LandscapeCard from "@/src/components/server-components/cards/LandscapeCard";
 import { tabData } from "@/src/jsonData/navigationData";
+import { tagfillterBlogs } from "@/src/Actions/blogActions/blogAction";
+import HomePageBlogList from "@/src/components/client-components/BlogList/HomePageBlogList";
 
-export default function Home() {
+async function getData(tagquery) {
+  const res = await tagfillterBlogs(tagquery);
+
+  return await res.data.result;
+}
+export default async function HomePage(pathname) {
+  const tagquery = pathname?.searchParams?.tag;
+  const initialData = await getData(tagquery);
+
   return (
     <main>
       <div className={styles.page_banner_wrapper}>
@@ -18,9 +28,7 @@ export default function Home() {
             <TagTab tabData={tabData} redirectType="query" />
           </div>
           <div className={styles.cards_wraper}>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((el, index) => {
-              return <LandscapeCard />;
-            })}
+            <HomePageBlogList initialData={initialData} tagquery={tagquery} />
           </div>
         </div>
         <div className={styles.layout_side_bar}>
