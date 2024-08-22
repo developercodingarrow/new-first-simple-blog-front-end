@@ -8,14 +8,15 @@ import { tabData } from "@/src/jsonData/navigationData";
 import { tagfillterBlogs } from "@/src/Actions/blogActions/blogAction";
 import HomePageBlogList from "@/src/components/client-components/BlogList/HomePageBlogList";
 
-async function getData(tagquery) {
-  const res = await tagfillterBlogs(tagquery);
+async function getData(tagquery, page = 1) {
+  const res = await tagfillterBlogs(tagquery, page);
 
   return await res.data.result;
 }
 export default async function HomePage(pathname) {
-  const tagquery = pathname?.searchParams?.tag;
-  const initialData = await getData(tagquery);
+  const tagquery = pathname.searchParams?.tag || "";
+  const page = pathname.searchParams?.page || 1;
+  const initialData = await getData(tagquery, page);
 
   return (
     <main>
@@ -28,7 +29,11 @@ export default async function HomePage(pathname) {
             <TagTab tabData={tabData} redirectType="query" />
           </div>
           <div className={styles.cards_wraper}>
-            <HomePageBlogList initialData={initialData} tagquery={tagquery} />
+            <HomePageBlogList
+              initialData={initialData}
+              tagquery={tagquery}
+              initialPage={page}
+            />
           </div>
         </div>
         <div className={styles.layout_side_bar}>

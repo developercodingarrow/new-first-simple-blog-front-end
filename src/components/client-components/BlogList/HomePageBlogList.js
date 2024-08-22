@@ -1,15 +1,17 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./css/homepagelist.module.css";
 import LandscapeCard from "../../server-components/cards/LandscapeCard";
 import { tagfillterBlogs } from "@/src/Actions/blogActions/blogAction";
 
 export default function HomePageBlogList(props) {
-  const { initialData, tagquery } = props;
+  const { initialData, tagquery, initialPage } = props;
   const [data, setData] = useState(initialData);
-  const [page, setPage] = useState(2); // Start from page 2 as the first page is already loaded
+  const [page, setPage] = useState(initialPage || 2);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const router = useRouter();
 
   const observer = useRef();
 
@@ -33,14 +35,15 @@ export default function HomePageBlogList(props) {
       try {
         const res = await tagfillterBlogs(tagquery, page);
         setData((prevData) => [...prevData, ...res.data.result]);
-        setHasMore(res.data.result.length > 0); // Stop loading when no more data
+        setHasMore(res.data.result.length > 0);
+        router.replace(`?tag=${tagquery}&page=${page}`);
       } catch (error) {
         console.error(error);
       }
       setLoading(false);
     };
 
-    if (page > 1) {
+    if (page > initialPage) {
       fetchMoreBlogs();
     }
   }, [tagquery, page]);
