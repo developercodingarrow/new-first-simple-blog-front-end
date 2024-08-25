@@ -1,10 +1,10 @@
 .tab_container {
   width: 100%;
-  border-bottom: 1px solid gainsboro;
+  border-bottom: 1px solid var(--th-separator);
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  column-gap: 32px;
+  column-gap: 16px;
   overflow-x: auto;
 }
 
@@ -26,7 +26,9 @@
   position: fixed;
   width: 52%;
   top: 50px;
-  background-color: white; /* Optional: to ensure it has a background */
+  background-color: #fffffffb; /* Optional: to ensure it has a background */
+  border-bottom: 1px solid var(--th-separator); /* Uses your light gray color */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   z-index: 1000; /* Optional: to ensure it appears above other elements */
 }
 
@@ -37,6 +39,8 @@
   font-family: var(--font-roboto), sans-serif;
   font-weight: 500;
   font-size: 16px;
+  color: #333;
+  transition: color 0.3s ease;
 }
 .tab_warpper::after {
   content: "";
@@ -45,7 +49,7 @@
   right: 0;
   bottom: -2px; /* Adjust this value to match the thickness of the border */
   height: 3px; /* Adjust the height as needed */
-  background-color: red; /* Change this color to the hover color you want */
+  background-color: #007bff; /* Change this color to the hover color you want */
   transform: scaleX(0);
   transform-origin: bottom left;
   transition: transform 0.3s ease;
@@ -58,6 +62,7 @@
 
 .tab_warpper:hover {
   cursor: pointer;
+  color: #007bff;
 }
 
 @media only screen and (max-width: 600px) {

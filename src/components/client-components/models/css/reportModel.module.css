@@ -1,0 +1,35 @@
+.main_conatiner {
+  border: 1px solid blue;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.94);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.inner_container {
+  background-color: #ffff;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 10px;
+  width: 50%;
+}
+
+.model_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid gray;
+}
+
+.close_model {
+  cursor: pointer;
+}
+
+.model_body {
+  padding: 10px;
+}

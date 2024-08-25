@@ -4,13 +4,20 @@ import BlogActionBar from "./BlogActionBar";
 import Image from "next/image";
 import sampleImg from "../../../../public/web-static-img/larg-img.jpg";
 import CommentComponent from "@/src/components/client-components/comments/CommentComponent";
+import SideBanner from "@/src/components/server-components/banners/SideBanner";
+import CommentModel from "@/src/components/client-components/models/CommentModel";
 
 export default function SingleBlogPageUI(props) {
   const { ssrData } = props;
   return (
     <div className={styles.main_container}>
+      <CommentModel data={ssrData} />
       <section className={styles.content_main_container}>
-        <div className={styles.banner_section}>banner</div>
+        <div className={styles.banner_section}>
+          <div className={styles.banner_wrapper}>
+            <SideBanner />
+          </div>
+        </div>
         {/* center section start */}
         <div className={styles.contnet_section}>
           <div className={styles.top_section}>
@@ -97,6 +104,7 @@ export default function SingleBlogPageUI(props) {
           <CommentComponent
             blogComments={ssrData.comments}
             blogId={ssrData._id}
+            blogBy={ssrData.user}
           />
         </div>
       </section>

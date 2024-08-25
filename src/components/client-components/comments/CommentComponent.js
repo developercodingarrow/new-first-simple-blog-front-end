@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./css/commentcomponent.module.css";
 import Image from "next/image";
@@ -12,59 +12,24 @@ import {
 } from "@/src/Actions/commentActions/CommentActions";
 import RepliesList from "./RepliesList";
 import CommentReplyForm from "./CommentReplyForm";
+import { MdDeleteForever } from "../../ApplicationIcons";
+import { AppContext } from "@/src/contextApi/AppcontextApi";
+import SubmitBtn from "../elements/buttons/SubmitBtn";
 
 export default function CommentComponent(props) {
+  const { isLogined } = useContext(AppContext);
+  const userID = isLogined?._id;
+
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm();
-  const { blogComments, blogId } = props;
+  const { blogComments, blogId, blogBy } = props;
   // State to manage comments
   const [comments, setComments] = useState(blogComments);
   const [activeCommentId, setActiveCommentId] = useState(null);
-
-  console.log("blogcokomment---", blogComments);
-
-  // const handelCreateComment = async (data) => {
-  //   try {
-  //     const res = await createComment(data);
-  //     console.log(res);
-
-  //     // Add the new comment to the existing comments state
-  //     setComments([
-  //       ...comments,
-  //       {
-  //         id: res.data.newComment._id, // Assuming the API returns the new comment ID
-  //         comment: data.comment,
-  //         commentBy: {
-  //           name: "Your Name", // Replace with the actual user's name
-  //           profilePic: userImg, // Replace with actual user image path or data
-  //         },
-  //       },
-  //     ]);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // const handleReplySubmit = async (data) => {
-  //   try {
-  //     const res = await createReplyAction(data);
-  //     // Update the specific comment's replies in the state
-  //     setComments((prevComments) =>
-  //       prevComments.map((comment) =>
-  //         comment.id === data.commentId
-  //           ? { ...comment, replies: [...comment.replies, res.data.newReply] }
-  //           : comment
-  //       )
-  //     );
-  //     setActiveCommentId(null); // Reset active comment ID after submitting a reply
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const handelCreateComment = async (data) => {
     try {
@@ -98,27 +63,8 @@ export default function CommentComponent(props) {
           : comment
       )
     );
+    setActiveCommentId(null);
   };
-
-  // const deleteComment = async (commentId) => {
-  //   try {
-  //     console.log(commentId);
-  //     const res = await deleteCommentApi(commentId); // Assume this function calls the API
-  //     console.log(res);
-  //     if (res.data.status === "success") {
-  //       const updatedComments = comments.filter(
-  //         (comment) => comment.id !== commentId
-  //       );
-  //       setComments(updatedComments);
-  //     }
-  //   } catch (error) {
-  //     console.error("Failed to delete comment", error);
-
-  //     // Revert UI state in case of error
-  //     // Optionally show a notification or undo option
-  //     setComments([...comments, { id: commentId }]); // Restore comment
-  //   }
-  // };
 
   const deleteComment = async (data) => {
     try {
@@ -179,9 +125,30 @@ export default function CommentComponent(props) {
 
   return (
     <div className={styles.comment_section}>
-      <h2>Comments</h2>
-      <form onSubmit={handleSubmit(handelCreateComment)}>
-        {/* Your existing form code */}
+      <div className={styles.comment_heading}>
+        <h2>Comments</h2>
+      </div>
+
+      <form
+        onSubmit={handleSubmit(handelCreateComment)}
+        className={styles.comment_form}
+      >
+        <input
+          type="hidden"
+          name="blog"
+          value={blogId}
+          className={styles.comment_input}
+          {...register("blog")}
+        />
+        <input
+          type="text"
+          placeholder="Add a Cooment"
+          name="comment"
+          className={styles.comment_input}
+          {...register("comment", { required: true })}
+        />
+
+        <SubmitBtn btnText="comment" disabled={!isValid} />
       </form>
 
       <div className={styles.comment_list}>
@@ -200,12 +167,17 @@ export default function CommentComponent(props) {
               <div className={styles.comment_content}>
                 <h4 className={styles.user_name}>{comment.commentBy.name}</h4>
                 <p className={styles.user_comment}>{comment.comment}</p>
-                <button
-                  onClick={() => deleteComment({ commentId: comment.id })}
-                >
-                  Delete
-                </button>
-                <div>
+
+                {userID === comment?.commentBy?._id && (
+                  <div className={styles.delete_icon_wrapper}>
+                    <MdDeleteForever
+                      onClick={() => deleteComment({ commentId: comment.id })}
+                      className={styles.delete_iconStyle}
+                    />
+                  </div>
+                )}
+
+                <div className={styles.reply_list_wrapper}>
                   {comment.replies.length > 0 && (
                     <div>
                       <RepliesList
@@ -227,87 +199,6 @@ export default function CommentComponent(props) {
                       onReplyAdded={handleReplyAdded} // Pass the handler
                     />
                   )}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-
-  return (
-    <div className={styles.comment_section}>
-      <h2>Comments</h2>
-      <form onSubmit={handleSubmit(handelCreateComment)}>
-        <input
-          type="hidden"
-          name="blog"
-          value={blogId}
-          className={styles.comment_input}
-          {...register("blog")}
-        />
-        <input
-          type="text"
-          placeholder="Add a Cooment"
-          name="comment"
-          className={styles.comment_input}
-          {...register("comment", { required: true })}
-        />
-
-        <button className={styles.comment_button}> comment</button>
-      </form>
-
-      <div className={styles.comment_list}>
-        {comments.map((comment) => (
-          <div>
-            <div key={comment.id} className={styles.comment_item}>
-              <div className={styles.comment_profile}>
-                <div className={styles.profile_pic_wrapper}>
-                  <Image
-                    src={userImg}
-                    alt={`${comment.name}'s profile picture`}
-                    width={50}
-                    height={50}
-                    className={styles.profile_pic}
-                  />
-                </div>
-                <div className={styles.comment_content}>
-                  <h4 className={styles.user_name}>{comment.commentBy.name}</h4>
-                  <p className={styles.user_comment}>{comment.comment}</p>
-                  <div>
-                    {/* Always show the Reply button */}
-                    {/* <button
-                      className={styles.reply_button}
-                      onClick={() =>
-                        setActiveCommentId(
-                          activeCommentId === comment.id ? null : comment.id
-                        )
-                      }
-                    >
-                      Reply
-                    </button> */}
-
-                    <button
-                      className={styles.reply_button}
-                      onClick={() => setActiveCommentId(comment.id)}
-                    >
-                      Reply
-                    </button>
-
-                    {/* Display CommentReplyForm if this comment is active */}
-                    {activeCommentId === comment.id && (
-                      <CommentReplyForm
-                        commentId={comment.id}
-                        onReplyAdded={handleReplyAdded}
-                      />
-                    )}
-
-                    {/* Display replies if there are any */}
-                    {comment.replies.length > 0 && (
-                      <RepliesList replies={comment.replies} />
-                    )}
-                  </div>
                 </div>
               </div>
             </div>

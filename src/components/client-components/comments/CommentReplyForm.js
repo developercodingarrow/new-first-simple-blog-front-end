@@ -6,12 +6,13 @@ import {
   createComment,
   createReplyAction,
 } from "@/src/Actions/commentActions/CommentActions";
+import SubmitBtn from "../elements/buttons/SubmitBtn";
 export default function CommentReplyForm({ commentId, onReplyAdded }) {
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -20,7 +21,7 @@ export default function CommentReplyForm({ commentId, onReplyAdded }) {
       console.log(res);
 
       if (res.data.status === "Success") {
-        setnewReply(data.comment);
+        // setnewReply(data.comment);
 
         const newTempReply = {
           comment: data.comment,
@@ -28,6 +29,7 @@ export default function CommentReplyForm({ commentId, onReplyAdded }) {
           createdAt: new Date().toISOString(), // Current timestamp
         };
         onReplyAdded(data.commentId, newTempReply);
+        reset(); // Reset form fields after successful submission
       }
     } catch (error) {
       console.log(error);
@@ -49,10 +51,8 @@ export default function CommentReplyForm({ commentId, onReplyAdded }) {
         className={styles.reply_input}
         {...register("comment", { required: true })}
       />
-      <button type="submit" className={styles.reply_button}>
-        Reply
-      </button>
-      {errors.comment && <p className={styles.error}>Reply is required</p>}
+
+      <SubmitBtn btnText="Reply" disabled={!isValid} />
     </form>
   );
 }

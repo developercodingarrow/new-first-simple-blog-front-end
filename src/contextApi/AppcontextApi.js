@@ -12,6 +12,9 @@ export default function AppContextProvider({ children }) {
   const [modelInputData, setmodelInputData] = useState([]);
   const [actionHandler, setActionHandler] = useState(null);
   const [singleImgModel, setsingleImgModel] = useState(false);
+  const [isOpenReportModel, setisOpenReportModel] = useState(false);
+  const [reportModelActionId, setreportModelActionId] = useState("");
+  const [isOpenCommentModel, setisOpenCommentModel] = useState(false);
 
   console.log(isLogined);
   const handelOpenUserDrawer = () => {
@@ -39,6 +42,24 @@ export default function AppContextProvider({ children }) {
 
   const handelSingImgModelClose = () => {
     setsingleImgModel(false);
+  };
+
+  const handelCloseReportModel = () => {
+    setisOpenReportModel(false);
+  };
+
+  const handelOpenReportModel = (id) => {
+    console.log("id---", id);
+    setisOpenReportModel(true);
+    setreportModelActionId(id);
+  };
+
+  const handelOpenCommentModel = () => {
+    setisOpenCommentModel(true);
+  };
+
+  const handelCloseCommentModel = () => {
+    setisOpenCommentModel(false);
   };
 
   useEffect(() => {
@@ -72,6 +93,15 @@ export default function AppContextProvider({ children }) {
         setsingleImgModel,
         handelSingImgModelOpen,
         handelSingImgModelClose,
+        isOpenReportModel,
+        setisOpenReportModel,
+        handelCloseReportModel,
+        handelOpenReportModel,
+        reportModelActionId,
+        isOpenCommentModel,
+        setisOpenCommentModel,
+        handelOpenCommentModel,
+        handelCloseCommentModel,
       }}
     >
       {children}

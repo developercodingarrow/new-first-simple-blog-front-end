@@ -5,7 +5,7 @@ import { HiOutlineDotsVertical } from "../../ApplicationIcons";
 import ActionDropDown from "./ActionDropDown";
 
 export default function ActionDot(props) {
-  const { actionList, actionId , slug } = props;
+  const { actionList, actionId, slug } = props;
   const [isOpen, setisOpen] = useState(false);
 
   const handelOpen = () => {
@@ -20,7 +20,11 @@ export default function ActionDot(props) {
       </div>
       {isOpen && (
         <div className={styles.action_dropDown_wrapper}>
-          <ActionDropDown actionList={actionList} actionId={actionId} slug={slug} />
+          <ActionDropDown
+            actionList={actionList}
+            actionId={actionId}
+            slug={slug}
+          />
         </div>
       )}
     </div>

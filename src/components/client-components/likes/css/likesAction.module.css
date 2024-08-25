@@ -1,0 +1,23 @@
+.conatiner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5px;
+  cursor: pointer;
+}
+
+.like_iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.likeCount_Wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.liked_iconStyle {
+  color: red;
+}

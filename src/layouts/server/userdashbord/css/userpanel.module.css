@@ -1,25 +1,25 @@
 .main_container {
-  margin: 0px 250px;
+  margin: 0px 150px;
 }
 
 .inner_container {
   display: flex;
+  column-gap: 5%;
 }
 
 .content_side {
-  width: 60%;
+  width: 65%;
 }
 
-.side_bar_side {
-  width: 40%;
-  display: block;
+.side_bar_container {
+  width: 30%;
+  position: relative;
 }
 
 .profile_header {
   display: flex;
   column-gap: 10px;
   padding: 20px 0px;
-  border: 1px solid red;
 }
 
 .user_image_wrapper {
@@ -43,9 +43,8 @@
   margin-bottom: 20px;
 }
 
-.filed_wrapper {
-  border: 1px solid red;
-  margin-bottom: 50px;
+.tab_content_wrapper {
+  padding: 5px 5px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -53,11 +52,16 @@
     margin: 0px;
   }
 
-  .content_side {
-    width: 100%;
+  .inner_container {
+    column-gap: 0px;
   }
 
-  .side_bar_side {
+  .content_side {
+    width: 100%;
+    padding: 5px 10px;
+  }
+
+  .side_bar_container {
     display: none;
   }
 

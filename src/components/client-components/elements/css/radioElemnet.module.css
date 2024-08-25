@@ -1,0 +1,52 @@
+.radio_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio_title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.radioOptionBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.radioOption {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.outerCircle {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.innerDot {
+  width: 10px;
+  height: 10px;
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.selected .outerCircle {
+  border-color: #007bff; /* Change this color to your preference */
+}
+
+.selected .innerDot {
+  background-color: #007bff; /* Change this color to your preference */
+}
+
+.radio_btn_textGap {
+  display: flex;
+  align-items: center;
+}

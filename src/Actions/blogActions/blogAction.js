@@ -154,3 +154,12 @@ export const deleteBlogApi = async (formData) => {
   }
   return null;
 };
+
+export const reportContentAction = async (formData) => {
+  if (authToken) {
+    const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/report-content`;
+    const method = "post";
+    return performAPIAction(method, url, formData, authToken);
+  }
+  return null;
+};

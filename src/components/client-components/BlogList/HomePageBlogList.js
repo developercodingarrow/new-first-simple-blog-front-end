@@ -13,6 +13,8 @@ export default function HomePageBlogList(props) {
   const [hasMore, setHasMore] = useState(true);
   const router = useRouter();
 
+  console.log(data);
+
   const observer = useRef();
 
   const lastBlogElementRef = useCallback(
@@ -53,11 +55,11 @@ export default function HomePageBlogList(props) {
         if (index === data.length - 1) {
           return (
             <div ref={lastBlogElementRef} key={index}>
-              <LandscapeCard {...el} />
+              <LandscapeCard data={el} />
             </div>
           );
         } else {
-          return <LandscapeCard key={index} {...el} />;
+          return <LandscapeCard key={index} data={el} />;
         }
       })}
       {loading && <p>Loading more blogs...</p>}

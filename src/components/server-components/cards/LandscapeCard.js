@@ -4,13 +4,12 @@ import autherImg from "../../../../public/web-static-img/auther-image.jpg";
 import cardImg from "../../../../public/web-static-img/blog sample image.png";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  HiOutlineDotsVertical,
-  IoArrowForwardCircleOutline,
-} from "../../ApplicationIcons";
 import CardFooter from "./CardFooter";
 
-export default function LandscapeCard() {
+export default function LandscapeCard(props) {
+  const { data } = props;
+  console.log("data---", data);
+
   return (
     <div className={styles.com_container}>
       <div className={styles.card_container}>
@@ -31,38 +30,34 @@ export default function LandscapeCard() {
         <div className={styles.dekstop_card_body}>
           <div className={styles.dekstop_card_img_wrapper}>
             <Image
-              src={cardImg}
-              alt="card-image"
+              src={`/blogthumblin/${data.blogThumblin.url}`}
+              alt={`${data.blogThumblin.altText}`}
               width={500}
               height={500}
               className={styles.dekstop_card_Img}
+              title={`${data.blogThumblin.title}`}
             />
           </div>
           <div className={styles.dekstop_card_containt}>
             <div className={styles.dekstop_card_title}>
-              <h2>
-                My Personal Take on Illinoise: A Thrilling, Queer Broadway Show
-              </h2>
+              <h2>{data.blogTitle}</h2>
             </div>
             <div className={styles.dekstop_card_meta_decreption_wrapper}>
-              <h3>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                malesuada erat eu lorem laoreet, a dapibus nulla imperdiet.
-                Integer a lacinia dolor, ut porttitor.
-              </h3>
+              <h3>{data.metaDescription}</h3>
             </div>
             <div className={styles.dekstop_card_action_wrapper}>
-              <CardFooter />
+              <CardFooter
+                pageTitleUrl={data.slug}
+                postLikes={data.likes}
+                elementID={data._id}
+              />
             </div>
           </div>
         </div>
       </div>
       <div className={styles.mobile_card}>
         <div className={styles.mobile_card_title}>
-          <h2>
-            {" "}
-            My Personal Take on Illinoise: A Thrilling, Queer Broadway Show
-          </h2>
+          <h2>{data.blogTitle}</h2>
         </div>
         <div className={styles.mobile_card_body}>
           <div className={styles.mobile_img_wraper}>
@@ -76,15 +71,15 @@ export default function LandscapeCard() {
             />
           </div>
           <div className={styles.mobile_meta_wrapper}>
-            <h3>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              malesuada erat eu lorem laoreet, a dapibus nulla imperdiet.
-              Integer a lacinia dolor, ut porttitor.
-            </h3>
+            <h3>{data.metaDescription}</h3>
           </div>
         </div>
         <div>
-          <CardFooter />
+          <CardFooter
+            pageTitleUrl={data.slug}
+            postLikes={data.likes}
+            elementID={data._id}
+          />
         </div>
       </div>
     </div>

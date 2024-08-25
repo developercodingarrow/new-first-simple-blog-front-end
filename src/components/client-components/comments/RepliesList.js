@@ -1,11 +1,16 @@
 "use client";
-import React from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import styles from "./css/commentcomponent.module.css";
 import userImg from "../../../../public/web-static-img/auther-image.jpg";
+import { MdDeleteForever } from "../../ApplicationIcons";
+import { AppContext } from "@/src/contextApi/AppcontextApi";
 export default function RepliesList(props) {
+  const { isLogined } = useContext(AppContext);
+  const userID = isLogined?._id;
   const { replies, comentID, handelDelete } = props;
   console.log(replies);
+
   return (
     <div className={styles.replies_list}>
       {replies.map((reply) => (
@@ -25,9 +30,15 @@ export default function RepliesList(props) {
                 {reply.replyBy?.name || "Anonymous"}
               </h5>
               <p className={styles.user_comment}>{reply.comment}</p>
-              <button onClick={() => handelDelete(comentID, reply._id)}>
-                Delete Reply
-              </button>
+
+              {userID === reply?.replyBy?._id && (
+                <div className={styles.delete_icon_wrapper}>
+                  <MdDeleteForever
+                    onClick={() => handelDelete(comentID, reply._id)}
+                    className={styles.delete_iconStyle}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

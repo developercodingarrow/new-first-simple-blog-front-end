@@ -1,6 +1,35 @@
 .comment_section {
   padding: 20px;
   background-color: #f9f9f9;
+  height: 100vh;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.comment_section::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track of the scrollbar (background) */
+.comment_section::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 10px;
+}
+
+/* Handle of the scrollbar (the draggable part) */
+.comment_section::-webkit-scrollbar-thumb {
+  background-color: #888; /* Scrollbar color */
+  border-radius: 10px;
+  border: 2px solid #f9f9f9; /* Space around the handle */
+}
+
+/* Handle on hover */
+.comment_section::-webkit-scrollbar-thumb:hover {
+  background-color: var(--th-primary-color); /* Darker on hover */
+}
+
+.comment_heading {
+  margin-bottom: 10px;
 }
 
 .comment_form,
@@ -16,15 +45,24 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-right: 10px;
+  outline: none;
 }
 
 .comment_button {
   padding: 10px 20px;
   border: none;
-  background-color: #0070f3;
+  background-color: var(--th-primary-color);
   color: white;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.disabled_btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #ccc;
+  cursor: not-allowed;
+  color: #666;
 }
 
 .reply_button {
@@ -35,6 +73,7 @@
 
 .comment_list {
   margin-top: 20px;
+  margin-bottom: 0px;
 }
 
 .comment_item {
@@ -62,19 +101,31 @@
 .comment_content {
   display: flex;
   flex-direction: column;
+  width: calc(100% - 30px);
 }
 
 .user_name {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   margin: 0;
   font-family: Arial, sans-serif;
+  columns: #000000e6;
 }
 
 .user_comment {
   font-size: 14px;
   margin-top: 5px;
   font-family: Arial, sans-serif;
+  margin-bottom: 5px;
+}
+
+.delete_icon_wrapper {
+  margin-bottom: 5px;
+}
+
+.delete_iconStyle {
+  cursor: pointer;
+  color: var(--th-primary-color);
 }
 
 .reply_section {
@@ -82,6 +133,39 @@
   margin-top: 10px;
 }
 
+.reply_list_wrapper {
+  margin-top: 10px;
+}
+
 .reply_item {
   margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .comment_section {
+    padding: 5px;
+    width: 100%;
+  }
+
+  .comment_input,
+  .reply_input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none; /* Remove the default border */
+    border-bottom: 1px solid #ddd; /* Add only the bottom border */
+    border-radius: 0; /* Remove any border-radius */
+    margin-right: 10px;
+    outline: none;
+    background-color: transparent; /* Make the background transparent */
+  }
+
+  .comment_list {
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+
+  .comment_item {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+  }
 }

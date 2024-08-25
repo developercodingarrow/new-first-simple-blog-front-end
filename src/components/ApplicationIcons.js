@@ -21,8 +21,10 @@ import { FaRegComment } from "react-icons/fa";
 import { CiShare1 } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
 import { IoMdHeartEmpty } from "react-icons/io";
+import { IoArrowBack } from "react-icons/io5";
 
 export {
+  IoArrowBack,
   IoMdHeart,
   IoMdHeartEmpty,
   HiOutlineHome,

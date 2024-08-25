@@ -1,0 +1,24 @@
+.only_mobile_container {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .only_mobile_container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid var(--th-separator);
+    background-color: #fff;
+    z-index: 20;
+    position: fixed;
+    top: 0px;
+    transition: 0.3s ease-in-out;
+  }
+
+  .inner_container {
+    width: 100%;
+  }
+  .model_header {
+    padding: 10px 5px;
+  }
+}

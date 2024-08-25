@@ -7,6 +7,7 @@ import Footer from "@/src/components/server-components/footer/Footer";
 import GoogleOneTap from "@/src/components/client-components/googleAuth/GoogleOneTap";
 import ImgModelContextProvider from "@/src/contextApi/ImgModelContextApi";
 import TagContextProvider from "@/src/contextApi/TagContextApi";
+import ReportActionModel from "@/src/components/client-components/models/ReportActionModel";
 
 export const metadata = {
   title: "Fisrt blog website",
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
           <ImgModelContextProvider>
             <TagContextProvider>
               <GoogleOAuthProvider clientId="575999030621-q9l875mbikilrm28q7sbj7ed3pf3kehq.apps.googleusercontent.com">
+                <ReportActionModel />
                 <div>
                   <NavBar />
                   <GoogleOneTap />

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { userDashBordTab } from "@/src/jsonData/navigationData";
 import TagTab from "@/src/components/client-components/tab/TagTab";
 import UserDetailWrapper from "./userdetails/usertextdetail/UserDetailWrapper";
+import UserLayoutSideBar from "./UserLayoutSideBar";
 
 export default function UserPanelLayout({ children }) {
   return (
@@ -32,7 +33,10 @@ export default function UserPanelLayout({ children }) {
             </div>
             <div className={styles.tab_content_wrapper}>{children}</div>
           </div>
-          <div className={styles.side_bar_side}>side bar side</div>
+
+          <div className={styles.side_bar_container}>
+            <UserLayoutSideBar />
+          </div>
         </div>
       </div>
     </div>

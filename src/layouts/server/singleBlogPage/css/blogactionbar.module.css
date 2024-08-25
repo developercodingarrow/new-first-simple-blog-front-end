@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid gray;
-  padding: 10px 5px;
+  border: 1px solid var(--th-separator);
+  padding: 10px 10px;
 }
 
 .ssr_user_profile_container {
@@ -33,4 +33,17 @@
   display: flex;
   column-gap: 10px;
   align-items: center;
+}
+
+.mobile_comment_IconWrapper {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .mobile_comment_IconWrapper {
+    display: block;
+  }
+  .dekstop_comment_IconWrapper {
+    display: none;
+  }
 }
