@@ -1,0 +1,151 @@
+/* Card.module.css */
+
+/* Card container */
+.card {
+  background-color: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Top Bar */
+.cardTopBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: var(--footer-background);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.cardUserInfo {
+  display: flex;
+  align-items: center;
+}
+
+.userImage {
+  border-radius: 50%;
+  border: 2px solid var(--user-image-border);
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.userDetails .username {
+  font-weight: 500;
+  color: var(--title-color);
+}
+
+.userDetails .date {
+  color: #555555; /* Medium Gray for date */
+}
+
+.moreOptions .threeDotsIcon {
+  font-size: 18px;
+  color: var(--title-color);
+}
+
+/* Content */
+.cardContent {
+  padding: 15px;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.content_wrapper {
+  display: flex;
+  column-gap: 10px;
+}
+
+.cardImage {
+  width: 160px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.img_style {
+  width: 100%;
+  height: 100%;
+}
+
+.metaDescription {
+  width: calc(100% - 170px);
+  color: #555;
+  letter-spacing: 0.5px;
+  word-spacing: 1px;
+  text-align: justify;
+}
+
+.metaDescription h3 {
+  color: #555;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* Footer */
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: var(--footer-background);
+  border-top: 1px solid var(--card-border);
+}
+
+.likeSection {
+  display: flex;
+  align-items: center;
+  color: var(--footer-text);
+}
+
+.heartIcon {
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.likeCount {
+  font-size: 16px;
+}
+
+.arrowSection .arrowIcon {
+  font-size: 18px;
+  color: var(--footer-text);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .cardTopBar {
+    padding: 5px 5px;
+  }
+
+  .cardContent {
+    padding: 5px;
+  }
+
+  .content_wrapper {
+    flex-direction: column;
+  }
+
+  .cardImage {
+    width: 100%;
+    height: 200px;
+  }
+
+  .metaDescription {
+    width: 100%;
+  }
+}

@@ -4,15 +4,15 @@
 
 .inner_container {
   display: flex;
-  column-gap: 5%;
+  column-gap: 0%;
 }
 
 .content_side {
-  width: 65%;
+  width: 60%;
 }
 
 .side_bar_container {
-  width: 30%;
+  width: 25%;
   position: relative;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .tab_content_wrapper {
-  padding: 5px 5px;
+  padding: 5px 15px;
 }
 
 @media only screen and (max-width: 600px) {

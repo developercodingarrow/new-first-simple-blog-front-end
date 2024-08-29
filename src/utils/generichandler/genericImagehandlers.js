@@ -48,3 +48,25 @@ export const genericSingleImageWithOtherData = (handler) => {
     }
   };
 };
+
+// This GENERIC HANDLER FOR Update SINGLE IMAGE BY ID
+export const genericImageUplodHandler = (uploadFunction) => {
+  return async (selectedFile, imageFor, id = null) => {
+    // console.log(selectedFile, formData, imageFor, id);
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append(imageFor, selectedFile);
+
+      // Add the id to the FormData
+      if (id) {
+        formDataToSend.append("id", id);
+      }
+
+      const result = await uploadFunction(formDataToSend);
+      console.log("genrichandler-----", result);
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

@@ -8,9 +8,10 @@ import LinkBtn from "../../server-components/serverElements/LinkBtn";
 import UserDrawer from "../../authComponents/userDrawer/UserDrawer";
 
 export default function CircleUser() {
+  const testData = localStorage.getItem("test");
   const { isUserDrawer, isLogined, longined, handelOpenUserDrawer } =
     useContext(AppContext);
-
+  const [user, setUser] = useState(null);
   // Add a loading state
   const [loading, setLoading] = useState(true);
 
@@ -19,11 +20,6 @@ export default function CircleUser() {
       setLoading(false);
     }
   }, [isLogined]);
-
-  // If still loading, return null or a spinner
-  if (loading) {
-    return null; // Or you can return a loading spinner
-  }
 
   return (
     <div className={styles.com_container}>

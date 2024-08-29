@@ -24,7 +24,13 @@ export default function UserTextDetail(props) {
     openModal(apiData, modelInputs, modelActionHandler);
   };
 
+  const handelOpenImgModel = () => {
+    openModal(apiData?.userImg?.url, apiData._id);
+  };
+
   console.log(textdata);
+
+  console.log(apiData);
 
   return (
     <>
@@ -36,11 +42,17 @@ export default function UserTextDetail(props) {
           </div>
         )}
         {type === "img" && (
-          <div className={styles.small_img_wrapper}>
+          <div
+            className={styles.small_img_wrapper}
+            onClick={handelOpenImgModel}
+          >
             <Image
-              src={imgData}
+              // src={imgData}
+              src={`/usersProfileImg/${apiData?.userImg?.url}`}
               alt="user image"
               className={styles.img_style}
+              width={500}
+              height={500}
             />
           </div>
         )}

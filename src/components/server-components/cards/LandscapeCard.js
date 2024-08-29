@@ -30,7 +30,7 @@ export default function LandscapeCard(props) {
         <div className={styles.dekstop_card_body}>
           <div className={styles.dekstop_card_img_wrapper}>
             <Image
-              src={`/blogthumblin/${data.blogThumblin.url}`}
+              src={`/blogthumblin/${data?.blogThumblin?.url}`}
               alt={`${data.blogThumblin.altText}`}
               width={500}
               height={500}

@@ -1,13 +1,21 @@
 :root {
+  --th-body-bg: #f0f8ff;
+  --th-body-secondey-bg-color: #e8f2fa;
+  --th-body-secondery-border-color: #b0c4de;
+  --th-body-seondery-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  --th-primary-color: #2980b9;
+  --th-primary-hover-color: #2471a3;
+  --th-navbar-bg-color: #1c2a35;
+
   --th-layout-gap: 100px;
   --th-black-color: #0e1113;
   --th-black-hover: #181c1f;
   --th-black-selected: #2a3236;
-  --th-primary-color: #d93900;
-  --th-primary-hover-color: #ae2c00;
+
   --th-seconder-white: #dbe4e9;
   --th-separator: #dddddd;
   --th-muted: #afafaf;
+
   --th-box-shadow: rgba(14, 63, 126, 0.06) 0px 0px 0px 1px,
     rgba(42, 51, 70, 0.03) 0px 1px 1px -0.5px,
     rgba(42, 51, 70, 0.04) 0px 2px 2px -1px,
@@ -15,7 +23,22 @@
     rgba(42, 51, 70, 0.03) 0px 5px 5px -2.5px,
     rgba(42, 51, 70, 0.03) 0px 10px 10px -5px,
     rgba(42, 51, 70, 0.03) 0px 24px 24px -8px;
+
+  /* cards  */
+  --card-background: #ffffff; /* White background for the card */
+  --card-border: #d3e2f0; /* Light Blue-Gray for borders */
+  --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  --user-image-border: #b0c4de; /* Light Steel Blue border for user image */
+  --title-color: #2c3e50; /* Dark Blue for title */
+  --description-color: #333333; /* Dark Gray for meta description */
+  --footer-background: #f0f8ff; /* Alice Blue for footer background */
+  --footer-text: #2c3e50; /* Dark Blue for footer text */
 }
+
+/*
+ --th-primary-color : #d93900;
+ --th-primary-hover-color: #ae2c00;
+*/
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -62,6 +85,7 @@ body {
   overflow-x: hidden;
   font-family: sans-serif;
   position: relative;
+  background-color: var(--th-body-bg);
 }
 
 body {
@@ -76,24 +100,24 @@ a {
 
 a {
   text-decoration: none;
-  font-family: var(--font-roboto), sans-serif;
+  font-family: sans-serif;
 }
 
 h1 {
-  font-family: var(--font-roboto), sans-serif;
+  font-family: sans-serif;
   font-weight: 700;
   font-size: 18px;
   letter-spacing: 0.5px;
 }
 
 h2 {
-  font-family: var(--font-roboto), sans-serif;
+  font-family: sans-serif;
   font-weight: 500;
   font-size: 18px;
 }
 
 h3 {
-  font-family: var(--font-roboto), sans-serif;
+  font-family: sans-serif;
   font-weight: 400;
   font-size: 14px;
 }
@@ -125,21 +149,21 @@ h3 {
 .medium_text_wrapper {
   font-size: 14px;
   letter-spacing: 1px;
-  font-family: var(--font-roboto), sans-serif;
+  font-family: sans-serif;
   letter-spacing: 1.2px;
 }
 
 .small_text_wrapper {
   font-size: 12px;
   letter-spacing: 1px;
-  font-family: var(--font-inter), sans-serif;
+  font-family: sans-serif;
   letter-spacing: 1px;
 }
 
 .input_errors {
   color: var(--th-primary-color);
   font-size: 12px;
-  font-family: var(--font-roboto), sans-serif;
+  font-family: sans-serif;
 }
 
 .large_iconWrapper:hover {
@@ -149,7 +173,7 @@ h3 {
 .link_btn {
   background-color: var(--th-primary-color);
   text-transform: capitalize;
-  font-family: var(--font-roboto), sans-serif;
+  font-family: sans-serif;
 }
 
 .link_btn:hover {
@@ -175,7 +199,7 @@ ul {
   padding: 0px;
 }
 li {
-  font-family: var(--font-roboto), sans-serif;
+  font-family: sans-serif;
   text-transform: capitalize;
   padding: 8px 16px;
   font-size: 12px;
@@ -189,13 +213,13 @@ li:hover {
 
 @media only screen and (max-width: 600px) {
   h2 {
-    font-family: var(--font-roboto), sans-serif;
+    font-family: sans-serif;
     font-weight: 400;
     font-size: 14px;
   }
 
   h3 {
-    font-family: var(--font-roboto), sans-serif;
+    font-family: sans-serif;
     font-weight: 300;
     font-size: 12px;
   }

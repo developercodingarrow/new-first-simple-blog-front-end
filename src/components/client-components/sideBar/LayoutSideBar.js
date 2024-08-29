@@ -22,7 +22,7 @@ export default function LayoutSideBar() {
     <div
       className={`${styles.sidebar_container} ${isSticky ? styles.sticky : ""}`}
     >
-      <div className={styles.element_wrapper}>
+      <div className={styles.sideBanner_wrapper}>
         <SideBanner />
       </div>
 

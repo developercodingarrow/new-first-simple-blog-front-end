@@ -10,7 +10,8 @@ import { updateUserData, isAuth } from "@/src/Actions/authAction";
 
 export default function ModelForm(props) {
   const { inputfileds, modelData, formhandel } = props;
-  const { setisLogined } = useContext(AppContext);
+  const { setisLogined, isBtnLoading, setisBtnLoading, handelcloseInputModal } =
+    useContext(AppContext);
   const dynimicData = [];
   const {
     handleSubmit,
@@ -23,17 +24,21 @@ export default function ModelForm(props) {
   } = useCustomApiForm(modelData);
 
   const handleForm = async (data) => {
+    console.log("data-----", data);
     try {
+      setisBtnLoading(true);
       const res = await formhandel(data);
       console.log(res);
       if (res.data.status === "success") {
         console.log("succes");
+        setisBtnLoading(false);
 
         updateUserData(res.data.result);
         const updatedUser = isAuth(); // Fetch the updated user data from localStorage
         setisLogined(updatedUser);
       }
     } catch (error) {
+      setisBtnLoading(false);
       console.log(error);
     }
   };
@@ -50,7 +55,7 @@ export default function ModelForm(props) {
         <div className={styles.model_btn_wrapper}>
           <div className={styles.btn_wrapper}>
             <div>
-              <ClickBtn btnText="cancle" />
+              <ClickBtn btnText="cancle" btnHandel={handelcloseInputModal} />
             </div>
             <div>
               <SubmitBtn btnText="Save" />

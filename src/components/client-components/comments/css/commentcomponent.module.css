@@ -1,9 +1,10 @@
 .comment_section {
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: var(--th-body-secondey-bg-color);
   height: 100vh;
   width: 100%;
   overflow-x: auto;
+  border: var(--th-body-secondery-border-color);
 }
 
 .comment_section::-webkit-scrollbar {

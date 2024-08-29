@@ -12,7 +12,7 @@ export default function TagTab(props) {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const stickyPosition = 100; // Change this value to control the sticky position
+      const stickyPosition = 250; // Change this value to control the sticky position
       setIsSticky(scrollTop > stickyPosition);
     };
 

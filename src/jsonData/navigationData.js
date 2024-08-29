@@ -71,12 +71,12 @@ export const termsLinks = [
 
 export const tabData = [
   {
-    name: "javaScrip",
-    hrfLink: "javscrpt",
+    name: "no blog",
+    hrfLink: "no-blog",
   },
   {
-    name: "design",
-    hrfLink: "design",
+    name: "one tag",
+    hrfLink: "one-tag",
   },
   {
     name: "html",

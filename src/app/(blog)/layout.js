@@ -7,7 +7,8 @@ import Footer from "@/src/components/server-components/footer/Footer";
 export default function layout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${roboto.variable}`}>
+      {/* <body className={`${inter.variable} ${roboto.variable}`}> */}
+      <body>
         <AppContextProvider>
           <div>
             <NavBar />

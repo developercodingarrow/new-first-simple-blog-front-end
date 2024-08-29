@@ -16,6 +16,7 @@ import {
 import { AppContext } from "@/src/contextApi/AppcontextApi";
 import InputModel from "@/src/components/client-components/models/InputModel";
 import { userProfileUpdate } from "@/src/Actions/userActions/userAction";
+import UserImgModel from "@/src/components/client-components/models/imgModel/UserImgModel";
 
 export default function UserDetailWrapper() {
   const {
@@ -25,6 +26,8 @@ export default function UserDetailWrapper() {
     handelOpenInputModel,
     handelcloseInputModal,
     isLogined,
+    userImgModel,
+    handelOpenImgModel,
   } = useContext(AppContext);
   return (
     <div className={styles.conatiner}>
@@ -36,12 +39,21 @@ export default function UserDetailWrapper() {
           closeModal={handelcloseInputModal}
         />
       )}
+
+      {userImgModel && <UserImgModel id={isLogined._id} />}
+
       <section className={styles.profile_section}>
         <div className={styles.section_heading}>
           <h2>User Profile</h2>
         </div>
         <div>
-          <UserTextDetail title="Profile Image" imgData={userImg} type="img" />
+          <UserTextDetail
+            title="Profile Image"
+            imgData={userImg}
+            type="img"
+            apiData={isLogined}
+            openModal={handelOpenImgModel}
+          />
         </div>
         <div>
           <UserTextDetail
@@ -62,18 +74,6 @@ export default function UserDetailWrapper() {
             type="text"
             apiData={isLogined}
             modelInputs={userNameinput}
-            openModal={handelOpenInputModel}
-            modelActionHandler={userProfileUpdate}
-          />
-        </div>
-
-        <div>
-          <UserTextDetail
-            title="Email"
-            type="text"
-            textdata={isLogined?.email}
-            apiData={userApiData}
-            modelInputs={emaiinput}
             openModal={handelOpenInputModel}
             modelActionHandler={userProfileUpdate}
           />

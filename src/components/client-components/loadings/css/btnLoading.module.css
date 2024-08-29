@@ -1,0 +1,24 @@
+.btnLoadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3); /* Light gray */
+  border-top: 3px solid #ffffff; /* White */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 8px; /* Space between the spinner and the text */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

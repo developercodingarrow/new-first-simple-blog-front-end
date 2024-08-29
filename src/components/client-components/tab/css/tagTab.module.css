@@ -1,11 +1,13 @@
 .tab_container {
   width: 100%;
-  border-bottom: 1px solid var(--th-separator);
+  border-bottom: 1px solid var(--th-body-secondery-border-color);
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   column-gap: 16px;
   overflow-x: auto;
+  background-color: var(--th-body-secondey-bg-color);
+  box-shadow: var(--th-body-seondery-box-shadow);
 }
 
 /* Webkit scrollbar styles (Chrome, Safari) */
@@ -24,12 +26,13 @@
 
 .sticky {
   position: fixed;
-  width: 52%;
+  width: 48.2%;
   top: 50px;
-  background-color: #fffffffb; /* Optional: to ensure it has a background */
+  background-color: var(--th-body-secondey-bg-color);
   border-bottom: 1px solid var(--th-separator); /* Uses your light gray color */
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  z-index: 1000; /* Optional: to ensure it appears above other elements */
+  box-shadow: var(--th-body-seondery-box-shadow);
+  z-index: 9; /* Optional: to ensure it appears above other elements */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, top 0.3s ease;
 }
 
 .tab_warpper {
@@ -41,6 +44,8 @@
   font-size: 16px;
   color: #333;
   transition: color 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .tab_warpper::after {
   content: "";

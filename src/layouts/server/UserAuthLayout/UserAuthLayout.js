@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import styles from "./css/userAuthLayout.module.css";
 import Image from "next/image";
@@ -11,8 +11,10 @@ import SubmitBtn from "@/src/components/client-components/elements/buttons/Submi
 import GoogleOneTap from "@/src/components/client-components/googleAuth/GoogleOneTap";
 import GoogleAuthClient from "@/src/components/client-components/googleAuth/GoogleAuthClient";
 import { authenticate } from "@/src/Actions/authAction";
+import { AppContext } from "@/src/contextApi/AppcontextApi";
 
 export default function UserAuthLayout(props) {
+  const { isBtnLoading, setisBtnLoading } = useContext(AppContext);
   const router = useRouter();
   const {
     formInputs,
@@ -28,9 +30,11 @@ export default function UserAuthLayout(props) {
 
   const handleForm = async (data) => {
     try {
+      setisBtnLoading(true);
       const res = await formHandel(data);
       if (res.data.status === "success") {
         if (res.data.apiFor === "register") {
+          setisBtnLoading(false);
           console.log(res.data);
           toast.success(res.data.message);
           router.push(`/opt-verification/${res.data.UrlToken}`);
@@ -42,9 +46,11 @@ export default function UserAuthLayout(props) {
       }
 
       if (res.data.status === "Fails") {
+        setisBtnLoading(false);
         toast.error(res.data.message);
       }
     } catch (error) {
+      setisBtnLoading(false);
       console.log(error);
     }
   };
@@ -86,7 +92,7 @@ export default function UserAuthLayout(props) {
                 })}
               </div>
               <div className={styles.submit_btn_wrapper}>
-                <SubmitBtn btnText={formBtn} />
+                <SubmitBtn btnText={formBtn} disabled={!isValid} />
               </div>
             </form>
           </div>

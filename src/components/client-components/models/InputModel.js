@@ -22,19 +22,20 @@ export default function InputModel(props) {
         <div className={styles.inner_container}>
           <div className={styles.model_container}>
             <div className={styles.close_bar}>
-              <div onClick={closeModal}>
+              <div onClick={closeModal} className={styles.close_iconWrapper}>
                 <IoCloseSharp />
               </div>
             </div>
             <div className={styles.model_heading_wrapper}>
               <h2>{heding}</h2>
             </div>
-
-            <ModelForm
-              inputfileds={inputfileds}
-              modelData={modelData}
-              formhandel={actionHandler}
-            />
+            <div className={styles.model_form_conatiner}>
+              <ModelForm
+                inputfileds={inputfileds}
+                modelData={modelData}
+                formhandel={actionHandler}
+              />
+            </div>
           </div>
         </div>
       </div>

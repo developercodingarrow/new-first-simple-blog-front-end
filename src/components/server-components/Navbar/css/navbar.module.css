@@ -3,7 +3,7 @@
   height: 50px;
   position: fixed;
   padding: 0px var(--th-layout-gap);
-  background-color: var(--th-black-color);
+  background-color: var(--th-navbar-bg-color);
   z-index: 10;
 }
 

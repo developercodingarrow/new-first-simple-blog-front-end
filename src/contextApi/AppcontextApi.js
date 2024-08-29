@@ -15,6 +15,10 @@ export default function AppContextProvider({ children }) {
   const [isOpenReportModel, setisOpenReportModel] = useState(false);
   const [reportModelActionId, setreportModelActionId] = useState("");
   const [isOpenCommentModel, setisOpenCommentModel] = useState(false);
+  const [isBtnLoading, setisBtnLoading] = useState(false);
+  const [userImgModel, setuserImgModel] = useState(false);
+  const [imgUrl, setimgUrl] = useState("");
+  const [modelActionId, setmodelActionId] = useState("");
 
   console.log(isLogined);
   const handelOpenUserDrawer = () => {
@@ -62,6 +66,16 @@ export default function AppContextProvider({ children }) {
     setisOpenCommentModel(false);
   };
 
+  const handelOpenImgModel = (imageUrl, id) => {
+    setimgUrl(imageUrl);
+    setmodelActionId(id);
+    setuserImgModel(true);
+  };
+
+  const handelCloseImgModel = () => {
+    setuserImgModel(false);
+  };
+
   useEffect(() => {
     const loggedIn = isAuth();
     setisLogined(loggedIn);
@@ -102,6 +116,16 @@ export default function AppContextProvider({ children }) {
         setisOpenCommentModel,
         handelOpenCommentModel,
         handelCloseCommentModel,
+        isBtnLoading,
+        setisBtnLoading,
+        userImgModel,
+        setuserImgModel,
+        handelOpenImgModel,
+        imgUrl,
+        setimgUrl,
+        modelActionId,
+        setmodelActionId,
+        handelCloseImgModel,
       }}
     >
       {children}

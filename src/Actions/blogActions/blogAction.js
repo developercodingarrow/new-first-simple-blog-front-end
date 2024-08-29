@@ -73,7 +73,7 @@ export const singleBlogs = async (slug) => {
 //  SSR All Blogs
 
 export const tagfillterBlogs = async (query, page) => {
-  const limit = 10; // Static limit value
+  const limit = 3; // Static limit value
   let url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/fllterd-tag-blogs`;
 
   const queryParams = [];
@@ -91,7 +91,7 @@ export const tagfillterBlogs = async (query, page) => {
     url += `?${queryParams.join("&")}`;
   }
 
-  return performGetAPIAction(url, null, { cache: "no-store" });
+  return performGetAPIAction(url, null);
 };
 
 export const likeAction = async (formData) => {

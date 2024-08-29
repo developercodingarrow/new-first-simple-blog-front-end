@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
 import styles from "../css/otpui.module.css";
@@ -9,8 +9,10 @@ import { otpInput } from "@/src/jsonData/authformData";
 import useCustomeAuthForm from "@/src/custome-hooks/useCustomeAuthForm";
 import SubmitBtn from "@/src/components/client-components/elements/buttons/SubmitBtn";
 import { otpVerfication } from "@/src/Actions/userActions/userAuthAction";
+import { AppContext } from "@/src/contextApi/AppcontextApi";
 
 export default function OTP() {
+  const { isBtnLoading, setisBtnLoading } = useContext(AppContext);
   const params = useParams();
   const { otp } = params;
   const { renderInput, handleSubmit, updatedInputs, isValid, errors } =
@@ -18,16 +20,19 @@ export default function OTP() {
 
   const handleForm = async (data) => {
     try {
-      console.log(data);
+      setisBtnLoading(true);
       const res = await otpVerfication(data, otp);
       if (res.data.status === "success") {
+        setisBtnLoading(false);
         toast.success(res.data.message);
       }
 
       if (res.data.error) {
+        setisBtnLoading(false);
         console.log("error");
       }
     } catch (error) {
+      setisBtnLoading(false);
       console.log(error);
     }
   };

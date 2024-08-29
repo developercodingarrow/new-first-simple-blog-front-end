@@ -1,11 +1,13 @@
 import { singleBlogs } from "@/src/Actions/blogActions/blogAction";
 import SingleBlogPageUI from "@/src/layouts/server/singleBlogPage/SingleBlogPageUI";
-import React from "react";
+import React, { Suspense } from "react";
 import { NextSeo } from "next-seo";
 import BlogSeo from "@/src/components/SEO/BlogSeo";
+import Loading from "../../loading";
+
 async function getData(slug) {
   const res = await singleBlogs(slug);
-
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   return await res.data.result;
 }
 
@@ -63,9 +65,10 @@ export default async function SingleBlogpage(pathname) {
   };
   return (
     <div>
-      <BlogSeo seoData={SEO} />
-
-      <SingleBlogPageUI ssrData={data} />
+      {/* <BlogSeo seoData={SEO} /> */}
+      <Suspense fallback={<Loading />}>
+        <SingleBlogPageUI ssrData={data} />
+      </Suspense>
     </div>
   );
 }

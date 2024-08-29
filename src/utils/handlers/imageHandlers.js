@@ -1,11 +1,13 @@
 import {
   genericSingleImageHandler,
   genericSingleImageWithOtherData,
+  genericImageUplodHandler,
 } from "../generichandler/genericImagehandlers";
 import {
   UpdateBlogThumblin,
   createBlogWithImg,
 } from "@/src/Actions/blogActions/blogAction";
+import { UpdateUserProfilePic } from "@/src/Actions/userActions/userAction";
 
 // Handel Update Blog Thumblin
 export const handelUploadThumblin =
@@ -14,3 +16,6 @@ export const handelUploadThumblin =
 // Handel for Image with aditional data
 export const handelImageWithAditionalData =
   genericSingleImageWithOtherData(createBlogWithImg);
+
+export const handeluplodUserPic =
+  genericImageUplodHandler(UpdateUserProfilePic);
