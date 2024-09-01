@@ -24,6 +24,7 @@ export default function UserAuthLayout(props) {
     formType,
     formHandel,
     footerLink,
+    footerText,
   } = props;
   const { renderInput, handleSubmit, updatedInputs, isValid, errors } =
     useCustomeAuthForm(formInputs, formType);
@@ -111,7 +112,7 @@ export default function UserAuthLayout(props) {
             <span>Already have an Account? </span>{" "}
             <span>
               {" "}
-              <Link href={`/${footerLink}`}>Sign In </Link>{" "}
+              <Link href={`/${footerLink}`}>{footerText} </Link>{" "}
             </span>
           </div>
         </div>

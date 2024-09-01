@@ -26,10 +26,10 @@ export default function RepliesList(props) {
               />
             </div>
             <div className={styles.comment_content}>
-              <h5 className={styles.user_name}>
+              <h6 className={"capitalize_text"}>
                 {reply.replyBy?.name || "Anonymous"}
-              </h5>
-              <p className={styles.user_comment}>{reply.comment}</p>
+              </h6>
+              <p className={styles.comment_text}>{reply.comment}</p>
 
               {userID === reply?.replyBy?._id && (
                 <div className={styles.delete_icon_wrapper}>

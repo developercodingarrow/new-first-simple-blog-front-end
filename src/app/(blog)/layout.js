@@ -1,15 +1,17 @@
 import React from "react";
-import { inter, roboto } from "../../lib/fonts";
 import "../globals.css";
 import AppContextProvider from "@/src/contextApi/AppcontextApi";
 import NavBar from "@/src/components/server-components/Navbar/NavBar";
 import Footer from "@/src/components/server-components/footer/Footer";
+import ReagisterAuthModel from "@/src/components/client-components/models/ReagisterAuthModel";
+import ReportActionModel from "@/src/components/client-components/models/ReportActionModel";
 export default function layout({ children }) {
   return (
     <html lang="en">
-      {/* <body className={`${inter.variable} ${roboto.variable}`}> */}
       <body>
         <AppContextProvider>
+          <ReportActionModel />
+          <ReagisterAuthModel />
           <div>
             <NavBar />
           </div>

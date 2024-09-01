@@ -7,6 +7,7 @@ import Loading from "../../loading";
 
 async function getData(slug) {
   const res = await singleBlogs(slug);
+
   await new Promise((resolve) => setTimeout(resolve, 3000));
   return await res.data.result;
 }

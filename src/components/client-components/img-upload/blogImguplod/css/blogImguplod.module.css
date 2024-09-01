@@ -4,9 +4,9 @@
 
 .image_uplod_wrapper {
   background: #fff;
-  padding: 5px;
+  padding: 8px;
   box-shadow: var(--th-box-shadow);
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .image_uploader_container {
@@ -18,8 +18,8 @@
   align-items: center;
   position: relative;
   cursor: pointer;
-  background-color: var(--th-separator);
-  border-radius: 8px;
+  background-color: var(--th-body-secondey-bg-color);
+  border-radius: 10px;
   transition: border-color 0.3s ease;
   font-size: 50px;
 }
@@ -55,7 +55,7 @@
 }
 
 .uploder_footer_wrapper {
-  padding: 5px;
+  padding: 8px 5px;
   display: flex;
   justify-content: space-between;
 }

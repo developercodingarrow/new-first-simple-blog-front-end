@@ -15,9 +15,10 @@ import CommentReplyForm from "./CommentReplyForm";
 import { MdDeleteForever } from "../../ApplicationIcons";
 import { AppContext } from "@/src/contextApi/AppcontextApi";
 import SubmitBtn from "../elements/buttons/SubmitBtn";
+import { FaUserCircle } from "../../ApplicationIcons";
 
 export default function CommentComponent(props) {
-  const { isLogined } = useContext(AppContext);
+  const { isLogined, handelOpenIsunAuthModel } = useContext(AppContext);
   const userID = isLogined?._id;
 
   const {
@@ -126,47 +127,66 @@ export default function CommentComponent(props) {
   return (
     <div className={styles.comment_section}>
       <div className={styles.comment_heading}>
-        <h2>Comments</h2>
+        <h3>Comments</h3>
       </div>
+      <div className={styles.comment_form_container}>
+        {isLogined ? (
+          <div className={styles.comment_form_wrapper}>
+            <form
+              onSubmit={handleSubmit(handelCreateComment)}
+              className={styles.comment_form}
+            >
+              <input
+                type="hidden"
+                name="blog"
+                value={blogId}
+                className={styles.comment_input}
+                {...register("blog")}
+              />
+              <input
+                type="text"
+                placeholder="Add a Cooment"
+                name="comment"
+                className={styles.comment_input}
+                {...register("comment", { required: true })}
+              />
 
-      <form
-        onSubmit={handleSubmit(handelCreateComment)}
-        className={styles.comment_form}
-      >
-        <input
-          type="hidden"
-          name="blog"
-          value={blogId}
-          className={styles.comment_input}
-          {...register("blog")}
-        />
-        <input
-          type="text"
-          placeholder="Add a Cooment"
-          name="comment"
-          className={styles.comment_input}
-          {...register("comment", { required: true })}
-        />
-
-        <SubmitBtn btnText="comment" disabled={!isValid} />
-      </form>
+              <SubmitBtn btnText="comment" disabled={!isValid} />
+            </form>
+          </div>
+        ) : (
+          <div
+            className={styles.not_logined_Bar}
+            onClick={handelOpenIsunAuthModel}
+          >
+            <div className="small_text">Tell us what you think... </div>
+          </div>
+        )}
+      </div>
 
       <div className={styles.comment_list}>
         {comments.map((comment) => (
           <div key={comment.id} className={styles.comment_item}>
             <div className={styles.comment_profile}>
               <div className={styles.profile_pic_wrapper}>
-                <Image
-                  src={userImg}
-                  alt={`${comment.name}'s profile picture`}
-                  width={50}
-                  height={50}
-                  className={styles.profile_pic}
-                />
+                {comment.commentBy?.userImg?.url ? (
+                  <Image
+                    src={`/usersProfileImg/${comment.commentBy?.userImg?.url}`}
+                    alt={`${comment.commentBy?.userImg?.altText}'s profile picture`}
+                    width={500}
+                    height={500}
+                    className={styles.profile_pic}
+                  />
+                ) : (
+                  <div className={styles.No_profile_pic_wrapper}>
+                    <FaUserCircle />
+                  </div>
+                )}
               </div>
               <div className={styles.comment_content}>
-                <h4 className={styles.user_name}>{comment.commentBy.name}</h4>
-                <p className={styles.user_comment}>{comment.comment}</p>
+                <h5 className="capitalize_text">{comment.commentBy.name}</h5>
+
+                <p className={styles.comment_text}>{comment.comment}</p>
 
                 {userID === comment?.commentBy?._id && (
                   <div className={styles.delete_icon_wrapper}>

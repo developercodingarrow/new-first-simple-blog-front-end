@@ -27,7 +27,7 @@ export default function RadioElement(props) {
               )}
             </div>
             <div className={styles.radio_btn_textGap}>
-              <label>{option}</label>
+              <label className="small_text">{option}</label>
             </div>
           </div>
         ))}

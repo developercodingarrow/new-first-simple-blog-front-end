@@ -1,16 +1,27 @@
 "use client";
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./css/addTagChip.module.css";
 import { TagContext } from "@/src/contextApi/TagContextApi";
 import { upadteBlogTags } from "@/src/Actions/blogActions/blogAction";
+import ClickBtn from "../elements/buttons/ClickBtn";
 
 export default function AddTagChip(props) {
-  const { blogSlug } = props;
+  const { blogSlug, apiTags } = props;
   const { allTags } = useContext(TagContext); // Assuming you need this context for other operations
   const [newTag, setNewTag] = useState("");
   const [tags, setTags] = useState([]);
   const [filteredTags, setFilteredTags] = useState([]);
+
+  console.log(apiTags);
+  console.log(tags);
+
+  useEffect(() => {
+    if (apiTags && apiTags.length > 0) {
+      const initialTags = apiTags.map((tag) => tag.tagName);
+      setTags(initialTags);
+    }
+  }, [apiTags]);
 
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
@@ -62,7 +73,7 @@ export default function AddTagChip(props) {
     }
   };
   return (
-    <div>
+    <div className={styles.main_conatiner}>
       <div className={styles.container}>
         <div className={styles.tagContainer}>
           {tags.map((tag, index) => (
@@ -105,9 +116,9 @@ export default function AddTagChip(props) {
         </div>
       </div>
 
-      <button onClick={handleSubmit} className={styles.submitButton}>
-        Update Tags
-      </button>
+      <div className={styles.btn_wrapper}>
+        <ClickBtn btnText="Update" btnHandel={handleSubmit} />
+      </div>
 
       {error && <div className={styles.error}>{error}</div>}
       {success && <div className={styles.success}>{success}</div>}

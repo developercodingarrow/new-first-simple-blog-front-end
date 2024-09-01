@@ -10,6 +10,7 @@ import Image from "next/image";
 import sampleImg from "../../../../../public/web-static-img/blog sample image.png";
 import useImageUpload from "@/src/custome-hooks/useImageUpload";
 import { AppContext } from "@/src/contextApi/AppcontextApi";
+import ClickBtn from "../../elements/buttons/ClickBtn";
 export default function SingleImgModel(props) {
   const { updateHandler, id } = props;
   const { singleImgModel, handelSingImgModelClose } = useContext(AppContext);
@@ -156,8 +157,8 @@ export default function SingleImgModel(props) {
               </div>
             </div>
             <div className={styles.container_footer}>
-              <button>save</button>
-              <button onClick={handelSubmitImg}>Uplod</button>
+              <ClickBtn btnText="Save" btnHandel={handelSubmitImg} />
+              <ClickBtn btnText="Upload" btnHandel={handelSubmitImg} />
             </div>
           </div>
         </div>

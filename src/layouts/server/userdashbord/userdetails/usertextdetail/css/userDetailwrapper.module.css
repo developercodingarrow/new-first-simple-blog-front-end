@@ -1,7 +1,10 @@
 .profile_section {
   padding: 20px 0px;
+  border-bottom: 1px solid var(--th-body-secondery-border-color);
 }
 
 .section_heading {
   margin-bottom: 20px;
+  display: inline-block;
+  padding: 5px 0px;
 }

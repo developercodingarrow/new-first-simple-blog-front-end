@@ -6,15 +6,11 @@ import { IoCloseSharp } from "../../ApplicationIcons";
 import SubmitBtn from "../elements/buttons/SubmitBtn";
 import ClickBtn from "../elements/buttons/ClickBtn";
 import ModelForm from "./ModelForm";
+import { UserContext } from "@/src/_contextApi/UserContextApi";
 
 export default function InputModel(props) {
-  const { modelData, inputfileds = [], heding, closeModal } = props;
-  const {
-    isOpenInputModel,
-    handelCloseUnputModel,
-    editModelData,
-    actionHandler,
-  } = useContext(AppContext);
+  const { modelData, inputfileds = [], heding, closeModal, id } = props;
+  const { actionHandler } = useContext(UserContext);
 
   return (
     <>
@@ -34,6 +30,7 @@ export default function InputModel(props) {
                 inputfileds={inputfileds}
                 modelData={modelData}
                 formhandel={actionHandler}
+                id={id}
               />
             </div>
           </div>

@@ -1,0 +1,16 @@
+.flex_container {
+  display: flex;
+  align-items: center;
+}
+
+.circle_img_wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--th-body-secondery-border-color);
+  margin-right: 10px;
+}
+
+.details_wrapper{
+    
+}

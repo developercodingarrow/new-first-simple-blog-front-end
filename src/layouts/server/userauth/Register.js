@@ -15,6 +15,7 @@ export default function Register() {
         formType="SINGUP"
         formHandel={userRegister}
         footerLink="login"
+        footerText="Sing in"
       />
     </div>
   );

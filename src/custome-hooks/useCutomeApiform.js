@@ -4,23 +4,33 @@ import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 
 import InputElemtns from "../components/client-components/elements/InputElemtns";
-export function useCustomApiForm(apiData = {}) {
+export function useCustomApiForm(apiData = {}, inputFields = []) {
+  // Extract only the relevant fields from apiData based on inputFields
+  const filteredData = inputFields.reduce((acc, field) => {
+    if (apiData[field.name] !== undefined) {
+      acc[field.name] = apiData[field.name];
+    }
+    return acc;
+  }, {});
+
   const { handleSubmit, formState, control, watch, setValue, reset } = useForm({
     mode: "all",
-    defaultValues: apiData,
+    defaultValues: filteredData,
   });
 
+  console.log("useApihook---", apiData);
+
   useEffect(() => {
-    if (apiData) {
-      Object.entries(apiData).forEach(([name, value]) => {
+    if (filteredData) {
+      Object.entries(filteredData).forEach(([name, value]) => {
         setValue(name, value);
       });
     }
-  }, [apiData, setValue]);
+  }, [filteredData, setValue]);
 
   const renderInput = (input, dynamicData) => {
     let InputComponent, specificProps;
-    let defaultValues = apiData[input.name];
+    let defaultValues = filteredData[input.name];
     switch (input.inputType) {
       case "text":
         InputComponent = InputElemtns;
@@ -54,5 +64,6 @@ export function useCustomApiForm(apiData = {}) {
     watch,
     setValue,
     renderInput,
+    reset,
   };
 }

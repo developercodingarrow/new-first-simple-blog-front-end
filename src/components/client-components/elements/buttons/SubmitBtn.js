@@ -6,7 +6,7 @@ import { AppContext } from "@/src/contextApi/AppcontextApi";
 
 export default function SubmitBtn(props) {
   const { isBtnLoading } = useContext(AppContext);
-  const { btnText, disabled } = props;
+  const { btnText, btnLoading, disabled } = props;
 
   const btnClasses = `${styles.btn_style} ${
     disabled ? styles.disabled_btn : ""
@@ -14,7 +14,7 @@ export default function SubmitBtn(props) {
   return (
     <div className={styles.com_container}>
       <button type="submit" className={btnClasses} disabled={disabled}>
-        {isBtnLoading ? <BtnLoading /> : btnText}
+        {btnLoading ? <BtnLoading /> : btnText}
       </button>
     </div>
   );

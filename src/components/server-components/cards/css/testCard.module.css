@@ -6,7 +6,6 @@
   border: 1px solid var(--card-border);
   border-radius: 8px;
   box-shadow: var(--card-shadow);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -17,7 +16,7 @@
 .cardTopBar {
   display: flex;
   justify-content: space-between;
-  padding: 10px 15px;
+  padding: var(--th-card-padding);
   background-color: var(--footer-background);
   border-bottom: 1px solid var(--card-border);
 }
@@ -35,35 +34,14 @@
   margin-right: 10px;
 }
 
-.userDetails .username {
-  font-weight: 500;
-  color: var(--title-color);
-}
-
-.userDetails .date {
-  color: #555555; /* Medium Gray for date */
-}
-
-.moreOptions .threeDotsIcon {
-  font-size: 18px;
-  color: var(--title-color);
-}
-
 /* Content */
 .cardContent {
   padding: 15px;
 }
 
-.cardTitle {
-  font-size: 18px;
-  font-weight: 700;
-  color: #555;
-  margin-bottom: 10px;
-}
-
 .content_wrapper {
   display: flex;
-  column-gap: 10px;
+  column-gap: var(--th-gap10);
 }
 
 .cardImage {
@@ -80,16 +58,11 @@
 
 .metaDescription {
   width: calc(100% - 170px);
-  color: #555;
+  color: var(--th-neutral-dark);
   letter-spacing: 0.5px;
   word-spacing: 1px;
   text-align: justify;
-}
-
-.metaDescription h3 {
-  color: #555;
-  margin-top: 10px;
-  font-size: 16px;
+  padding-top: 5px;
 }
 
 /* Footer */

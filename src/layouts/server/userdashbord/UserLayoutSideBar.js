@@ -12,11 +12,14 @@ export default function UserLayoutSideBar() {
 
         <section className={styles.sideBar_notes_wrapper}>
           <div className={styles.note_paper}>
-            <h3>Note</h3>
+            <div className={styles.note_paper_heading}>
+              <h3>Note</h3>
+            </div>
+
             <div>
               {[1, 2, 3, 4, 5].map((el, index) => {
                 return (
-                  <Link href={"/"} className={styles.tips_points}>
+                  <Link href={"/"} className={"small_text"}>
                     SEO Tips to improve your content for more trffic
                   </Link>
                 );

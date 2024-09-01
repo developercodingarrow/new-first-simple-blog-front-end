@@ -14,28 +14,28 @@ export default function UserTextDetail(props) {
     type,
     imgData,
     apiData,
+    id,
     modelInputs,
     openModal,
     modelActionHandler,
   } = props;
-  const { handelOpenInputModel, editModelData } = useContext(AppContext);
 
   const handleOpen = () => {
-    openModal(apiData, modelInputs, modelActionHandler);
+    openModal(apiData, id, modelInputs, modelActionHandler);
   };
 
   const handelOpenImgModel = () => {
     openModal(apiData?.userImg?.url, apiData._id);
   };
 
-  console.log(textdata);
-
-  console.log(apiData);
+  console.log("textdata---", textdata);
 
   return (
     <>
       <div className={styles.user_details_container}>
-        <div className={styles.title_wrapper}>{title}</div>
+        <div className={styles.title_wrapper}>
+          <h5 className="capitalize_text"> {title}</h5>
+        </div>
         {type === "text" && (
           <div className={styles.text_data_wrapper} onClick={handleOpen}>
             {textdata === "undefined" ? <>add</> : <>{textdata}</>}

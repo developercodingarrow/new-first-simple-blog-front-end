@@ -6,12 +6,13 @@ import { IoCloseSharp } from "../../ApplicationIcons";
 import SubmitBtn from "../elements/buttons/SubmitBtn";
 import ClickBtn from "../elements/buttons/ClickBtn";
 import { useCustomApiForm } from "@/src/custome-hooks/useCutomeApiform";
-import { updateUserData, isAuth } from "@/src/Actions/authAction";
+import { UserContext } from "@/src/_contextApi/UserContextApi";
 
 export default function ModelForm(props) {
-  const { inputfileds, modelData, formhandel } = props;
-  const { setisLogined, isBtnLoading, setisBtnLoading, handelcloseInputModal } =
-    useContext(AppContext);
+  const { inputfileds, modelData, formhandel, id } = props;
+  const { setisLoading, isLoading, handelcloseInputModal } =
+    useContext(UserContext);
+
   const dynimicData = [];
   const {
     handleSubmit,
@@ -21,28 +22,28 @@ export default function ModelForm(props) {
     setValue,
     renderInput,
     isValid,
-  } = useCustomApiForm(modelData);
+  } = useCustomApiForm(modelData, inputfileds);
 
   const handleForm = async (data) => {
-    console.log("data-----", data);
+    const obj = {
+      data,
+      _id: id,
+    };
     try {
-      setisBtnLoading(true);
-      const res = await formhandel(data);
-      console.log(res);
+      setisLoading(true);
+      const res = await formhandel(obj);
+      console.log("res---", res);
       if (res.data.status === "success") {
         console.log("succes");
-        setisBtnLoading(false);
-
-        updateUserData(res.data.result);
-        const updatedUser = isAuth(); // Fetch the updated user data from localStorage
-        setisLogined(updatedUser);
+        setisLoading(false);
       }
     } catch (error) {
-      setisBtnLoading(false);
+      setisLoading(false);
       console.log(error);
     }
   };
 
+  console.log("inputfileds===", inputfileds);
   return (
     <div className={styles.model_form_wrapper}>
       <form onSubmit={handleSubmit(handleForm)}>
@@ -58,7 +59,11 @@ export default function ModelForm(props) {
               <ClickBtn btnText="cancle" btnHandel={handelcloseInputModal} />
             </div>
             <div>
-              <SubmitBtn btnText="Save" />
+              <SubmitBtn
+                btnText="Save"
+                btnLoading={isLoading}
+                disabled={!isValid}
+              />
             </div>
           </div>
         </div>

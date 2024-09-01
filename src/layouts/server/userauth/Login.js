@@ -15,6 +15,7 @@ export default function Login() {
         formType="LOGIN"
         formHandel={loginAccount}
         footerLink="user-registration"
+        footerText="Sing Up"
       />
     </div>
   );

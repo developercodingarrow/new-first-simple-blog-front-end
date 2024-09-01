@@ -17,18 +17,22 @@ import { AppContext } from "@/src/contextApi/AppcontextApi";
 import InputModel from "@/src/components/client-components/models/InputModel";
 import { userProfileUpdate } from "@/src/Actions/userActions/userAction";
 import UserImgModel from "@/src/components/client-components/models/imgModel/UserImgModel";
+import { UserContext } from "@/src/_contextApi/UserContextApi";
 
 export default function UserDetailWrapper() {
+  const { isLogined, userImgModel, handelOpenImgModel } =
+    useContext(AppContext);
+
   const {
+    handelUpdateUserProfile,
     isOpenInputModel,
+    handelOpenInputModel,
     editModelData,
     modelInputData,
-    handelOpenInputModel,
     handelcloseInputModal,
-    isLogined,
-    userImgModel,
-    handelOpenImgModel,
-  } = useContext(AppContext);
+    id,
+  } = useContext(UserContext);
+
   return (
     <div className={styles.conatiner}>
       {isOpenInputModel && (
@@ -37,6 +41,7 @@ export default function UserDetailWrapper() {
           inputfileds={modelInputData}
           heding={`Update Profile}`}
           closeModal={handelcloseInputModal}
+          id={id}
         />
       )}
 
@@ -44,7 +49,7 @@ export default function UserDetailWrapper() {
 
       <section className={styles.profile_section}>
         <div className={styles.section_heading}>
-          <h2>User Profile</h2>
+          <h4>User Profile</h4>
         </div>
         <div>
           <UserTextDetail
@@ -59,11 +64,12 @@ export default function UserDetailWrapper() {
           <UserTextDetail
             title="Name"
             textdata={isLogined?.name}
+            id={isLogined?._id}
             apiData={isLogined}
             type="text"
             modelInputs={nameinput}
             openModal={handelOpenInputModel}
-            modelActionHandler={userProfileUpdate}
+            modelActionHandler={handelUpdateUserProfile}
           />
         </div>
 
@@ -75,14 +81,14 @@ export default function UserDetailWrapper() {
             apiData={isLogined}
             modelInputs={userNameinput}
             openModal={handelOpenInputModel}
-            modelActionHandler={userProfileUpdate}
+            modelActionHandler={handelUpdateUserProfile}
           />
         </div>
       </section>
 
       <section className={styles.profile_section}>
         <div className={styles.section_heading}>
-          <h2>Social Media Accounts</h2>
+          <h4>Social Media Accounts</h4>
         </div>
         <div>
           <UserTextDetail
@@ -92,7 +98,7 @@ export default function UserDetailWrapper() {
             type="text"
             modelInputs={facbookinput}
             openModal={handelOpenInputModel}
-            modelActionHandler={userProfileUpdate}
+            modelActionHandler={handelUpdateUserProfile}
           />
         </div>
 
@@ -104,7 +110,7 @@ export default function UserDetailWrapper() {
             type="text"
             modelInputs={twitterinput}
             openModal={handelOpenInputModel}
-            modelActionHandler={userProfileUpdate}
+            modelActionHandler={handelUpdateUserProfile}
           />
         </div>
 
@@ -116,7 +122,7 @@ export default function UserDetailWrapper() {
             type="text"
             modelInputs={instagraminput}
             openModal={handelOpenInputModel}
-            modelActionHandler={userProfileUpdate}
+            modelActionHandler={handelUpdateUserProfile}
           />
         </div>
       </section>

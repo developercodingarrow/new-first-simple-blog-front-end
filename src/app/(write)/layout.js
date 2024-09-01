@@ -1,27 +1,27 @@
 import React from "react";
-import { inter, roboto } from "../../lib/fonts";
 import "../globals.css";
 import AppContextProvider from "@/src/contextApi/AppcontextApi";
 import NavBar from "@/src/components/server-components/Navbar/NavBar";
 import UserPanelLayout from "@/src/layouts/server/userdashbord/UserPanelLayout";
 import ImgModelContextProvider from "@/src/contextApi/ImgModelContextApi";
-import BlogContextProvider from "@/src/contextApi/BlogContextApi";
+
 import TagContextProvider from "@/src/contextApi/TagContextApi";
+import BlogContextProvider from "@/src/_contextApi/BlogContextApi";
 
 export default function layout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${roboto.variable}`}>
+      <body>
         <AppContextProvider>
           <ImgModelContextProvider>
-            <BlogContextProvider>
-              <TagContextProvider>
+            <TagContextProvider>
+              <BlogContextProvider>
                 <div>
                   <NavBar />
                 </div>
                 <div className="children_wrapper">{children}</div>
-              </TagContextProvider>
-            </BlogContextProvider>
+              </BlogContextProvider>
+            </TagContextProvider>
           </ImgModelContextProvider>
         </AppContextProvider>
       </body>

@@ -10,9 +10,12 @@ import {
 } from "../../../components/ApplicationIcons";
 import LikesAction from "@/src/components/client-components/likes/LikesAction";
 import { AppContext } from "@/src/contextApi/AppcontextApi";
+import ProfileElement from "@/src/_components/ssrComponents/profile-element/ProfileElement";
+import ActionDotWrapper from "@/src/components/server-components/cards/ActionDotWrapper";
 
 export default function BlogActionBar(props) {
-  const { blog } = props;
+  const { data } = props;
+  console.log(data);
 
   const {
     isOpenCommentModel,
@@ -20,29 +23,20 @@ export default function BlogActionBar(props) {
     handelOpenCommentModel,
     handelCloseCommentModel,
   } = useContext(AppContext);
-
+  // user.userImg.url  altText
   return (
     <div className={styles.flex_container}>
-      <div className={styles.ssr_user_profle_wrapper}>
-        <div className={styles.ssr_user_profile_container}>
-          <div className={styles.user_img_wrapper}>
-            <Image
-              src={userImg}
-              width={500}
-              height={500}
-              className={styles.img_style}
-            />
-          </div>
-          <div className={styles.user_sort_detail}>
-            <h3>{blog.user.name}</h3>
-            <div className="small_text_wrapper">@{blog.user.userName}</div>
-          </div>
-        </div>
-      </div>
+      <ProfileElement
+        text={data.user.name}
+        smallText={data.updatedAt}
+        imgDirectory="usersProfileImg"
+        imgUrl={data.user.userImg.url}
+        imgAlt={data.user.userImg.altText}
+      />
       <div className={styles.csr_blog_action_container}>
         <div className={styles.actions_wrapper}>
           <div>
-            <LikesAction postLikes={blog.likes} elementID={blog._id} />
+            <LikesAction postLikes={data.likes} elementID={data._id} />
           </div>
           <div className={styles.dekstop_comment_IconWrapper}>
             <FaRegComment />
@@ -57,7 +51,7 @@ export default function BlogActionBar(props) {
             <CiShare1 />
           </div>
           <div>
-            <HiOutlineDotsVertical />
+            <ActionDotWrapper elementID={data._id} />
           </div>
         </div>
       </div>

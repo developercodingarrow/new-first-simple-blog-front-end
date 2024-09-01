@@ -19,6 +19,8 @@ export default function AppContextProvider({ children }) {
   const [userImgModel, setuserImgModel] = useState(false);
   const [imgUrl, setimgUrl] = useState("");
   const [modelActionId, setmodelActionId] = useState("");
+  const [isunAuthModel, setisunAuthModel] = useState(false);
+  const [id, setid] = useState("");
 
   console.log(isLogined);
   const handelOpenUserDrawer = () => {
@@ -29,35 +31,42 @@ export default function AppContextProvider({ children }) {
     setisUserDrawer(false);
   };
 
-  const handelOpenInputModel = (data, fields, handler) => {
+  //HANDLE  INPUT MODEL OPEN
+  const handelOpenInputModel = (data, id, fields, handler) => {
     seteditModelData(data);
+    setid(id);
     setmodelInputData(fields);
     setActionHandler(() => handler);
     setisOpenInputModel(true);
   };
 
+  // HANDEL INPUT MODEL CLOSE
   const handelcloseInputModal = () => {
     setisOpenInputModel(false);
   };
 
+  // ----
   const handelSingImgModelOpen = () => {
     setsingleImgModel(true);
   };
 
+  // ----
   const handelSingImgModelClose = () => {
     setsingleImgModel(false);
   };
-
+  //  ---
   const handelCloseReportModel = () => {
     setisOpenReportModel(false);
   };
 
+  // ---
   const handelOpenReportModel = (id) => {
     console.log("id---", id);
     setisOpenReportModel(true);
     setreportModelActionId(id);
   };
 
+  // ----
   const handelOpenCommentModel = () => {
     setisOpenCommentModel(true);
   };
@@ -74,6 +83,10 @@ export default function AppContextProvider({ children }) {
 
   const handelCloseImgModel = () => {
     setuserImgModel(false);
+  };
+
+  const handelOpenIsunAuthModel = () => {
+    setisunAuthModel(true);
   };
 
   useEffect(() => {
@@ -126,6 +139,10 @@ export default function AppContextProvider({ children }) {
         modelActionId,
         setmodelActionId,
         handelCloseImgModel,
+        isunAuthModel,
+        setisunAuthModel,
+        handelOpenIsunAuthModel,
+        id,
       }}
     >
       {children}

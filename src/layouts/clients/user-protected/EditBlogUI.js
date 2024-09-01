@@ -9,6 +9,7 @@ import AddTagChip from "@/src/components/client-components/chip/AddTagChip";
 import { upadteBlogContent } from "@/src/Actions/blogActions/blogAction";
 import SingleImgModel from "@/src/components/client-components/models/imgModel/SingleImgModel";
 import { handelUploadThumblin } from "@/src/utils/handlers/imageHandlers";
+import ClickBtn from "@/src/components/client-components/elements/buttons/ClickBtn";
 
 export default function EditBlogUI(props) {
   const { apiData, slug } = props;
@@ -95,11 +96,13 @@ export default function EditBlogUI(props) {
             <div className={styles.lable_wrapper}>
               <label>Content</label>
             </div>
-            <div className={styles.input_wrapper}>
+            <div className={styles.editor_wrapper}>
               <ReactQuill
                 theme="snow"
                 value={blogData.blogDescreption}
                 onChange={handleQuillChange}
+                className={styles.editor_style}
+                style={{ minHeight: "500px", height: "auto" }}
               />
             </div>
           </div>
@@ -109,13 +112,15 @@ export default function EditBlogUI(props) {
             <BlogImgUplod apiData={apiData} slug={slug} />
           </div>
           <div>
-            <AddTagChip blogSlug={slug} />
+            <AddTagChip blogSlug={slug} apiTags={apiData.blogTags} />
           </div>
         </div>
       </div>
-      <button className={styles.submit_button} onClick={handelUpdateContent}>
-        Submit Blog
-      </button>
+      <div className={styles.submit_topBar}>
+        <div>
+          <ClickBtn btnText="Publish" btnHandel={handelUpdateContent} />
+        </div>
+      </div>
     </div>
   );
 }

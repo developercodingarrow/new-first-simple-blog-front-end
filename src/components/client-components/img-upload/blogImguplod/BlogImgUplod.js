@@ -94,10 +94,9 @@ export default function BlogImgUplod(props) {
             </div>
           )}
 
-          <div className={styles.uploder_footer_wrapper}>
+          {/* <div className={styles.uploder_footer_wrapper}>
             <div className="small_text_wrapper">size 12kb</div>
-            <div>upload</div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

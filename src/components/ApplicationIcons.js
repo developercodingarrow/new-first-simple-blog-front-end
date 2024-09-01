@@ -22,8 +22,9 @@ import { CiShare1 } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoArrowBack } from "react-icons/io5";
-
+import { FaUserCircle } from "react-icons/fa";
 export {
+  FaUserCircle,
   IoArrowBack,
   IoMdHeart,
   IoMdHeartEmpty,

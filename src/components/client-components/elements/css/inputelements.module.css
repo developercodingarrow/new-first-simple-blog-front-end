@@ -9,21 +9,21 @@
 
 .lable_style {
   font-weight: 400;
-  font-family: var(--font-roboto), sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   text-transform: capitalize;
 }
 
 .input_wrapper {
-  border: 1px solid var(--th-muted);
+  border: 1px solid var(--th-body-secondery-border-color);
   border-radius: 7px;
 }
 
 .input_style {
   width: 100%;
-  padding: 8px 10px;
+  padding: 10px 12px;
   border-radius: 7px;
   border: 0px;
   outline: none;
   font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
 }
-

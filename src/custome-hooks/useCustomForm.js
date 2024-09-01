@@ -62,5 +62,7 @@ export default function useCustomForm() {
     watch,
     setValue,
     renderInput,
+    isValid: formState.isValid, // Access isValid from formState
+    errors: formState.errors,
   };
 }
