@@ -11,9 +11,12 @@ import sampleImg from "../../../../../public/web-static-img/blog sample image.pn
 import useImageUpload from "@/src/custome-hooks/useImageUpload";
 import { AppContext } from "@/src/contextApi/AppcontextApi";
 import ClickBtn from "../../elements/buttons/ClickBtn";
+import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
+
 export default function SingleImgModel(props) {
   const { updateHandler, id } = props;
-  const { singleImgModel, handelSingImgModelClose } = useContext(AppContext);
+  const { singleImgModel, setsingleImgModel, handelCloseModel } =
+    useContext(ModelsContext);
 
   const {
     previewImage,
@@ -35,6 +38,10 @@ export default function SingleImgModel(props) {
     }
   };
 
+  const handelModelClose = () => {
+    handelCloseModel(setsingleImgModel);
+  };
+
   return (
     <>
       {singleImgModel && (
@@ -42,7 +49,7 @@ export default function SingleImgModel(props) {
           <div className={styles.inner_container}>
             <div className={styles.container_header}>
               <h3>Upload Blog Thumblin</h3>
-              <div onClick={handelSingImgModelClose}>
+              <div onClick={handelModelClose}>
                 <IoCloseCircleSharp />
               </div>
             </div>
@@ -157,7 +164,6 @@ export default function SingleImgModel(props) {
               </div>
             </div>
             <div className={styles.container_footer}>
-              <ClickBtn btnText="Save" btnHandel={handelSubmitImg} />
               <ClickBtn btnText="Upload" btnHandel={handelSubmitImg} />
             </div>
           </div>

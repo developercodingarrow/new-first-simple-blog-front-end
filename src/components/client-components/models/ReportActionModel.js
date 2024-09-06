@@ -9,9 +9,9 @@ import { AppContext } from "@/src/contextApi/AppcontextApi";
 import { reportContentAction } from "@/src/Actions/blogActions/blogAction";
 import ClickBtn from "../elements/buttons/ClickBtn";
 import SubmitBtn from "../elements/buttons/SubmitBtn";
-import { ModelsContext } from "@/src/_contextApi/ModelContextApi";
-import { BlogContext } from "@/src/_contextApi/BlogContextApi";
 import toast, { Toaster } from "react-hot-toast";
+import { BlogContext } from "@/src/app/_contextApi/BlogContextApi";
+import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
 export default function ReportActionModel(props) {
   const { isReportModel, setisReportModel, modelID, handelCloseModel } =

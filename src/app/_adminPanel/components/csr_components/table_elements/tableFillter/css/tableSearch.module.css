@@ -1,0 +1,36 @@
+.flex_container {
+  display: flex;
+  border: 2px solid var(--ad-border-color);
+  background-color: rgb(244 244 245 /1);
+  border-radius: 10px;
+  padding: 5px;
+  position: relative;
+  column-gap: 5px;
+  transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+.search_icon_wrapper {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.search_inputStyle {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  line-height: 1.5rem;
+  color: #000;
+  font-size: 14px;
+}
+
+.flex_container:focus-within {
+  border: 2px solid rgb(244 244 245 / 1);
+  background-color: #fff;
+}

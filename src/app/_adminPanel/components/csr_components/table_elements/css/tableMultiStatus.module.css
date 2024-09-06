@@ -1,0 +1,39 @@
+.draft {
+  color: #f59e0b;
+  border-color: #0000;
+  border-radius: 5px;
+  padding: 5px 6.5px;
+  font-size: 14px;
+  background-color: #f59e0b1a;
+  text-transform: capitalize;
+}
+
+.published {
+  color: #10b981;
+  border-color: #0000;
+  border-radius: 5px;
+  padding: 5px 6.5px;
+  font-size: 14px;
+  background-color: #10b9811a;
+  text-transform: capitalize;
+}
+
+.pending {
+  color: #fbbf24;
+  border-color: #0000;
+  border-radius: 5px;
+  padding: 5px 6.5px;
+  font-size: 14px;
+  background-color: #fbbf241a;
+  text-transform: capitalize;
+}
+
+.active {
+  color: #3b82f6;
+  border-color: #0000;
+  border-radius: 5px;
+  padding: 5px 6.5px;
+  font-size: 14px;
+  background-color: #3b82f61a;
+  text-transform: capitalize;
+}

@@ -5,7 +5,7 @@ import BtnLoading from "../../loadings/BtnLoading";
 import { AppContext } from "@/src/contextApi/AppcontextApi";
 
 export default function SubmitBtn(props) {
-  const { isBtnLoading } = useContext(AppContext);
+  // const { isBtnLoading } = useContext(AppContext);
   const { btnText, btnLoading, disabled } = props;
 
   const btnClasses = `${styles.btn_style} ${

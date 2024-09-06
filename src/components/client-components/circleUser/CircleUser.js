@@ -8,28 +8,22 @@ import LinkBtn from "../../server-components/serverElements/LinkBtn";
 import UserDrawer from "../../authComponents/userDrawer/UserDrawer";
 
 export default function CircleUser() {
-  const { isUserDrawer, isLogined, longined, handelOpenUserDrawer } =
+  const { isUserDrawer, isLogined, longined, handelOpenUserDrawer, auth } =
     useContext(AppContext);
-  // Add a loading state
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (isLogined !== null) {
-      setLoading(false);
-    }
-  }, [isLogined]);
 
   return (
     <div className={styles.com_container}>
       <div className={styles.inner_container}>
-        {isLogined ? (
+        {isLogined && (
           <div className="large_iconWrapper">
             <SlUser onClick={handelOpenUserDrawer} />
             <div className={styles.user_drawer_Wrapper}>
               {isUserDrawer && <UserDrawer />}
             </div>
           </div>
-        ) : (
+        )}
+
+        {!isLogined && (
           <div>
             <LinkBtn
               linkText="login"

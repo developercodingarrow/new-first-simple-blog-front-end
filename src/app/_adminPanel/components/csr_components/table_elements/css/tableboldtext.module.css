@@ -1,0 +1,6 @@
+.text_wrapper {
+  height: 100%;
+  text-transform: capitalize;
+  /* width: 100px; */
+  text-wrap: wrap;
+}

@@ -6,7 +6,7 @@ import { IoCloseSharp } from "../../ApplicationIcons";
 import SubmitBtn from "../elements/buttons/SubmitBtn";
 import ClickBtn from "../elements/buttons/ClickBtn";
 import ModelForm from "./ModelForm";
-import { UserContext } from "@/src/_contextApi/UserContextApi";
+import { UserContext } from "@/src/app/_contextApi/UserContextApi";
 
 export default function InputModel(props) {
   const { modelData, inputfileds = [], heding, closeModal, id } = props;

@@ -1,0 +1,11 @@
+.page_container {
+}
+
+.fillter_bar {
+  background-color: var(--ad-bg-color);
+}
+
+.table_wrapper {
+  margin: 20px;
+  background-color: var(--ad-bg-color);
+}

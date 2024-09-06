@@ -5,6 +5,7 @@ export const ModelsContext = createContext();
 export default function ModelContextProvider({ children }) {
   const [isReportModel, setisReportModel] = useState(false);
   const [modelID, setmodelID] = useState("");
+  const [singleImgModel, setsingleImgModel] = useState(false);
 
   // 1) HANDEL CLOSE MODEL
   const handelCloseModel = (setModalState) => {
@@ -26,6 +27,8 @@ export default function ModelContextProvider({ children }) {
         modelID,
         handelCloseModel,
         handelOpenModel,
+        singleImgModel,
+        setsingleImgModel,
       }}
     >
       {" "}

@@ -5,6 +5,7 @@ export const AppContext = createContext();
 
 export default function AppContextProvider({ children }) {
   const longined = isAuth();
+  const auth = true;
   const [isUserDrawer, setisUserDrawer] = useState(false);
   const [isLogined, setisLogined] = useState(null);
   const [isOpenInputModel, setisOpenInputModel] = useState(false);
@@ -22,7 +23,7 @@ export default function AppContextProvider({ children }) {
   const [isunAuthModel, setisunAuthModel] = useState(false);
   const [id, setid] = useState("");
 
-  console.log(isLogined);
+  console.log("---", longined);
   const handelOpenUserDrawer = () => {
     setisUserDrawer(true);
   };
@@ -100,6 +101,7 @@ export default function AppContextProvider({ children }) {
   return (
     <AppContext.Provider
       value={{
+        auth,
         isLogined,
         setisLogined,
         isUserDrawer,

@@ -1,0 +1,144 @@
+.layout_wrraper {
+}
+
+.main_container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--ad-bg-color);
+  border-right: 1px var(--ad-border-color);
+  transition: width 0.3s;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 8;
+  transition: width 0.3s ease;
+}
+.sidebar_collapsed {
+  width: 70px;
+}
+
+.right_container {
+  width: calc(100% - 260px);
+  margin-left: 230px;
+  transition: margin-left 0.3s, width 0.3s;
+  border: 1px solid #d4d4d840;
+}
+
+.right_container_expanded {
+  width: calc(100% - 0px);
+  margin-left: 50px;
+}
+
+.sideBar_header {
+  border: 1px solid var(--ad-border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.logo_wrapper {
+  transition: opacity 0.3s ease; /* Smooth transition for opacity */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo_hidden {
+  opacity: 0;
+  display: none;
+  transition: display 0.3s ease; /* Smooth transition for opacity */
+}
+
+.hanbug_wrapper {
+  padding: 9.75px;
+  cursor: pointer;
+}
+
+.sideBar_option_container {
+  padding: 20px;
+  border: 1px solid var(--ad-border-color);
+  height: 100%;
+}
+
+.sideBar_itemsBox {
+  min-width: 40px;
+  min-height: 20px;
+}
+
+.items_link_wrapper {
+  display: flex;
+  align-items: center;
+  padding: 9.75px;
+  color: var(--ad-text-color);
+  transition: all 0.3s ease;
+}
+
+.items_link_wrapper:hover {
+  color: var(--ad-text-hover-color);
+  transition-duration: 0.15s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.item_iconBox {
+  margin-right: 9.75px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* transition: margin-right 0.3s ease; */
+}
+
+.item_textBox {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  transition: opacity 0.3s ease;
+}
+
+.text_hidden {
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Smooth transition for opacity */
+}
+
+.toggle_button {
+  width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.top_navbar {
+  background-color: var(--ad-bg-color);
+  border: 1px solid var(--ad-border-color);
+  color: white;
+  padding: 15px;
+  position: fixed;
+  top: 0;
+  left: 250px;
+  right: 0;
+  transition: left 0.3s;
+}
+
+.top_navbar_expanded {
+  left: 50px;
+}
+
+.content_container {
+  margin-top: 60px;
+  margin-left: 20px;
+  transition: margin-top 0.3s;
+  border: 1px solid var(--ad-border-color);
+  box-sizing: border-box;
+}

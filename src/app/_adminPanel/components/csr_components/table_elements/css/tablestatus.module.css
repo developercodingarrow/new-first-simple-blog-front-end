@@ -1,0 +1,21 @@
+.status {
+  text-transform: capitalize;
+}
+
+.active {
+  color: #10b981;
+  border-color: #0000;
+  border-radius: 5px;
+  padding: 5px 6.5px;
+  font-size: 14px;
+  background-color: #10b9811a;
+}
+
+.pending {
+  color: #f59e0b;
+  border-color: #0000;
+  border-radius: 5px;
+  padding: 5px 6.5px;
+  font-size: 14px;
+  background-color: #f59e0b1a;
+}

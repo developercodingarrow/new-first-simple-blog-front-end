@@ -12,8 +12,9 @@ import styles from "./page.module.css";
 import LayoutSideBar from "@/src/components/client-components/sideBar/LayoutSideBar";
 import { tabData } from "@/src/jsonData/navigationData";
 import ReagisterAuthModel from "@/src/components/client-components/models/ReagisterAuthModel";
-import ModelContextProvider from "@/src/_contextApi/ModelContextApi";
-import BlogContextProvider from "@/src/_contextApi/BlogContextApi";
+
+import BlogContextProvider from "../_contextApi/BlogContextApi";
+import ModelContextProvider from "../_contextApi/ModelContextApi";
 
 export const metadata = {
   title: "Fisrt blog website",

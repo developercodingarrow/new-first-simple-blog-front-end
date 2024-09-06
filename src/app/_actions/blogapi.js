@@ -2,7 +2,7 @@ import {
   performAPIAction,
   performGetAPIAction,
   ImageAPIAction,
-} from "../performAPIAction";
+} from "./performAPIAction";
 
 import { getLoginCookies, isAuth } from "../../Actions/authAction";
 const authToken = getLoginCookies();
@@ -38,4 +38,11 @@ export const reportBlogAction = async (formData) => {
     return performAPIAction(method, url, formData, authToken);
   }
   return null;
+};
+
+// 1) for update blog
+export const getSingleBlog = async (slug) => {
+  const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/get-single-blog/${slug}`;
+  const method = "get";
+  return performGetAPIAction(url, authToken);
 };

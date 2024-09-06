@@ -1,0 +1,28 @@
+.switch {
+  position: relative;
+  width: 30px; /* Reduced width */
+  height: 16px; /* Reduced height */
+  background-color: #ccc;
+  border-radius: 8px; /* Adjusted for smaller height */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.switch-circle {
+  position: absolute;
+  top: 1px; /* Adjusted for smaller height */
+  left: 1px; /* Adjusted for smaller width */
+  width: 14px; /* Reduced circle size */
+  height: 14px; /* Reduced circle size */
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.switch-active {
+  background-color: #4caf50;
+}
+
+.switch-active .switch-circle {
+  transform: translateX(14px); /* Adjusted for smaller width */
+}

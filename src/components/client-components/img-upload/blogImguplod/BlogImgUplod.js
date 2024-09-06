@@ -5,28 +5,16 @@ import {
   IoCloseCircleSharp,
 } from "../../../ApplicationIcons";
 import Image from "next/image";
-import sampleImg from "../../../../../public/web-static-img/blog sample image.png";
-import { AppContext } from "@/src/contextApi/AppcontextApi";
 import { ImgModelContext } from "@/src/contextApi/ImgModelContextApi";
 import { deleteBlogThumblinImages } from "@/src/Actions/blogActions/blogAction";
+import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
 export default function BlogImgUplod(props) {
   const { apiData, slug } = props;
-  const { handelSingImgModelOpen } = useContext(AppContext);
   const { previewImage, setPreviewImage } = useContext(ImgModelContext);
   const [apiImg, setapiImg] = useState(null);
-
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-      onImageUpload(file);
-    }
-  };
+  const { handelOpenModel, singleImgModel, setsingleImgModel } =
+    useContext(ModelsContext);
 
   const removeImg = () => {
     setPreviewImage(null);
@@ -39,6 +27,10 @@ export default function BlogImgUplod(props) {
   }, [apiData]);
 
   console.log(apiImg);
+
+  const handelModelOpen = () => {
+    handelOpenModel(setsingleImgModel);
+  };
 
   const handelDeleteApiImg = async () => {
     try {
@@ -88,7 +80,7 @@ export default function BlogImgUplod(props) {
           ) : (
             <div
               className={styles.image_uploader_container}
-              onClick={handelSingImgModelOpen}
+              onClick={handelModelOpen}
             >
               <FaCloudUploadAlt />
             </div>

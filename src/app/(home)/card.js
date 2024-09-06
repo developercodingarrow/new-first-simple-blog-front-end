@@ -1,5 +1,5 @@
 import React from "react";
-import { tagfillterBlogs } from "@/src/_action/blog/blogActions";
+import { tagfillterBlogs } from "../_actions/blogapi";
 import LandscapeCard from "@/src/components/server-components/cards/LandscapeCard";
 import TestCard from "@/src/components/server-components/cards/TestCard";
 
@@ -15,8 +15,8 @@ async function getData(tagquery, page = 1) {
 
     return await res.data.result;
   } catch (error) {
-    console.error("Error fetching data:", error.message);
-    throw new Error(`Failed to fetch data: ${error.message}`);
+    console.error("Error fetching data:", error);
+    throw new Error(`Failed to fetch data: ${error}`);
   }
 }
 

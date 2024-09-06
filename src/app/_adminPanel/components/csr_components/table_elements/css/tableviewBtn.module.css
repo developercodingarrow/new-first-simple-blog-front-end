@@ -1,0 +1,9 @@
+.view_link {
+  font-size: 14px;
+  display: inline-block;
+  color: var(--ad-text-color);
+}
+
+.view_link:hover {
+  color: var(--ad-Primary-bg-color);
+}

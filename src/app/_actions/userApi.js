@@ -2,7 +2,7 @@ import {
   performAPIAction,
   performGetAPIAction,
   ImageAPIAction,
-} from "../performAPIAction";
+} from "./performAPIAction";
 
 import { getLoginCookies, isAuth } from "../../Actions/authAction";
 const authToken = getLoginCookies();

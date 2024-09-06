@@ -17,7 +17,7 @@ import { AppContext } from "@/src/contextApi/AppcontextApi";
 import InputModel from "@/src/components/client-components/models/InputModel";
 import { userProfileUpdate } from "@/src/Actions/userActions/userAction";
 import UserImgModel from "@/src/components/client-components/models/imgModel/UserImgModel";
-import { UserContext } from "@/src/_contextApi/UserContextApi";
+import { UserContext } from "@/src/app/_contextApi/UserContextApi";
 
 export default function UserDetailWrapper() {
   const { isLogined, userImgModel, handelOpenImgModel } =

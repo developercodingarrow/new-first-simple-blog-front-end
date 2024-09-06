@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useEffect, useRef, useState } from "react";
 import { genericDataHandler } from "../_generichandler/generichandler";
-import { updateUserProfile } from "../_action/user/userAction";
+import { updateUserProfile } from "../_actions/userApi";
 export const UserContext = createContext();
 export default function UserContextProvider({ children }) {
   const [isLoading, setisLoading] = useState(false);

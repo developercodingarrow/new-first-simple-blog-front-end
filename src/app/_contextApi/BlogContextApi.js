@@ -1,8 +1,8 @@
 "use client";
 import { createContext, useEffect, useRef, useState } from "react";
-import { getSingleBlog } from "../Actions/blogActions/blogAction";
+import { getSingleBlog } from "../_actions/blogapi";
 import { genericDataHandler } from "../_generichandler/generichandler";
-import { reportBlogAction } from "../_action/blog/blogActions";
+import { reportBlogAction } from "../_actions/blogapi";
 export const BlogContext = createContext();
 
 export default function BlogContextProvider({ children }) {

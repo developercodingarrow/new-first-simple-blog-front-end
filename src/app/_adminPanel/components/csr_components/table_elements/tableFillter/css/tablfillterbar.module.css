@@ -1,0 +1,25 @@
+.main_contatiner {
+  width: 100%;
+  padding: 20px 25px;
+}
+
+.inner_container {
+  display: flex;
+  column-gap: 10px;
+}
+
+.dateRange_Compoent_wrraper {
+  display: flex;
+  align-items: center;
+}
+
+.single_inputForm {
+  display: flex;
+  align-items: center;
+}
+
+.inline_form {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}

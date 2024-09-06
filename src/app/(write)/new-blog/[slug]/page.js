@@ -1,17 +1,14 @@
 "use client";
 import React, { useContext, useEffect } from "react";
 import { usePathname, useParams } from "next/navigation";
-import { BlogContext } from "@/src/contextApi/BlogContextApi";
 
 import EditBlogUI from "@/src/layouts/clients/user-protected/EditBlogUI";
+import { BlogContext } from "@/src/app/_contextApi/BlogContextApi";
 
 export default function page() {
   const { handelAllBlogs, singleBlog } = useContext(BlogContext);
   const params = useParams();
   const { slug } = params;
-
-  console.log("single blog data-----", singleBlog);
-  console.log("slug---", slug);
 
   useEffect(() => {
     if (slug) {

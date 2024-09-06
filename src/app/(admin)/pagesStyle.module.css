@@ -1,0 +1,18 @@
+.body_style {
+  width: 100vw;
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.page_container {
+}
+
+.fillter_bar {
+  background-color: var(--ad-bg-color);
+}
+
+.table_wrapper {
+  margin: 20px;
+  background-color: var(--ad-bg-color);
+}

@@ -4,7 +4,7 @@ import AppContextProvider from "@/src/contextApi/AppcontextApi";
 import NavBar from "@/src/components/server-components/Navbar/NavBar";
 import UserPanelLayout from "@/src/layouts/server/userdashbord/UserPanelLayout";
 import ImgModelContextProvider from "@/src/contextApi/ImgModelContextApi";
-import UserContextProvider from "@/src/_contextApi/UserContextApi";
+import UserContextProvider from "../_contextApi/UserContextApi";
 
 export default function layout({ children }) {
   return (
