@@ -1,0 +1,153 @@
+.container {
+  padding: 20px;
+  background-color: var(--ad-body-bg);
+  border-radius: 8px;
+  background-color: #fff;
+  text-align: center;
+  margin: 10px;
+}
+
+.statsBoxWrapper {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.statsBox {
+  border: 1px solid var(--ad-border-color);
+  border-radius: 8px;
+  padding: 20px;
+  width: 150px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  flex: 1 1 calc(25% - 20px); /* Responsive width for 4 boxes per row */
+  max-width: 220px; /* Max width to prevent overflow on larger screens */
+}
+
+.statsBox:hover {
+  transform: translateY(-5px);
+}
+
+.statTitle {
+  font-size: 18px;
+  color: var(--ad-text-color);
+}
+
+.statNumber {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--ad-Primary-bg-color);
+  margin-top: 10px;
+}
+
+/* Custom colors for different boxes */
+.statsBox:nth-child(1) {
+  background-color: rgba(59, 130, 246, 0.1); /* Light blue */
+}
+
+.statsBox:nth-child(2) {
+  background-color: rgba(16, 185, 129, 0.1); /* Light green */
+}
+
+.statsBox:nth-child(3) {
+  background-color: rgba(236, 72, 153, 0.1); /* Light pink */
+}
+
+.statsBox:nth-child(4) {
+  background-color: rgba(250, 204, 21, 0.1); /* Light yellow */
+}
+
+/* Skeleton loading effect */
+.skeletonBox {
+  background-color: #f0f0f0; /* Light gray background */
+  border: none; /* Remove the borders */
+  box-shadow: none; /* Remove the box shadow */
+  pointer-events: none; /* Disable pointer events */
+  position: relative;
+  overflow: hidden; /* To contain the shimmer effect */
+}
+
+.skeletonTitle,
+.skeletonNumber {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  margin: 10px auto;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeletonTitle {
+  height: 20px;
+  width: 80%;
+}
+
+.skeletonNumber {
+  height: 40px;
+  width: 60%;
+  margin-top: 20px;
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+.skeletonBox::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px;
+  width: 300px;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+/* Responsive design - adjust layout for smaller screens */
+@media (max-width: 1024px) {
+  .statsBox {
+    flex: 1 1 calc(50% - 20px); /* 2 boxes per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .statsBox {
+    flex: 1 1 calc(100% - 20px); /* 1 box per row */
+    margin-bottom: 20px;
+  }
+
+  .statsBoxWrapper {
+    gap: 10px;
+  }
+
+  .skeletonNumber {
+    height: 35px;
+  }
+
+  .skeletonTitle {
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .statTitle {
+    font-size: 16px;
+  }
+
+  .statNumber {
+    font-size: 28px;
+  }
+}

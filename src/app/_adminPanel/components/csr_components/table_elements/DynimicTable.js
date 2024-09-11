@@ -18,6 +18,7 @@ import TablemultiStatus from "./tablemultiStatus";
 import TableBooleanSwitch from "./tableBooleanSwitch";
 import { IoIosArrowRoundDown } from "../../../ApplicationIcons";
 import TableDeleteIcon from "./TableDeleteIcon";
+import TableSkeleton from "./table skeleton/tableSkeleton";
 
 export default function DynimicTable(props) {
   const {
@@ -27,7 +28,6 @@ export default function DynimicTable(props) {
     handelSingleDelete,
   } = props;
 
-  console.log(tableSampleData);
   const handelCheckBox = () => {
     alert("handel Check box");
   };
@@ -46,6 +46,7 @@ export default function DynimicTable(props) {
   const actionhandler = {
     view: booleanSwithHandel,
   };
+
   return (
     <div className={styles.table_container}>
       <table className={styles.user_table}>
@@ -69,30 +70,43 @@ export default function DynimicTable(props) {
           </tr>
         </thead>
         <tbody>
-          {tableSampleData.map((row, no) => (
-            <tr key={row.id}>
-              {tableColumns.map((column) => {
-                const { content, className } = renderCellContent(
-                  column.component,
-                  no,
-                  row,
-                  row[column.key],
-                  handlers[column.component],
-                  actionhandler
-                );
-
+          {tableSampleData.length === 0 ? (
+            <tr>
+              {tableColumns.map((el, index) => {
                 return (
-                  <td
-                    key={column.label}
-                    className={`${styles.td_style} ${styles[className]}`}
-                  >
+                  <td key={index}>
                     {" "}
-                    {content}
+                    <TableSkeleton rowsNumber={10} />
                   </td>
                 );
               })}
             </tr>
-          ))}
+          ) : (
+            tableSampleData.map((row, no) => (
+              <tr key={row.id}>
+                {tableColumns.map((column) => {
+                  const { content, className } = renderCellContent(
+                    column.component,
+                    no,
+                    row,
+                    row[column.key],
+                    handlers[column.component],
+                    actionhandler
+                  );
+
+                  return (
+                    <td
+                      key={column.label}
+                      className={`${styles.td_style} ${styles[className]}`}
+                    >
+                      {" "}
+                      {content}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </div>
@@ -154,7 +168,12 @@ const renderCellContent = (
 
     case "view":
       if (handler) {
-        content = <TableViewBtn data={elemnetdata} path={"user-details"} />;
+        content = (
+          <TableViewBtn
+            data={elemnetdata}
+            path={"admindashboard/users/details"}
+          />
+        );
       }
       break;
 

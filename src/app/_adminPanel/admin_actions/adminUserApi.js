@@ -16,3 +16,11 @@ export const allUserListAction = async (requestData) => {
   }
   return null;
 };
+
+export const UserDetailAction = async (id) => {
+  if (authToken) {
+    const url = `http://localhost:8000/api/v1/first-simple-blog/protected/users/user-detail/${id}`;
+    return performGetAPIAction(url, authToken);
+  }
+  return null;
+};

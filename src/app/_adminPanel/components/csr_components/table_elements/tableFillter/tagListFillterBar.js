@@ -6,10 +6,9 @@ import useTableFillters from "@/src/app/_adminPanel/custome-hooks/useTableFillte
 import useCustomFormFiled from "@/src/app/_adminPanel/custome-hooks/useCustomFormFiled";
 import { createtagInputs } from "@/src/app/_adminPanel/jsonData/formData";
 import SubmitBtn from "@/src/components/client-components/elements/buttons/SubmitBtn";
-import { createTagAction } from "@/src/app/_adminPanel/admin_actions/adminTagApi";
 
 export default function TagListFillterBar(props) {
-  const { data } = props;
+  const { data, createHandel, setIsActionLoading } = props;
   const [isLoading, setisLoading] = useState(false);
   const { handleSubmit, renderInput, isValid, errors } = useCustomFormFiled();
 
@@ -21,14 +20,14 @@ export default function TagListFillterBar(props) {
   }, [data, isLoading]);
 
   const handleForm = async (data) => {
-    setisLoading(true);
+    setIsActionLoading(true);
     try {
-      const res = await createTagAction(data);
+      const res = await createHandel(data);
       console.log(res);
-      setisLoading(false);
+      setIsActionLoading(false);
     } catch (error) {
       console.log(error);
-      setisLoading(false);
+      setIsActionLoading(false);
     }
   };
   return (
@@ -46,7 +45,7 @@ export default function TagListFillterBar(props) {
             <div className={styles.inline_form}>
               {createtagInputs.map((input, index) => {
                 return (
-                  <div key={index}>
+                  <div key={index} className={styles.input_wrapper}>
                     {renderInput(input)}
                     {errors[input.name] && (
                       <span className={"input_errors"}>
@@ -56,7 +55,7 @@ export default function TagListFillterBar(props) {
                   </div>
                 );
               })}
-              <div>
+              <div className={styles.btn_wrapper}>
                 <SubmitBtn
                   btnText="create"
                   btnLoading={isLoading}

@@ -11,7 +11,11 @@ import { CiMail } from "react-icons/ci";
 import { SlSocialFacebook } from "react-icons/sl";
 import { SlSocialLinkedin } from "react-icons/sl";
 import { RiTwitterXLine } from "react-icons/ri";
-
+import { IoGlobeOutline } from "react-icons/io5";
+import { CiAt } from "react-icons/ci";
+import { FaFacebookF } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { PiHandsPrayingThin } from "react-icons/pi";
 export {
   CiMenuFries,
   LuLayoutDashboard,
@@ -26,4 +30,9 @@ export {
   SlSocialFacebook,
   SlSocialLinkedin,
   RiTwitterXLine,
+  IoGlobeOutline,
+  CiAt,
+  FaFacebookF,
+  FaLinkedinIn,
+  PiHandsPrayingThin,
 };

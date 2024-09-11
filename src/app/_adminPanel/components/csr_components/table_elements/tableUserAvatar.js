@@ -10,7 +10,7 @@ export default function TableUserAvatar(props) {
   return (
     <div className={styles.flex_container}>
       <div className={styles.circle_img_wrapper}>
-        {imgData.url && (
+        {imgData?.url && (
           <Image
             src={`/usersProfileImg/${imgData.url}`}
             alt={imgData.altText}
@@ -20,7 +20,7 @@ export default function TableUserAvatar(props) {
           />
         )}
 
-        {!imgData.url && (
+        {!imgData?.url && (
           <Image
             src={userImg}
             alt="user-image"

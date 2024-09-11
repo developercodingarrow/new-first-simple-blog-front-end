@@ -9,3 +9,38 @@
   margin: 20px;
   background-color: var(--ad-bg-color);
 }
+
+/* Styles for skeleton loader */
+
+.table_container {
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+}
+
+.table_header {
+  width: 100%;
+  height: 50px;
+  background: #e0e0e0; /* Light grey background */
+  margin-bottom: 20px;
+  animation: pulse 1.5s infinite ease-in-out; /* Add animation */
+}
+
+.table_row {
+  margin-bottom: 10px;
+  background: #e0e0e0; /* Light grey background */
+  height: 30px;
+  animation: pulse 1.5s infinite ease-in-out; /* Add animation */
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #e0e0e0;
+  }
+  50% {
+    background-color: #f5f5f5; /* Lighter grey to simulate pulse effect */
+  }
+  100% {
+    background-color: #e0e0e0;
+  }
+}

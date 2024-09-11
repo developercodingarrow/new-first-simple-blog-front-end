@@ -12,27 +12,27 @@ import Link from "next/link";
 
 const sidebarItems = [
   {
-    href: "/",
+    href: "/admindashboard/",
     text: "Dashboard",
     icon: <LuLayoutDashboard />,
   },
   {
-    href: "users",
+    href: "/admindashboard/users",
     text: "New Users",
     icon: <PiUsersThreeLight />,
   },
   {
-    href: "blogs",
+    href: "/admindashboard/blogs",
     text: "Blogs List",
     icon: <BsCardList />,
   },
   {
-    href: "tags",
+    href: " /admindashboard/tags",
     text: "Tags List",
     icon: <GoTag />,
   },
   {
-    href: "admin-tags",
+    href: "/admindashboard/admin-tags",
     text: "Admin Tags List",
     icon: <GoTag />,
   },

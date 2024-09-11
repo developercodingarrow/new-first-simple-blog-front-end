@@ -28,6 +28,7 @@ export const createTagAction = async (formData) => {
 
 export const deleteSingleTagAction = async (formData) => {
   if (authToken) {
+    console.log("_id--", formData);
     const url = `http://localhost:8000/api/v1/first-simple-blog/private/tag/delete-single-tag`;
     const method = "delete";
     return performAPIAction(method, url, formData, authToken);

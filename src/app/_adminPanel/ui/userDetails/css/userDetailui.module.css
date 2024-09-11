@@ -2,40 +2,37 @@
   padding: 20px;
 }
 
-.inner_flex_container {
-  display: flex;
-  column-gap: 50px;
+.inner_container {
 }
 
 .profile_container {
-  width: 25%;
   border: 1px solid var(--ad-border-color);
-  padding: 20px;
   background-color: var(--ad-bg-color);
-  border-radius: 5px;
   box-shadow: var(--th-box-shadow);
+  margin-bottom: 20px;
+  padding: 20px;
 }
 
-.profile_card_heading {
-  text-transform: capitalize;
+.user_img_profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.profile_card {
+.profile_box {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 10px;
-  column-gap: 10px;
   row-gap: 10px;
 }
 
-.profile_img {
+.profile_img_wrapper {
   width: 70px;
   height: 70px;
   border: 2px solid var(--user-image-border);
   border-radius: 50%;
   padding: 1px;
-  margin-bottom: 10px;
 }
 
 .img_style {
@@ -44,66 +41,159 @@
   border-radius: 50%;
 }
 
-/*     color: rgb(67 97 238 / var(--tw-text-opacity)); */
-
 .user_name {
   color: rgb(67 97 238 / 1);
   font-size: 20px;
   text-align: center;
-}
-
-.details_list_wrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  row-gap: 10px;
-  padding: 0px 25px;
-  box-sizing: border-box;
-  margin-bottom: 20px;
-}
-
-.detail_item {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  column-gap: 10px;
-  font-size: 16px;
-  color: var(--ad-text-color);
   text-transform: capitalize;
 }
 
-.iconBox {
+.details_section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user_detail_box {
+}
+
+.secton_medium_heading {
+  margin-bottom: 10px;
+}
+
+.detail_row {
+  display: flex;
+  column-gap: 10px;
+  margin-bottom: 10px;
+}
+
+.static_detail_text {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 20px;
+  color: var(--ad-text-hover-color);
+  font-size: 18px;
 }
 
-.user_nameText {
-  text-transform: lowercase;
+.dynimic_detail_text {
+  color: var(--ad-text-color);
+  font-size: 14px;
 }
 
-.card_footer {
+.social_media_detail {
+  padding: 10px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
   column-gap: 10px;
 }
 
-.social_icon_wrapper {
-  border: 1px solid gray;
-  border-radius: 50%;
+.social_icon_Box {
+  text-decoration: none !important;
+  color: #fff;
   width: 30px;
   height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  border-radius: 5px;
+  font-size: 16px;
+  overflow: hidden;
+  position: relative;
+  transition: border-top-left-radius 0.1s linear 0s,
+    border-top-right-radius 0.1s linear 0.1s,
+    border-bottom-right-radius 0.1s linear 0.2s,
+    border-bottom-left-radius 0.1s linear 0.3s;
 }
 
-.social_icon_wrapper:hover {
+.social_icon_Box:hover {
+  border-radius: 50%;
   cursor: pointer;
-  background-color: rgb(67 97 238 / 1);
-  color: #fff;
+}
+
+.fb_color {
+  background-color: #3b5998;
+}
+.in_color {
+  background-color: #007bb6;
+}
+
+.twitter_x_color {
+  background-color: #000000;
+}
+
+.table_conatiner {
+  background-color: var(--ad-bg-color);
+  padding: 20px;
+}
+
+.stats_header {
+  display: flex;
+  column-gap: 20px;
+  margin-bottom: 20px;
+}
+
+.Togle_tab_wrapper {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  /* width: 100px; Smaller size */
+  border: 2px solid var(--ad-Primary-bg-color); /* Outer border */
+  border-radius: 30px; /* Rounded corners */
+  padding: 3px;
+  background-color: #f0f0f0; /* Default background */
+}
+
+.tab_button {
+  flex: 1;
+  padding: 5px;
+  font-size: 14px;
+  color: #333; /* Default text color */
+  background-color: transparent; /* Transparent to show the background slide effect */
+  border: 1px solid transparent;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 1;
+  transition: color 0.4s ease; /* Transition for text color */
+  position: relative;
+  text-align: center;
+  transition: transform 0.4s ease, background-color 0.4s ease;
+  text-transform: capitalize;
+  width: 80px;
+}
+
+.tab_button.active {
+  color: white; /* Active text color when background slides */
+  background-color: var(--ad-Primary-bg-color);
+  transition: transform 0.4s ease, background-color 0.4s ease;
+  box-shadow: var(--th-box-shadow);
+}
+
+.Togle_tab_wrapper .tab_button.active {
+  z-index: 2; /* Bring active button text above the background */
+}
+
+.stats_container {
+  display: flex;
+  column-gap: 10px;
+}
+
+.stats_box {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.published {
+  border: 1px solid #10b981;
+  color: #10b981;
+  background-color: #10b9811a;
+}
+
+.draft {
+  color: #f59e0b;
+  border: 1px solid #f59e0b;
+  background-color: #f59e0b1a;
 }

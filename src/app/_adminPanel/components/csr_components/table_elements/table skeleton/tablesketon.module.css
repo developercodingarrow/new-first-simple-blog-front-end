@@ -1,0 +1,70 @@
+/* Container styling for the skeleton rows */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* padding: 10px; */
+}
+
+/* Each skeleton row */
+.table_row {
+  height: 25px;
+  width: 100%;
+  background-color: #f0f0f0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+/* The animated block that moves from left to right */
+.skeleton_block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #e0e0e0;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Keyframes for the shimmering effect */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Optional: Custom styling to adjust speed or color */
+.skeleton_block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  height: 100%;
+  width: 150%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shine 1.5s infinite ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+    left: -150%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 150%;
+  }
+}

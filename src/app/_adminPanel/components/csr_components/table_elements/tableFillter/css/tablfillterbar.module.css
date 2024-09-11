@@ -1,6 +1,7 @@
 .main_contatiner {
   width: 100%;
-  padding: 20px 25px;
+  padding: 25px 25px;
+  height: 100px;
 }
 
 .inner_container {
@@ -13,6 +14,10 @@
   align-items: center;
 }
 
+.search_Compoent_wrraper {
+  /* border: 1px solid red; */
+}
+
 .single_inputForm {
   display: flex;
   align-items: center;
@@ -21,5 +26,13 @@
 .inline_form {
   display: flex;
   column-gap: 10px;
-  align-items: center;
+  /* border: 1px solid blue; */
+}
+
+.input_wrapper {
+  /* border: 1px solid yellow; */
+}
+
+.btn_wrapper {
+  /* border: 1px solid green; */
 }

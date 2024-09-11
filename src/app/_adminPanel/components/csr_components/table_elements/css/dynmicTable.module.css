@@ -90,6 +90,11 @@
   color: #0056b3;
 }
 
+.numberCell {
+  width: 20px;
+  text-align: center;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .user_table th,
