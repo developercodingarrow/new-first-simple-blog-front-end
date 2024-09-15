@@ -7,6 +7,7 @@ import { allTagListAction } from "@/src/app/_adminPanel/admin_actions/adminTagAp
 import { FillterContext } from "@/src/app/_adminPanel/context_api/FillterContextApi";
 import { tagtableColumns } from "@/src/app/_adminPanel/jsonData/tableData";
 import useUserRoleColumns from "@/src/app/_adminPanel/custome-hooks/useUserRoleColumns";
+import TableFooter from "@/src/app/_adminPanel/components/csr_components/table_elements/table-footer/TableFooter";
 
 export default function Tagwrapper() {
   const userRole = "super-admin";
@@ -46,6 +47,9 @@ export default function Tagwrapper() {
           tableColumns={roleBasedColumns}
           tableSampleData={visibalRows}
         />
+      </div>
+      <div className={styles.table_wrapper}>
+        <TableFooter data={allTags} setIsActionLoading={setIsActionLoading} />
       </div>
     </div>
   );

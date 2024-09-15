@@ -14,6 +14,7 @@ export default function useImageUpload() {
     setimgData,
   } = useContext(ImgModelContext);
 
+  // Upload Image
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {

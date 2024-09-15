@@ -16,6 +16,13 @@ import { CiAt } from "react-icons/ci";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { PiHandsPrayingThin } from "react-icons/pi";
+import { IoMdArrowDropdown } from "react-icons/io";
+import {
+  MdOutlineKeyboardArrowLeft,
+  MdOutlineKeyboardArrowRight,
+} from "react-icons/md";
+import { IoIosArrowDown } from "react-icons/io";
+import { RiAdminLine } from "react-icons/ri";
 export {
   CiMenuFries,
   LuLayoutDashboard,
@@ -35,4 +42,9 @@ export {
   FaFacebookF,
   FaLinkedinIn,
   PiHandsPrayingThin,
+  IoMdArrowDropdown,
+  MdOutlineKeyboardArrowLeft,
+  MdOutlineKeyboardArrowRight,
+  IoIosArrowDown,
+  RiAdminLine,
 };

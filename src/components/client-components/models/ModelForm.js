@@ -1,17 +1,18 @@
 "use client";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./css/inputmodel.module.css";
-import { AppContext } from "@/src/contextApi/AppcontextApi";
-import { IoCloseSharp } from "../../ApplicationIcons";
 import SubmitBtn from "../elements/buttons/SubmitBtn";
 import ClickBtn from "../elements/buttons/ClickBtn";
 import { useCustomApiForm } from "@/src/custome-hooks/useCutomeApiform";
-import { UserContext } from "@/src/app/_contextApi/UserContextApi";
+
+import { updateUserData } from "@/src/Actions/authAction";
+
+import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
 export default function ModelForm(props) {
-  const { inputfileds, modelData, formhandel, id } = props;
-  const { setisLoading, isLoading, handelcloseInputModal } =
-    useContext(UserContext);
+  const { modelInput, apiData, actionID, modelActionHandler, setupdateData } =
+    props;
+  const { handelcloseInputModal } = useContext(ModelsContext);
 
   const dynimicData = [];
   const {
@@ -22,33 +23,31 @@ export default function ModelForm(props) {
     setValue,
     renderInput,
     isValid,
-  } = useCustomApiForm(modelData, inputfileds);
+    reset,
+  } = useCustomApiForm(apiData, modelInput);
 
   const handleForm = async (data) => {
     const obj = {
-      data,
-      _id: id,
+      ...data,
+      _id: actionID,
     };
+
     try {
-      setisLoading(true);
-      const res = await formhandel(obj);
-      console.log("res---", res);
+      const res = await modelActionHandler(obj);
       if (res.data.status === "success") {
-        console.log("succes");
-        setisLoading(false);
+        updateUserData(res.data.result);
+        setupdateData(res.data.result);
       }
     } catch (error) {
-      setisLoading(false);
       console.log(error);
     }
   };
 
-  console.log("inputfileds===", inputfileds);
   return (
     <div className={styles.model_form_wrapper}>
       <form onSubmit={handleSubmit(handleForm)}>
         <div className={styles.input_wrapper}>
-          {inputfileds.map((input) => {
+          {modelInput.map((input) => {
             return <div key={input.id}>{renderInput(input, dynimicData)}</div>;
           })}
         </div>
@@ -59,11 +58,8 @@ export default function ModelForm(props) {
               <ClickBtn btnText="cancle" btnHandel={handelcloseInputModal} />
             </div>
             <div>
-              <SubmitBtn
-                btnText="Save"
-                btnLoading={isLoading}
-                disabled={!isValid}
-              />
+              <SubmitBtn btnText="Save" btnLoading={false} disabled={isValid} />
+              {/* <button type="submit">sublit</button> */}
             </div>
           </div>
         </div>

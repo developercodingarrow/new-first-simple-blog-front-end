@@ -15,13 +15,16 @@ import ReagisterAuthModel from "@/src/components/client-components/models/Reagis
 
 import BlogContextProvider from "../_contextApi/BlogContextApi";
 import ModelContextProvider from "../_contextApi/ModelContextApi";
-
+import { cookies } from "next/headers"; // Import the cookies function
+import { getSession } from "../lib/authentication";
 export const metadata = {
   title: "Fisrt blog website",
   description: "This is first Blog website",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const userDetails = await getSession();
+
   return (
     <html lang="en">
       <body>
@@ -34,8 +37,8 @@ export default function RootLayout({ children }) {
                     <ReportActionModel />
                     <ReagisterAuthModel />
                     <div>
-                      <NavBar />
-                      <GoogleOneTap />
+                      <NavBar userData={userDetails} />
+                      {!userDetails && <GoogleOneTap />}
                     </div>
 
                     <div className="children_wrapper">

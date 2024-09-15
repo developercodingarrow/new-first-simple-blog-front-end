@@ -1,12 +1,12 @@
 import React from "react";
-import { tagfillterBlogs } from "../_actions/blogapi";
+
 import LandscapeCard from "@/src/components/server-components/cards/LandscapeCard";
 import TestCard from "@/src/components/server-components/cards/TestCard";
+import { tagfillterBlogs } from "./actionapi";
 
 async function getData(tagquery, page = 1) {
   try {
     const res = await tagfillterBlogs(tagquery, page);
-    console.log(res);
     await new Promise((resolve) => setTimeout(resolve, 3000));
 
     if (!res.data || !res.data.result) {

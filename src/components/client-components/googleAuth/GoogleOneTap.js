@@ -8,18 +8,15 @@ import axios from "axios";
 
 export default function GoogleOneTap() {
   const router = useRouter();
-  const logined = false;
-
-  console.log("component run");
 
   useGoogleOneTapLogin({
-    onSuccess: (credentialResponse) => {
+    onSuccess: async (credentialResponse) => {
       console.log("test onTap");
       if (credentialResponse) {
         console.log("enter");
 
         try {
-          const res = axios({
+          const res = await axios({
             method: "post",
             url: "http://localhost:8000/api/v1/first-simple-blog/auth/google-login",
             data: {
@@ -34,7 +31,7 @@ export default function GoogleOneTap() {
 
           if (res.data.status === "success") {
             authenticate(res.data.user, res.data.token, () => {
-              router.push("/test");
+              router.refresh();
             });
           }
         } catch (error) {

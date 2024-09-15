@@ -15,3 +15,12 @@ export const allBlogsListAction = async (requestData) => {
   }
   return null;
 };
+
+export const featuredBlogAction = async (formData) => {
+  if (authToken) {
+    const url = `http://localhost:8000/api/v1/first-simple-blog/protected/blog/blog-featured-toggle`;
+    const method = "post";
+    return performAPIAction(method, url, formData, authToken);
+  }
+  return null;
+};

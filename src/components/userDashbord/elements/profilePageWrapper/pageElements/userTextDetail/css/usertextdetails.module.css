@@ -1,0 +1,18 @@
+.user_details_container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.title_wrapper {
+  text-transform: capitalize;
+  font-family: Arial, sans-serif;
+}
+
+.text_data_wrapper {
+  width: 60%;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+  text-align: end;
+}

@@ -1,15 +1,20 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./css/adminlayout.module.css";
-import { CiMenuFries } from "../ApplicationIcons";
+import { CiMenuFries, IoIosArrowDown } from "../ApplicationIcons";
 import Link from "next/link";
 import AsideBar from "./asideBar";
 
 export default function AdminLayout({ children }) {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [profileDropDown, setprofileDropDown] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarCollapsed(!isSidebarCollapsed);
+  };
+
+  const toggleProfileDropDown = () => {
+    setprofileDropDown(!profileDropDown);
   };
 
   return (
@@ -48,7 +53,25 @@ export default function AdminLayout({ children }) {
             isSidebarCollapsed ? styles.top_navbar_expanded : ""
           }`}
         >
-          {/* Top Navbar content here */}
+          <div className={styles.nav_inner_container}>
+            <div className={styles.profile_wrapper}>
+              <div
+                className={styles.profile_avtar_wrapper}
+                onClick={toggleProfileDropDown}
+              >
+                <div className={styles.user_avatar}>s</div>
+                <div className={styles.user_nameText}>Sanjay</div>
+                <div className={styles.arrow_icon}>
+                  <IoIosArrowDown />
+                </div>
+              </div>
+              {profileDropDown && (
+                <div className={styles.profile_drop_down}>
+                  <div>Log Out </div>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
         <div className={styles.content_container}>{children}</div>
       </div>

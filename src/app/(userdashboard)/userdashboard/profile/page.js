@@ -1,10 +1,10 @@
-import UserDetailWrapper from "@/src/layouts/server/userdashbord/userdetails/usertextdetail/UserDetailWrapper";
+import ProfileElementWrapper from "@/src/components/userDashbord/elements/profilePageWrapper/ProfileElementWrapper";
 import React from "react";
 
-export default function Profilepage() {
+export default async function Profilepage() {
   return (
     <div>
-      <UserDetailWrapper />
+      <ProfileElementWrapper />
     </div>
   );
 }

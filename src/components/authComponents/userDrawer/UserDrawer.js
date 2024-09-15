@@ -1,11 +1,16 @@
 "use client";
 import React, { useContext, useEffect, useRef } from "react";
+
 import styles from "./css/userDrawer.module.css";
+import { useRouter } from "next/navigation";
+
 import Link from "next/link";
 import { SlUser, TiDocumentText, FaPlus } from "../../ApplicationIcons";
 import { AppContext } from "@/src/contextApi/AppcontextApi";
+import { logOutAction } from "@/src/Actions/userActions/userAuthAction";
 
 export default function UserDrawer() {
+  const router = useRouter();
   const { isUserDrawer, handelCloseUserDrawer } = useContext(AppContext);
   const drawerRef = useRef(null);
 
@@ -21,6 +26,11 @@ export default function UserDrawer() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [drawerRef, handelCloseUserDrawer]);
+
+  const handellogOut = () => {
+    logOutAction();
+    router.refresh();
+  };
 
   return (
     <div ref={drawerRef} className={styles.drawer_container}>
@@ -50,6 +60,14 @@ export default function UserDrawer() {
             </div>
             <div className="medium_text_wrapper">Your Blogs</div>
           </Link>
+        </li>
+        <li>
+          <div className={styles.text_icon_link} onClick={handellogOut}>
+            <div className="medium_icon_wrapper">
+              <TiDocumentText />
+            </div>
+            <div className="medium_text_wrapper">Log Out</div>
+          </div>
         </li>
       </ul>
     </div>

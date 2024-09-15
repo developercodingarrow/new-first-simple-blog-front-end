@@ -7,19 +7,18 @@ import { IoCloseSharp } from "../../../ApplicationIcons";
 import Image from "next/image";
 import userImg from "../../../../../public/web-static-img/auther-image.jpg";
 import { handeluplodUserPic } from "@/src/utils/handlers/imageHandlers";
+
 import { updateUserData, isAuth } from "@/src/Actions/authAction";
 import TextClickBtn from "../../elements/buttons/TextClickBtn";
 import ClickBtn from "../../elements/buttons/ClickBtn";
+import { AuthContext } from "@/src/app/_contextApi/authContext";
+import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
 export default function UserImgModel(props) {
-  const { id, updateHandler } = props;
-  const {
-    userImgModel,
-    setuserImgModel,
-    imgUrl,
-    modelActionId,
-    handelCloseImgModel,
-  } = useContext(AppContext);
+  const { updateFor, setupdateData, filePath } = props;
+  const { handelCloseUserImgModel, imgUrl, imgModelId } =
+    useContext(ModelsContext);
+
   const fileInputRef = useRef(null);
   const {
     previewImage,
@@ -37,10 +36,12 @@ export default function UserImgModel(props) {
 
   const handelSubmit = async () => {
     try {
-      const res = await handeluplodUserPic(image, "userImg", modelActionId);
-      console.log(res);
+      const res = await handeluplodUserPic(image, updateFor, imgModelId);
+      console.log("imag mode--", res);
       if (res.data.status === "success") {
-        console.log(res);
+        console.log("result000--", res);
+        setupdateData(res.data.data);
+        updateUserData(res.data.data);
       }
     } catch (error) {
       console.log(error);
@@ -57,7 +58,7 @@ export default function UserImgModel(props) {
             </div>
             <div
               className={styles.close_iconWrapper}
-              onClick={handelCloseImgModel}
+              onClick={handelCloseUserImgModel}
             >
               <IoCloseSharp />
             </div>
@@ -76,7 +77,7 @@ export default function UserImgModel(props) {
                     />
                   ) : (
                     <Image
-                      src={`/usersProfileImg/${imgUrl}`}
+                      src={`/${filePath}/${imgUrl}`}
                       alt="user-imag"
                       className={styles.img_style}
                       width={500}

@@ -4,14 +4,15 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { GoogleLogin, useGoogleOneTapLogin } from "@react-oauth/google";
 import axios from "axios";
+import { authenticate } from "@/src/Actions/authAction";
 
-export default function GoogleAuthClient() {
+export default function GoogleAuthClient(props) {
+  const { userAuthData } = props;
   const router = useRouter();
-  const logined = false;
 
   return (
     <div>
-      {logined ? (
+      {userAuthData ? (
         <p> Usewr Logined</p>
       ) : (
         <>
@@ -33,10 +34,11 @@ export default function GoogleAuthClient() {
                     },
                   });
 
-                  console.log(res);
-
-                  if (res.data.status === "Success") {
+                  if (res.data.status === "success") {
                     console.log(res.data.user, res.data.token);
+                    authenticate(res.data.user, res.data.token, () => {
+                      router.push("/");
+                    });
                   }
                 } catch (error) {
                   console.log(error);

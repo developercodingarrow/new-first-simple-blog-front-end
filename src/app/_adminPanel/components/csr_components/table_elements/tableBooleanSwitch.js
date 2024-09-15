@@ -3,17 +3,16 @@ import React, { useEffect, useState } from "react";
 import styles from "./css/tableBooleanSwitch.module.css";
 
 export default function TableBooleanSwitch(props) {
-  const { data, completeData, handler } = props;
+  const { data, keyProp, completeData, handler } = props;
   const [isActive, setIsActive] = useState(null);
-  console.log("tag switch--", completeData);
 
   const toggleSwitch = () => {
-    handler(data);
+    handler(completeData._id);
     setIsActive(!isActive);
   };
 
   useEffect(() => {
-    setIsActive(completeData.Verification);
+    setIsActive(data);
   }, []);
 
   return (

@@ -10,6 +10,7 @@ import TableFillterBar from "@/src/app/_adminPanel/components/csr_components/tab
 import { FillterContext } from "@/src/app/_adminPanel/context_api/FillterContextApi";
 import { allUserListAction } from "@/src/app/_adminPanel/admin_actions/adminUserApi";
 import useUserRoleColumns from "@/src/app/_adminPanel/custome-hooks/useUserRoleColumns";
+import TableFooter from "@/src/app/_adminPanel/components/csr_components/table_elements/table-footer/TableFooter";
 
 export default function UserWrapper(props) {
   const userRole = "super-admin";
@@ -45,6 +46,9 @@ export default function UserWrapper(props) {
           tableColumns={roleBasedColumns}
           tableSampleData={visibalRows}
         />
+      </div>
+      <div className={styles.table_wrapper}>
+        <TableFooter data={allusers} setIsActionLoading={setIsActionLoading} />
       </div>
     </div>
   );

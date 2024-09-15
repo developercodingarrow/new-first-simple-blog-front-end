@@ -1,11 +1,13 @@
 import React from "react";
 import styles from "./login.module.css";
 import Login from "@/src/layouts/server/userauth/Login";
+import { getSession } from "../../lib/authentication";
 
-export default function page() {
+export default async function page() {
+  const userDetails = await getSession();
   return (
     <div>
-      <Login />
+      <Login userData={userDetails} />
     </div>
   );
 }

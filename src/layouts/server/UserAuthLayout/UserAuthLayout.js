@@ -25,6 +25,7 @@ export default function UserAuthLayout(props) {
     formHandel,
     footerLink,
     footerText,
+    userAuthData,
   } = props;
   const { renderInput, handleSubmit, updatedInputs, isValid, errors } =
     useCustomeAuthForm(formInputs, formType);
@@ -93,7 +94,11 @@ export default function UserAuthLayout(props) {
                 })}
               </div>
               <div className={styles.submit_btn_wrapper}>
-                <SubmitBtn btnText={formBtn} disabled={!isValid} />
+                <SubmitBtn
+                  btnText={formBtn}
+                  disabled={!isValid}
+                  btnLoading={isBtnLoading}
+                />
               </div>
             </form>
           </div>
@@ -104,7 +109,7 @@ export default function UserAuthLayout(props) {
           </div>
           <div className={styles.social_media_auth_wrapper}>
             <div>
-              <GoogleAuthClient />
+              <GoogleAuthClient userAuthData={userAuthData} />
             </div>
           </div>
 

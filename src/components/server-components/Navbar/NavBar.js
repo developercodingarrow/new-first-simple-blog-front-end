@@ -5,7 +5,9 @@ import NavBarNavigations from "./NavBarNavigations";
 import CircleUser from "../../client-components/circleUser/CircleUser";
 import HangBug from "../../client-components/cl_Navbar/HangBug";
 
-export default function NavBar() {
+export default async function NavBar(props) {
+  const { userData } = props;
+
   return (
     <div className={styles.main_conatiner}>
       <div className={styles.dekstop_navBar_wrapper}>
@@ -18,7 +20,7 @@ export default function NavBar() {
           </div>
 
           <div>
-            <CircleUser />
+            <CircleUser userData={userData} />
           </div>
         </div>
       </div>

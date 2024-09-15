@@ -15,6 +15,7 @@ import { FillterContext } from "@/src/app/_adminPanel/context_api/FillterContext
 import DynimicTable from "@/src/app/_adminPanel/components/csr_components/table_elements/DynimicTable";
 import TagListFillterBar from "@/src/app/_adminPanel/components/csr_components/table_elements/tableFillter/tagListFillterBar";
 import useUserRoleColumns from "@/src/app/_adminPanel/custome-hooks/useUserRoleColumns";
+import TableFooter from "@/src/app/_adminPanel/components/csr_components/table_elements/table-footer/TableFooter";
 
 export default function AdminTagswrapper(props) {
   const userRole = "super-admin";
@@ -88,6 +89,9 @@ export default function AdminTagswrapper(props) {
           handelSingleDelete={handelDelete}
           booleanSwithHandel={handelVerfication}
         />
+      </div>
+      <div className={styles.table_wrapper}>
+        <TableFooter data={allTags} setIsActionLoading={setIsActionLoading} />
       </div>
     </div>
   );

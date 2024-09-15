@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./css/actionDots.module.css";
 import { HiOutlineDotsVertical } from "../../ApplicationIcons";
 import ActionDropDown from "./ActionDropDown";
@@ -13,13 +13,16 @@ export default function ActionDot(props) {
     left = "0px",
     right,
   } = props;
+
   const [isOpen, setisOpen] = useState(false);
 
   const handelOpen = () => {
-    setisOpen(!isOpen);
+    setisOpen(true);
   };
 
-  console.log(actionList);
+  const handelClose = () => {
+    setisOpen(false);
+  };
 
   const dropdownStyle = {
     top,
@@ -37,6 +40,7 @@ export default function ActionDot(props) {
             actionList={actionList}
             actionId={actionId}
             slug={slug}
+            closeHandel={handelClose}
           />
         </div>
       )}

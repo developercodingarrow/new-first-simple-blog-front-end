@@ -20,13 +20,16 @@ import {
   tableColumns,
   tableSampleData,
   blogtableColumns,
+  superAdminblogColumns,
   blogsSampleData,
 } from "../../jsonData/tableData";
 import DynimicTable from "../../components/csr_components/table_elements/DynimicTable";
 import { usePathname, useParams } from "next/navigation";
 import { UserDetailAction } from "../../admin_actions/adminUserApi";
+import useUserRoleColumns from "../../custome-hooks/useUserRoleColumns";
 
 export default function UserDetailUi() {
+  const userRole = "super-admin";
   const params = useParams();
   const { slug } = params;
 
@@ -48,6 +51,14 @@ export default function UserDetailUi() {
     },
     userName: "",
   });
+
+  const roleBasedColumns = useUserRoleColumns(userRole, blogtableColumns, {
+    "super-admin": superAdminblogColumns,
+  });
+
+  const handelswith = () => {
+    alert("switch toogle");
+  };
 
   console.log(drfatBlogs);
 
@@ -201,16 +212,18 @@ export default function UserDetailUi() {
             {activeTable === "table1" && (
               <div>
                 <DynimicTable
-                  tableColumns={blogtableColumns}
+                  tableColumns={roleBasedColumns}
                   tableSampleData={publishedBlogs}
+                  booleanSwithHandel={handelswith}
                 />{" "}
               </div>
             )}
             {activeTable === "table2" && (
               <div>
                 <DynimicTable
-                  tableColumns={blogtableColumns}
+                  tableColumns={roleBasedColumns}
                   tableSampleData={drfatBlogs}
+                  booleanSwithHandel={handelswith}
                 />{" "}
               </div>
             )}

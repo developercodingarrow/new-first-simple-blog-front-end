@@ -21,6 +21,7 @@ export const performAPIAction = async (
       url,
       headers,
       data: requestData,
+      withCredentials: true,
     };
 
     const response = await axios(config);
@@ -42,7 +43,11 @@ export const performGetAPIAction = async (url, token = null, options = {}) => {
   }
 
   try {
-    const response = await axios.get(url, { headers, ...options });
+    const response = await axios.get(url, {
+      headers,
+      withCredentials: true,
+      ...options,
+    });
     return response;
   } catch (error) {
     console.log(error.response);

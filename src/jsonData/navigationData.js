@@ -131,7 +131,7 @@ export const userDashBordTab = [
   },
   {
     name: "published",
-    hrfLink: "public",
+    hrfLink: "published",
   },
   {
     name: "draft",

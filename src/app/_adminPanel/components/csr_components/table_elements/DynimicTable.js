@@ -19,6 +19,7 @@ import TableBooleanSwitch from "./tableBooleanSwitch";
 import { IoIosArrowRoundDown } from "../../../ApplicationIcons";
 import TableDeleteIcon from "./TableDeleteIcon";
 import TableSkeleton from "./table skeleton/tableSkeleton";
+import useTableFillters from "../../../custome-hooks/useTableFillters";
 
 export default function DynimicTable(props) {
   const {
@@ -26,6 +27,8 @@ export default function DynimicTable(props) {
     tableSampleData,
     booleanSwithHandel,
     handelSingleDelete,
+    sorthandel,
+    sortOrder,
   } = props;
 
   const handelCheckBox = () => {
@@ -47,6 +50,8 @@ export default function DynimicTable(props) {
     view: booleanSwithHandel,
   };
 
+  console.log("sortOrder----", sortOrder);
+
   return (
     <div className={styles.table_container}>
       <table className={styles.user_table}>
@@ -58,9 +63,18 @@ export default function DynimicTable(props) {
                   <span className={styles.th_span_style}>
                     {column.label}
                     {column.icon && (
-                      <span className={styles.iconStyle}>
+                      <span
+                        className={styles.iconStyle}
+                        onClick={() => sorthandel(column.key)}
+                      >
                         {" "}
-                        <IoIosArrowRoundDown />{" "}
+                        <IoIosArrowRoundDown
+                          className={`${
+                            sortOrder
+                              ? styles.ascending_arow
+                              : styles.descending_arrow
+                          }`}
+                        />{" "}
                       </span>
                     )}
                   </span>
@@ -87,6 +101,7 @@ export default function DynimicTable(props) {
                 {tableColumns.map((column) => {
                   const { content, className } = renderCellContent(
                     column.component,
+                    column.key,
                     no,
                     row,
                     row[column.key],
@@ -115,6 +130,7 @@ export default function DynimicTable(props) {
 
 const renderCellContent = (
   componentType,
+  keyProp,
   indexNo,
   completeData,
   elemnetdata,
@@ -130,6 +146,7 @@ const renderCellContent = (
       className = "numberCell";
       break;
     case "text":
+      s;
       content = "text content";
       className = "text-cell";
       break;
@@ -208,6 +225,7 @@ const renderCellContent = (
         content = (
           <TableBooleanSwitch
             data={elemnetdata}
+            keyProp={keyProp}
             completeData={completeData}
             handler={handler}
           />

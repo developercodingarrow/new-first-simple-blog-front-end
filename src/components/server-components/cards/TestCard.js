@@ -10,7 +10,6 @@ import LikeActionWrapper from "./LikeActionWrapper";
 import ProfileElement from "@/src/_components/ssrComponents/profile-element/ProfileElement";
 export default function TestCard(props) {
   const { data } = props;
-  console.log(data.user);
   return (
     <div className={styles.card}>
       <div className={styles.cardTopBar}>

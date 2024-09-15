@@ -111,6 +111,12 @@ export const blogtableColumns = [
     component: "multiStatus",
     icon: "",
   },
+  {
+    label: "views",
+    key: "viewCount",
+    component: "numberText",
+    icon: "icon",
+  },
   { label: "View", key: "slug", component: "view", icon: "" },
 ];
 

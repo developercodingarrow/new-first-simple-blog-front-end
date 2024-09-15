@@ -9,10 +9,17 @@ const authToken = getLoginCookies();
 
 // 1) API FOR USER REGISTRATION ACCOUNT
 export const updateUserProfile = async (requestData) => {
+  console.log("requestData----", requestData);
   if (authToken) {
     const url = `http://localhost:8000/api/v1/first-simple-blog/private/users/update-user-profile`;
     const method = "post";
     return performAPIAction(method, url, requestData, authToken);
   }
   return null;
+};
+
+export const userRegister = async (requestData) => {
+  const url = `http://localhost:8000/api/v1/first-simple-blog/auth/sing-up`;
+  const method = "post";
+  return performAPIAction(method, url, requestData);
 };

@@ -3,7 +3,13 @@ import { createContext, useEffect, useRef, useState } from "react";
 import { isAuth } from "../Actions/authAction";
 export const AppContext = createContext();
 
-export default function AppContextProvider({ children }) {
+export default function AppContextProvider({ children, userDetails }) {
+  /* Refactor Start */
+  const [isBtnLoading, setisBtnLoading] = useState(false);
+  const [authnaticateUser, setauthnaticateUser] = useState(userDetails);
+  const [refreshSiblingElement, setrefreshSiblingElement] = useState(false);
+
+  /* Refactor End */
   const longined = isAuth();
   const auth = true;
   const [isUserDrawer, setisUserDrawer] = useState(false);
@@ -16,7 +22,7 @@ export default function AppContextProvider({ children }) {
   const [isOpenReportModel, setisOpenReportModel] = useState(false);
   const [reportModelActionId, setreportModelActionId] = useState("");
   const [isOpenCommentModel, setisOpenCommentModel] = useState(false);
-  const [isBtnLoading, setisBtnLoading] = useState(false);
+
   const [userImgModel, setuserImgModel] = useState(false);
   const [imgUrl, setimgUrl] = useState("");
   const [modelActionId, setmodelActionId] = useState("");
@@ -131,8 +137,7 @@ export default function AppContextProvider({ children }) {
         setisOpenCommentModel,
         handelOpenCommentModel,
         handelCloseCommentModel,
-        isBtnLoading,
-        setisBtnLoading,
+
         userImgModel,
         setuserImgModel,
         handelOpenImgModel,
@@ -145,6 +150,13 @@ export default function AppContextProvider({ children }) {
         setisunAuthModel,
         handelOpenIsunAuthModel,
         id,
+        // refactor
+        isBtnLoading,
+        setisBtnLoading,
+        refreshSiblingElement,
+        setrefreshSiblingElement,
+        authnaticateUser,
+        setauthnaticateUser,
       }}
     >
       {children}

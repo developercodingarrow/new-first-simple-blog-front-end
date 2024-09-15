@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import CryptoJS from "crypto-js";
 
 // Define the encryption key and data to be encrypted
-const encryptionKey = "my-secret-key";
+const encryptionKey = process.env.NEXT_PUBLIC_ENCRYPTION_KEY;
 
 export const setLoginCookies = (key, value) => {
   const expirationInSeconds = 36000;
@@ -28,9 +28,9 @@ export const authenticate = (data, token, cb) => {
     userData,
     encryptionKey
   ).toString();
-
+  Cookies.set("jwt", token); // Normal cookie
+  Cookies.set("user", encryptedData);
   setLocalStorage("user", encryptedData);
-  setLoginCookies("jwt", token);
 
   cb();
 };
@@ -42,8 +42,9 @@ export const updateUserData = (data) => {
     userData,
     encryptionKey
   ).toString();
-
+  Cookies.set("user", encryptedData);
   setLocalStorage("user", encryptedData);
+  console.log("update cookies");
 };
 
 // DESTRUCTURE Encipted DATA
@@ -65,6 +66,12 @@ export const getEncryptedData = (encryptedUserData) => {
   }
 };
 
+export const logOutAction = () => {
+  localStorage.removeItem("user");
+  Cookies.remove("jwt");
+  Cookies.remove("user");
+};
+
 // Authentication
 export const isAuth = () => {
   if (process.browser) {
@@ -78,6 +85,3 @@ export const isAuth = () => {
     }
   }
 };
-
-// API FOR LOGIN ACCOUNT
-const authToken = getLoginCookies();
