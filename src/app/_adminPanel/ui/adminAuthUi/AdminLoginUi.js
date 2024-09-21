@@ -5,13 +5,19 @@ import { RiAdminLine } from "../../ApplicationIcons";
 import useCustomeAuthForm from "@/src/custome-hooks/useCustomeAuthForm";
 import { adminLoginInputs } from "../../jsonData/formData";
 import SubmitBtn from "@/src/components/client-components/elements/buttons/SubmitBtn";
+import { adminLoginAction } from "@/src/app/utils/adminactions";
 
 export default function AdminLoginUi() {
   const { renderInput, handleSubmit, updatedInputs, isValid, errors } =
     useCustomeAuthForm(adminLoginInputs, "LOGIN");
 
   const handleForm = async (data) => {
-    console.log(data);
+    try {
+      const res = await adminLoginAction(data);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

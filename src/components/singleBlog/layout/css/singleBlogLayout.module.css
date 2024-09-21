@@ -1,0 +1,35 @@
+.main_container {
+}
+.inner_container {
+  display: flex;
+}
+
+.banner_section {
+  width: 20%;
+  padding: 20px 0px;
+  /* border: 1px solid gray; */
+}
+
+.banner_wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page_content_section {
+  width: 80%;
+  /* border: 1px solid gray; */
+}
+
+@media only screen and (max-width: 600px) {
+  .banner_wrapper {
+    display: none;
+  }
+  .banner_section {
+    display: none;
+  }
+  .page_content_section {
+    width: 100%;
+  }
+}

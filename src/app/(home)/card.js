@@ -3,6 +3,7 @@ import React from "react";
 import LandscapeCard from "@/src/components/server-components/cards/LandscapeCard";
 import TestCard from "@/src/components/server-components/cards/TestCard";
 import { tagfillterBlogs } from "./actionapi";
+import MainCard from "@/src/components/homepage/card/MainCard";
 
 async function getData(tagquery, page = 1) {
   try {
@@ -29,7 +30,7 @@ export default async function Card(props) {
       {initialData.map((el, index) => {
         return (
           <div>
-            <TestCard data={el} />
+            <MainCard data={el} />
           </div>
         );
       })}

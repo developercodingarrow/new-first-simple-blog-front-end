@@ -9,25 +9,24 @@ import {
 
 import BlogsListFillterBar from "@/src/app/_adminPanel/components/csr_components/table_elements/tableFillter/blogsListFillterBar";
 import { FillterContext } from "@/src/app/_adminPanel/context_api/FillterContextApi";
-import {
-  allBlogsListAction,
-  featuredBlogAction,
-} from "@/src/app/_adminPanel/admin_actions/adminBlogApi";
+import { allBlogsListAction } from "@/src/app/_adminPanel/admin_actions/adminBlogApi";
 import useUserRoleColumns from "@/src/app/_adminPanel/custome-hooks/useUserRoleColumns";
 import TableFooter from "@/src/app/_adminPanel/components/csr_components/table_elements/table-footer/TableFooter";
 import useTableFillters from "@/src/app/_adminPanel/custome-hooks/useTableFillters";
+import { AuthContext } from "@/src/app/_contextApi/authContext";
+import { featuredBlogAction } from "@/src/app/utils/adminActions/authBlogsActions";
+
 export default function Blogswrapper(props) {
-  const userRole = "super-admin";
   const { data } = props;
-  const [allBlogs, setallBlogs] = useState([]);
-  const [isActionLoading, setIsActionLoading] = useState(false);
+  const { authUser } = useContext(AuthContext);
+  const userRole = authUser?.role;
+  const [allBlogs, setallBlogs] = useState(data);
   const { handleSortClick, sortOrder } = useTableFillters(allBlogs);
-
   const roleBasedColumns = useUserRoleColumns(userRole, blogtableColumns, {
-    "super-admin": superAdminblogColumns,
+    superAdmin: superAdminblogColumns,
   });
+  const { visibalRows } = useContext(FillterContext);
 
-  const { visibalRows, setvisibalRows } = useContext(FillterContext);
   const handelswith = async (data) => {
     try {
       const obj = {
@@ -40,19 +39,6 @@ export default function Blogswrapper(props) {
     }
   };
 
-  const handelGetData = async () => {
-    try {
-      const res = await allBlogsListAction();
-      console.log("result---", res.data.result);
-      setallBlogs(res.data.result);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    handelGetData();
-  }, [isActionLoading]);
   return (
     <div className={styles.page_container}>
       <div className={styles.fillter_bar}>
@@ -68,7 +54,7 @@ export default function Blogswrapper(props) {
         />
       </div>
       <div className={styles.table_wrapper}>
-        <TableFooter data={allBlogs} setIsActionLoading={setIsActionLoading} />
+        <TableFooter data={allBlogs} />
       </div>
     </div>
   );

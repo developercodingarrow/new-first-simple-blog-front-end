@@ -1,3 +1,12 @@
+.linkTag_wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 10px;
+  margin-bottom: 20px;
+}
+
 .tag_link {
   background-color: var(--card-background);
   color: var(--th-neutral-dark);

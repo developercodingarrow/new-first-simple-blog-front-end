@@ -17,6 +17,14 @@ import BlogContextProvider from "../_contextApi/BlogContextApi";
 import ModelContextProvider from "../_contextApi/ModelContextApi";
 import { cookies } from "next/headers"; // Import the cookies function
 import { getSession } from "../lib/authentication";
+
+import AuthContextProvider from "../_contextApi/authContext";
+import {
+  getTagsWithRevalidation,
+  featureTagListAction,
+} from "../utils/tagActions";
+import TagTab from "@/src/components/client-components/tab/TagTab";
+import HomePageMainBanner from "@/src/components/homepage/mainBanner/HomePageMainBanner";
 export const metadata = {
   title: "Fisrt blog website",
   description: "This is first Blog website",
@@ -24,42 +32,54 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const userDetails = await getSession();
+  const verifiedTags = await getTagsWithRevalidation();
+  const featureTags = await featureTagListAction();
 
   return (
     <html lang="en">
       <body>
         <AppContextProvider>
-          <ImgModelContextProvider>
-            <TagContextProvider>
-              <ModelContextProvider>
-                <BlogContextProvider>
-                  <GoogleOAuthProvider clientId="575999030621-q9l875mbikilrm28q7sbj7ed3pf3kehq.apps.googleusercontent.com">
-                    <ReportActionModel />
-                    <ReagisterAuthModel />
-                    <div>
-                      <NavBar userData={userDetails} />
-                      {!userDetails && <GoogleOneTap />}
-                    </div>
+          <AuthContextProvider authData={userDetails}>
+            <ImgModelContextProvider>
+              <TagContextProvider verifiedTags={verifiedTags}>
+                <ModelContextProvider>
+                  <BlogContextProvider>
+                    <GoogleOAuthProvider clientId="575999030621-q9l875mbikilrm28q7sbj7ed3pf3kehq.apps.googleusercontent.com">
+                      <ReportActionModel />
+                      <ReagisterAuthModel />
+                      <div>
+                        <NavBar userData={userDetails} />
+                        {!userDetails && <GoogleOneTap />}
+                      </div>
 
-                    <div className="children_wrapper">
-                      <main>
-                        <div className={styles.page_banner_wrapper}>
-                          <MainBanner />
-                        </div>
-                        <div className={styles.layout_wrapper}>
-                          <div className={styles.content_side}>{children}</div>
-                          <div className={styles.layout_side_bar}>
-                            <LayoutSideBar />
+                      <div className="children_wrapper">
+                        <main>
+                          <div className={styles.page_banner_wrapper}>
+                            <HomePageMainBanner />
                           </div>
-                        </div>
-                      </main>
-                    </div>
-                    <Footer />
-                  </GoogleOAuthProvider>
-                </BlogContextProvider>
-              </ModelContextProvider>
-            </TagContextProvider>
-          </ImgModelContextProvider>
+                          <div className={styles.layout_wrapper}>
+                            <div className={styles.content_side}>
+                              <div className={styles.sticky_tab_wrapper}>
+                                <TagTab
+                                  tabData={featureTags}
+                                  redirectType="query"
+                                />
+                              </div>
+                              {children}
+                            </div>
+                            <div className={styles.layout_side_bar}>
+                              <LayoutSideBar featureTag={featureTags} />
+                            </div>
+                          </div>
+                        </main>
+                      </div>
+                      <Footer />
+                    </GoogleOAuthProvider>
+                  </BlogContextProvider>
+                </ModelContextProvider>
+              </TagContextProvider>
+            </ImgModelContextProvider>
+          </AuthContextProvider>
         </AppContextProvider>
       </body>
     </html>

@@ -1,32 +1,13 @@
-.main_container {
-  /* border: 1px solid red; */
+.main_conatiner {
 }
 
-.content_main_container {
+.inner_conatiner {
   display: flex;
-  column-gap: 0px;
-}
-
-.banner_section {
-  width: 20%;
-  padding: 20px 0px;
-}
-
-.banner_wrapper {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .contnet_section {
-  width: 55%;
+  width: 75%;
   border: 1px solid var(--th-separator);
-}
-
-.comment_section {
-  width: 25%;
-  padding: 5px 0px;
 }
 
 .top_section {
@@ -75,8 +56,13 @@
   letter-spacing: 1px;
 }
 
+.comment_section {
+  width: 35%;
+  padding: 5px 0px;
+}
+
 @media only screen and (max-width: 600px) {
-  .content_main_container {
+  .inner_conatiner {
     flex-direction: column-reverse;
   }
 

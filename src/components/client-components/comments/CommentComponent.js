@@ -1,5 +1,6 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import styles from "./css/commentcomponent.module.css";
 import Image from "next/image";
@@ -13,13 +14,17 @@ import {
 import RepliesList from "./RepliesList";
 import CommentReplyForm from "./CommentReplyForm";
 import { MdDeleteForever } from "../../ApplicationIcons";
-import { AppContext } from "@/src/contextApi/AppcontextApi";
 import SubmitBtn from "../elements/buttons/SubmitBtn";
 import { FaUserCircle } from "../../ApplicationIcons";
+import { AuthContext } from "@/src/app/_contextApi/authContext";
+import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
 export default function CommentComponent(props) {
-  const { isLogined, handelOpenIsunAuthModel } = useContext(AppContext);
-  const userID = isLogined?._id;
+  const { blogComments, blogId, blogBy } = props;
+  const router = useRouter();
+  const { authUser } = useContext(AuthContext);
+  const { handelOpenAuthModel } = useContext(ModelsContext);
+  const userID = authUser?._id;
 
   const {
     register,
@@ -27,7 +32,7 @@ export default function CommentComponent(props) {
     watch,
     formState: { errors, isValid },
   } = useForm();
-  const { blogComments, blogId, blogBy } = props;
+
   // State to manage comments
   const [comments, setComments] = useState(blogComments);
   const [activeCommentId, setActiveCommentId] = useState(null);
@@ -37,18 +42,22 @@ export default function CommentComponent(props) {
       const res = await createComment(data);
       console.log(res);
 
+      // res.data.newComment.commentBy.userImg.url
       setComments([
         ...comments,
         {
           id: res.data.newComment._id,
           comment: data.comment,
           commentBy: {
-            name: "Your Name", // Replace with the actual user's name
-            profilePic: userImg,
+            name: res.data.newComment.commentBy.name, // Replace with the actual user's name
+            userImg: {
+              url: res.data.newComment.commentBy.userImg.url,
+            },
           },
           replies: [],
         },
       ]);
+      router.refresh();
     } catch (error) {
       console.log(error);
     }
@@ -125,12 +134,12 @@ export default function CommentComponent(props) {
   };
 
   return (
-    <div className={styles.comment_section}>
+    <div className={styles.coment_wrapper}>
       <div className={styles.comment_heading}>
-        <h3>Comments</h3>
+        <h3>Comments..</h3>
       </div>
       <div className={styles.comment_form_container}>
-        {isLogined ? (
+        {authUser ? (
           <div className={styles.comment_form_wrapper}>
             <form
               onSubmit={handleSubmit(handelCreateComment)}
@@ -155,10 +164,7 @@ export default function CommentComponent(props) {
             </form>
           </div>
         ) : (
-          <div
-            className={styles.not_logined_Bar}
-            onClick={handelOpenIsunAuthModel}
-          >
+          <div className={styles.not_logined_Bar} onClick={handelOpenAuthModel}>
             <div className="small_text">Tell us what you think... </div>
           </div>
         )}

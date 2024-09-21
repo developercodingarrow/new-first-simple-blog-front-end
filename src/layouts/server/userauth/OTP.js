@@ -11,9 +11,12 @@ import SubmitBtn from "@/src/components/client-components/elements/buttons/Submi
 import { otpVerfication } from "@/src/Actions/userActions/userAuthAction";
 import { AppContext } from "@/src/contextApi/AppcontextApi";
 
+import { userotpVerfication } from "@/src/app/utils/userAuthaction";
+
 export default function OTP() {
   const { isBtnLoading, setisBtnLoading } = useContext(AppContext);
   const params = useParams();
+  const router = useRouter();
   const { otp } = params;
   const { renderInput, handleSubmit, updatedInputs, isValid, errors } =
     useCustomeAuthForm(otpInput, "OTP");
@@ -21,10 +24,12 @@ export default function OTP() {
   const handleForm = async (data) => {
     try {
       setisBtnLoading(true);
-      const res = await otpVerfication(data, otp);
+      const res = await userotpVerfication(data, otp);
+      console.log(res);
       if (res.data.status === "success") {
         setisBtnLoading(false);
         toast.success(res.data.message);
+        router.push("/");
       }
 
       if (res.data.error) {

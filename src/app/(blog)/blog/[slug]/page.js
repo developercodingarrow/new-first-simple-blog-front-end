@@ -1,20 +1,19 @@
 import { singleBlogs } from "@/src/Actions/blogActions/blogAction";
-import SingleBlogPageUI from "@/src/layouts/server/singleBlogPage/SingleBlogPageUI";
 import React, { Suspense } from "react";
 import { NextSeo } from "next-seo";
 import BlogSeo from "@/src/components/SEO/BlogSeo";
 import Loading from "../../loading";
+import SingleBlogWrapper from "@/src/components/singleBlog/singleBlogElements/blogwrapper/SingleBlogWrapper";
+import { ssrSingleBlogs } from "./apiActions";
 
 async function getData(slug) {
-  const res = await singleBlogs(slug);
-
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  const res = await ssrSingleBlogs(slug);
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
   return await res.data.result;
 }
 
 export default async function SingleBlogpage(pathname) {
   const slug = pathname.params?.slug;
-
   const data = await getData(slug);
 
   const SEO = {
@@ -68,7 +67,7 @@ export default async function SingleBlogpage(pathname) {
     <div>
       {/* <BlogSeo seoData={SEO} /> */}
       <Suspense fallback={<Loading />}>
-        <SingleBlogPageUI ssrData={data} />
+        <SingleBlogWrapper data={data} />
       </Suspense>
     </div>
   );

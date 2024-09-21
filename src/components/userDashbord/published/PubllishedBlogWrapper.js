@@ -1,18 +1,18 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useRouter } from "next/navigation";
 
 import {
-  deleteBlogApi,
   mypublishedBlog,
   updateToDeaft,
 } from "@/src/Actions/blogActions/blogAction";
 import UserDashBordCard from "../elements/card/UserDashBordCard";
 import CardSkeleton from "../elements/skeleton/CardSkeleton";
+import { deleteBlogApi } from "@/src/app/utils/blogactions";
 
 export default function PubllishedBlogWrapper(props) {
+  const router = useRouter();
   const { data } = props;
-
-  const [publishedBlog, setpublishedBlog] = useState(data);
   const handelmyPublishedBlog = async () => {
     try {
       const res = await mypublishedBlog();
@@ -25,17 +25,18 @@ export default function PubllishedBlogWrapper(props) {
     }
   };
 
-  const handleEdit = (_, slug) => {
-    console.log("Edit action triggered", slug);
+  const handleEdit = (id, slug) => {
+    router.push(`/new-blog/${id}`);
   };
 
   const handleDelete = async (actionId) => {
     try {
       const data = {
-        blogId: actionId,
+        id: actionId,
       };
       const res = await deleteBlogApi(data);
       console.log(res);
+      router.refresh();
     } catch (error) {
       console.log(error);
     }
@@ -44,7 +45,7 @@ export default function PubllishedBlogWrapper(props) {
   const handelDeaft = async (actionId) => {
     try {
       const data = {
-        blogId: actionId,
+        id: actionId,
       };
       const res = await updateToDeaft(data);
       console.log("handel dreft---", res);
@@ -62,15 +63,17 @@ export default function PubllishedBlogWrapper(props) {
 
   return (
     <div>
-      {publishedBlog.map((data, index) => {
-        return (
+      {data && data.length >= 1 ? (
+        data?.map((item, index) => (
           <UserDashBordCard
             key={index}
             footerActions={editDeleteActions}
-            data={data}
+            data={item}
           />
-        );
-      })}
+        ))
+      ) : (
+        <p>No content available</p>
+      )}
     </div>
   );
 }

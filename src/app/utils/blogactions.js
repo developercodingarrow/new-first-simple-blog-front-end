@@ -28,3 +28,51 @@ export async function updateToPublsih(formData) {
     return error;
   }
 }
+
+export async function deleteBlogApi(formData) {
+  const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/delete-blog`;
+  const method = "delete";
+  try {
+    const res = await performAPIAction(method, url, formData, authToken);
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching draft blogs:", error.message);
+    return error;
+  }
+}
+
+export async function reportBlogAction(formData) {
+  const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/report-content`;
+  const method = "post";
+  try {
+    const res = await performAPIAction(method, url, formData, authToken);
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching draft blogs:", error.message);
+    return error;
+  }
+}
+
+export async function likeActions(formData) {
+  const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/like`;
+  const method = "post";
+  try {
+    const res = await performAPIAction(method, url, formData, authToken);
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching draft blogs:", error.message);
+    return error;
+  }
+}
+
+export async function unlikeAction(formData) {
+  const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/unlike`;
+  const method = "post";
+  try {
+    const res = await performAPIAction(method, url, formData, authToken);
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching draft blogs:", error.message);
+    return error;
+  }
+}

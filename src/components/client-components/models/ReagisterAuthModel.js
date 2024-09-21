@@ -1,15 +1,41 @@
 "use client";
 import React, { useState, useContext, useEffect } from "react";
-import { AppContext } from "@/src/contextApi/AppcontextApi";
 import styles from "./css/regsiterAuthModel.module.css";
+import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
+import GoogleAuthClient from "../googleAuth/GoogleAuthClient";
+import { AuthContext } from "@/src/app/_contextApi/authContext";
+import Link from "next/link";
 
 export default function ReagisterAuthModel() {
-  const { isunAuthModel, setisunAuthModel } = useContext(AppContext);
+  const { isAuthModel, handelCloseAuthModel } = useContext(ModelsContext);
+
   return (
     <>
-      {isunAuthModel && (
+      {isAuthModel && (
         <div className={styles.main_conatiner}>
-          <div className={styles.inner_container}></div>
+          <div className={styles.inner_container}>
+            <div className={styles.Modelclose_bar}>
+              <div
+                className={styles.close_icon_wrapper}
+                onClick={handelCloseAuthModel}
+              >
+                x{" "}
+              </div>{" "}
+            </div>
+            <div className={styles.model_heading_wrapper}>
+              <h3>welcome Back</h3>
+            </div>
+            <div className={styles.model_body}>
+              <div className={styles.model_centerBox}>
+                <div className={styles.google_login_option}>
+                  <GoogleAuthClient />
+                </div>
+                <Link href={"/login"} className={styles.login_option}>
+                  Login With Form
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </>

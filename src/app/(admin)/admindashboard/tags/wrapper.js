@@ -3,28 +3,73 @@ import React, { useEffect, useState, useContext } from "react";
 import styles from "../../pagesStyle.module.css";
 import TagListFillterBar from "@/src/app/_adminPanel/components/csr_components/table_elements/tableFillter/tagListFillterBar";
 import DynimicTable from "@/src/app/_adminPanel/components/csr_components/table_elements/DynimicTable";
-import { allTagListAction } from "@/src/app/_adminPanel/admin_actions/adminTagApi";
+import { useRouter } from "next/navigation";
 import { FillterContext } from "@/src/app/_adminPanel/context_api/FillterContextApi";
-import { tagtableColumns } from "@/src/app/_adminPanel/jsonData/tableData";
+import {
+  tagfaturetableColumns,
+  SuperAdminColum,
+} from "@/src/app/_adminPanel/jsonData/tableData";
 import useUserRoleColumns from "@/src/app/_adminPanel/custome-hooks/useUserRoleColumns";
 import TableFooter from "@/src/app/_adminPanel/components/csr_components/table_elements/table-footer/TableFooter";
+import { AuthContext } from "@/src/app/_contextApi/authContext";
+import {
+  deleteSingleTagAction,
+  tagFeatureAction,
+  createTagAction,
+  tagListAction,
+} from "@/src/app/utils/adminActions/authTagActions";
 
-export default function Tagwrapper() {
-  const userRole = "super-admin";
-  const [allTags, setallTags] = useState([]);
-  const { visibalRows, setvisibalRows } = useContext(FillterContext);
+export default function Tagwrapper(props) {
+  const { data } = props;
+  const router = useRouter();
+  const { authUser } = useContext(AuthContext);
+  const userRole = authUser?.role;
+
+  const [allTags, setallTags] = useState(data);
+  const { visibalRows } = useContext(FillterContext);
   const [isActionLoading, setIsActionLoading] = useState(false);
 
-  const roleBasedColumns = useUserRoleColumns(userRole, tagtableColumns, {
-    "super-admin": [],
+  const roleBasedColumns = useUserRoleColumns(userRole, tagfaturetableColumns, {
+    superAdmin: SuperAdminColum,
   });
+
+  const handelFeatueTag = async (data) => {
+    try {
+      const obj = {
+        _id: data,
+      };
+      setIsActionLoading(true); // Set action-specific loading state
+      const res = await tagFeatureAction(obj);
+      setIsActionLoading(false); // Set action-specific loading state
+      console.log("tag featured", res);
+      router.refresh();
+    } catch (error) {
+      setIsActionLoading(false); // Set action-specific loading state
+      console.log(error);
+    }
+  };
+
+  const handelDelete = async (data) => {
+    try {
+      const obj = {
+        _id: data,
+      };
+      setIsActionLoading(true); // Set action-specific loading state
+      const res = await deleteSingleTagAction(obj);
+      setIsActionLoading(false); // Set action-specific loading state
+      console.log(res);
+    } catch (error) {
+      setIsActionLoading(false); // Set action-specific loading state
+      console.log(error);
+    }
+  };
 
   const handelGetData = async () => {
     try {
-      const res = await allTagListAction();
-      console.log("result---", res.data.result);
+      const res = await tagListAction();
+      console.log("result---", res.result);
 
-      setallTags(res.data.result);
+      setallTags(res.result);
     } catch (error) {
       console.log(error);
     }
@@ -33,6 +78,7 @@ export default function Tagwrapper() {
   useEffect(() => {
     handelGetData();
   }, [isActionLoading]);
+
   return (
     <div className={styles.page_container}>
       <div className={styles.fillter_bar}>
@@ -40,16 +86,19 @@ export default function Tagwrapper() {
         <TagListFillterBar
           data={allTags}
           setIsActionLoading={setIsActionLoading}
+          createHandel={createTagAction}
         />
       </div>
       <div className={styles.table_wrapper}>
         <DynimicTable
           tableColumns={roleBasedColumns}
           tableSampleData={visibalRows}
+          handelSingleDelete={handelDelete}
+          booleanSwithHandel={handelFeatueTag}
         />
       </div>
       <div className={styles.table_wrapper}>
-        <TableFooter data={allTags} setIsActionLoading={setIsActionLoading} />
+        <TableFooter data={allTags} />
       </div>
     </div>
   );

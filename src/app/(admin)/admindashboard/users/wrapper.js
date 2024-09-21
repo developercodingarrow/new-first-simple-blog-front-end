@@ -11,30 +11,18 @@ import { FillterContext } from "@/src/app/_adminPanel/context_api/FillterContext
 import { allUserListAction } from "@/src/app/_adminPanel/admin_actions/adminUserApi";
 import useUserRoleColumns from "@/src/app/_adminPanel/custome-hooks/useUserRoleColumns";
 import TableFooter from "@/src/app/_adminPanel/components/csr_components/table_elements/table-footer/TableFooter";
+import { AuthContext } from "@/src/app/_contextApi/authContext";
 
 export default function UserWrapper(props) {
-  const userRole = "super-admin";
-  const [allusers, setallusers] = useState([]);
-  const { visibalRows, setvisibalRows } = useContext(FillterContext);
-  const [isActionLoading, setIsActionLoading] = useState(false);
+  const { data } = props;
+  const { authUser } = useContext(AuthContext);
+  const userRole = authUser?.role;
 
+  const [allusers, setallusers] = useState(data);
+  const { visibalRows } = useContext(FillterContext);
   const roleBasedColumns = useUserRoleColumns(userRole, usertableColumns, {
-    "super-admin": SuperAdminUserColum,
+    superAdmin: SuperAdminUserColum,
   });
-
-  const handelGetData = async () => {
-    try {
-      const res = await allUserListAction();
-      console.log("result---", res.data.result);
-      setallusers(res.data.result);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    handelGetData();
-  }, [isActionLoading]);
 
   return (
     <div className={styles.page_container}>
@@ -48,7 +36,7 @@ export default function UserWrapper(props) {
         />
       </div>
       <div className={styles.table_wrapper}>
-        <TableFooter data={allusers} setIsActionLoading={setIsActionLoading} />
+        <TableFooter data={allusers} />
       </div>
     </div>
   );

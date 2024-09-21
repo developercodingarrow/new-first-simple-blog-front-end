@@ -21,6 +21,8 @@ export default function ModelContextProvider({ children }) {
   const [isOpenInputModel, setisOpenInputModel] = useState(false);
   const [modelHeading, setmodelHeading] = useState("");
   // Input Model End
+  const [isAuthModel, setisAuthModel] = useState(false);
+  const [isDeleteModel, setisDeleteModel] = useState(false);
 
   // 1) HANDEL CLOSE MODEL
   const handelCloseModel = (setModalState) => {
@@ -61,6 +63,26 @@ export default function ModelContextProvider({ children }) {
   };
   // input model end-----------
 
+  const handelOpenAuthModel = () => {
+    console.log("auth model open");
+    setisAuthModel(true);
+  };
+
+  const handelCloseAuthModel = () => {
+    setisAuthModel(false);
+  };
+
+  const handelOpenDeleteModel = (data, handler) => {
+    console.log(data);
+    setid(data);
+    setActionHandler(() => handler);
+    setisDeleteModel(true);
+  };
+
+  const handelCloseDeleteModel = () => {
+    setisDeleteModel(false);
+  };
+
   return (
     <ModelsContext.Provider
       value={{
@@ -88,6 +110,14 @@ export default function ModelContextProvider({ children }) {
         imgModelId,
         handelCloseUserImgModel,
         // userImage model End
+        handelOpenAuthModel,
+        handelCloseAuthModel,
+        isAuthModel,
+        // Delete Model
+        isDeleteModel,
+        setisDeleteModel,
+        handelOpenDeleteModel,
+        handelCloseDeleteModel,
       }}
     >
       {" "}

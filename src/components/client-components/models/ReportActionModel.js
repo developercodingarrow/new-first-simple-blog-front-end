@@ -22,15 +22,15 @@ export default function ReportActionModel(props) {
 
   const onSubmit = async (data) => {
     const formData = {
-      blogId: modelID,
-      reportAction: data.reportcontent,
+      id: modelID,
+      filedContent: data.reportcontent,
     };
     setisLoading(true);
     try {
       const res = await handelReportBlog(formData);
       console.log(res);
-      if (res.data.status === "success") {
-        toast.success(res.data.message);
+      if (res.status === "success") {
+        toast.success(res.message);
         setisLoading(false);
       }
     } catch (error) {
@@ -69,7 +69,7 @@ export default function ReportActionModel(props) {
                       <SubmitBtn
                         btnText="Submit"
                         btnLoading={isLoading}
-                        disabled={!isValid}
+                        disabled={isValid}
                       />
                     </div>
                   </div>

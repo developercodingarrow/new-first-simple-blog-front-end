@@ -28,7 +28,9 @@ import { usePathname, useParams } from "next/navigation";
 import { UserDetailAction } from "../../admin_actions/adminUserApi";
 import useUserRoleColumns from "../../custome-hooks/useUserRoleColumns";
 
-export default function UserDetailUi() {
+export default function UserDetailUi(props) {
+  const { data } = props;
+  console.log("data---", data);
   const userRole = "super-admin";
   const params = useParams();
   const { slug } = params;
@@ -38,19 +40,6 @@ export default function UserDetailUi() {
   const [publishedBlogs, setpublishedBlogs] = useState([]);
   const [totalPublishedBlogs, settotalPublishedBlogs] = useState("");
   const [totalDrfatBlogs, settotalDrfatBlogs] = useState("");
-  const [userDetails, setUserDetails] = useState({
-    createdAt: "",
-    email: "",
-    facebook: "",
-    instagram: "",
-    name: "",
-    twitter: "",
-    userImg: {
-      url: "",
-      altText: "",
-    },
-    userName: "",
-  });
 
   const roleBasedColumns = useUserRoleColumns(userRole, blogtableColumns, {
     "super-admin": superAdminblogColumns,
@@ -60,51 +49,18 @@ export default function UserDetailUi() {
     alert("switch toogle");
   };
 
-  console.log(drfatBlogs);
-
-  const handelUserDetail = async () => {
-    try {
-      const res = await UserDetailAction(slug);
-      console.log(res);
-      if (res.data.status === "success") {
-        const blogs = res.data.result.blogs;
-        const draft = blogs.filter((blog) => blog.status === "draft");
-        const published = blogs.filter((blog) => blog.status === "published");
-        setdrfatBlogs(draft);
-        setpublishedBlogs(published);
-        settotalPublishedBlogs(published.length);
-        settotalDrfatBlogs(draft.length);
-        const {
-          createdAt,
-          email,
-          facebook,
-          instagram,
-          name,
-          twitter,
-          userImg,
-          userName,
-        } = res.data.result;
-        setUserDetails({
-          createdAt,
-          email,
-          facebook,
-          instagram,
-          name,
-          twitter,
-          userImg,
-          userName,
-        });
-      } else if (res.data.status === "Error") {
-        alert("error");
-      }
-    } catch (error) {
-      console.log("error---", error);
-    }
-  };
-
   useEffect(() => {
-    handelUserDetail();
-  }, [slug]);
+    if (data?.blogs) {
+      const draft = data.blogs.filter((blog) => blog.status === "draft");
+      const published = data.blogs.filter(
+        (blog) => blog.status === "published"
+      );
+      setdrfatBlogs(draft);
+      setpublishedBlogs(published);
+      settotalDrfatBlogs(draft.length);
+      settotalPublishedBlogs(published.length);
+    }
+  }, [data]);
 
   return (
     <div className={styles.main_container}>
@@ -114,13 +70,13 @@ export default function UserDetailUi() {
             <div className={styles.profile_box}>
               <div className={styles.profile_img_wrapper}>
                 <Image
-                  src={`/usersProfileImg/${userDetails.userImg.url} `}
+                  src={`/usersProfileImg/${data.userImg.url} `}
                   className={styles.img_style}
                   width={500}
                   height={500}
                 />
               </div>
-              <div className={styles.user_name}>{userDetails?.name}</div>
+              <div className={styles.user_name}>{data?.name}</div>
             </div>
           </div>
           <section className={styles.details_section}>
@@ -136,15 +92,13 @@ export default function UserDetailUi() {
                 <div className={styles.static_detail_text}>
                   <CiAt />
                 </div>
-                <div className={styles.dynimic_detail_text}>sandeep</div>
+                <div className={styles.dynimic_detail_text}>{data.name}</div>
               </div>
               <div className={styles.detail_row}>
                 <div className={styles.static_detail_text}>
                   <CiMail />
                 </div>
-                <div className={styles.dynimic_detail_text}>
-                  sanjaychauhan@gmail.com
-                </div>
+                <div className={styles.dynimic_detail_text}>{data.email}</div>
               </div>
               <div className={styles.detail_row}>
                 <div className={styles.static_detail_text}>
@@ -200,11 +154,14 @@ export default function UserDetailUi() {
             <div className={styles.stats_container}>
               <div className={`${styles.stats_box} ${styles.published}`}>
                 <span className={styles.stats_title}>Published </span>
-                <span className={styles.stats_value}>10</span>
+                <span className={styles.stats_value}>
+                  {" "}
+                  {totalPublishedBlogs}
+                </span>
               </div>
               <div className={`${styles.stats_box} ${styles.draft}`}>
                 <span className={styles.stats_title}>Draft </span>
-                <span className={styles.stats_value}>5</span>
+                <span className={styles.stats_value}> {totalDrfatBlogs}</span>
               </div>
             </div>
           </div>

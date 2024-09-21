@@ -1,4 +1,4 @@
-.comment_section {
+.coment_wrapper {
   padding: 20px;
   background-color: var(--th-body-secondey-bg-color);
   height: 100vh;
@@ -7,25 +7,25 @@
   border: var(--th-body-secondery-border-color);
 }
 
-.comment_section::-webkit-scrollbar {
+.coment_wrapper::-webkit-scrollbar {
   width: 8px;
 }
 
 /* Track of the scrollbar (background) */
-.comment_section::-webkit-scrollbar-track {
+.coment_wrapper::-webkit-scrollbar-track {
   background: #e0e0e0;
   border-radius: 10px;
 }
 
 /* Handle of the scrollbar (the draggable part) */
-.comment_section::-webkit-scrollbar-thumb {
+.coment_wrapper::-webkit-scrollbar-thumb {
   background-color: #888; /* Scrollbar color */
   border-radius: 10px;
   border: 2px solid #f9f9f9; /* Space around the handle */
 }
 
 /* Handle on hover */
-.comment_section::-webkit-scrollbar-thumb:hover {
+.coment_wrapper::-webkit-scrollbar-thumb:hover {
   background-color: var(--th-primary-color); /* Darker on hover */
 }
 
@@ -177,7 +177,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .comment_section {
+  .coment_wrapper {
     padding: 5px;
     width: 100%;
   }

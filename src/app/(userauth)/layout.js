@@ -5,6 +5,7 @@ import Footer from "@/src/components/server-components/footer/Footer";
 import NavBar from "@/src/components/server-components/Navbar/NavBar";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { getSession } from "../lib/authentication";
+import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
 
 export default async function layout({ children }) {
   const userDetails = await getSession();
@@ -12,7 +13,7 @@ export default async function layout({ children }) {
     <html lang="en">
       <body>
         <AppContextProvider>
-          <GoogleOAuthProvider clientId="575999030621-q9l875mbikilrm28q7sbj7ed3pf3kehq.apps.googleusercontent.com">
+          <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
             <div className={"navbar_wrapper"}>
               <NavBar userData={userDetails} />
             </div>

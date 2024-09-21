@@ -34,25 +34,25 @@ export default function UserAuthLayout(props) {
     try {
       setisBtnLoading(true);
       const res = await formHandel(data);
-      if (res.data.status === "success") {
-        if (res.data.apiFor === "register") {
-          setisBtnLoading(false);
-          console.log(res.data);
-          toast.success(res.data.message);
-          router.push(`/opt-verification/${res.data.UrlToken}`);
-        } else {
-          authenticate(res.data.user, res.data.token, () => {
-            router.push("/");
-          });
-        }
+      console.log("auth form---", res);
+
+      if (res.apiFor === "register") {
+        setisBtnLoading(false);
+        console.log("resgiter---", res);
+        toast.success(res.data.message);
+        router.push(`/opt-verification/${res.data.UrlToken}`);
+      } else if (res.apiFor === "Login") {
+        router.push("/");
+        console.log(res);
       }
 
-      if (res.data.status === "Fails") {
+      if (res.error) {
         setisBtnLoading(false);
-        toast.error(res.data.message);
+        toast.error(res.error);
       }
     } catch (error) {
       setisBtnLoading(false);
+      console.log("error---");
       console.log(error);
     }
   };

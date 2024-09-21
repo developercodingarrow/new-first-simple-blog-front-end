@@ -56,7 +56,7 @@ export default function ProfileElementWrapper() {
         </div>
         <div>
           <UserImagDetail
-            title="Profile Image 2"
+            title="Profile Image "
             apiData={authUser}
             openModal={handelOpenUserImgModel}
           />

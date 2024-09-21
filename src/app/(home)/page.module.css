@@ -12,6 +12,7 @@
   display: flex;
   padding: 50px 150px;
   column-gap: 5%;
+  min-height: 600px;
 }
 
 .content_side {

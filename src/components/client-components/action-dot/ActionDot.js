@@ -3,6 +3,8 @@ import React, { useContext, useState } from "react";
 import styles from "./css/actionDots.module.css";
 import { HiOutlineDotsVertical } from "../../ApplicationIcons";
 import ActionDropDown from "./ActionDropDown";
+import { AuthContext } from "@/src/app/_contextApi/authContext";
+import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
 export default function ActionDot(props) {
   const {
@@ -15,6 +17,8 @@ export default function ActionDot(props) {
   } = props;
 
   const [isOpen, setisOpen] = useState(false);
+  const { authUser } = useContext(AuthContext);
+  const { handelOpenAuthModel } = useContext(ModelsContext);
 
   const handelOpen = () => {
     setisOpen(true);
@@ -31,9 +35,16 @@ export default function ActionDot(props) {
   };
   return (
     <div className={styles.com_component}>
-      <div onClick={handelOpen} className={styles.action_dot_icon}>
-        <HiOutlineDotsVertical />
-      </div>
+      {authUser ? (
+        <div onClick={handelOpen} className={styles.action_dot_icon}>
+          <HiOutlineDotsVertical />
+        </div>
+      ) : (
+        <div onClick={handelOpenAuthModel} className={styles.action_dot_icon}>
+          <HiOutlineDotsVertical />
+        </div>
+      )}
+
       {isOpen && (
         <div className={styles.action_dropDown_wrapper} style={dropdownStyle}>
           <ActionDropDown

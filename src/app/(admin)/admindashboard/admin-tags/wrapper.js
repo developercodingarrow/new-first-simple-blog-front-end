@@ -1,12 +1,7 @@
 "use client";
 import React, { useEffect, useState, useContext } from "react";
 import styles from "../../pagesStyle.module.css";
-import {
-  allTagListAction,
-  deleteSingleTagAction,
-  tagverificationAction,
-  createTagAction,
-} from "@/src/app/_adminPanel/admin_actions/adminTagApi";
+import { allTagListAction } from "@/src/app/_adminPanel/admin_actions/adminTagApi";
 import {
   tagtableColumns,
   SuperAdminColum,
@@ -16,16 +11,25 @@ import DynimicTable from "@/src/app/_adminPanel/components/csr_components/table_
 import TagListFillterBar from "@/src/app/_adminPanel/components/csr_components/table_elements/tableFillter/tagListFillterBar";
 import useUserRoleColumns from "@/src/app/_adminPanel/custome-hooks/useUserRoleColumns";
 import TableFooter from "@/src/app/_adminPanel/components/csr_components/table_elements/table-footer/TableFooter";
+import { AuthContext } from "@/src/app/_contextApi/authContext";
+import {
+  tagverificationAction,
+  deleteSingleTagAction,
+  createTagAction,
+  tagListAction,
+} from "@/src/app/utils/adminActions/authTagActions";
 
 export default function AdminTagswrapper(props) {
-  const userRole = "super-admin";
   const { data } = props;
-  const [allTags, setallTags] = useState([]);
+  const { authUser } = useContext(AuthContext);
+  const userRole = authUser?.role;
+
+  const [allTags, setallTags] = useState(data);
   const { visibalRows, setvisibalRows } = useContext(FillterContext);
   const [isActionLoading, setIsActionLoading] = useState(false); // Separate loading for actions like delete or verification
 
   const roleBasedColumns = useUserRoleColumns(userRole, tagtableColumns, {
-    "super-admin": SuperAdminColum,
+    superAdmin: SuperAdminColum,
   });
 
   const handelDelete = async (data) => {
@@ -60,10 +64,10 @@ export default function AdminTagswrapper(props) {
 
   const handelGetData = async () => {
     try {
-      const res = await allTagListAction();
-      console.log("result---", res.data.result);
+      const res = await tagListAction();
+      console.log("result---", res.result);
 
-      setallTags(res.data.result);
+      setallTags(res.result);
     } catch (error) {
       console.log(error);
     }

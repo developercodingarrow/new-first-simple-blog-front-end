@@ -4,7 +4,11 @@ import styles from "./css/layoutsidebar.module.css";
 import SideBanner from "../../server-components/banners/SideBanner";
 import LinkTag from "../../server-components/LinkTag/LinkTag";
 import Link from "next/link";
-export default function LayoutSideBar() {
+import { featureTagListAction } from "@/src/app/utils/tagActions";
+
+export default function LayoutSideBar(props) {
+  const { featureTag } = props;
+  const [featureTags, setfeatureTags] = useState(featureTag);
   const [isSticky, setIsSticky] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +22,7 @@ export default function LayoutSideBar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <div
       className={`${styles.sidebar_container} ${isSticky ? styles.sticky : ""}`}
@@ -27,10 +32,8 @@ export default function LayoutSideBar() {
       </div>
 
       <div className={styles.link_tab_container}>
-        <div className={styles.linkTag_wrapper}>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((el, index) => {
-            return <LinkTag />;
-          })}
+        <div>
+          <LinkTag data={featureTags} />
         </div>
         <div className={styles.container_btn}>
           <Link href={"/"} className="small_text_wrapper">

@@ -5,9 +5,8 @@ import SubmitBtn from "../elements/buttons/SubmitBtn";
 import ClickBtn from "../elements/buttons/ClickBtn";
 import { useCustomApiForm } from "@/src/custome-hooks/useCutomeApiform";
 
-import { updateUserData } from "@/src/Actions/authAction";
-
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
+import { updateUserDetail } from "@/src/app/utils/userAuthaction";
 
 export default function ModelForm(props) {
   const { modelInput, apiData, actionID, modelActionHandler, setupdateData } =
@@ -34,9 +33,10 @@ export default function ModelForm(props) {
 
     try {
       const res = await modelActionHandler(obj);
-      if (res.data.status === "success") {
-        updateUserData(res.data.result);
-        setupdateData(res.data.result);
+      console.log(res);
+      if (res.status === "success") {
+        updateUserDetail(res.result);
+        setupdateData(res.result);
       }
     } catch (error) {
       console.log(error);
@@ -59,7 +59,6 @@ export default function ModelForm(props) {
             </div>
             <div>
               <SubmitBtn btnText="Save" btnLoading={false} disabled={isValid} />
-              {/* <button type="submit">sublit</button> */}
             </div>
           </div>
         </div>

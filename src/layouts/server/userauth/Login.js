@@ -2,7 +2,7 @@
 import React from "react";
 import UserAuthLayout from "../UserAuthLayout/UserAuthLayout";
 import { userLoginInputs } from "@/src/jsonData/authformData";
-import { loginAccount } from "@/src/Actions/userActions/userAuthAction";
+import { userLoginAction } from "@/src/app/utils/userAuthaction";
 
 export default function Login(props) {
   const { userData } = props;
@@ -14,7 +14,7 @@ export default function Login(props) {
         socialAuth="or sign in with"
         formBtn="Login"
         formType="LOGIN"
-        formHandel={loginAccount}
+        formHandel={userLoginAction}
         footerLink="user-registration"
         footerText="Sing Up"
         userAuthData={userData}

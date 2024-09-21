@@ -2,7 +2,6 @@ import React from "react";
 import "../globals.css";
 import AppContextProvider from "@/src/contextApi/AppcontextApi";
 import NavBar from "@/src/components/server-components/Navbar/NavBar";
-import UserPanelLayout from "@/src/layouts/server/userdashbord/UserPanelLayout";
 import ImgModelContextProvider from "@/src/contextApi/ImgModelContextApi";
 import TagContextProvider from "@/src/contextApi/TagContextApi";
 

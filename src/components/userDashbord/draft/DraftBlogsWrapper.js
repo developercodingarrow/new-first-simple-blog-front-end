@@ -1,6 +1,10 @@
 "use client";
 import React from "react";
-import { updateToPublsih, draftBlogs } from "@/src/app/utils/blogactions";
+import {
+  updateToPublsih,
+  draftBlogs,
+  deleteBlogApi,
+} from "@/src/app/utils/blogactions";
 import { useRouter } from "next/navigation";
 import UserDashBordCard from "../elements/card/UserDashBordCard";
 
@@ -8,17 +12,30 @@ export default function DraftBlogsWrapper(props) {
   const { data } = props;
   const router = useRouter();
 
-  const handleEdit = (_, slug) => {
-    console.log("Edit action triggered", slug);
+  const handleEdit = (id, slug) => {
+    router.push(`/new-blog/${id}`);
   };
 
   const handelUpdatePublish = async (actionId) => {
     try {
       const data = {
-        blogId: actionId,
+        id: actionId,
       };
       const res = await updateToPublsih(data);
       console.log("handel dreft---", res);
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDelete = async (actionId) => {
+    try {
+      const data = {
+        id: actionId,
+      };
+      const res = await deleteBlogApi(data);
+      console.log(res);
       router.refresh();
     } catch (error) {
       console.log(error);
@@ -28,18 +45,21 @@ export default function DraftBlogsWrapper(props) {
     { label: "Edit", handler: handleEdit },
     // { label: "Delete", handler: handleDelete },
     { label: "Publsih", handler: handelUpdatePublish },
+    { label: "Delete", handler: handleDelete },
   ];
   return (
     <div>
-      {data.map((data, index) => {
-        return (
+      {data && data.length >= 1 ? (
+        data?.map((item, index) => (
           <UserDashBordCard
             key={index}
             footerActions={editDeleteActions}
-            data={data}
+            data={item}
           />
-        );
-      })}
+        ))
+      ) : (
+        <p>No content available</p>
+      )}
     </div>
   );
 }

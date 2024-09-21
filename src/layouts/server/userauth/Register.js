@@ -2,7 +2,8 @@
 import React from "react";
 import UserAuthLayout from "../UserAuthLayout/UserAuthLayout";
 import { userRegistraionInputs } from "@/src/jsonData/authformData";
-import { userRegister } from "@/src/Actions/userActions/userAuthAction";
+// import { userRegister } from "@/src/Actions/userActions/userAuthAction";
+import { userRegisterAction } from "@/src/app/utils/userAuthaction";
 
 export default function Register() {
   return (
@@ -13,7 +14,7 @@ export default function Register() {
         socialAuth="or sign up with"
         formBtn="Register"
         formType="SINGUP"
-        formHandel={userRegister}
+        formHandel={userRegisterAction}
         footerLink="login"
         footerText="Sing in"
       />

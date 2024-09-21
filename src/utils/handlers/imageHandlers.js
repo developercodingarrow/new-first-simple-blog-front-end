@@ -1,3 +1,4 @@
+import { updateUserProfilePic } from "@/src/app/utils/useraction";
 import {
   genericSingleImageHandler,
   genericSingleImageWithOtherData,
@@ -7,7 +8,7 @@ import {
   UpdateBlogThumblin,
   createBlogWithImg,
 } from "@/src/Actions/blogActions/blogAction";
-import { UpdateUserProfilePic } from "@/src/Actions/userActions/userAction";
+// import { UpdateUserProfilePic } from "@/src/Actions/userActions/userAction";
 
 // Handel Update Blog Thumblin
 export const handelUploadThumblin =
@@ -18,4 +19,4 @@ export const handelImageWithAditionalData =
   genericSingleImageWithOtherData(createBlogWithImg);
 
 export const handeluplodUserPic =
-  genericImageUplodHandler(UpdateUserProfilePic);
+  genericImageUplodHandler(updateUserProfilePic);

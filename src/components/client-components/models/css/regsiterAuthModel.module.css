@@ -17,3 +17,42 @@
   border-radius: 10px;
   padding: 10px;
 }
+
+.Modelclose_bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.model_heading_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.model_body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.model_centerBox {
+  width: 60%;
+}
+.google_login_option {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.login_option {
+  border: 1px solid gray;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

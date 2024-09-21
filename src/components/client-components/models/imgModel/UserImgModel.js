@@ -7,12 +7,11 @@ import { IoCloseSharp } from "../../../ApplicationIcons";
 import Image from "next/image";
 import userImg from "../../../../../public/web-static-img/auther-image.jpg";
 import { handeluplodUserPic } from "@/src/utils/handlers/imageHandlers";
-
-import { updateUserData, isAuth } from "@/src/Actions/authAction";
 import TextClickBtn from "../../elements/buttons/TextClickBtn";
 import ClickBtn from "../../elements/buttons/ClickBtn";
 import { AuthContext } from "@/src/app/_contextApi/authContext";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
+import { updateUserDetail } from "@/src/app/utils/userAuthaction";
 
 export default function UserImgModel(props) {
   const { updateFor, setupdateData, filePath } = props;
@@ -38,10 +37,10 @@ export default function UserImgModel(props) {
     try {
       const res = await handeluplodUserPic(image, updateFor, imgModelId);
       console.log("imag mode--", res);
-      if (res.data.status === "success") {
+      if (res.status === "success") {
         console.log("result000--", res);
-        setupdateData(res.data.data);
-        updateUserData(res.data.data);
+        setupdateData(res.data);
+        updateUserDetail(res.data);
       }
     } catch (error) {
       console.log(error);

@@ -148,9 +148,15 @@ export const tagtableColumns = [
   { label: "Tag Name", key: "tagName", component: "blodText", icon: "" },
   { label: "Date", key: "updatedAt", component: "dateElement" },
   {
-    label: "Verification",
+    label: "Verification Status",
     key: "Verification",
     component: "boolean",
+    icon: "",
+  },
+  {
+    label: "Verification",
+    key: "Verification",
+    component: "booleanSwicth",
     icon: "",
   },
 ];
@@ -159,4 +165,20 @@ export const SuperAdminColum = [
   { label: "Delete", key: "_id", component: "deleteIcon", icon: "" },
 ];
 
-// booleanSwicth
+export const tagfaturetableColumns = [
+  { label: "S No", key: "_id", component: "number", icon: "" },
+  { label: "Tag Name", key: "tagName", component: "blodText", icon: "" },
+  { label: "Date", key: "updatedAt", component: "dateElement" },
+  {
+    label: "feature Status",
+    key: "featured",
+    component: "boolean",
+    icon: "",
+  },
+  {
+    label: "Featured",
+    key: "featured",
+    component: "booleanSwicth",
+    icon: "",
+  },
+];

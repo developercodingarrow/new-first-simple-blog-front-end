@@ -2,7 +2,8 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import { getSingleBlog } from "../_actions/blogapi";
 import { genericDataHandler } from "../_generichandler/generichandler";
-import { reportBlogAction } from "../_actions/blogapi";
+import { reportBlogAction } from "../utils/blogactions";
+
 export const BlogContext = createContext();
 
 export default function BlogContextProvider({ children }) {

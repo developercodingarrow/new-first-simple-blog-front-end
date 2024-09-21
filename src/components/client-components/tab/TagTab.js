@@ -7,6 +7,7 @@ import Link from "next/link";
 
 export default function TagTab(props) {
   const { tabData, redirectType } = props;
+  console.log("tab tags ------", tabData);
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
@@ -27,8 +28,8 @@ export default function TagTab(props) {
         return (
           <>
             {redirectType === "query" ? (
-              <Link href={`?tag=${el.hrfLink}`} className={styles.tab_warpper}>
-                {el.name}
+              <Link href={`?tag=${el.tagSlug}`} className={styles.tab_warpper}>
+                {el.tagName}
               </Link>
             ) : (
               <>

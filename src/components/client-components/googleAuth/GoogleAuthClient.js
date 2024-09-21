@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { GoogleLogin, useGoogleOneTapLogin } from "@react-oauth/google";
 import axios from "axios";
 import { authenticate } from "@/src/Actions/authAction";
+import { userGoogleLoginAction } from "@/src/app/utils/userAuthaction";
 
 export default function GoogleAuthClient(props) {
   const { userAuthData } = props;
@@ -23,22 +24,13 @@ export default function GoogleAuthClient(props) {
                 console.log("enter");
 
                 try {
-                  const res = await axios({
-                    method: "post",
-                    url: "http://localhost:8000/api/v1/first-simple-blog/auth/google-login",
-                    data: {
-                      token: credentialResponse.credential,
-                    },
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                  });
+                  const res = await userGoogleLoginAction(
+                    credentialResponse.credential
+                  );
+                  console.log("googleAuthClient", res);
 
-                  if (res.data.status === "success") {
-                    console.log(res.data.user, res.data.token);
-                    authenticate(res.data.user, res.data.token, () => {
-                      router.push("/");
-                    });
+                  if (res.status === "success") {
+                    console.log(res.user, res.token);
                   }
                 } catch (error) {
                   console.log(error);

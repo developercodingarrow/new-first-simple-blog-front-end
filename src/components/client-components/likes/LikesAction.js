@@ -5,15 +5,15 @@ import {
   IoMdHeart,
   IoMdHeartEmpty,
 } from "../../../components/ApplicationIcons";
-import {
-  likeAction,
-  unlikeAction,
-} from "@/src/Actions//blogActions/blogAction";
-import { AppContext } from "@/src/contextApi/AppcontextApi";
+import { likeAction } from "@/src/Actions//blogActions/blogAction";
+import { AuthContext } from "@/src/app/_contextApi/authContext";
+import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
+import { unlikeAction, likeActions } from "@/src/app/utils/blogactions";
 
 export default function LikesAction(props) {
-  const { isLogined, handelOpenIsunAuthModel } = useContext(AppContext);
-  const userId = isLogined?._id;
+  const { authUser } = useContext(AuthContext);
+  const { handelOpenAuthModel } = useContext(ModelsContext);
+  const userId = authUser?._id;
   const { postLikes = [], elementID } = props;
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(postLikes.length); // Initialize with the length of likes array
@@ -26,7 +26,8 @@ export default function LikesAction(props) {
 
   const handleLike = async () => {
     try {
-      const res = await likeAction({ blogId: elementID });
+      const res = await likeActions({ blogId: elementID });
+
       setLikeCount((prevCount) => prevCount + 1);
       setLiked(true);
     } catch (error) {
@@ -46,7 +47,7 @@ export default function LikesAction(props) {
 
   return (
     <div>
-      {isLogined ? (
+      {authUser ? (
         <div className={styles.conatiner}>
           <div
             className={styles.like_iconBox}
@@ -62,10 +63,7 @@ export default function LikesAction(props) {
         </div>
       ) : (
         <div className={styles.conatiner}>
-          <div
-            className={styles.like_iconBox}
-            onClick={handelOpenIsunAuthModel}
-          >
+          <div className={styles.like_iconBox} onClick={handelOpenAuthModel}>
             <IoMdHeartEmpty />
           </div>
           <div className={styles.likeCount_Wrapper}>{likeCount}</div>

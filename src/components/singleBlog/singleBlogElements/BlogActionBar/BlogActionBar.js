@@ -2,15 +2,15 @@
 import React, { useContext, useState, useEffect } from "react";
 import styles from "./css/blogactionbar.module.css";
 import Image from "next/image";
-import userImg from "../../../../public/web-static-img/auther-image.jpg";
 import {
   FaRegComment,
   CiShare1,
   HiOutlineDotsVertical,
-} from "../../../components/ApplicationIcons";
-import LikesAction from "@/src/components/client-components/likes/LikesAction";
+} from "../../../ApplicationIcons";
+
 import { AppContext } from "@/src/contextApi/AppcontextApi";
 import ProfileElement from "@/src/_components/ssrComponents/profile-element/ProfileElement";
+import LikesAction from "@/src/components/client-components/likes/LikesAction";
 import ActionDotWrapper from "@/src/components/server-components/cards/ActionDotWrapper";
 
 export default function BlogActionBar(props) {
@@ -23,7 +23,7 @@ export default function BlogActionBar(props) {
     handelOpenCommentModel,
     handelCloseCommentModel,
   } = useContext(AppContext);
-  // user.userImg.url  altText
+
   return (
     <div className={styles.flex_container}>
       <ProfileElement
