@@ -152,3 +152,27 @@ export async function updateUserDetail(data) {
     httpOnly: false,
   });
 }
+
+export async function LogOutAction() {
+  const url = `${API_BASE_URL}/user-auth/logout`;
+  const method = "post";
+
+  try {
+    const res = await axios({
+      method,
+      url,
+      withCredentials: true, // Send cookies with request
+    });
+
+    // Remove the cookies by setting them with a past expiration date
+    const cookieStore = cookies();
+    cookieStore.set("jwt", "", { expires: new Date(0) });
+    cookieStore.set("user", "", { expires: new Date(0) });
+    cookieStore.set("g_state", "", { expires: new Date(0) });
+
+    return { status: "success", data: res.data };
+  } catch (error) {
+    console.error("Error:", error.message);
+    return { error: error.message };
+  }
+}

@@ -2,7 +2,7 @@
 
 /* Card container */
 .card {
-  background-color: var(--card-background);
+  background-color: var(--th-white);
   border: 1px solid var(--card-border);
   border-radius: 8px;
   box-shadow: var(--card-shadow);
@@ -15,9 +15,10 @@
 /* Top Bar */
 .cardTopBar {
   display: flex;
+  border-radius: 8px;
   justify-content: space-between;
   padding: var(--th-card-padding);
-  background-color: var(--footer-background);
+  background-color: var(--th-body-bg);
   border-bottom: 1px solid var(--card-border);
 }
 
@@ -68,17 +69,18 @@
 /* Footer */
 .cardFooter {
   display: flex;
+  border-radius: 8px;
   justify-content: space-between;
   align-items: center;
   padding: 10px 15px;
-  background-color: var(--footer-background);
+  background-color: var(--th-body-bg);
   border-top: 1px solid var(--card-border);
 }
 
 .likeSection {
   display: flex;
   align-items: center;
-  color: var(--footer-text);
+  color: var(--th-dark-blue-gray);
 }
 
 .heartIcon {
@@ -92,7 +94,7 @@
 
 .arrowSection .arrowIcon {
   font-size: 18px;
-  color: var(--footer-text);
+  color: var(--th-dark-blue-gray);
 }
 
 /* Mobile Styles */
@@ -115,7 +117,7 @@
 
   .cardImage {
     width: 100%;
-    height: 200px;
+    height: 150px;
   }
 
   .metaDescription {

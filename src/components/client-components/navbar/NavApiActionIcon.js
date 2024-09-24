@@ -1,9 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
-import styles from "./css/navapiAction.module.css";
 import { FaPlus } from "../../ApplicationIcons";
-import { createBlogAction } from "@/src/Actions/blogActions/blogAction";
+import { createBlogAction } from "@/src/app/utils/blogactions";
 
 export default function NavApiActionIcon() {
   const router = useRouter();
@@ -11,8 +10,8 @@ export default function NavApiActionIcon() {
     try {
       const res = await createBlogAction();
       console.log(res);
-      if (res.data.status === "success") {
-        const pathId = res.data.result.id;
+      if (res.status === "success") {
+        const pathId = res.result.id;
         router.push(`/new-blog/${pathId}`);
       }
     } catch (error) {

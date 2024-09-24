@@ -1,9 +1,8 @@
 "use client";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styles from "./css/regsiterAuthModel.module.css";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 import GoogleAuthClient from "../googleAuth/GoogleAuthClient";
-import { AuthContext } from "@/src/app/_contextApi/authContext";
 import Link from "next/link";
 
 export default function ReagisterAuthModel() {

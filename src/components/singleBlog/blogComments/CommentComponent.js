@@ -18,12 +18,15 @@ import {
   deleteCommentAction,
   deleteCommentReplyAction,
 } from "@/src/app/utils/commentactions";
+import { AuthContext } from "@/src/app/_contextApi/authContext";
+import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
 export default function CommentComponent(props) {
   const { blogComments, blogId, blogBy } = props;
   const router = useRouter();
-  const { isLogined, handelOpenIsunAuthModel } = useContext(AppContext);
-  const userID = isLogined?._id;
+  const { authUser } = useContext(AuthContext);
+  const { handelOpenAuthModel } = useContext(ModelsContext);
+  const userId = authUser?._id;
 
   const {
     register,
@@ -137,10 +140,10 @@ export default function CommentComponent(props) {
   return (
     <div className={styles.comment_section}>
       <div className={styles.comment_heading}>
-        <h3>Comments...</h3>
+        <h3>Comments</h3>
       </div>
       <div className={styles.comment_form_container}>
-        {isLogined ? (
+        {userId ? (
           <div className={styles.comment_form_wrapper}>
             <form
               onSubmit={handleSubmit(handelCreateComment)}
@@ -165,10 +168,7 @@ export default function CommentComponent(props) {
             </form>
           </div>
         ) : (
-          <div
-            className={styles.not_logined_Bar}
-            onClick={handelOpenIsunAuthModel}
-          >
+          <div className={styles.not_logined_Bar} onClick={handelOpenAuthModel}>
             <div className="small_text">Tell us what you think... </div>
           </div>
         )}
@@ -198,7 +198,7 @@ export default function CommentComponent(props) {
 
                 <p className={styles.comment_text}>{comment.comment}</p>
 
-                {userID === comment?.commentBy?._id && (
+                {userId === comment?.commentBy?._id && (
                   <div className={styles.delete_icon_wrapper}>
                     <MdDeleteForever
                       onClick={() => deleteComment({ commentId: comment.id })}

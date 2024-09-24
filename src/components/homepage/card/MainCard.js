@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./css/maincard.module.css";
-import autherImg from "../../../../public/web-static-img/auther-image.jpg";
 import cardImg from "../../../../public/web-static-img/blog sample image.png";
-import { HiOutlineDotsVertical } from "../../ApplicationIcons";
 import Image from "next/image";
 import Link from "next/link";
 import ProfileElement from "@/src/_components/ssrComponents/profile-element/ProfileElement";
@@ -11,6 +9,7 @@ import LikeActionWrapper from "../../server-components/cards/LikeActionWrapper";
 
 export default function MainCard(props) {
   const { data } = props;
+  console.log("card--", data.blogThumblin);
   return (
     <div className={styles.card}>
       <div className={styles.cardTopBar}>
@@ -30,15 +29,28 @@ export default function MainCard(props) {
           <h2>{data.blogTitle} </h2>
         </div>
         <div className={styles.content_wrapper}>
-          <div className={styles.cardImage}>
-            <Image
-              src={cardImg}
-              alt="Square Image"
-              width={500}
-              height={500}
-              className={`img_style`}
-            />
-          </div>
+          {data.blogThumblin.url ? (
+            <div className={styles.cardImage}>
+              <Image
+                src={`/blogthumblin/${data.blogThumblin.url}`}
+                alt={data.blogThumblin.altText}
+                width={500}
+                height={500}
+                className={`img_style`}
+              />
+            </div>
+          ) : (
+            <div className={styles.cardImage}>
+              <Image
+                src={cardImg}
+                alt="Square Image"
+                width={500}
+                height={500}
+                className={`img_style`}
+              />
+            </div>
+          )}
+
           <div className={`${styles.metaDescription} `}>
             <h3 className="lh">{data.metaDescription}</h3>
           </div>

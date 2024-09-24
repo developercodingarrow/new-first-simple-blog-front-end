@@ -1,20 +1,19 @@
 "use client";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import styles from "./bloglistpage.module.css";
 import DynimicTable from "@/src/app/_adminPanel/components/csr_components/table_elements/DynimicTable";
 import {
   blogtableColumns,
   superAdminblogColumns,
 } from "@/src/app/_adminPanel/jsonData/tableData";
-
 import BlogsListFillterBar from "@/src/app/_adminPanel/components/csr_components/table_elements/tableFillter/blogsListFillterBar";
 import { FillterContext } from "@/src/app/_adminPanel/context_api/FillterContextApi";
-import { allBlogsListAction } from "@/src/app/_adminPanel/admin_actions/adminBlogApi";
 import useUserRoleColumns from "@/src/app/_adminPanel/custome-hooks/useUserRoleColumns";
 import TableFooter from "@/src/app/_adminPanel/components/csr_components/table_elements/table-footer/TableFooter";
 import useTableFillters from "@/src/app/_adminPanel/custome-hooks/useTableFillters";
 import { AuthContext } from "@/src/app/_contextApi/authContext";
 import { featuredBlogAction } from "@/src/app/utils/adminActions/authBlogsActions";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Blogswrapper(props) {
   const { data } = props;
@@ -34,6 +33,9 @@ export default function Blogswrapper(props) {
       };
       const res = await featuredBlogAction(obj);
       console.log(res);
+      if (res.status === "success") {
+        toast.success(res.message);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -41,6 +43,7 @@ export default function Blogswrapper(props) {
 
   return (
     <div className={styles.page_container}>
+      <Toaster />
       <div className={styles.fillter_bar}>
         <BlogsListFillterBar data={allBlogs} />
       </div>

@@ -1,5 +1,5 @@
+import Register from "@/src/components/userAuth/Register";
 import React from "react";
-import Register from "@/src/layouts/server/userauth/Register";
 
 export default function UserRegistrationPage() {
   return (

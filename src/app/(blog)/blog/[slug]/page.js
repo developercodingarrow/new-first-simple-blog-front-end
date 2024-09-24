@@ -1,4 +1,3 @@
-import { singleBlogs } from "@/src/Actions/blogActions/blogAction";
 import React, { Suspense } from "react";
 import { NextSeo } from "next-seo";
 import BlogSeo from "@/src/components/SEO/BlogSeo";

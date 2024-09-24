@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import styles from "./css/inputmodel.module.css";
 import SubmitBtn from "../elements/buttons/SubmitBtn";
 import ClickBtn from "../elements/buttons/ClickBtn";

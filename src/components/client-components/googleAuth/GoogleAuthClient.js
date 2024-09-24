@@ -3,8 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { GoogleLogin, useGoogleOneTapLogin } from "@react-oauth/google";
-import axios from "axios";
-import { authenticate } from "@/src/Actions/authAction";
 import { userGoogleLoginAction } from "@/src/app/utils/userAuthaction";
 
 export default function GoogleAuthClient(props) {

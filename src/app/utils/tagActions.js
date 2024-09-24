@@ -10,7 +10,7 @@ export async function featureTagListAction() {
   const url = `http://localhost:8000/api/v1/first-simple-blog/private/tag/featured-tags`;
   try {
     const res = await performGetAPIAction(url, authToken);
-    return res.data.tags;
+    return res.data.data;
   } catch (error) {
     console.error("Error fetching draft blogs:", error.message);
     return error;
@@ -23,7 +23,7 @@ export async function getTagsWithRevalidation() {
     const res = await fetch(
       "http://localhost:8000/api/v1/first-simple-blog/private/tag/verified-tags",
       {
-        next: { revalidate: 3600 },
+        // next: { revalidate: 3600 },
       }
     );
 
@@ -32,7 +32,8 @@ export async function getTagsWithRevalidation() {
     }
 
     const data = await res.json();
-    return data.data.tags;
+    console.log("verified tags----------", data.data);
+    return data.data;
   } catch (error) {
     console.error("Error fetching tags:", error.message);
     return null;

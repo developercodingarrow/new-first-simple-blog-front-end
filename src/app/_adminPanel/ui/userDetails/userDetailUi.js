@@ -25,7 +25,7 @@ import {
 } from "../../jsonData/tableData";
 import DynimicTable from "../../components/csr_components/table_elements/DynimicTable";
 import { usePathname, useParams } from "next/navigation";
-import { UserDetailAction } from "../../admin_actions/adminUserApi";
+// import { UserDetailAction } from "../../admin_actions/adminUserApi";
 import useUserRoleColumns from "../../custome-hooks/useUserRoleColumns";
 
 export default function UserDetailUi(props) {

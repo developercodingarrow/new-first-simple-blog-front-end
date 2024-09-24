@@ -1,24 +1,34 @@
-"use client";
-import React, { useContext, useEffect } from "react";
-import { usePathname, useParams } from "next/navigation";
+import React, { Suspense } from "react";
+import { getSingleAuthBlog } from "@/src/app/utils/blogapi";
+import EditBlogUI from "@/src/components/editBlog/EditBlogUi";
+import Loading from "./loading";
 
-import EditBlogUI from "@/src/layouts/clients/user-protected/EditBlogUI";
-import { BlogContext } from "@/src/app/_contextApi/BlogContextApi";
-
-export default function page() {
-  const { handelAllBlogs, singleBlog } = useContext(BlogContext);
-  const params = useParams();
-  const { slug } = params;
-
-  useEffect(() => {
-    if (slug) {
-      handelAllBlogs(slug);
+async function getData(slug) {
+  try {
+    const res = await getSingleAuthBlog(slug);
+    // await new Promise((resolve) => setTimeout(resolve, 100000));
+    console.log("page api---", res);
+    if (!res.result) {
+      throw new Error("Data not found");
     }
-  }, [slug]);
+
+    return await res.result;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    // throw new Error(`Failed to fetch data: ${error}`);
+  }
+}
+
+export default async function page(pathname) {
+  const slug = pathname?.params?.slug;
+
+  const initialData = await getData(slug);
 
   return (
     <div>
-      <EditBlogUI apiData={singleBlog} slug={slug} />
+      <Suspense fallback={<Loading />}>
+        <EditBlogUI apiData={initialData} slug={slug} />
+      </Suspense>
     </div>
   );
 }

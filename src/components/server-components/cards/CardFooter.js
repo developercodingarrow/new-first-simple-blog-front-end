@@ -1,18 +1,15 @@
 "use client";
 import React, { useContext } from "react";
 import styles from "./css/cardFooter.module.css";
-import {
-  HiOutlineDotsVertical,
-  IoArrowForwardCircleOutline,
-} from "../../ApplicationIcons";
+import { IoArrowForwardCircleOutline } from "../../ApplicationIcons";
 import ActionDot from "../../client-components/action-dot/ActionDot";
 import Link from "next/link";
 import LikesAction from "../../client-components/likes/LikesAction";
-import { AppContext } from "@/src/contextApi/AppcontextApi";
+import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
 export default function CardFooter(props) {
   const { pageTitleUrl, postLikes, elementID } = props;
-  const { handelOpenReportModel } = useContext(AppContext);
+  const { handelOpenReportModel } = useContext(ModelsContext);
 
   const handelOpenModel = async (actionId) => {
     handelOpenReportModel(actionId);

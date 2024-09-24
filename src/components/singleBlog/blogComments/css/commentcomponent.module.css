@@ -41,10 +41,17 @@
   cursor: pointer;
 }
 
+.comment_form_container {
+}
+
+.comment_form_wrapper {
+}
+
 .comment_form,
 .reply_form {
   display: flex;
   margin-bottom: 20px;
+  align-items: center;
 }
 
 .comment_input,
@@ -76,7 +83,7 @@
 
 .reply_button {
   border: none;
-  color: #0070f3;
+  color: var(--th-primary-color);
   cursor: pointer;
   margin-bottom: 5px;
 }

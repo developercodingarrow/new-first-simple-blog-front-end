@@ -4,7 +4,6 @@ import styles from "./css/profileElementWrapper.module.css";
 import InputModel from "@/src/components/client-components/models/InputModel";
 import UserImgModel from "@/src/components/client-components/models/imgModel/UserImgModel";
 import { AuthContext } from "@/src/app/_contextApi/authContext";
-import { UserContext } from "@/src/app/_contextApi/UserContextApi";
 import {
   userNameinput,
   nameinput,

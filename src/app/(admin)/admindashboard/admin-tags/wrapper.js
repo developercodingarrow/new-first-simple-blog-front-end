@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState, useContext } from "react";
 import styles from "../../pagesStyle.module.css";
-import { allTagListAction } from "@/src/app/_adminPanel/admin_actions/adminTagApi";
+
 import {
   tagtableColumns,
   SuperAdminColum,
@@ -18,6 +18,7 @@ import {
   createTagAction,
   tagListAction,
 } from "@/src/app/utils/adminActions/authTagActions";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function AdminTagswrapper(props) {
   const { data } = props;
@@ -39,8 +40,10 @@ export default function AdminTagswrapper(props) {
       };
       setIsActionLoading(true); // Set action-specific loading state
       const res = await deleteSingleTagAction(obj);
-      setIsActionLoading(false); // Set action-specific loading state
-      console.log(res);
+      if (res.status === "success") {
+        setIsActionLoading(false); // Set action-specific loading state
+        router.refresh();
+      }
     } catch (error) {
       setIsActionLoading(false); // Set action-specific loading state
       console.log(error);
@@ -54,8 +57,11 @@ export default function AdminTagswrapper(props) {
       };
       setIsActionLoading(true); // Set action-specific loading state
       const res = await tagverificationAction(obj);
-      setIsActionLoading(false); // Set action-specific loading state
-      console.log("tag verification", res);
+      if (res.status === "success") {
+        toast.success(res.message);
+        setIsActionLoading(false); // Set action-specific loading state
+        router.refresh();
+      }
     } catch (error) {
       setIsActionLoading(false); // Set action-specific loading state
       console.log(error);
@@ -78,6 +84,7 @@ export default function AdminTagswrapper(props) {
   }, [isActionLoading]);
   return (
     <div className={styles.page_container}>
+      <Toaster />
       <div className={styles.fillter_bar}>
         {" "}
         <TagListFillterBar

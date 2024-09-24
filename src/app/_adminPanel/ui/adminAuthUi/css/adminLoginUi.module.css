@@ -38,3 +38,10 @@
 .form_input_wrapper {
   margin-bottom: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+  .inner_container {
+    width: 100%;
+    padding: 20px;
+  }
+}

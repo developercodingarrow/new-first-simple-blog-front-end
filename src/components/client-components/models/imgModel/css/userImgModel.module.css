@@ -70,3 +70,37 @@
   justify-content: flex-end;
   padding: 5px 10px;
 }
+
+@media only screen and (max-width: 600px) {
+  .inner_container {
+    padding: 10px;
+  }
+  .model_container {
+    width: 100%;
+  }
+
+  .image_uplaod_section {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    column-gap: 20px;
+    align-items: center;
+    column-gap: 20px;
+    row-gap: 20px;
+  }
+
+  .img_wrapper {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+
+  .info_content {
+    font-size: var(--th-font-small-size);
+  }
+
+  .btns_wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

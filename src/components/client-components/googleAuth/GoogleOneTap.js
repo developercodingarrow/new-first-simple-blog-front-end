@@ -3,8 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { GoogleLogin, useGoogleOneTapLogin } from "@react-oauth/google";
-import { authenticate } from "@/src/Actions/authAction";
-import axios from "axios";
 
 export default function GoogleOneTap() {
   const router = useRouter();
@@ -16,23 +14,14 @@ export default function GoogleOneTap() {
         console.log("enter");
 
         try {
-          const res = await axios({
-            method: "post",
-            url: "http://localhost:8000/api/v1/first-simple-blog/auth/google-login",
-            data: {
-              token: credentialResponse.credential,
-            },
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
+          const res = await userGoogleLoginAction(
+            credentialResponse.credential
+          );
 
           console.log(res);
 
-          if (res.data.status === "success") {
-            authenticate(res.data.user, res.data.token, () => {
-              router.refresh();
-            });
+          if (res.status === "success") {
+            console.log(res.user, res.token);
           }
         } catch (error) {
           console.log(error);

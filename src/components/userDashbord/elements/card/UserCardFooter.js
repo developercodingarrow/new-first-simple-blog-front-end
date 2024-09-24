@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./css/usercardfooter.module.css";
-import { HiOutlineDotsVertical } from "./css/usercardfooter.module.css";
 import FooterActionWrapper from "./FooterActionWrapper";
 
 export default function UserCardFooter(props) {

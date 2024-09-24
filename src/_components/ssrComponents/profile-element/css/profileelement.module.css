@@ -11,6 +11,13 @@
   margin-right: 10px;
 }
 
-.details_wrapper{
-    
+.details_wrapper {
+}
+
+@media (max-width: 768px) {
+  .circle_img_wrapper {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
 }

@@ -55,9 +55,20 @@
 .model_btn_wrapper {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .btn_wrapper {
   display: flex;
+  align-items: center;
   column-gap: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .inner_container {
+    padding: 10px;
+  }
+  .model_container {
+    width: 100%;
+  }
 }

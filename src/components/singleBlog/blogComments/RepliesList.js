@@ -5,9 +5,12 @@ import styles from "./css/commentcomponent.module.css";
 import userImg from "../../../../public/web-static-img/auther-image.jpg";
 import { MdDeleteForever } from "../../ApplicationIcons";
 import { AppContext } from "@/src/contextApi/AppcontextApi";
+import { AuthContext } from "@/src/app/_contextApi/authContext";
 export default function RepliesList(props) {
   const { isLogined } = useContext(AppContext);
-  const userID = isLogined?._id;
+  const { authUser } = useContext(AuthContext);
+
+  const userId = authUser?._id;
   const { replies, comentID, handelDelete } = props;
   console.log(replies);
 
@@ -31,7 +34,7 @@ export default function RepliesList(props) {
               </h6>
               <p className={styles.comment_text}>{reply.comment}</p>
 
-              {userID === reply?.replyBy?._id && (
+              {userId === reply?.replyBy?._id && (
                 <div className={styles.delete_icon_wrapper}>
                   <MdDeleteForever
                     onClick={() => handelDelete(comentID, reply._id)}

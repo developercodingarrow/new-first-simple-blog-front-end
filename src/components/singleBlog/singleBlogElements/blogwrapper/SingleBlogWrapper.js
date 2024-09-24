@@ -1,10 +1,8 @@
 import React from "react";
 import styles from "./css/singleBlog.module.css";
 import Image from "next/image";
-
 import BlogActionBar from "../BlogActionBar/BlogActionBar";
 import CommentComponent from "../../blogComments/CommentComponent";
-import ReagisterAuthModel from "@/src/components/client-components/models/ReagisterAuthModel";
 import CommentModel from "@/src/components/client-components/models/CommentModel";
 
 export default function SingleBlogWrapper(props) {
@@ -28,15 +26,17 @@ export default function SingleBlogWrapper(props) {
             </div>
           </div>
 
-          <div className={styles.ssr_img_wrapper}>
-            <Image
-              src={`/blogthumblin/${data.blogThumblin.url}`}
-              className={styles.img_style}
-              alt={data.blogThumblin.altText}
-              width={500}
-              height={500}
-            />
-          </div>
+          {data.blogThumblin.url && (
+            <div className={styles.ssr_img_wrapper}>
+              <Image
+                src={`/blogthumblin/${data.blogThumblin.url}`}
+                className={styles.img_style}
+                alt={data.blogThumblin.altText}
+                width={900}
+                height={900}
+              />
+            </div>
+          )}
 
           <div className={styles.ssr_content_wrapper}>
             <p

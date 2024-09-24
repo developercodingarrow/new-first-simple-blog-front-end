@@ -1,13 +1,8 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import styles from "./css/inputmodel.module.css";
-import { AppContext } from "@/src/contextApi/AppcontextApi";
 import { IoCloseSharp } from "../../ApplicationIcons";
-import SubmitBtn from "../elements/buttons/SubmitBtn";
-import ClickBtn from "../elements/buttons/ClickBtn";
 import ModelForm from "./ModelForm";
-import { UserContext } from "@/src/app/_contextApi/UserContextApi";
-import { AuthContext } from "@/src/app/_contextApi/authContext";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 export default function InputModel(props) {
   const {

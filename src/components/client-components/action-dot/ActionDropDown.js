@@ -1,7 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./css/actionDropDown.module.css";
-import { GoBlocked, FaPlus } from "../../ApplicationIcons";
-import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
 export default function ActionDropDown(props) {
   const { actionList = [], actionId, slug, closeHandel } = props;

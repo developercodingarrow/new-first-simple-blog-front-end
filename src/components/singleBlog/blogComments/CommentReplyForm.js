@@ -17,14 +17,12 @@ export default function CommentReplyForm({ commentId, onReplyAdded }) {
   const onSubmit = async (data) => {
     try {
       const res = await createReplyAction(data);
-      console.log(res);
+      console.log("reply foem--", res);
 
       if (res.status === "Success") {
-        // setnewReply(data.comment);
-
         const newTempReply = {
-          comment: res.comment,
-          replyBy: { name: "Your Name" }, // Replace with actual user's name
+          comment: res.commentToUpdate.comment,
+          replyBy: { name: res.commentToUpdate.commentBy.name }, // Replace with actual user's name
           createdAt: new Date().toISOString(), // Current timestamp
         };
         onReplyAdded(data.commentId, newTempReply);

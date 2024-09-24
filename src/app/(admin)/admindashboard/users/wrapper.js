@@ -8,7 +8,6 @@ import {
 } from "@/src/app/_adminPanel/jsonData/tableData";
 import TableFillterBar from "@/src/app/_adminPanel/components/csr_components/table_elements/tableFillter/tableFillterBar";
 import { FillterContext } from "@/src/app/_adminPanel/context_api/FillterContextApi";
-import { allUserListAction } from "@/src/app/_adminPanel/admin_actions/adminUserApi";
 import useUserRoleColumns from "@/src/app/_adminPanel/custome-hooks/useUserRoleColumns";
 import TableFooter from "@/src/app/_adminPanel/components/csr_components/table_elements/table-footer/TableFooter";
 import { AuthContext } from "@/src/app/_contextApi/authContext";

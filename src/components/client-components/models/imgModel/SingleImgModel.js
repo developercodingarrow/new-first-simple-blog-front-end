@@ -1,5 +1,6 @@
 "use client";
 import React, { useContext, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import styles from "./css/singleImgmodel.module.css";
 import {
   IoCloudUpload,
@@ -15,7 +16,7 @@ import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
 export default function SingleImgModel(props) {
   const { updateHandler, id } = props;
-  const { singleImgModel, setsingleImgModel, handelCloseModel } =
+  const { singleImgModel, setsingleImgModel, handelCloseModel, imageName } =
     useContext(ModelsContext);
 
   const {
@@ -31,8 +32,10 @@ export default function SingleImgModel(props) {
   const handelSubmitImg = async () => {
     try {
       const res = await updateHandler(image, imgData, "blogThumblin", id);
-
       console.log("model response----", res);
+      if (res.status === "success") {
+        toast.success(res.message);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -46,10 +49,14 @@ export default function SingleImgModel(props) {
     <>
       {singleImgModel && (
         <div className={styles.container}>
+          <Toaster />
           <div className={styles.inner_container}>
             <div className={styles.container_header}>
               <h3>Upload Blog Thumblin</h3>
-              <div onClick={handelModelClose}>
+              <div
+                onClick={handelModelClose}
+                className={styles.close_icon_warpper}
+              >
                 <IoCloseCircleSharp />
               </div>
             </div>
@@ -61,17 +68,14 @@ export default function SingleImgModel(props) {
                       <Image
                         src={previewImage}
                         alt="imge"
-                        width={500}
-                        height={500}
+                        width={900}
+                        height={900}
                         className={styles.img_style}
                       />
                     </div>
                     <div className={styles.prev_footer}>
-                      <div className={styles.img_name_wrapper}>
-                        <h3>blog image thumnlin</h3>
-                      </div>
+                      <div className={styles.img_name_wrapper}>{imageName}</div>
                       <div className={styles.img_info_action}>
-                        <div className="small_text_wrapper">356kb</div>
                         <div
                           className={styles.prev_remov_icon}
                           onClick={removeImg}
@@ -114,6 +118,7 @@ export default function SingleImgModel(props) {
                         className={styles.input_style}
                         name="title"
                         onChange={handelChange}
+                        placeholder="Enter Image Title"
                       />
                     </div>
                   </div>
@@ -128,6 +133,7 @@ export default function SingleImgModel(props) {
                         className={styles.input_style}
                         name="altText"
                         onChange={handelChange}
+                        placeholder="Enter Alt Text"
                       />
                     </div>
                   </div>
@@ -142,6 +148,7 @@ export default function SingleImgModel(props) {
                         className={styles.input_style}
                         name="caption"
                         onChange={handelChange}
+                        placeholder="Enter Caption"
                       />
                     </div>
                   </div>
@@ -157,6 +164,7 @@ export default function SingleImgModel(props) {
                         rows={3}
                         name="description"
                         onChange={handelChange}
+                        placeholder="Enter Image Descreption"
                       />
                     </div>
                   </div>

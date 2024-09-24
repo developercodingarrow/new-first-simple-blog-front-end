@@ -1,15 +1,12 @@
 "use client";
 import React, { useContext, useState, useRef } from "react";
-import { AppContext } from "@/src/contextApi/AppcontextApi";
 import styles from "./css/userImgModel.module.css";
 import useImageUpload from "@/src/custome-hooks/useImageUpload";
 import { IoCloseSharp } from "../../../ApplicationIcons";
 import Image from "next/image";
-import userImg from "../../../../../public/web-static-img/auther-image.jpg";
 import { handeluplodUserPic } from "@/src/utils/handlers/imageHandlers";
 import TextClickBtn from "../../elements/buttons/TextClickBtn";
 import ClickBtn from "../../elements/buttons/ClickBtn";
-import { AuthContext } from "@/src/app/_contextApi/authContext";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 import { updateUserDetail } from "@/src/app/utils/userAuthaction";
 
@@ -64,7 +61,7 @@ export default function UserImgModel(props) {
           </div>
           <div className={styles.model_body}>
             <section className={styles.image_uplaod_section}>
-              <div>
+              <div className={styles.img_column}>
                 <div className={styles.img_wrapper}>
                   {previewImage ? (
                     <Image
@@ -87,10 +84,10 @@ export default function UserImgModel(props) {
               </div>
               <div>
                 <div className={styles.upload_info_wrapper}>
-                  <p>
+                  <div className={styles.info_content}>
                     Recommended: Square JPG, PNG, or GIF, at least 1,000 pixels
                     per side.
-                  </p>
+                  </div>
                 </div>
                 <div className={styles.btns_wrapper}>
                   <input

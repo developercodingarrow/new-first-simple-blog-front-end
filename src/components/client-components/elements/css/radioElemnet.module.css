@@ -6,7 +6,7 @@
 .radio_title {
   font-weight: 400;
   margin-bottom: 10px;
-  font-size: 16px;
+  font-size: var(--th-font-medium-size);
   letter-spacing: 0.5px;
   font-family: Arial, sans-serif;
 }
@@ -52,4 +52,33 @@
 .radio_btn_textGap {
   display: flex;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .radio_title {
+    font-weight: 400;
+    margin-bottom: 10px;
+    font-size: var(--th-font-small-size);
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .outerCircle {
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--th-primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+  }
+
+  .innerDot {
+    width: 5px;
+    height: 5px;
+    background-color: #000;
+    border-radius: 50%;
+  }
 }

@@ -23,7 +23,22 @@ export default function DeleteModel() {
                 x{" "}
               </div>{" "}
             </div>
-            <div onClick={handelDelete}>delete</div>
+            <div className={styles.model_body}>
+              <div className={styles.model_heading}>
+                <h3>Are You Sure To delete This ?</h3>
+              </div>
+              <div className={styles.model_btn_wrapper}>
+                <div
+                  onClick={handelCloseDeleteModel}
+                  className={styles.action_btn}
+                >
+                  No
+                </div>
+                <div onClick={handelDelete} className={styles.action_btn}>
+                  Yes
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

@@ -1,7 +1,5 @@
 "use client";
 import { useState, useEffect, useRef, useCallback, Suspense } from "react";
-import { useRouter } from "next/navigation";
-import { useInView } from "react-intersection-observer";
 import styles from "./css/homepagelist.module.css";
 import LandscapeCard from "../../server-components/cards/LandscapeCard";
 import { tagfillterBlogs } from "@/src/Actions/blogActions/blogAction";

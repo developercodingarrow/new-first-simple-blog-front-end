@@ -1,6 +1,7 @@
-import { performGetAPIAction } from "../_adminPanel/admin_actions/performAPIAction";
+// import { performGetAPIAction } from "../_adminPanel/admin_actions/performAPIAction";
 import { cookies } from "next/headers"; // Server-side cookie access
 import crypto from "crypto"; // Node.js crypto module for decryption
+import { performGetAPIAction } from "../utils/genericAction";
 
 export const tagfillterBlogs = async (query, page) => {
   //   testing purpose end

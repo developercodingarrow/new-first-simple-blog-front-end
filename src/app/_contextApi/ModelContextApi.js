@@ -3,6 +3,8 @@ import { createContext, useEffect, useRef, useState } from "react";
 export const ModelsContext = createContext();
 
 export default function ModelContextProvider({ children }) {
+  const [isUserDrawer, setisUserDrawer] = useState(false);
+
   const [isReportModel, setisReportModel] = useState(false);
   const [modelID, setmodelID] = useState("");
   const [singleImgModel, setsingleImgModel] = useState(false);
@@ -23,6 +25,8 @@ export default function ModelContextProvider({ children }) {
   // Input Model End
   const [isAuthModel, setisAuthModel] = useState(false);
   const [isDeleteModel, setisDeleteModel] = useState(false);
+
+  const [isOpenCommentModel, setisOpenCommentModel] = useState(false);
 
   // 1) HANDEL CLOSE MODEL
   const handelCloseModel = (setModalState) => {
@@ -83,6 +87,21 @@ export default function ModelContextProvider({ children }) {
     setisDeleteModel(false);
   };
 
+  const handelOpenCommentModel = () => {
+    setisOpenCommentModel(true);
+  };
+
+  const handelCloseCommentModel = () => {
+    setisOpenCommentModel(false);
+  };
+
+  const handelOpenUserDrawer = () => {
+    setisUserDrawer(true);
+  };
+  const handelCloseUserDrawer = () => {
+    setisUserDrawer(false);
+  };
+
   return (
     <ModelsContext.Provider
       value={{
@@ -118,6 +137,14 @@ export default function ModelContextProvider({ children }) {
         setisDeleteModel,
         handelOpenDeleteModel,
         handelCloseDeleteModel,
+        // Comment Model
+        isOpenCommentModel,
+        handelCloseCommentModel,
+        handelOpenCommentModel,
+        // User Drawer
+        isUserDrawer,
+        handelOpenUserDrawer,
+        handelCloseUserDrawer,
       }}
     >
       {" "}

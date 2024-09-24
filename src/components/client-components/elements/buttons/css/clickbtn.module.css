@@ -4,16 +4,28 @@
 
 .btn_style {
   width: 100%;
-  padding: 10px;
-  text-transform: capitalize;
+  padding: var(--th-d-btn-padding);
+  text-transform: uppercase;
   background-color: var(--th-primary-color);
   outline: none;
   border: none;
   color: #fff;
-  border-radius: 5px;
+  border-radius: var(--th-d-btn-radius);
   cursor: pointer;
+  font-family: var(--th-font-family);
+  font-size: var(--th-font-small-size);
+  letter-spacing: var(--th-letter-spacing);
 }
 
 .btn_style:hover {
   background-color: var(--th-primary-hover-color);
+}
+
+@media only screen and (max-width: 600px) {
+  .btn_style {
+    font-size: var(--th-font-mini-size);
+    padding: var(--th-m-btn-padding);
+    letter-spacing: var(--th-m-letter-spacing);
+    border-radius: var(--th-m-btn-radius);
+  }
 }

@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./css/profileelement.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import autherImg from "../../../../public/web-static-img/auther-image.jpg";
 import { formatDate } from "@/src/_logicalFunctions/formatDate";
 
 export default function ProfileElement(props) {

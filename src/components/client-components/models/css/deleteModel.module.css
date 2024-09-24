@@ -15,5 +15,57 @@
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 10px;
   width: 40%;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
+}
+
+.Modelclose_bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.model_heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.model_btn_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.action_btn {
+  display: inline-block;
+  padding: var(--th-d-btn-padding);
+  text-transform: uppercase;
+  background-color: var(--th-primary-color);
+  outline: none;
+  border: none;
+  color: #fff;
+  border-radius: var(--th-d-btn-radius);
+  cursor: pointer;
+  font-family: var(--th-font-family);
+  font-size: var(--th-font-small-size);
+  letter-spacing: var(--th-letter-spacing);
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .main_conatiner {
+    padding: 10px;
+  }
+  .inner_container {
+    width: 100%;
+  }
+
+  .action_btn {
+    text-align: center;
+    font-size: var(--th-font-mini-size);
+    padding: var(--th-m-btn-padding);
+    letter-spacing: var(--th-m-letter-spacing);
+    border-radius: var(--th-m-btn-radius);
+  }
 }

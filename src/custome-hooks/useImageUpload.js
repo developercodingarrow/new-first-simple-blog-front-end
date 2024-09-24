@@ -1,6 +1,6 @@
 "use client";
 import React, { useContext, useState } from "react";
-import { ImgModelContext } from "../contextApi/ImgModelContextApi";
+import { ImgModelContext } from "../app/_contextApi/ImgModelContextApi";
 
 export default function useImageUpload() {
   const {
@@ -58,5 +58,6 @@ export default function useImageUpload() {
     removeImg,
     handelChange,
     handleSave,
+    imageName,
   };
 }

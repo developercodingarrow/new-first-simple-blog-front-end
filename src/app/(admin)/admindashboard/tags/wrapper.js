@@ -18,6 +18,7 @@ import {
   createTagAction,
   tagListAction,
 } from "@/src/app/utils/adminActions/authTagActions";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Tagwrapper(props) {
   const { data } = props;
@@ -40,9 +41,13 @@ export default function Tagwrapper(props) {
       };
       setIsActionLoading(true); // Set action-specific loading state
       const res = await tagFeatureAction(obj);
-      setIsActionLoading(false); // Set action-specific loading state
-      console.log("tag featured", res);
-      router.refresh();
+
+      if (res.status === "success") {
+        toast.success(res.message);
+        setIsActionLoading(false); // Set action-specific loading state
+        console.log("tag featured", res);
+        router.refresh();
+      }
     } catch (error) {
       setIsActionLoading(false); // Set action-specific loading state
       console.log(error);
@@ -52,12 +57,16 @@ export default function Tagwrapper(props) {
   const handelDelete = async (data) => {
     try {
       const obj = {
-        _id: data,
+        id: data,
       };
       setIsActionLoading(true); // Set action-specific loading state
       const res = await deleteSingleTagAction(obj);
-      setIsActionLoading(false); // Set action-specific loading state
-      console.log(res);
+      if (res.status === "success") {
+        toast.success(res.message);
+        console.log("delete tags", res);
+        setIsActionLoading(false); // Set action-specific loading state
+        router.refresh();
+      }
     } catch (error) {
       setIsActionLoading(false); // Set action-specific loading state
       console.log(error);
@@ -81,6 +90,7 @@ export default function Tagwrapper(props) {
 
   return (
     <div className={styles.page_container}>
+      <Toaster />
       <div className={styles.fillter_bar}>
         {" "}
         <TagListFillterBar

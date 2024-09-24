@@ -1,17 +1,16 @@
 "use client";
 import React, { useContext, useEffect, useRef } from "react";
-
 import styles from "./css/userDrawer.module.css";
 import { useRouter } from "next/navigation";
-
 import Link from "next/link";
 import { SlUser, TiDocumentText, FaPlus } from "../../ApplicationIcons";
-import { AppContext } from "@/src/contextApi/AppcontextApi";
-import { logOutAction } from "@/src/Actions/userActions/userAuthAction";
+import { LogOutAction } from "@/src/app/utils/userAuthaction";
+import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
 export default function UserDrawer() {
   const router = useRouter();
-  const { isUserDrawer, handelCloseUserDrawer } = useContext(AppContext);
+  const { isUserDrawer, handelCloseUserDrawer } = useContext(ModelsContext);
+
   const drawerRef = useRef(null);
 
   useEffect(() => {
@@ -27,9 +26,16 @@ export default function UserDrawer() {
     };
   }, [drawerRef, handelCloseUserDrawer]);
 
-  const handellogOut = () => {
-    logOutAction();
-    router.refresh();
+  const handellogOut = async () => {
+    try {
+      const res = await LogOutAction();
+      console.log(res);
+      if (res.status === "success") {
+        router.refresh();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

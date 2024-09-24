@@ -8,10 +8,10 @@ import {
   HiOutlineDotsVertical,
 } from "../../../ApplicationIcons";
 
-import { AppContext } from "@/src/contextApi/AppcontextApi";
 import ProfileElement from "@/src/_components/ssrComponents/profile-element/ProfileElement";
 import LikesAction from "@/src/components/client-components/likes/LikesAction";
 import ActionDotWrapper from "@/src/components/server-components/cards/ActionDotWrapper";
+import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
 export default function BlogActionBar(props) {
   const { data } = props;
@@ -22,7 +22,7 @@ export default function BlogActionBar(props) {
     setisOpenCommentModel,
     handelOpenCommentModel,
     handelCloseCommentModel,
-  } = useContext(AppContext);
+  } = useContext(ModelsContext);
 
   return (
     <div className={styles.flex_container}>

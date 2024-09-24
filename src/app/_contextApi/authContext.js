@@ -1,15 +1,14 @@
 "use client";
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useState } from "react";
 import { genericDataHandler } from "../_generichandler/generichandler";
-import { updateUserProfile } from "../utils/userAuthaction";
 import { updateUser } from "../utils/useraction";
 
 export const AuthContext = createContext();
 
 export default function AuthContextProvider({ children, authData }) {
   const [authUser, setauthUser] = useState(authData);
-  // console.log("authUser---", authUser);
-  // UPDATE USER PROFILE
+  console.log("authUser---", authUser);
+
   const handelUpdateUserProfile = genericDataHandler(updateUser);
 
   return (

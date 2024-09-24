@@ -1,29 +1,12 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-
-import {
-  mypublishedBlog,
-  updateToDeaft,
-} from "@/src/Actions/blogActions/blogAction";
 import UserDashBordCard from "../elements/card/UserDashBordCard";
-import CardSkeleton from "../elements/skeleton/CardSkeleton";
-import { deleteBlogApi } from "@/src/app/utils/blogactions";
+import { deleteBlogApi, updateToDraft } from "@/src/app/utils/blogactions";
 
 export default function PubllishedBlogWrapper(props) {
   const router = useRouter();
   const { data } = props;
-  const handelmyPublishedBlog = async () => {
-    try {
-      const res = await mypublishedBlog();
-      if (res.data.status === "success") {
-        console.log(res.data.result);
-        setpublishedBlog(res.data.result);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handleEdit = (id, slug) => {
     router.push(`/new-blog/${id}`);
@@ -47,7 +30,7 @@ export default function PubllishedBlogWrapper(props) {
       const data = {
         id: actionId,
       };
-      const res = await updateToDeaft(data);
+      const res = await updateToDraft(data);
       console.log("handel dreft---", res);
       handelmyPublishedBlog();
     } catch (error) {
