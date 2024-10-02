@@ -4,6 +4,8 @@ import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 
 import InputElemtns from "../components/client-components/elements/InputElemtns";
+import TextareaElement from "../components/client-components/elements/TextareaElement";
+
 export function useCustomApiForm(apiData = {}, inputFields = []) {
   // Extract only the relevant fields from apiData based on inputFields
   const filteredData = inputFields.reduce((acc, field) => {
@@ -17,8 +19,6 @@ export function useCustomApiForm(apiData = {}, inputFields = []) {
     mode: "all",
     defaultValues: filteredData,
   });
-
-  console.log("useApihook---", apiData);
 
   useEffect(() => {
     if (filteredData) {
@@ -34,6 +34,14 @@ export function useCustomApiForm(apiData = {}, inputFields = []) {
     switch (input.inputType) {
       case "text":
         InputComponent = InputElemtns;
+        specificProps = {
+          inputplaceholder: input.placeholder,
+          defaultValue: defaultValues || "",
+        };
+        break;
+
+      case "textarea":
+        InputComponent = TextareaElement;
         specificProps = {
           inputplaceholder: input.placeholder,
           defaultValue: defaultValues || "",

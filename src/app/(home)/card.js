@@ -8,8 +8,7 @@ import MainCard from "@/src/components/homepage/card/MainCard";
 async function getData(tagquery, page = 1) {
   try {
     const res = await tagfillterBlogs(tagquery, page);
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-
+    console.log(res);
     if (!res.data || !res.data.result) {
       throw new Error("Data not found");
     }
@@ -27,13 +26,19 @@ export default async function Card(props) {
   const initialData = await getData(tagquery, page);
   return (
     <div>
-      {initialData.map((el, index) => {
-        return (
-          <div>
-            <MainCard data={el} />
-          </div>
-        );
-      })}
+      {initialData.length === 0 ? (
+        <div>There is no content</div>
+      ) : (
+        <div>
+          {initialData.map((el, index) => {
+            return (
+              <div>
+                <MainCard data={el} />
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

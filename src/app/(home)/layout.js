@@ -3,7 +3,6 @@ import "../globals.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Footer from "@/src/components/server-components/footer/Footer";
 import GoogleOneTap from "@/src/components/client-components/googleAuth/GoogleOneTap";
-
 import ReportActionModel from "@/src/components/client-components/models/ReportActionModel";
 import styles from "./page.module.css";
 import LayoutSideBar from "@/src/components/client-components/sideBar/LayoutSideBar";
@@ -23,6 +22,7 @@ import TagTab from "@/src/components/client-components/tab/TagTab";
 import HomePageMainBanner from "@/src/components/homepage/mainBanner/HomePageMainBanner";
 import TagContextProvider from "../_contextApi/TagContextApi";
 import ImgModelContextProvider from "../_contextApi/ImgModelContextApi";
+import SearchModel from "@/src/components/client-components/models/SearchModel";
 export const metadata = {
   title: "Fisrt blog website",
   description: "This is first Blog website",
@@ -44,6 +44,7 @@ export default async function RootLayout({ children }) {
                   <GoogleOAuthProvider clientId="575999030621-q9l875mbikilrm28q7sbj7ed3pf3kehq.apps.googleusercontent.com">
                     <ReportActionModel />
                     <ReagisterAuthModel />
+                    <SearchModel />
                     <div>
                       <NavBar userData={userDetails} />
                       {!userDetails && <GoogleOneTap />}

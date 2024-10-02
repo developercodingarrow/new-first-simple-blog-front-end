@@ -138,3 +138,14 @@ export const userDashBordTab = [
     hrfLink: "draft",
   },
 ];
+
+export const userProfileTab = [
+  {
+    name: "about",
+    hrfLink: "profile",
+  },
+  {
+    name: "Blogs",
+    hrfLink: "blogs",
+  },
+];

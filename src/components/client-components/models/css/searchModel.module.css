@@ -1,0 +1,40 @@
+.conatiner {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .conatiner {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 20;
+    background-color: #fff;
+  }
+
+  .model_closeBar {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    margin-bottom: 10px;
+  }
+
+  .search_wrapper {
+    padding: 10px;
+  }
+
+  .model_search_Result {
+    padding: 15px;
+    overflow-y: scroll;
+    height: 100vh;
+  }
+  .linkTag_wrapper {
+  }
+  .tag_link {
+    display: block;
+    margin-bottom: 10px;
+  }
+}

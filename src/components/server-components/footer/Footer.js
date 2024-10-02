@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useContext } from "react";
 import styles from "./css/footer.module.css";
 import FooterLogo from "./FooterLogo";
 import { dekstopFooterLinks, termsLinks } from "@/src/jsonData/navigationData";
@@ -15,8 +16,15 @@ import {
   BiTag,
 } from "../../ApplicationIcons";
 import Link from "next/link";
+import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
 export default function Footer() {
+  const {
+    searchModel,
+    setsearchModel,
+    handelOpenSearchModel,
+    handelCloseSearchModel,
+  } = useContext(ModelsContext);
   return (
     <div className={styles.com_conatiner}>
       <div className={styles.dekstop_wrapper}>
@@ -73,7 +81,11 @@ export default function Footer() {
         <Link href={"/"} className={styles.mobile_footer_icon_wrapper}>
           <MdOutlineAutoGraph />
         </Link>
-        <Link href={"/"} className={styles.mobile_footer_icon_wrapper}>
+        <Link
+          href={"/"}
+          className={styles.mobile_footer_icon_wrapper}
+          onClick={handelOpenSearchModel}
+        >
           <TiDocumentText />
         </Link>
         <Link href={"/"} className={styles.mobile_footer_icon_wrapper}>

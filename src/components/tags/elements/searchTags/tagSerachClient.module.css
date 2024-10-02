@@ -1,0 +1,102 @@
+.nav_search_container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 2px;
+  border-radius: 30px;
+  border: 1px solid var(--th-separator);
+  /* background-color: #f0f0f0; */
+  transition: box-shadow 0.3s ease;
+  position: relative;
+}
+
+.search_container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 400px; /* Adjust width as per your design */
+  padding: 5px;
+  border-radius: 30px;
+  border: 1px solid var(--th-separator);
+  background-color: #f0f0f0;
+  transition: box-shadow 0.3s ease;
+  position: relative;
+}
+
+.search_container:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: var(--th-separatord);
+}
+
+.search_iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  color: var(--th-text-secondary); /* Icon color */
+}
+
+.search_input_style {
+  width: 100%;
+  padding: 5px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--th-text-primary); /* Text color */
+  /* font-size: 16px; */
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.search_input_style::placeholder {
+  color: var(--th-text-secondary); /* Placeholder color */
+}
+
+.search_input_style:focus {
+  background-color: var(--th-separatord);
+}
+
+.search_result_wraper {
+  position: absolute;
+  top: 45px;
+  width: 100%;
+}
+
+.search_result_container {
+  border: 1px solid gray;
+  background-color: #fff;
+  padding: 10px;
+  height: 200px;
+  overflow-y: auto;
+}
+
+.result_link {
+  display: block;
+  margin-bottom: 10px;
+  color: gray;
+}
+
+@media (max-width: 768px) {
+  .search_container {
+    max-width: 100%; /* For mobile responsiveness */
+    padding: 3px;
+    border-radius: 15px;
+  }
+
+  .model_search_container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 100%; /* Adjust width as per your design */
+    padding: 3px;
+    border-radius: 5px;
+    border: 1px solid var(--th-separator);
+    background-color: #f0f0f0;
+    transition: box-shadow 0.3s ease;
+    position: relative;
+  }
+
+  .search_input_style {
+    font-size: 14px;
+  }
+}

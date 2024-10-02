@@ -4,15 +4,17 @@ import styles from "./css/inputmodel.module.css";
 import SubmitBtn from "../elements/buttons/SubmitBtn";
 import ClickBtn from "../elements/buttons/ClickBtn";
 import { useCustomApiForm } from "@/src/custome-hooks/useCutomeApiform";
-
+import toast, { Toaster } from "react-hot-toast";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 import { updateUserDetail } from "@/src/app/utils/userAuthaction";
+import { AppContext } from "@/src/app/_contextApi/AppContext";
 
 export default function ModelForm(props) {
   const { modelInput, apiData, actionID, modelActionHandler, setupdateData } =
     props;
-  const { handelcloseInputModal } = useContext(ModelsContext);
 
+  const { handelcloseInputModal } = useContext(ModelsContext);
+  const { isBtnLoadin, setisBtnLoadin } = useContext(AppContext);
   const dynimicData = [];
   const {
     handleSubmit,
@@ -32,19 +34,27 @@ export default function ModelForm(props) {
     };
 
     try {
+      setisBtnLoadin(true);
       const res = await modelActionHandler(obj);
       console.log(res);
+      if (res.status === "Fails") {
+        toast.error(res.message);
+        setisBtnLoadin(false);
+      }
       if (res.status === "success") {
         updateUserDetail(res.result);
         setupdateData(res.result);
+        setisBtnLoadin(false);
       }
     } catch (error) {
       console.log(error);
+      setisBtnLoadin(false);
     }
   };
 
   return (
     <div className={styles.model_form_wrapper}>
+      <Toaster />
       <form onSubmit={handleSubmit(handleForm)}>
         <div className={styles.input_wrapper}>
           {modelInput.map((input) => {
@@ -58,7 +68,11 @@ export default function ModelForm(props) {
               <ClickBtn btnText="cancle" btnHandel={handelcloseInputModal} />
             </div>
             <div>
-              <SubmitBtn btnText="Save" btnLoading={false} disabled={isValid} />
+              <SubmitBtn
+                btnText="Save"
+                btnLoading={isBtnLoadin}
+                disabled={isValid}
+              />
             </div>
           </div>
         </div>

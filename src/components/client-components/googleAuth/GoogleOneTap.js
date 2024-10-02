@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
-import { GoogleLogin, useGoogleOneTapLogin } from "@react-oauth/google";
+import { useGoogleOneTapLogin } from "@react-oauth/google";
+import { userGoogleLoginAction } from "@/src/app/utils/userAuthaction";
 
 export default function GoogleOneTap() {
   const router = useRouter();
@@ -18,10 +19,9 @@ export default function GoogleOneTap() {
             credentialResponse.credential
           );
 
-          console.log(res);
-
           if (res.status === "success") {
             console.log(res.user, res.token);
+            router.push("/");
           }
         } catch (error) {
           console.log(error);

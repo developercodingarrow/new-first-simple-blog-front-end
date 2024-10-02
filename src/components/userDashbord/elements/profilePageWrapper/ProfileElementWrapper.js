@@ -7,6 +7,8 @@ import { AuthContext } from "@/src/app/_contextApi/authContext";
 import {
   userNameinput,
   nameinput,
+  bioinput,
+  webisteinput,
   facbookinput,
   twitterinput,
   instagraminput,
@@ -14,6 +16,7 @@ import {
 import UserImagDetail from "./pageElements/userImageDetail/UserImagDetail";
 import UserTextDetail from "./pageElements/userTextDetail/UserTextDetail";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
+import SocialMediaDetail from "./pageElements/socialmediadetail/SocialMediaDetail";
 export default function ProfileElementWrapper() {
   const { authUser, setauthUser, handelUpdateUserProfile } =
     useContext(AuthContext);
@@ -69,6 +72,8 @@ export default function ProfileElementWrapper() {
             modelTitle="Update You Name"
             openModal={handelOpenInputModel}
             modelActionHandler={handelUpdateUserProfile}
+            container_style="row_flex_container"
+            text_wrapper_style="text_data_wrapper"
           />
         </div>
 
@@ -81,6 +86,38 @@ export default function ProfileElementWrapper() {
             modelInputs={userNameinput}
             openModal={handelOpenInputModel}
             modelActionHandler={handelUpdateUserProfile}
+            container_style="row_flex_container"
+            text_wrapper_style="text_data_wrapper"
+          />
+        </div>
+      </section>
+      <section className={styles.profile_section}>
+        <div>
+          <UserTextDetail
+            title="Website"
+            textdata={authUser?.businessWebsite}
+            apiData={authUser}
+            modelTitle="Update About Content"
+            modelInputs={webisteinput}
+            openModal={handelOpenInputModel}
+            modelActionHandler={handelUpdateUserProfile}
+            container_style="row_flex_container"
+            text_wrapper_style="text_data_wrapper"
+          />
+        </div>
+      </section>
+      <section className={styles.profile_section}>
+        <div>
+          <UserTextDetail
+            title="Bio"
+            textdata={authUser?.bio}
+            apiData={authUser}
+            modelTitle="Update About Content"
+            modelInputs={bioinput}
+            openModal={handelOpenInputModel}
+            modelActionHandler={handelUpdateUserProfile}
+            container_style="column_flex_container"
+            text_wrapper_style="text_content_wrapper"
           />
         </div>
       </section>
@@ -90,19 +127,21 @@ export default function ProfileElementWrapper() {
           <h4>Social Media Accounts</h4>
         </div>
         <div>
-          <UserTextDetail
-            title="Facbook"
+          <SocialMediaDetail
+            title="facebook"
             textdata={authUser?.facebook}
             apiData={authUser}
             modelTitle="Update Facbook page"
             modelInputs={facbookinput}
             openModal={handelOpenInputModel}
             modelActionHandler={handelUpdateUserProfile}
+            container_style="row_flex_container"
+            text_wrapper_style="text_data_wrapper"
           />
         </div>
 
         <div>
-          <UserTextDetail
+          <SocialMediaDetail
             title="twitter"
             textdata={authUser?.twitter}
             apiData={authUser}
@@ -110,11 +149,13 @@ export default function ProfileElementWrapper() {
             modelInputs={twitterinput}
             openModal={handelOpenInputModel}
             modelActionHandler={handelUpdateUserProfile}
+            container_style="row_flex_container"
+            text_wrapper_style="text_data_wrapper"
           />
         </div>
 
         <div>
-          <UserTextDetail
+          <SocialMediaDetail
             title="instagram"
             textdata={authUser?.instagram}
             apiData={authUser}
@@ -122,6 +163,8 @@ export default function ProfileElementWrapper() {
             modelInputs={instagraminput}
             openModal={handelOpenInputModel}
             modelActionHandler={handelUpdateUserProfile}
+            container_style="row_flex_container"
+            text_wrapper_style="text_data_wrapper"
           />
         </div>
       </section>

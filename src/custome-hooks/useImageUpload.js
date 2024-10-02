@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ImgModelContext } from "../app/_contextApi/ImgModelContextApi";
 
 export default function useImageUpload() {
@@ -13,6 +13,24 @@ export default function useImageUpload() {
     imgData,
     setimgData,
   } = useContext(ImgModelContext);
+  const [isValid, setIsValid] = useState(false);
+
+  useEffect(() => {
+    const validateInputs = () => {
+      if (
+        imgData.title &&
+        imgData.altText &&
+        imgData.caption &&
+        imgData.description &&
+        previewImage
+      ) {
+        setIsValid(true);
+      } else {
+        setIsValid(false);
+      }
+    };
+    validateInputs();
+  }, [imgData, previewImage]);
 
   // Upload Image
   const handleImageUpload = (event) => {
@@ -59,5 +77,6 @@ export default function useImageUpload() {
     handelChange,
     handleSave,
     imageName,
+    isValid,
   };
 }

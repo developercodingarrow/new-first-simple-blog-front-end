@@ -4,10 +4,8 @@ import Image from "next/image";
 import styles from "./css/commentcomponent.module.css";
 import userImg from "../../../../public/web-static-img/auther-image.jpg";
 import { MdDeleteForever } from "../../ApplicationIcons";
-import { AppContext } from "@/src/contextApi/AppcontextApi";
 import { AuthContext } from "@/src/app/_contextApi/authContext";
 export default function RepliesList(props) {
-  const { isLogined } = useContext(AppContext);
   const { authUser } = useContext(AuthContext);
 
   const userId = authUser?._id;

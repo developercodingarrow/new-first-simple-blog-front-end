@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
 import styles from "./otpui.module.css";
@@ -9,9 +9,11 @@ import { userotpVerfication } from "@/src/app/utils/userAuthaction";
 import SubmitBtn from "../client-components/elements/buttons/SubmitBtn";
 import useCustomeAuthForm from "@/src/custome-hooks/useCustomeAuthForm";
 import { otpInput } from "@/src/jsonData/authformData";
+import { AppContext } from "@/src/app/_contextApi/AppContext";
 
 export default function OTP() {
-  const [isBtnLoading, setisBtnLoading] = useState(false);
+  const { isBtnLoadin, setisBtnLoadin } = useContext(AppContext);
+
   const params = useParams();
   const router = useRouter();
   const { otp } = params;
@@ -20,22 +22,21 @@ export default function OTP() {
 
   const handleForm = async (data) => {
     try {
-      setisBtnLoading(true);
+      setisBtnLoadin(true);
       const res = await userotpVerfication(data, otp);
-      console.log(res);
+      if (res.error) {
+        toast.error(res.error);
+        setisBtnLoadin(false);
+        return;
+      }
       if (res.data.status === "success") {
-        setisBtnLoading(false);
         toast.success(res.data.message);
         router.push("/");
-      }
-
-      if (res.data.error) {
-        setisBtnLoading(false);
-        console.log("error");
+        setisBtnLoadin(false);
       }
     } catch (error) {
-      setisBtnLoading(false);
-      console.log(error);
+      setisBtnLoadin(false);
+      console.log("erro,,,,", error);
     }
   };
 
@@ -69,7 +70,11 @@ export default function OTP() {
               })}
             </div>
             <div className={styles.submit_btn_wrapper}>
-              <SubmitBtn btnText="Verify" />
+              <SubmitBtn
+                btnText="Verify"
+                disabled={!isValid}
+                btnLoading={isBtnLoadin}
+              />
             </div>
           </form>
         </div>

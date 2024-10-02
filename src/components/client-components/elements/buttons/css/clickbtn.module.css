@@ -21,6 +21,18 @@
   background-color: var(--th-primary-hover-color);
 }
 
+.disabled_btn {
+  padding: var(--th-d-btn-padding);
+  border: none;
+  background-color: #ccc;
+  cursor: not-allowed;
+  color: #666;
+}
+
+.disabled_btn:hover {
+  background-color: #ccc;
+}
+
 @media only screen and (max-width: 600px) {
   .btn_style {
     font-size: var(--th-font-mini-size);

@@ -33,3 +33,16 @@ export async function updateUserProfilePic(formData) {
     return error;
   }
 }
+
+// export async function userDetails(slug) {
+//   const url = `http://localhost:8000/api/v1/first-simple-blog/private/users/user-details/${slug}`;
+//   const method = "post";
+//   try {
+//     const res = await performAPIAction(method, url, formData, authToken);
+//     return res.data;
+//   } catch (error) {
+//     console.error("Error fetching draft blogs:", error.message);
+//     return error;
+//   }
+// }
+

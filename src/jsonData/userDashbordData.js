@@ -40,6 +40,33 @@ export const emaiinput = [
   },
 ];
 
+export const bioinput = [
+  {
+    id: 2,
+    name: "bio",
+    placeholder: " Write About You !",
+    type: "textarea",
+    inputType: "textarea",
+    validation: {
+      required: "About Content is required.",
+    },
+  },
+];
+
+export const webisteinput = [
+  {
+    id: 3,
+    name: "businessWebsite",
+    placeholder: "Website !",
+    type: "text",
+    // lable: "user Name",
+    inputType: "text",
+    validation: {
+      required: "Website is required.",
+    },
+  },
+];
+
 export const facbookinput = [
   {
     id: 4,

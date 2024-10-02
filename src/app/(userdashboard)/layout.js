@@ -8,6 +8,8 @@ import UserDashbordLayout from "@/src/components/userDashbord/layout/UserDashbor
 import ModelContextProvider from "../_contextApi/ModelContextApi";
 import Footer from "@/src/components/server-components/footer/Footer";
 import ImgModelContextProvider from "../_contextApi/ImgModelContextApi";
+import AppContextProvider from "../_contextApi/AppContext";
+import TagContextProvider from "../_contextApi/TagContextApi";
 
 export default async function layout({ children }) {
   const userDetails = await getSession();
@@ -15,17 +17,21 @@ export default async function layout({ children }) {
     <html lang="en">
       <body>
         <AuthContextProvider authData={userDetails}>
-          <ImgModelContextProvider>
-            <ModelContextProvider>
-              <div>
-                <NavBar userData={userDetails} />
-              </div>
-              <div className="children_wrapper">
-                <UserDashbordLayout>{children}</UserDashbordLayout>
-              </div>
-              <Footer />
-            </ModelContextProvider>
-          </ImgModelContextProvider>
+          <AppContextProvider>
+            <ImgModelContextProvider>
+              <ModelContextProvider>
+                <TagContextProvider>
+                  <div>
+                    <NavBar userData={userDetails} />
+                  </div>
+                  <div className="children_wrapper">
+                    <UserDashbordLayout>{children}</UserDashbordLayout>
+                  </div>
+                  <Footer />
+                </TagContextProvider>
+              </ModelContextProvider>
+            </ImgModelContextProvider>
+          </AppContextProvider>
         </AuthContextProvider>
       </body>
     </html>

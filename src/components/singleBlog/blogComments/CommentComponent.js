@@ -4,13 +4,9 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import styles from "./css/commentcomponent.module.css";
 import Image from "next/image";
-import userImg from "../../../../public/web-static-img/auther-image.jpg"; // Replace with actual image path
-
 import RepliesList from "./RepliesList";
 import CommentReplyForm from "./CommentReplyForm";
 import { MdDeleteForever } from "../../ApplicationIcons";
-import { AppContext } from "@/src/contextApi/AppcontextApi";
-
 import { FaUserCircle } from "../../ApplicationIcons";
 import SubmitBtn from "../../client-components/elements/buttons/SubmitBtn";
 import {

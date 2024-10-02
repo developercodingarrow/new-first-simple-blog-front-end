@@ -25,10 +25,9 @@ export default function GoogleAuthClient(props) {
                   const res = await userGoogleLoginAction(
                     credentialResponse.credential
                   );
-                  console.log("googleAuthClient", res);
 
                   if (res.status === "success") {
-                    console.log(res.user, res.token);
+                    router.push("/");
                   }
                 } catch (error) {
                   console.log(error);

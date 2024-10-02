@@ -1,0 +1,42 @@
+.main_container {
+  margin: 0px 150px;
+  min-height: 100vh;
+}
+
+.inner_container {
+  display: flex;
+  column-gap: 5%;
+  min-height: 700px;
+}
+
+.content_side {
+  width: 60%;
+  border-right: 1px solid gray;
+}
+
+.header_wapper {
+  border: 1px solid transparent;
+}
+
+.sticky_tab_wrapper {
+  margin-bottom: 20px;
+}
+.tab_content_wrapper {
+  padding: 5px 10px 5px 0px;
+}
+
+.side_bar_container {
+  width: 25%;
+  padding: 20px;
+  position: relative;
+}
+
+.side_banner_wrapper {
+  width: 250px;
+  height: 200px;
+}
+
+.img_style {
+  width: 100%;
+  height: 100%;
+}

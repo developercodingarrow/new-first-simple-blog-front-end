@@ -27,6 +27,7 @@ export default function ModelContextProvider({ children }) {
   const [isDeleteModel, setisDeleteModel] = useState(false);
 
   const [isOpenCommentModel, setisOpenCommentModel] = useState(false);
+  const [searchModel, setsearchModel] = useState(false);
 
   // 1) HANDEL CLOSE MODEL
   const handelCloseModel = (setModalState) => {
@@ -102,6 +103,14 @@ export default function ModelContextProvider({ children }) {
     setisUserDrawer(false);
   };
 
+  const handelOpenSearchModel = () => {
+    setsearchModel(true);
+  };
+
+  const handelCloseSearchModel = () => {
+    setsearchModel(false);
+  };
+
   return (
     <ModelsContext.Provider
       value={{
@@ -145,6 +154,11 @@ export default function ModelContextProvider({ children }) {
         isUserDrawer,
         handelOpenUserDrawer,
         handelCloseUserDrawer,
+        // search model
+        searchModel,
+        setsearchModel,
+        handelOpenSearchModel,
+        handelCloseSearchModel,
       }}
     >
       {" "}

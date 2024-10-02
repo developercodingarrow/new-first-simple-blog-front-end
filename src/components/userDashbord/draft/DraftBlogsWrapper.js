@@ -1,10 +1,6 @@
 "use client";
 import React from "react";
-import {
-  updateToPublsih,
-  draftBlogs,
-  deleteBlogApi,
-} from "@/src/app/utils/blogactions";
+import { draftBlogs, deleteBlogApi } from "@/src/app/utils/blogactions";
 import { useRouter } from "next/navigation";
 import UserDashBordCard from "../elements/card/UserDashBordCard";
 
@@ -14,19 +10,6 @@ export default function DraftBlogsWrapper(props) {
 
   const handleEdit = (id, slug) => {
     router.push(`/new-blog/${id}`);
-  };
-
-  const handelUpdatePublish = async (actionId) => {
-    try {
-      const data = {
-        id: actionId,
-      };
-      const res = await updateToPublsih(data);
-      console.log("handel dreft---", res);
-      router.refresh();
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const handleDelete = async (actionId) => {
@@ -44,7 +27,6 @@ export default function DraftBlogsWrapper(props) {
   const editDeleteActions = [
     { label: "Edit", handler: handleEdit },
     // { label: "Delete", handler: handleDelete },
-    { label: "Publsih", handler: handelUpdatePublish },
     { label: "Delete", handler: handleDelete },
   ];
   return (

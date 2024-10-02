@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import styles from "./css/adminLoginUi.module.css";
+import { useRouter } from "next/navigation";
 import { RiAdminLine } from "../../ApplicationIcons";
 import useCustomeAuthForm from "@/src/custome-hooks/useCustomeAuthForm";
 import { adminLoginInputs } from "../../jsonData/formData";
@@ -8,6 +9,7 @@ import SubmitBtn from "@/src/components/client-components/elements/buttons/Submi
 import { adminLoginAction } from "@/src/app/utils/adminactions";
 
 export default function AdminLoginUi() {
+  const router = useRouter();
   const { renderInput, handleSubmit, updatedInputs, isValid, errors } =
     useCustomeAuthForm(adminLoginInputs, "LOGIN");
 
@@ -15,6 +17,9 @@ export default function AdminLoginUi() {
     try {
       const res = await adminLoginAction(data);
       console.log(res);
+      if (res.status === "success") {
+        router.push("/admindashboard");
+      }
     } catch (error) {
       console.log(error);
     }

@@ -10,6 +10,8 @@ export default function UserTextDetail(props) {
     modelInputs,
     openModal,
     modelActionHandler,
+    container_style,
+    text_wrapper_style,
   } = props;
 
   const handleOpen = () => {
@@ -22,15 +24,21 @@ export default function UserTextDetail(props) {
     );
   };
 
+  console.log(textdata);
+
   return (
     <>
-      <div className={styles.user_details_container}>
+      <div className={styles[container_style]}>
         <div className={styles.title_wrapper}>
           <h5 className="capitalize_text"> {title}</h5>
         </div>
 
-        <div className={styles.text_data_wrapper} onClick={handleOpen}>
-          {textdata === "undefined" ? <>add</> : <>{textdata}</>}
+        <div className={styles[text_wrapper_style]} onClick={handleOpen}>
+          {textdata === undefined || textdata === "undefined" ? (
+            <>click To Add... {title}</>
+          ) : (
+            <>{textdata}</>
+          )}
         </div>
       </div>
     </>

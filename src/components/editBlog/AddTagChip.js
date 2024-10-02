@@ -14,12 +14,24 @@ export default function AddTagChip(props) {
   const [tags, setTags] = useState([]);
   const [filteredTags, setFilteredTags] = useState([]);
 
+  const [formIsValid, setFormIsValid] = useState(false);
+
   useEffect(() => {
     if (apiTags && apiTags.length > 0) {
       const initialTags = apiTags.map((tag) => tag.tagName);
       setTags(initialTags);
     }
   }, [apiTags]);
+
+  useEffect(() => {
+    if (tags.length > 5) {
+      setFormIsValid(false);
+    } else if (tags.length > 0) {
+      setFormIsValid(true);
+    } else {
+      setFormIsValid(false);
+    }
+  }, [tags]);
 
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
@@ -118,7 +130,11 @@ export default function AddTagChip(props) {
       </div>
 
       <div className={styles.btn_wrapper}>
-        <ClickBtn btnText="Update" btnHandel={handleSubmit} />
+        <ClickBtn
+          btnText="Update"
+          btnHandel={handleSubmit}
+          btndisable={formIsValid}
+        />
       </div>
 
       {error && <div className={styles.error}>{error}</div>}

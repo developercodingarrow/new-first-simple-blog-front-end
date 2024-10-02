@@ -1,0 +1,13 @@
+.main_banner {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .main_banner {
+    padding: 5px;
+  }
+}

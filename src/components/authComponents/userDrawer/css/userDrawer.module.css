@@ -1,6 +1,6 @@
 .drawer_container {
-  border: 1px solid var(--th-black-hover);
-  background-color: var(--th-black-hover);
+  border: 1px solid var(--th-dark-blue-gray);
+  background-color: var(--th-dark-blue-gray);
   box-shadow: var(--th-box-shadow);
   border-radius: 7px;
   min-width: 200px;
@@ -17,4 +17,9 @@
   display: flex;
   column-gap: 10px;
   align-items: center;
+  padding: 5px;
+}
+
+.text_icon_link:hover {
+  background-color: var(--th-black-selected);
 }

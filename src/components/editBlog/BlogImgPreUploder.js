@@ -1,11 +1,12 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./css/blogimgprvuploader.module.css";
+import toast, { Toaster } from "react-hot-toast";
 import { FaCloudUploadAlt, IoCloseCircleSharp } from "../ApplicationIcons";
 import Image from "next/image";
-import { ImgModelContext } from "@/src/contextApi/ImgModelContextApi";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 import { deleteBlogThumblinImages } from "@/src/app/utils/blogactions";
+import { ImgModelContext } from "@/src/app/_contextApi/ImgModelContextApi";
 
 export default function BlogImgPreUploder(props) {
   const { apiData, slug } = props;
@@ -13,7 +14,6 @@ export default function BlogImgPreUploder(props) {
   const [apiImg, setapiImg] = useState(null);
   const { handelOpenModel, singleImgModel, setsingleImgModel } =
     useContext(ModelsContext);
-
   const removeImg = () => {
     setPreviewImage(null);
   };
@@ -33,7 +33,10 @@ export default function BlogImgPreUploder(props) {
   const handelDeleteApiImg = async () => {
     try {
       const res = await deleteBlogThumblinImages(slug);
-      console.log("resposnesr---", res);
+      if (res.success === true) {
+        toast.success(res.message);
+        setapiImg(null);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -41,6 +44,7 @@ export default function BlogImgPreUploder(props) {
 
   return (
     <div className={styles.container}>
+      <Toaster />
       <div className={styles.inner_container}>
         <div className={styles.image_uplod_wrapper}>
           {previewImage ? (

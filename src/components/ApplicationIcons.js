@@ -23,6 +23,9 @@ import { IoMdHeart } from "react-icons/io";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoArrowBack } from "react-icons/io5";
 import { FaUserCircle } from "react-icons/fa";
+import { SlLogout } from "react-icons/sl";
+import { HiMagnifyingGlass } from "react-icons/hi2";
+
 export {
   FaUserCircle,
   IoArrowBack,
@@ -54,4 +57,6 @@ export {
   MdDeleteForever,
   FaRegComment,
   CiShare1,
+  SlLogout,
+  HiMagnifyingGlass,
 };

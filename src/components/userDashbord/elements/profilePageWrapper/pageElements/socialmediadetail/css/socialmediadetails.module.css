@@ -1,0 +1,30 @@
+.flex_container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.title_wrapper {
+  text-transform: capitalize;
+  font-family: Arial, sans-serif;
+}
+
+.text_data_wrapper {
+  width: 60%;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+  text-align: end;
+}
+
+.text_style {
+  font-size: 14px;
+}
+
+.socila_media_iconStyle {
+  color: var(--th-neutral-dark);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+}

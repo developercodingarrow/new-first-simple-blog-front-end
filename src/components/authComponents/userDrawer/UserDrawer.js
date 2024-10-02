@@ -3,7 +3,12 @@ import React, { useContext, useEffect, useRef } from "react";
 import styles from "./css/userDrawer.module.css";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { SlUser, TiDocumentText, FaPlus } from "../../ApplicationIcons";
+import {
+  SlUser,
+  TiDocumentText,
+  FaPlus,
+  SlLogout,
+} from "../../ApplicationIcons";
 import { LogOutAction } from "@/src/app/utils/userAuthaction";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
@@ -42,25 +47,21 @@ export default function UserDrawer() {
     <div ref={drawerRef} className={styles.drawer_container}>
       <ul className={styles.inner_container}>
         <li>
-          <Link href={"/"} className={styles.text_icon_link}>
+          <Link
+            href={"/userdashboard/profile"}
+            className={styles.text_icon_link}
+          >
             <div className="medium_icon_wrapper">
               <SlUser />
             </div>
             <div className="medium_text_wrapper">view profile</div>
           </Link>
         </li>
-
         <li>
-          <Link href={"/"} className={styles.text_icon_link}>
-            <div className="medium_icon_wrapper">
-              <FaPlus />
-            </div>
-            <div className="medium_text_wrapper">Create Blog</div>
-          </Link>
-        </li>
-
-        <li>
-          <Link href={"/"} className={styles.text_icon_link}>
+          <Link
+            href={"/userdashboard/published"}
+            className={styles.text_icon_link}
+          >
             <div className="medium_icon_wrapper">
               <TiDocumentText />
             </div>
@@ -70,7 +71,7 @@ export default function UserDrawer() {
         <li>
           <div className={styles.text_icon_link} onClick={handellogOut}>
             <div className="medium_icon_wrapper">
-              <TiDocumentText />
+              <SlLogout />
             </div>
             <div className="medium_text_wrapper">Log Out</div>
           </div>

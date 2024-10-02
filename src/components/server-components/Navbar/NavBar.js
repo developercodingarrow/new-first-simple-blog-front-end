@@ -4,6 +4,7 @@ import NavLogo from "./NavLogo";
 import NavBarNavigations from "./NavBarNavigations";
 import CircleUser from "../../client-components/circleUser/CircleUser";
 import HangBug from "../../client-components/cl_Navbar/HangBug";
+import TagSearchClient from "../../tags/elements/searchTags/TagSearchClient";
 
 export default async function NavBar(props) {
   const { userData } = props;
@@ -11,9 +12,18 @@ export default async function NavBar(props) {
   return (
     <div className={styles.main_conatiner}>
       <div className={styles.dekstop_navBar_wrapper}>
-        <div className={styles.navBar_logo_wrapper}>
-          <NavLogo />
+        <div className={styles.nav_left_side}>
+          <div className={styles.navBar_logo_wrapper}>
+            <NavLogo />
+          </div>
+          <div className={styles.Nav_search_wrapper}>
+            <TagSearchClient
+              searchResults={true}
+              search_containerStyle="nav_search_container"
+            />
+          </div>
         </div>
+
         <div className={styles.navBar_right_side}>
           <div>
             <NavBarNavigations />

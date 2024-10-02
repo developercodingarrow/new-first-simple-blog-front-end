@@ -1,6 +1,6 @@
 import { cookies } from "next/headers"; // Import the cookies function
 import CryptoJS from "crypto-js";
-import { performGetAPIAction } from "@/src/Actions/performAPIAction";
+import { performGetAPIAction } from "@/src/app/utils/genericAction";
 
 const cookieStore = cookies();
 const authToken = cookieStore.get("jwt")?.value;

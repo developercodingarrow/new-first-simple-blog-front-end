@@ -20,7 +20,29 @@ export default function EditBlogUI(props) {
     blogDescreption: apiData?.blogDescreption || "",
   });
 
-  console.log("apiData---", apiData);
+  const [errors, setErrors] = useState({
+    blogTitle: "",
+    metaDescription: "",
+    blogDescreption: "",
+  });
+
+  const [formIsValid, setFormIsValid] = useState(false);
+  const validateForm = () => {
+    const isTitleValid = blogData.blogTitle.length >= 10;
+    const isMetaDescriptionValid =
+      blogData.metaDescription.length <= 160 &&
+      blogData.metaDescription.trim() !== "";
+    const isBlogDescriptionValid = blogData.blogDescreption.length >= 50;
+
+    // Set form validity
+    setFormIsValid(
+      isTitleValid && isMetaDescriptionValid && isBlogDescriptionValid
+    );
+  };
+
+  useEffect(() => {
+    validateForm();
+  }, [blogData, errors]);
 
   // Update state when apiData changes
   useEffect(() => {
@@ -34,10 +56,44 @@ export default function EditBlogUI(props) {
   }, [apiData]);
 
   const handelChange = (e) => {
+    const { name, value } = e.target;
     setBlogData((prevData) => ({
       ...prevData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
+    // Validation for title
+    if (name === "blogTitle") {
+      if (value.trim() === "") {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          blogTitle: "Title cannot be empty.",
+        }));
+      } else if (value.length <= 10) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          blogTitle: "Title must be at least 10 characters long.",
+        }));
+      } else {
+        setErrors((prevErrors) => ({ ...prevErrors, title: "" }));
+      }
+    }
+    // Validation for metaDescription
+    if (name === "metaDescription") {
+      if (value.trim() === "") {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          metaDescription: "Meta description cannot be empty.",
+        }));
+      } else if (value.length < 100 || value.length > 160) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          metaDescription: "Meta description between 100 to  160 characters.",
+        }));
+      } else {
+        setErrors((prevErrors) => ({ ...prevErrors, metaDescription: "" }));
+      }
+    }
+
     console.log(blogData);
   };
 
@@ -46,6 +102,24 @@ export default function EditBlogUI(props) {
       ...prevData,
       blogDescreption: content,
     }));
+
+    if (content.trim() === "") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        blogDescreption: "Content cannot be empty.",
+      }));
+    } else if (content.length < 50) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        blogDescreption: "Content must be at least 50 characters long.",
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        blogDescreption: "",
+      }));
+    }
+
     console.log(blogData);
   };
 
@@ -53,6 +127,9 @@ export default function EditBlogUI(props) {
     try {
       const res = await upadteBlogContent(blogData, slug);
       console.log(res);
+      if (res.status === "Fails") {
+        toast.error(res.message);
+      }
       if (res.status === "success") {
         toast.success(res.message);
       }
@@ -81,6 +158,7 @@ export default function EditBlogUI(props) {
                 onChange={(e) => handelChange(e)}
               />
             </div>
+            <div className={"input_errors"}>{errors.blogTitle}</div>
           </div>
           <div className={styles.input_filed_wrapper}>
             <div className={styles.lable_wrapper}>
@@ -96,6 +174,7 @@ export default function EditBlogUI(props) {
                 onChange={(e) => handelChange(e)}
               />
             </div>
+            <div className={"input_errors"}>{errors.metaDescription}</div>
           </div>
 
           <div className={styles.input_filed_wrapper}>
@@ -111,6 +190,7 @@ export default function EditBlogUI(props) {
                 style={{ minHeight: "500px", height: "auto" }}
               />
             </div>
+            <div className={"input_errors"}>{errors.blogDescreption}</div>
           </div>
         </div>
         <div className={styles.editor_sideBard}>
@@ -118,13 +198,17 @@ export default function EditBlogUI(props) {
             <BlogImgPreUploder apiData={apiData} slug={slug} />
           </div>
           <div>
-            <AddTagChip blogSlug={slug} apiTags={apiData.blogTags} />
+            <AddTagChip blogSlug={slug} apiTags={apiData?.blogTags} />
           </div>
         </div>
       </div>
       <div className={styles.submit_topBar}>
         <div>
-          <ClickBtn btnText="Publish" btnHandel={handelUpdateContent} />
+          <ClickBtn
+            btnText="Publish"
+            btnHandel={handelUpdateContent}
+            btndisable={formIsValid}
+          />
         </div>
       </div>
     </div>

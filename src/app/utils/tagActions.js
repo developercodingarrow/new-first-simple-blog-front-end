@@ -2,18 +2,15 @@
 import { cookies } from "next/headers"; // Import the cookies function
 import { performGetAPIAction, performAPIAction } from "./genericAction";
 
-// Get auth token from cookies
-const cookieStore = cookies();
-const authToken = cookieStore.get("jwt")?.value;
-
 export async function featureTagListAction() {
+  const cookieStore = cookies(); // Move this inside the function
+  const authToken = cookieStore.get("jwt")?.value; // Ensure fresh token
   const url = `http://localhost:8000/api/v1/first-simple-blog/private/tag/featured-tags`;
   try {
     const res = await performGetAPIAction(url, authToken);
     return res.data.data;
   } catch (error) {
-    console.error("Error fetching draft blogs:", error.message);
-    return error;
+    return { error: error };
   }
 }
 
@@ -32,7 +29,7 @@ export async function getTagsWithRevalidation() {
     }
 
     const data = await res.json();
-    console.log("verified tags----------", data.data);
+
     return data.data;
   } catch (error) {
     console.error("Error fetching tags:", error.message);

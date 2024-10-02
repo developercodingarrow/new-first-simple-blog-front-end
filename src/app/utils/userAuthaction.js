@@ -35,11 +35,13 @@ export async function userLoginAction(formData) {
         httpOnly: false,
       });
     }
-
-    return res.data; // Return response data
+    return { data: res.data };
   } catch (error) {
-    console.error("Error logging in:", error.message);
-    return { error: error.message }; // Return the error message
+    if (error.response && error.response.data) {
+      return { error: error.response.data.message };
+    }
+
+    return { error: "An unexpected error occurred" };
   }
 }
 
@@ -77,7 +79,6 @@ export async function userGoogleLoginAction(googleCredential) {
 
     return res.data; // Return response data
   } catch (error) {
-    console.error("Error with Google login:", error.message);
     return { error: error.message }; // Return the error message
   }
 }
@@ -86,18 +87,20 @@ export async function userRegisterAction(formData) {
   const url = `${API_BASE_URL}/user-auth/sing-up`;
   const method = "post";
   try {
-    // const res = await performAPIAction(method, url, formData, authToken);
     const res = await axios({
       method,
       url,
-      data: formData, // Send form data in the request body
-      withCredentials: true, // If cookies or auth tokens are needed
+      data: formData,
+      withCredentials: true,
     });
-    console.log("userRegisterAction", res);
-    return { status: "success", data: res.data };
+
+    return { data: res.data };
   } catch (error) {
-    console.error("Error fetching draft blogs:", error.message);
-    return { error: error.message };
+    console.error("Error during registration:", error);
+    if (error.response) {
+      return { error: error.response.data.message || "Unknown error" };
+    }
+    return { error: error.message || "Request failed" };
   }
 }
 
@@ -109,14 +112,16 @@ export async function userotpVerfication(formData, slug) {
     const res = await axios({
       method,
       url,
-      data: formData, // Send form data in the request body
-      withCredentials: true, // If cookies or auth tokens are needed
+      data: formData,
+      withCredentials: true,
     });
 
     return { status: "success", data: res.data };
   } catch (error) {
-    console.error("Error fetching draft blogs:", error.message);
-    return error;
+    if (error.response) {
+      return { error: error.response.data.message || "Unknown error" };
+    }
+    return { error: error.message || "Request failed" };
   }
 }
 
@@ -135,8 +140,10 @@ export async function updateUserProfileAction(formData) {
 
     return { status: "success", data: res.data };
   } catch (error) {
-    console.error("Error :", error.message);
-    return { error: error.message };
+    if (error.response) {
+      return { error: error.response.data.message || "Unknown error" };
+    }
+    return { error: error.message || "Request failed" };
   }
 }
 

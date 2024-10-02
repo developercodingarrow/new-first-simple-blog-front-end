@@ -28,6 +28,10 @@
   margin-bottom: 20px;
 }
 
+.input_wrapper {
+  margin-bottom: 5px;
+}
+
 .title_input {
   width: 100%;
   padding: 10px 12px;
@@ -81,7 +85,7 @@
 }
 
 .editor_wrapper {
-  /* min-height: 200px; */
+  margin-bottom: 5px;
 }
 
 @media only screen and (max-width: 600px) {

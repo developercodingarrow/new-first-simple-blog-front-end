@@ -33,22 +33,24 @@ export default function UserAuthLayout(props) {
     try {
       setisBtnLoadin(true);
       const res = await formHandel(data);
-
-      if (res.apiFor === "register") {
-        toast.success(res.data.message);
-        router.push(`/opt-verification/${res.data.UrlToken}`);
-        setisBtnLoadin(false);
-      } else if (res.apiFor === "Login") {
-        router.push("/");
-        setisBtnLoadin(false);
-      }
-
+      // Check if there's an error in the response
+      console.log(res);
       if (res.error) {
         toast.error(res.error);
         setisBtnLoadin(false);
+        return;
+      }
+      // Proceed if there is no error and res.data exists
+      if ((res.data.status = "success")) {
+        if (res.data.apiFor === "register") {
+          router.push(`/opt-verification/${res.data.UrlToken}`);
+          setisBtnLoadin(false);
+        } else if (res.data.apiFor === "Login") {
+          router.push("/");
+          setisBtnLoadin(false);
+        }
       }
     } catch (error) {
-      console.log(error);
       setisBtnLoadin(false);
     }
   };

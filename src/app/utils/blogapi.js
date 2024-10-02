@@ -10,9 +10,9 @@ export async function getSingleAuthBlog(slug) {
 
   try {
     const res = await performGetAPIAction(url, authToken);
+    console.log("res---", res);
     return res.data;
   } catch (error) {
-    console.error("Error  blogs:", error.message);
-    return error;
+    return { error: error.message || "Unknown error occurred" };
   }
 }

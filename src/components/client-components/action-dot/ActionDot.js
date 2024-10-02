@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import styles from "./css/actionDots.module.css";
 import { HiOutlineDotsVertical } from "../../ApplicationIcons";
 import ActionDropDown from "./ActionDropDown";
@@ -19,6 +19,7 @@ export default function ActionDot(props) {
   const [isOpen, setisOpen] = useState(false);
   const { authUser } = useContext(AuthContext);
   const { handelOpenAuthModel } = useContext(ModelsContext);
+  const dropdownRef = useRef(null);
 
   const handelOpen = () => {
     setisOpen(true);
@@ -27,6 +28,25 @@ export default function ActionDot(props) {
   const handelClose = () => {
     setisOpen(false);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        handelClose(); // Close the dropdown if clicked outside
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    // Cleanup event listener on component unmount
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   const dropdownStyle = {
     top,
@@ -46,7 +66,11 @@ export default function ActionDot(props) {
       )}
 
       {isOpen && (
-        <div className={styles.action_dropDown_wrapper} style={dropdownStyle}>
+        <div
+          className={styles.action_dropDown_wrapper}
+          style={dropdownStyle}
+          ref={dropdownRef}
+        >
           <ActionDropDown
             actionList={actionList}
             actionId={actionId}

@@ -6,16 +6,16 @@ import Loading from "./loading";
 async function getData(slug) {
   try {
     const res = await getSingleAuthBlog(slug);
-    // await new Promise((resolve) => setTimeout(resolve, 100000));
-    console.log("page api---", res);
-    if (!res.result) {
-      throw new Error("Data not found");
+
+    // Handle blog fetch failure
+    if (res?.error) {
+      console.log("Error returned from API:", res.error);
+      throw new Error(res.error); // Properly throw the error
     }
 
     return await res.result;
   } catch (error) {
-    console.error("Error fetching data:", error);
-    // throw new Error(`Failed to fetch data: ${error}`);
+    throw new Error(`${error}`);
   }
 }
 

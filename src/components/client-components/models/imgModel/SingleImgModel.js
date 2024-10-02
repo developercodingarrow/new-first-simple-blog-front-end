@@ -10,7 +10,6 @@ import {
 import Image from "next/image";
 import sampleImg from "../../../../../public/web-static-img/blog sample image.png";
 import useImageUpload from "@/src/custome-hooks/useImageUpload";
-import { AppContext } from "@/src/contextApi/AppcontextApi";
 import ClickBtn from "../../elements/buttons/ClickBtn";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
@@ -27,6 +26,7 @@ export default function SingleImgModel(props) {
     removeImg,
     handelChange,
     handleSave,
+    isValid,
   } = useImageUpload();
 
   const handelSubmitImg = async () => {
@@ -172,7 +172,11 @@ export default function SingleImgModel(props) {
               </div>
             </div>
             <div className={styles.container_footer}>
-              <ClickBtn btnText="Upload" btnHandel={handelSubmitImg} />
+              <ClickBtn
+                btnText="Upload"
+                btnHandel={handelSubmitImg}
+                btndisable={isValid}
+              />
             </div>
           </div>
         </div>

@@ -23,7 +23,7 @@
   --user-image-border: #b0c4de;
   --th-body-secondery-border-color: #b0c4de;
   --description-color: #333333;
-
+  --th-black-selected: #2a3236;
   /* Refactor end */
   --th-body-bg: #f0f8ff;
   --th-light-body-bg: #f0f8ffa3;
@@ -41,7 +41,6 @@
   --th-layout-gap: 100px;
   --th-black-color: #0e1113;
   --th-black-hover: #181c1f;
-  --th-black-selected: #2a3236;
 
   --th-seconder-white: #dbe4e9;
 
@@ -303,7 +302,7 @@ h6 {
 
 .input_errors {
   color: var(--th-primary-color);
-  font-size: 12px;
+  font-size: 10px;
   font-family: sans-serif;
 }
 

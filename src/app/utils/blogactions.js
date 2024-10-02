@@ -15,6 +15,7 @@ export async function createBlogAction() {
   const method = "post";
   try {
     const res = await performAPIAction(method, url, {}, authToken);
+
     return res.data;
   } catch (error) {
     console.error("Error fetching draft blogs:", error.message);
@@ -33,17 +34,17 @@ export async function draftBlogs() {
   }
 }
 
-export async function updateToPublsih(formData) {
-  const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/update-to-published`;
-  const method = "post";
-  try {
-    const res = await performAPIAction(method, url, formData, authToken);
-    return res.data;
-  } catch (error) {
-    console.error("Error fetching draft blogs:", error.message);
-    return error;
-  }
-}
+// export async function updateToPublsih(formData) {
+//   const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/update-to-published`;
+//   const method = "post";
+//   try {
+//     const res = await performAPIAction(method, url, formData, authToken);
+//     return res.data;
+//   } catch (error) {
+//     console.error("Error fetching draft blogs:", error.message);
+//     return error;
+//   }
+// }
 
 export async function updateToDraft(formData) {
   const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/update-to-draft`;
@@ -134,9 +135,10 @@ export async function UpdateBlogThumblin(formData, projectId) {
   const method = "patch";
   try {
     const res = await ImageAPIAction(method, url, formData, authToken);
+
     return res.data;
   } catch (error) {
-    console.error("Error fetching draft blogs:", error.message);
+    console.error("Error fetching draft blogs:", error);
     return error;
   }
 }
@@ -146,9 +148,11 @@ export async function deleteBlogThumblinImages(projectId) {
   const method = "delete";
   try {
     const res = await performAPIAction(method, url, {}, authToken);
-    return res;
+    if (res.status === 204) {
+      return { success: true, message: "image deleted" }; // Return a simple object to prevent unnecessary processing
+    }
   } catch (error) {
-    console.error("Error fetching draft blogs:", error.message);
-    return { error: error };
+    console.error("Error during image delete:", error.message);
+    return { error: error.message || "Request failed" };
   }
 }
