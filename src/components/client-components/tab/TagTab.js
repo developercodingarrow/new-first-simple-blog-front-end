@@ -11,7 +11,6 @@ export default function TagTab(props) {
 
   const segments = pathname.split("/");
   const username = segments[2];
-  console.log(username);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,11 +26,9 @@ export default function TagTab(props) {
   }, []);
   return (
     <div className={`${styles.tab_container} ${isSticky ? styles.sticky : ""}`}>
-      {/* Handle user profile link manually */}
       {redirectType === "userprofile" && (
         <>
           <Link href={`/profile/${username}`} className={styles.tab_warpper}>
-            {/* Replace 'username' with the appropriate dynamic value */}
             About
           </Link>
 
@@ -39,36 +36,26 @@ export default function TagTab(props) {
             href={`/profile/${username}/blogs`}
             className={styles.tab_warpper}
           >
-            {/* Replace 'username' with the appropriate dynamic value */}
             blogs
           </Link>
         </>
       )}
 
-      {/* Conditionally render tabData loop if tabData exists and is not empty */}
       {tabData &&
         tabData.length > 0 &&
         tabData.map((el, index) => {
-          return (
-            <>
-              {redirectType === "query" ? (
-                <Link
-                  href={`?tag=${el.tagSlug}`}
-                  className={styles.tab_warpper}
-                  key={el._id}
-                >
-                  {el.tagName}
-                </Link>
-              ) : (
-                <Link
-                  href={`${el.hrfLink}`}
-                  className={styles.tab_warpper}
-                  key={el._id}
-                >
-                  {el.name}
-                </Link>
-              )}
-            </>
+          return redirectType === "query" ? (
+            <Link
+              key={el._id}
+              href={`?tag=${el.tagSlug}`}
+              className={styles.tab_warpper}
+            >
+              {el.tagName}
+            </Link>
+          ) : (
+            <Link key={el._id} href={el.hrfLink} className={styles.tab_warpper}>
+              {el.name}
+            </Link>
           );
         })}
     </div>

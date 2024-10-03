@@ -12,6 +12,8 @@ import { getSession } from "../lib/authentication";
 import GoogleOneTap from "@/src/components/client-components/googleAuth/GoogleOneTap";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import AuthContextProvider from "../_contextApi/authContext";
+import TagContextProvider from "../_contextApi/TagContextApi";
+import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
 
 export default async function layout({ children }) {
   const userDetails = await getSession();
@@ -21,20 +23,22 @@ export default async function layout({ children }) {
         <BlogContextProvider>
           <ModelContextProvider>
             <AuthContextProvider authData={userDetails}>
-              <GoogleOAuthProvider clientId="575999030621-q9l875mbikilrm28q7sbj7ed3pf3kehq.apps.googleusercontent.com">
-                <ReportActionModel />
-                <ReagisterAuthModel />
-                <div>
+              <TagContextProvider>
+                <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
+                  <ReportActionModel />
+                  <ReagisterAuthModel />
                   <div>
-                    <NavBar userData={userDetails} />
-                    {!userDetails && <GoogleOneTap />}
+                    <div>
+                      <NavBar userData={userDetails} />
+                      {!userDetails && <GoogleOneTap />}
+                    </div>
                   </div>
-                </div>
-                <div className="children_wrapper">
-                  <SingleBlogLayout>{children}</SingleBlogLayout>
-                </div>
-                <Footer />
-              </GoogleOAuthProvider>
+                  <div className="children_wrapper">
+                    <SingleBlogLayout>{children}</SingleBlogLayout>
+                  </div>
+                  <Footer />
+                </GoogleOAuthProvider>
+              </TagContextProvider>
             </AuthContextProvider>
           </ModelContextProvider>
         </BlogContextProvider>

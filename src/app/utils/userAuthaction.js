@@ -96,7 +96,6 @@ export async function userRegisterAction(formData) {
 
     return { data: res.data };
   } catch (error) {
-    console.error("Error during registration:", error);
     if (error.response) {
       return { error: error.response.data.message || "Unknown error" };
     }
@@ -126,7 +125,7 @@ export async function userotpVerfication(formData, slug) {
 }
 
 export async function updateUserProfileAction(formData) {
-  const url = `http://localhost:8000/api/v1/first-simple-blog/private/users/update-user-profile`;
+  const url = `${API_BASE_URL}/private/users/update-user-profile`;
   const method = "post";
   try {
     const res = await axios({
@@ -135,8 +134,6 @@ export async function updateUserProfileAction(formData) {
       data: formData, // Send form data in the request body
       withCredentials: true, // If cookies or auth tokens are needed
     });
-
-    console.log(res);
 
     return { status: "success", data: res.data };
   } catch (error) {
@@ -179,7 +176,6 @@ export async function LogOutAction() {
 
     return { status: "success", data: res.data };
   } catch (error) {
-    console.error("Error:", error.message);
     return { error: error.message };
   }
 }

@@ -3,17 +3,13 @@ import "../globals.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Footer from "@/src/components/server-components/footer/Footer";
 import GoogleOneTap from "@/src/components/client-components/googleAuth/GoogleOneTap";
-
 import ReportActionModel from "@/src/components/client-components/models/ReportActionModel";
 import styles from "./page.module.css";
 import LayoutSideBar from "@/src/components/client-components/sideBar/LayoutSideBar";
-
 import ReagisterAuthModel from "@/src/components/client-components/models/ReagisterAuthModel";
-
 import BlogContextProvider from "../_contextApi/BlogContextApi";
 import ModelContextProvider from "../_contextApi/ModelContextApi";
 import { getSession } from "../lib/authentication";
-
 import AuthContextProvider from "../_contextApi/authContext";
 import {
   getTagsWithRevalidation,
@@ -21,10 +17,11 @@ import {
 } from "../utils/tagActions";
 import TagTab from "@/src/components/client-components/tab/TagTab";
 import HomePageMainBanner from "@/src/components/homepage/mainBanner/HomePageMainBanner";
-
 import ImgModelContextProvider from "../_contextApi/ImgModelContextApi";
 import TagsPageLayout from "@/src/components/tags/layout/TagsPageLayout";
 import TagContextProvider from "../_contextApi/TagContextApi";
+import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
+
 export const metadata = {
   title: "Fisrt blog website",
   description: "This is first Blog website",
@@ -43,7 +40,7 @@ export default async function TagsLayout({ children }) {
             <TagContextProvider>
               <ModelContextProvider>
                 <BlogContextProvider>
-                  <GoogleOAuthProvider clientId="575999030621-q9l875mbikilrm28q7sbj7ed3pf3kehq.apps.googleusercontent.com">
+                  <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
                     <ReportActionModel />
                     <ReagisterAuthModel />
                     <div>

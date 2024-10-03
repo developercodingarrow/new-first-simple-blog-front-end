@@ -3,11 +3,12 @@ import axios from "axios";
 import { cookies } from "next/headers"; // Import the cookies function
 import { performGetAPIAction, performAPIAction } from "./genericAction";
 import CryptoJS from "crypto-js";
+import { API_BASE_URL } from "../../../config";
 
 const encryptionKey = process.env.NEXT_PUBLIC_ENCRYPTION_KEY;
 
 export async function adminLoginAction(formData) {
-  const url = `http://localhost:8000/api/v1/first-simple-blog/protected/admin-auth/protected-login`;
+  const url = `${API_BASE_URL}/protected/admin-auth/protected-login`;
   const method = "post";
 
   try {
@@ -38,7 +39,6 @@ export async function adminLoginAction(formData) {
 
     return res.data; // Return response data
   } catch (error) {
-    console.error("Error logging in:", error.message);
     return { error: error.message }; // Return the error message
   }
 }

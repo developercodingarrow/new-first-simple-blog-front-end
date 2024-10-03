@@ -1,13 +1,11 @@
 "use server";
 import axios from "axios";
 import { cookies } from "next/headers"; // Import the cookies function
-import {
-  performGetAPIAction,
-  performAPIAction,
-} from "../../utils/genericAction";
+
+import { API_BASE_URL } from "../../../../config";
 
 export async function adminLoginAction(formData) {
-  const url = `http://localhost:8000/api/v1/first-simple-blog/protected/admin-auth/protected-login`;
+  const url = `${API_BASE_URL}/protected/admin-auth/protected-login`;
   const method = "post";
 
   try {
@@ -32,7 +30,7 @@ export async function adminLoginAction(formData) {
 }
 
 export const adminLoginAction = async (formData) => {
-  const url = `http://localhost:8000/api/v1/first-simple-blog/protected/admin-auth/protected-login`;
+  const url = `${API_BASE_URL}/protected/admin-auth/protected-login`;
   const method = "post";
 
   try {

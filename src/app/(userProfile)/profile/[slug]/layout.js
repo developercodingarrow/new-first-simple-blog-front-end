@@ -12,6 +12,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import ReportActionModel from "@/src/components/client-components/models/ReportActionModel";
 import ReagisterAuthModel from "@/src/components/client-components/models/ReagisterAuthModel";
 import BlogContextProvider from "@/src/app/_contextApi/BlogContextApi";
+import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
 
 async function getData(slug) {
   try {
@@ -36,7 +37,7 @@ export default async function Profilelayout({ children, params }) {
         <AuthContextProvider authData={userDetails}>
           <ModelContextProvider>
             <BlogContextProvider>
-              <GoogleOAuthProvider clientId="575999030621-q9l875mbikilrm28q7sbj7ed3pf3kehq.apps.googleusercontent.com">
+              <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
                 <ReportActionModel />
                 <ReagisterAuthModel />
                 <div>

@@ -3,9 +3,9 @@ import styles from "./page.module.css";
 export default function Loading() {
   return (
     <div>
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(() => {
+      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el, index) => {
         return (
-          <div className={styles.skeletonCard}>
+          <div className={styles.skeletonCard} key={index}>
             <div className={styles.leftSection}>
               <div className={styles.bar} style={{ width: "80%" }}></div>
               <div className={styles.bar} style={{ width: "60%" }}></div>

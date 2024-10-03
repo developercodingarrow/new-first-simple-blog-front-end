@@ -19,7 +19,6 @@ export const performGetAPIAction = async (url, token = null, options = {}) => {
     });
     return response;
   } catch (error) {
-    console.error("API Request Error:", error.response?.data || error.message);
     throw new Error(error.response?.data?.message || "API request failed");
   }
 };
@@ -43,7 +42,6 @@ export const performGetAPI = async (url, token = null, options = {}) => {
     });
     return response;
   } catch (error) {
-    console.log(error.response);
     return error.response;
   }
 };
@@ -75,7 +73,6 @@ export const performAPIAction = async (
     const response = await axios(config);
     return response;
   } catch (error) {
-    console.log(error.response);
     return error.response;
   }
 };
@@ -106,7 +103,6 @@ export const ImageAPIAction = async (
     const response = await axios(config);
     return response;
   } catch (error) {
-    console.log(error.response);
     return error.response;
   }
 };
@@ -132,7 +128,6 @@ export const GetAPIAction = async (url, token = null, options = {}) => {
     return response.data; // .data holds the actual API response
   } catch (error) {
     // Log the detailed error information for debugging
-    console.error("API Request Error:", error.response?.data || error.message);
 
     // Provide a more descriptive error message
     throw new Error(error.response?.data?.message || "API request failed");

@@ -21,7 +21,11 @@ export async function middleware(request) {
 
   // If not authenticated and trying to access protected routes, redirect to login
   if (!isAuthToken || !userData) {
-    if (!url.startsWith("/login") && !url.startsWith("/user-registration")) {
+    if (
+      !url.startsWith("/login") &&
+      !url.startsWith("/user-registration") &&
+      !url.startsWith("/admin-login")
+    ) {
       return NextResponse.redirect(new URL("/login", request.url));
     }
     // Allow access to login and registration pages if not authenticated

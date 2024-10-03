@@ -5,9 +5,11 @@
   padding: 2px;
   border-radius: 30px;
   border: 1px solid var(--th-separator);
-  /* background-color: #f0f0f0; */
+  background-color: var(--th-white);
   transition: box-shadow 0.3s ease;
   position: relative;
+  color: var(--th-neutral-dark);
+  font-size: 16px;
 }
 
 .search_container {
@@ -42,8 +44,8 @@
   border: none;
   outline: none;
   background: transparent;
-  color: var(--th-text-primary); /* Text color */
-  /* font-size: 16px; */
+  color: var(--th-neutral-dark); /* Text color */
+  font-size: 16px;
   transition: background-color 0.3s ease;
   width: 100%;
 }
@@ -58,16 +60,47 @@
 
 .search_result_wraper {
   position: absolute;
-  top: 45px;
+  top: 35px;
   width: 100%;
+  border-radius: 5px;
 }
 
 .search_result_container {
-  border: 1px solid gray;
+  border-radius: 5px;
   background-color: #fff;
   padding: 10px;
   height: 200px;
   overflow-y: auto;
+}
+
+/* Custom scrollbar styling for Webkit browsers (Chrome, Safari, Edge) */
+.search_result_container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.search_result_container::-webkit-scrollbar-thumb {
+  background-color: var(--th-primary-color); 
+  border-radius: 5px; 
+}
+
+.search_result_container::-webkit-scrollbar-thumb:hover {
+  background-color: var(--th-primary-color); /* Darker color when hovering */
+}
+
+.search_result_container::-webkit-scrollbar-track {
+  background-color: var(--th-primary-color);
+  border-radius: 5px;
+}
+
+/* Custom scrollbar styling for Firefox */
+.search_result_container {
+  scrollbar-width: thin; /* Makes the scrollbar thinner */
+  scrollbar-color: var(--th-primary-color) var(--th-white); /* Thumb color and track color */
+}
+
+/* Scrollbar hover effect for Firefox */
+.search_result_container:hover {
+  scrollbar-color: var(--th-primary-hover-color) var(--th-white);
 }
 
 .result_link {

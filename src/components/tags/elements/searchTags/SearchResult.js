@@ -12,7 +12,11 @@ export default function SearchResult() {
       {filteredTags &&
         filteredTags.map((el, index) => {
           return (
-            <Link href={`${el.tagSlug}`} className={styles.result_link}>
+            <Link
+              href={`/tags/${el.tagSlug}`}
+              key={el._id}
+              className={styles.result_link}
+            >
               {el.tagName}
             </Link>
           );

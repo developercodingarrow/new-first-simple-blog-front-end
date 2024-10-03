@@ -8,7 +8,6 @@ import Link from "next/link";
 export default function SearchModel() {
   const { searchModel, handelCloseSearchModel } = useContext(ModelsContext);
   const { filteredTags } = useContext(TagContext);
-  console.log("alltags--", filteredTags);
 
   return (
     <>
@@ -28,7 +27,10 @@ export default function SearchModel() {
               {filteredTags &&
                 filteredTags.map((el, index) => {
                   return (
-                    <Link href={`${el.tagSlug}`} className={styles.tag_link}>
+                    <Link
+                      href={`/tags/${el.tagSlug}`}
+                      className={styles.tag_link}
+                    >
                       {el.tagName}
                     </Link>
                   );

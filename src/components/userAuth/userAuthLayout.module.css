@@ -67,6 +67,8 @@
   align-items: center;
 }
 
+/* design */
+
 @media only screen and (max-width: 600px) {
   .auth_image_banner_container {
     display: none;

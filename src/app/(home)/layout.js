@@ -6,13 +6,10 @@ import GoogleOneTap from "@/src/components/client-components/googleAuth/GoogleOn
 import ReportActionModel from "@/src/components/client-components/models/ReportActionModel";
 import styles from "./page.module.css";
 import LayoutSideBar from "@/src/components/client-components/sideBar/LayoutSideBar";
-
 import ReagisterAuthModel from "@/src/components/client-components/models/ReagisterAuthModel";
-
 import BlogContextProvider from "../_contextApi/BlogContextApi";
 import ModelContextProvider from "../_contextApi/ModelContextApi";
 import { getSession } from "../lib/authentication";
-
 import AuthContextProvider from "../_contextApi/authContext";
 import {
   getTagsWithRevalidation,
@@ -23,6 +20,8 @@ import HomePageMainBanner from "@/src/components/homepage/mainBanner/HomePageMai
 import TagContextProvider from "../_contextApi/TagContextApi";
 import ImgModelContextProvider from "../_contextApi/ImgModelContextApi";
 import SearchModel from "@/src/components/client-components/models/SearchModel";
+import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
+
 export const metadata = {
   title: "Fisrt blog website",
   description: "This is first Blog website",
@@ -41,7 +40,7 @@ export default async function RootLayout({ children }) {
             <TagContextProvider verifiedTags={verifiedTags}>
               <ModelContextProvider>
                 <BlogContextProvider>
-                  <GoogleOAuthProvider clientId="575999030621-q9l875mbikilrm28q7sbj7ed3pf3kehq.apps.googleusercontent.com">
+                  <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
                     <ReportActionModel />
                     <ReagisterAuthModel />
                     <SearchModel />

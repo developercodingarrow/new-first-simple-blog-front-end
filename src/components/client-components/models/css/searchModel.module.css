@@ -11,6 +11,7 @@
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 20;
     background-color: #fff;
+    overflow: hidden;
   }
 
   .model_closeBar {
@@ -31,10 +32,40 @@
     overflow-y: scroll;
     height: 100vh;
   }
+  /* Custom scrollbar styling for Webkit browsers (Chrome, Safari, Edge) */
+  .model_search_Result::-webkit-scrollbar {
+    width: 3px; /* Width of the scrollbar */
+  }
+
+  .model_search_Result::-webkit-scrollbar-thumb {
+    background-color: var(--th-primary-color);
+    border-radius: 5px;
+  }
+
+  .model_search_Result::-webkit-scrollbar-thumb:hover {
+    background-color: var(--th-primary-color);
+  }
+
+  .model_search_Result::-webkit-scrollbar-track {
+    background-color: var(--th-primary-color);
+    border-radius: 5px;
+  }
+
+  /* Custom scrollbar styling for Firefox */
+  .model_search_Result {
+    scrollbar-width: thin; /* Makes the scrollbar thinner */
+    scrollbar-color: var(--th-primary-color) var(--th-white); /* Thumb color and track color */
+  }
+
+  /* Scrollbar hover effect for Firefox */
+  .model_search_Result:hover {
+    scrollbar-color: var(--th-primary-hover-color) var(--th-white);
+  }
   .linkTag_wrapper {
   }
   .tag_link {
     display: block;
     margin-bottom: 10px;
+    text-transform: capitalize;
   }
 }

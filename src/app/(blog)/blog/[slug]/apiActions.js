@@ -3,8 +3,9 @@ import {
   performGetAPI,
   performAPIAction,
 } from "../../../utils/genericAction";
+import { API_BASE_URL } from "../../../../../config";
 
 export const ssrSingleBlogs = async (slug) => {
-  const url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/get-blog/${slug}`;
+  const url = `${API_BASE_URL}/private/blog/get-blog/${slug}`;
   return performGetAPI(url);
 };

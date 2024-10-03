@@ -1,14 +1,10 @@
 // import { performGetAPIAction } from "../_adminPanel/admin_actions/performAPIAction";
-import { cookies } from "next/headers"; // Server-side cookie access
-import crypto from "crypto"; // Node.js crypto module for decryption
 import { performGetAPIAction } from "../utils/genericAction";
-
+import { API_BASE_URL } from "../../../config";
 export const tagfillterBlogs = async (query, page) => {
   //   testing purpose end
-
-  // Api
   const limit = 3; // Static limit value
-  let url = `http://localhost:8000/api/v1/first-simple-blog/private/blog/fllterd-tag-blogs`;
+  let url = `${API_BASE_URL}/private/blog/fllterd-tag-blogs`;
 
   const queryParams = [];
   if (query) {

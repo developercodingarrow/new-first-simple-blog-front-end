@@ -35,7 +35,11 @@ export default function Footer() {
           <div className={styles.footer_links_wrapper}>
             {dekstopFooterLinks.map((el, index) => {
               return (
-                <Link href={`${el.hrfLink}`} className={styles.footer_link}>
+                <Link
+                  href={`${el.hrfLink}`}
+                  className={styles.footer_link}
+                  key={el.id}
+                >
                   {el.name}
                 </Link>
               );
@@ -65,7 +69,7 @@ export default function Footer() {
             <div className="small_text_wrapper">©2024 blogwebsit</div>
             {termsLinks.map((el, index) => {
               return (
-                <Link href={"/"} className="small_text_wrapper">
+                <Link href={"/"} className="small_text_wrapper" key={el.id}>
                   {el.name}
                 </Link>
               );

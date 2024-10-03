@@ -1,10 +1,10 @@
 import { performGetAPIAction } from "../../performAPIAction";
 import { cookies } from "next/headers"; // Server-side cookie access
+import { API_BASE_URL } from "../../../../../config";
 
 const fetchWithAuthToken = async (url) => {
   const cookieStore = cookies(); // Access server-side cookies
   const authToken = cookieStore.get("jwt")?.value; // Get JWT token
-  console.log("authToken----", authToken);
 
   if (authToken) {
     return performGetAPIAction(url, authToken); // Perform API call with the token
@@ -15,6 +15,6 @@ const fetchWithAuthToken = async (url) => {
 
 // 1) GET ALL USER LIST
 export const allUserListAction = async (requestData) => {
-  const url = `http://localhost:8000/api/v1/first-simple-blog/protected/users/all-users`;
+  const url = `${API_BASE_URL}/protected/users/all-users`;
   return fetchWithAuthToken(url); // Use the helper function
 };

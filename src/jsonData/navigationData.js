@@ -11,44 +11,53 @@ export const mainMenu = [
 
 export const dekstopFooterLinks = [
   {
+    id: 1,
     name: "Home",
     hrfLink: "/",
   },
   {
+    id: 2,
     name: "about Us",
     hrfLink: "/",
   },
 
   {
+    id: 3,
     name: "Blogs",
     hrfLink: "/",
   },
 
   {
+    id: 4,
     name: "about Us",
     hrfLink: "/",
   },
 
   {
+    id: 5,
     name: "Blogs",
     hrfLink: "/",
   },
 
   {
+    id: 6,
     name: "Tags ",
     hrfLink: "/",
   },
 
   {
+    id: 7,
     name: "Support ",
     hrfLink: "/",
   },
   {
+    id: 8,
     name: "Tags ",
     hrfLink: "/",
   },
 
   {
+    id: 9,
     name: "Support ",
     hrfLink: "/",
   },
@@ -56,14 +65,17 @@ export const dekstopFooterLinks = [
 
 export const termsLinks = [
   {
+    id: 1,
     name: "Terms",
     hrfLink: "/",
   },
   {
+    id: 2,
     name: "Privacy",
     hrfLink: "/",
   },
   {
+    id: 3,
     name: "Cookies",
     hrfLink: "/",
   },
@@ -126,14 +138,17 @@ export const tabData = [
 
 export const userDashBordTab = [
   {
+    _id: 1,
     name: "profile",
     hrfLink: "profile",
   },
   {
+    _id: 2,
     name: "published",
     hrfLink: "published",
   },
   {
+    _id: 3,
     name: "draft",
     hrfLink: "draft",
   },
@@ -141,10 +156,12 @@ export const userDashBordTab = [
 
 export const userProfileTab = [
   {
+    _id: 1,
     name: "about",
     hrfLink: "profile",
   },
   {
+    _id: 2,
     name: "Blogs",
     hrfLink: "blogs",
   },

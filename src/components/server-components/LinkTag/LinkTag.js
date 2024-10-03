@@ -9,7 +9,7 @@ export default function LinkTag(props) {
     <div className={styles.linkTag_wrapper}>
       {data.map((el, index) => {
         return (
-          <Link href={"/"} className={styles.tag_link}>
+          <Link href={"/"} key={el._id} className={styles.tag_link}>
             {el.tagName}
           </Link>
         );
