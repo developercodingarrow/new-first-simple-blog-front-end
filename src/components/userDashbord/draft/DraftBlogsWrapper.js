@@ -8,6 +8,8 @@ export default function DraftBlogsWrapper(props) {
   const { data } = props;
   const router = useRouter();
 
+  console.log("draft page wrapper---", data);
+
   const handleEdit = (id, slug) => {
     router.push(`/new-blog/${id}`);
   };

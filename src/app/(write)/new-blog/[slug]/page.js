@@ -19,10 +19,12 @@ async function getData(slug) {
   }
 }
 
-export default async function page(pathname) {
+export default async function editBlogpage(pathname) {
   const slug = pathname?.params?.slug;
 
   const initialData = await getData(slug);
+
+  console.log("edit page----", initialData);
 
   return (
     <div>

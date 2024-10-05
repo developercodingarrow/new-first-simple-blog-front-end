@@ -20,11 +20,9 @@ export default function BlogImgPreUploder(props) {
 
   useEffect(() => {
     if (apiData) {
-      setapiImg(apiData.blogThumblin);
+      setapiImg(apiData?.blogThumblin || null); // Set to null if undefined
     }
   }, [apiData]);
-
-  console.log(apiImg);
 
   const handelModelOpen = () => {
     handelOpenModel(setsingleImgModel);
@@ -60,22 +58,25 @@ export default function BlogImgPreUploder(props) {
                 alt="Preview Image"
               />
             </div>
-          ) : apiImg?.url ? (
-            <div className={styles.prev_img_container}>
-              <div
-                className={styles.img_remove_wrapper}
-                onClick={handelDeleteApiImg}
-              >
-                <IoCloseCircleSharp />
+          ) : apiImg && apiImg.url ? (
+            <>
+              {console.log("Image URL:", `/blogthumblin/${apiImg?.url}`)}
+              <div className={styles.prev_img_container}>
+                <div
+                  className={styles.img_remove_wrapper}
+                  onClick={handelDeleteApiImg}
+                >
+                  <IoCloseCircleSharp />
+                </div>
+                <Image
+                  src={`/blogthumblin/${apiImg?.url}?v=${new Date().getTime()}`}
+                  width={900}
+                  height={900}
+                  className={styles.img_style}
+                  alt={apiImg.altText}
+                />
               </div>
-              <Image
-                src={`/blogthumblin/${apiImg.url}`}
-                width={900}
-                height={900}
-                className={styles.img_style}
-                alt="API Image"
-              />
-            </div>
+            </>
           ) : (
             <div
               className={styles.image_uploader_container}

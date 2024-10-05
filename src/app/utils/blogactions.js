@@ -8,10 +8,10 @@ import {
 import { API_BASE_URL } from "../../../config";
 
 // Get auth token from cookies
-const cookieStore = cookies();
-const authToken = cookieStore.get("jwt")?.value;
 
 export async function createBlogAction() {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/blog/first-action-create-blog`;
   const method = "post";
   try {
@@ -23,17 +23,43 @@ export async function createBlogAction() {
   }
 }
 
-export async function draftBlogs() {
+export async function draftBlogs(authToken) {
   const url = `${API_BASE_URL}/private/blog/my-draft-blogs`;
   try {
     const res = await performGetAPIAction(url, authToken);
+
     return res.data;
   } catch (error) {
-    return error;
+    return { error: error.message || "An error occurred" };
   }
 }
 
+export async function publishedBlog(authToken) {
+  const url = `${API_BASE_URL}/private/blog/my-published-blogs`;
+  try {
+    const res = await performGetAPIAction(url, authToken);
+
+    return res.data;
+  } catch (error) {
+    return { error: error.message || "An error occurred" };
+  }
+}
+
+// export async function publishedBlog() {
+//   const cookieStore = cookies();
+//   const authToken = cookieStore.get("jwt")?.value;
+//   const url = `${API_BASE_URL}/private/blog/my-published-blogs`;
+//   try {
+//     const res = await performGetAPIAction(url, authToken);
+//     return res.data;
+//   } catch (error) {
+//     return error;
+//   }
+// }
+
 export async function updateToDraft(formData) {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/blog/update-to-draft`;
   const method = "post";
   try {
@@ -45,6 +71,8 @@ export async function updateToDraft(formData) {
 }
 
 export async function deleteBlogApi(formData) {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/blog/delete-blog`;
   const method = "delete";
   try {
@@ -56,6 +84,8 @@ export async function deleteBlogApi(formData) {
 }
 
 export async function reportBlogAction(formData) {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/blog/report-content`;
   const method = "post";
   try {
@@ -67,6 +97,8 @@ export async function reportBlogAction(formData) {
 }
 
 export async function likeActions(formData) {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/blog/like`;
   const method = "post";
   try {
@@ -78,6 +110,8 @@ export async function likeActions(formData) {
 }
 
 export async function unlikeAction(formData) {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/blog/unlike`;
   const method = "post";
   try {
@@ -89,6 +123,8 @@ export async function unlikeAction(formData) {
 }
 
 export async function upadteBlogContent(formData, slug) {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/blog/update-blog-content/${slug}`;
   const method = "post";
   try {
@@ -100,6 +136,8 @@ export async function upadteBlogContent(formData, slug) {
 }
 
 export async function upadteBlogTags(formData, slug) {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/blog/update-blog-tags/${slug}`;
   const method = "post";
   try {
@@ -111,6 +149,8 @@ export async function upadteBlogTags(formData, slug) {
 }
 
 export async function UpdateBlogThumblin(formData, projectId) {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/blog/update-blog-thumblin/${projectId}`;
   const method = "patch";
   try {
@@ -123,6 +163,8 @@ export async function UpdateBlogThumblin(formData, projectId) {
 }
 
 export async function deleteBlogThumblinImages(projectId) {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/blog/delete-blog-thumblin/${projectId}`;
   const method = "delete";
   try {

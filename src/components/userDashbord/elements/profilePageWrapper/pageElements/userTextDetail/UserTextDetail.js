@@ -24,8 +24,6 @@ export default function UserTextDetail(props) {
     );
   };
 
-  console.log(textdata);
-
   return (
     <>
       <div className={styles[container_style]}>

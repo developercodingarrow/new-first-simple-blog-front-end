@@ -11,7 +11,7 @@ export async function getSingleAuthBlog(slug) {
 
   try {
     const res = await performGetAPIAction(url, authToken);
-
+    console.log("res blogapi action---", res);
     return res.data;
   } catch (error) {
     return { error: error.message || "Unknown error occurred" };

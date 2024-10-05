@@ -7,11 +7,9 @@ import {
 } from "./genericAction";
 import { API_BASE_URL } from "../../../config";
 
-// Get auth token from cookies
-const cookieStore = cookies();
-const authToken = cookieStore.get("jwt")?.value;
-
 export async function updateUser(formData) {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/users/update-user-profile`;
   const method = "post";
   try {
@@ -23,6 +21,8 @@ export async function updateUser(formData) {
 }
 
 export async function updateUserProfilePic(formData) {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/users/update-user-profile-pic`;
   const method = "patch";
   try {

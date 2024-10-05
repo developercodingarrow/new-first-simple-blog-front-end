@@ -34,7 +34,6 @@ export default function EditBlogUI(props) {
       blogData.metaDescription.trim() !== "";
     const isBlogDescriptionValid = blogData.blogDescreption.length >= 50;
 
-    // Set form validity
     setFormIsValid(
       isTitleValid && isMetaDescriptionValid && isBlogDescriptionValid
     );
@@ -93,8 +92,6 @@ export default function EditBlogUI(props) {
         setErrors((prevErrors) => ({ ...prevErrors, metaDescription: "" }));
       }
     }
-
-    console.log(blogData);
   };
 
   const handleQuillChange = (content) => {
@@ -119,8 +116,6 @@ export default function EditBlogUI(props) {
         blogDescreption: "",
       }));
     }
-
-    console.log(blogData);
   };
 
   const handelUpdateContent = async () => {

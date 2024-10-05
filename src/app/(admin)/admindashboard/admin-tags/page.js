@@ -1,18 +1,14 @@
 import React, { Suspense } from "react";
 import styles from "../../pagesStyle.module.css";
 import AdminTagswrapper from "./wrapper";
-
 import { tagListAction } from "@/src/app/utils/adminActions/authTagActions";
 
-async function getData(slug) {
-  const res = await tagListAction(slug);
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
-
-  if (!res.status === "success" || !res.result) {
+async function getData() {
+  const data = await tagListAction(); // Pass authToken as a parameter
+  if (!data) {
     throw new Error("Data not found");
   }
-  console.log(res.result);
-  return await res.result;
+  return data;
 }
 
 export default async function AdminTags() {

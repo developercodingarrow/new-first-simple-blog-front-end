@@ -4,10 +4,10 @@ import { performGetAPIAction, performAPIAction } from "../genericAction";
 import { API_BASE_URL } from "../../../../config";
 
 // Get auth token from cookies
-const cookieStore = cookies();
-const authToken = cookieStore.get("jwt")?.value;
 
 export async function tagListAction() {
+  const cookieStore = cookies(); // Call cookies() in the server context
+  const authToken = cookieStore.get("jwt")?.value; // Get the token from cookies
   const url = `${API_BASE_URL}/private/tag/all-tags`;
   try {
     const res = await performGetAPIAction(url, authToken);
@@ -18,6 +18,8 @@ export async function tagListAction() {
 }
 
 export async function createTagAction(formData) {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/tag/create-tag`;
   const method = "post";
   try {
@@ -29,6 +31,8 @@ export async function createTagAction(formData) {
 }
 
 export async function tagverificationAction(formData) {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/tag/tag-vrification`;
   const method = "post";
   try {
@@ -40,6 +44,8 @@ export async function tagverificationAction(formData) {
 }
 
 export async function tagFeatureAction(formData) {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/tag/tag-featured`;
   const method = "post";
   try {
@@ -51,6 +57,8 @@ export async function tagFeatureAction(formData) {
 }
 
 export async function deleteSingleTagAction(formData) {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/tag/delete-single-tag`;
   const method = "delete";
   try {

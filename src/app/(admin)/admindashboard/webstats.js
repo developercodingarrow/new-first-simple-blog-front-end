@@ -1,21 +1,13 @@
 import React from "react";
 import styles from "./dashbordpagestyle.module.css";
-import { webStatsAction } from "./apiActions";
+
 import StatsBox from "./statsBox";
 
-async function getData() {
-  try {
-    // Simulating data fetching for demo purposes
-    const res = await webStatsAction();
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-    return await res.data.results;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    throw new Error(`Failed to fetch data: ${error}`);
+export default async function Webstats({ data }) {
+  if (!data) {
+    return <div>No data available</div>; // Display a message if no data is available
   }
-}
 
-export default async function Webstats() {
   const {
     totalBlogs,
     publishedBlogs,
@@ -28,7 +20,7 @@ export default async function Webstats() {
     totalComments,
     totalReplies,
     featuredBlogs,
-  } = await getData();
+  } = data;
 
   return (
     <div className={styles.container}>

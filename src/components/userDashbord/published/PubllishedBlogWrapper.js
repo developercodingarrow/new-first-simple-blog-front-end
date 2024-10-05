@@ -7,6 +7,7 @@ import { deleteBlogApi, updateToDraft } from "@/src/app/utils/blogactions";
 export default function PubllishedBlogWrapper(props) {
   const router = useRouter();
   const { data } = props;
+  console.log("PubllishedBlogWrapper----", data);
 
   const handleEdit = (id, slug) => {
     router.push(`/new-blog/${id}`);
@@ -32,7 +33,7 @@ export default function PubllishedBlogWrapper(props) {
       };
       const res = await updateToDraft(data);
       console.log("handel dreft---", res);
-      handelmyPublishedBlog();
+      router.refresh();
     } catch (error) {
       console.log(error);
     }

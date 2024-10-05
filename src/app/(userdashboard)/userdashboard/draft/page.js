@@ -3,22 +3,24 @@ import DraftBlogsWrapper from "@/src/components/userDashbord/draft/DraftBlogsWra
 import { draftBlogs } from "@/src/app/utils/blogactions";
 import CardSkeleton from "@/src/components/userDashbord/elements/skeleton/CardSkeleton";
 
-async function getData() {
-  try {
-    const res = await draftBlogs();
-    // await new Promise((resolve) => setTimeout(resolve, 100000));
-    if (!res.result) {
-      throw new Error("Data not found");
-    }
+import { cookies } from "next/headers"; // Import cookies here
+export default async function draftBlogpage() {
+  const cookieStore = cookies();
+  const authToken = cookieStore.get("jwt")?.value; // Access cookies directly here
 
-    return await res.result;
+  let initialData;
+  try {
+    const res = await draftBlogs(authToken); // Pass authToken directly to your function
+    if (res.error) {
+      console.error("Error fetching draft blogs:", res.error);
+      initialData = [];
+    } else {
+      initialData = res.result;
+    }
   } catch (error) {
     console.error("Error fetching data:", error);
-    // throw new Error(`Failed to fetch data: ${error}`);
+    initialData = []; // Handle the case where data is not found
   }
-}
-export default async function draftBlogpage() {
-  const initialData = await getData();
   return (
     <div>
       <Suspense fallback={<CardSkeleton />}>
