@@ -19,13 +19,11 @@ export async function getTagsWithRevalidation() {
   try {
     // Revalidate the data at most every hour (3600 seconds)
     const res = await fetch(`${API_BASE_URL}/private/tag/verified-tags`, {
-      // next: { revalidate: 3600 },
+      next: { revalidate: 10 },
     });
-
     if (!res.ok) {
-      throw new Error("Failed to fetch tags");
+      return [];
     }
-
     const data = await res.json();
 
     return data.data;

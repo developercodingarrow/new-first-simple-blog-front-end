@@ -59,14 +59,7 @@ export default function UserAuthLayout(props) {
     <div className={styles.layout_conatiner}>
       <Toaster />
       <div className={styles.auth_image_banner_container}>
-        <Image
-          src={authBanner}
-          alt="auth banner image"
-          width={1000}
-          height={1000}
-          quality={100}
-          className={styles.imgStyle}
-        />
+        <div className={styles.image_banner_inner_container}></div>
       </div>
       <div className={styles.auth_page_container}>
         <div className={styles.auth_form_Wrapper}>

@@ -13,7 +13,6 @@ import { AppContext } from "@/src/app/_contextApi/AppContext";
 
 export default function OTP() {
   const { isBtnLoadin, setisBtnLoadin } = useContext(AppContext);
-
   const params = useParams();
   const router = useRouter();
   const { otp } = params;
@@ -24,6 +23,7 @@ export default function OTP() {
     try {
       setisBtnLoadin(true);
       const res = await userotpVerfication(data, otp);
+      console.log("OTP---", res);
       if (res.error) {
         toast.error(res.error);
         setisBtnLoadin(false);
@@ -31,7 +31,7 @@ export default function OTP() {
       }
       if (res.data.status === "success") {
         toast.success(res.data.message);
-        router.push("/");
+        // router.push("/");
         setisBtnLoadin(false);
       }
     } catch (error) {

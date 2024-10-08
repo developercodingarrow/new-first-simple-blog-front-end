@@ -6,7 +6,6 @@ export const TagContext = createContext();
 export default function TagContextProvider({ children, verifiedTags }) {
   const [allTags, setallTags] = useState(verifiedTags);
   const [filteredTags, setFilteredTags] = useState([]);
-
   useEffect(() => {
     // Check if tags are already in localStorage
     const storedTags = localStorage.getItem("tags");
