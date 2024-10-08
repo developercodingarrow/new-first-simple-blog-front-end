@@ -13,7 +13,7 @@ import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 export default function ReportActionModel(props) {
   const { isReportModel, setisReportModel, modelID, handelCloseModel } =
     useContext(ModelsContext);
-  const { handelReportBlog, setisLoading, isLoading } = useContext(BlogContext);
+  const { handelReportBlog } = useContext(BlogContext);
 
   const { handleSubmit, renderInput, isValid } = useCustomForm();
 
@@ -22,17 +22,15 @@ export default function ReportActionModel(props) {
       id: modelID,
       filedContent: data.reportcontent,
     };
-    setisLoading(true);
+
     try {
       const res = await handelReportBlog(formData);
-      console.log(res);
+      console.log("report res----", res);
       if (res.status === "success") {
         toast.success(res.message);
-        setisLoading(false);
       }
     } catch (error) {
       console.log(error);
-      setisLoading(false);
     }
   };
 

@@ -16,15 +16,8 @@ export default function UserImgModel(props) {
     useContext(ModelsContext);
 
   const fileInputRef = useRef(null);
-  const {
-    previewImage,
-    image,
-    imgData,
-    handleImageUpload,
-    removeImg,
-    handelChange,
-    handleSave,
-  } = useImageUpload();
+  const { previewImage, image, handleImageUpload, removeImg } =
+    useImageUpload();
 
   const handleClickUpload = () => {
     fileInputRef.current.click();

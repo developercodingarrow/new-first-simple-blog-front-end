@@ -8,7 +8,7 @@ export default function ProfileHeader({ userData }) {
     <div className={styles.profile_header}>
       <div className={styles.user_image_wrapper}>
         <Image
-          src={`/usersProfileImg/${userData?.userImg?.url}`}
+          src={`http://3.143.124.47/usersProfileImg/${userData?.userImg?.url}`}
           alt={userData?.userImg?.altText}
           width={500}
           height={500}
