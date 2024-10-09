@@ -31,6 +31,7 @@ export default function UserImgModel(props) {
         console.log("result000--", res);
         setupdateData(res.data);
         updateUserDetail(res.data);
+        console.log("upadte user---");
       }
     } catch (error) {
       console.log(error);

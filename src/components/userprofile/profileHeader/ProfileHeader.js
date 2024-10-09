@@ -4,11 +4,13 @@ import styles from "./profileheader.module.css";
 import Image from "next/image";
 
 export default function ProfileHeader({ userData }) {
+  console.log("usr imag path ---", userData?.userImg?.url);
+
   return (
     <div className={styles.profile_header}>
       <div className={styles.user_image_wrapper}>
         <Image
-          src={`http://3.143.124.47/usersProfileImg/${userData?.userImg?.url}`}
+          src={`usersProfileImg/${userData?.userImg?.url}`}
           alt={userData?.userImg?.altText}
           width={500}
           height={500}
