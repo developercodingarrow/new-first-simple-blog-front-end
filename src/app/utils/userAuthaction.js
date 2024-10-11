@@ -124,6 +124,46 @@ export async function userotpVerfication(formData, slug) {
   }
 }
 
+export async function userForgotPasswordAction(formData) {
+  const url = `${API_BASE_URL}/user-auth/forgot-password`;
+  const method = "post";
+  try {
+    const res = await axios({
+      method,
+      url,
+      data: formData,
+      withCredentials: true,
+    });
+
+    return { data: res.data };
+  } catch (error) {
+    if (error.response) {
+      return { error: error.response.data.message || "Unknown error" };
+    }
+    return { error: error.message || "Request failed" };
+  }
+}
+export async function userResetPassword(formData, slug) {
+  const url = `${API_BASE_URL}/user-auth/reset-password/${slug}`;
+  const method = "post";
+  try {
+    // const res = await performAPIAction(method, url, formData, authToken);
+    const res = await axios({
+      method,
+      url,
+      data: formData,
+      withCredentials: true,
+    });
+
+    return { status: "success", data: res.data };
+  } catch (error) {
+    if (error.response) {
+      return { error: error.response.data.message || "Unknown error" };
+    }
+    return { error: error.message || "Request failed" };
+  }
+}
+
 export async function updateUserProfileAction(formData) {
   const url = `${API_BASE_URL}/private/users/update-user-profile`;
   const method = "post";

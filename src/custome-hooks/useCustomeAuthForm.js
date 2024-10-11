@@ -17,7 +17,7 @@ export default function useCustomeAuthForm(customeInputs, formType) {
   });
   let updatedInputs = [...customeInputs];
 
-  if (formType === "SINGUP") {
+  if (formType === "SINGUP" || formType === "resetPassword") {
     updatedInputs = [
       ...updatedInputs,
       {

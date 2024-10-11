@@ -86,3 +86,34 @@ export const otpInput = [
     },
   },
 ];
+
+export const forgotPasswordInput = [
+  {
+    id: 1,
+    name: "email",
+    placeholder: "Enter your Register E-mail !",
+    type: "text",
+    inputType: "text",
+    validation: {
+      required: "Email is required.",
+      pattern: {
+        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+        message: "Invalid email address.",
+      },
+    },
+  },
+];
+
+export const ResetPasswordInput = [
+  {
+    id: 1,
+    name: "password",
+    type: "password",
+    placeholder: "password",
+    lable: "password",
+    inputType: "password",
+    validation: {
+      required: "Password is required.",
+    },
+  },
+];
