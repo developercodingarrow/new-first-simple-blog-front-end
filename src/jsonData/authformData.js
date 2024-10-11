@@ -117,3 +117,29 @@ export const ResetPasswordInput = [
     },
   },
 ];
+
+export const upadteUserPasswordInput = [
+  {
+    id: 1,
+    name: "curentpassword",
+    type: "password",
+    placeholder: "curent password",
+    lable: "Current password",
+    inputType: "password",
+    validation: {
+      required: "Password is required.",
+    },
+  },
+
+  {
+    id: 1,
+    name: "newPassword",
+    type: "password",
+    placeholder: "new Password",
+    lable: "New password",
+    inputType: "password",
+    validation: {
+      required: "Password is required.",
+    },
+  },
+];

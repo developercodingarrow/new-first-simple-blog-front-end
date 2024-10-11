@@ -7,7 +7,6 @@ import { AuthContext } from "@/src/app/_contextApi/authContext";
 export default function UserDashBordHeader() {
   const { authUser } = useContext(AuthContext);
 
-  console.log("Dashbord Header-----", authUser.userImg.url);
   return (
     <div className={styles.profile_header}>
       <div className={styles.user_image_wrapper}>

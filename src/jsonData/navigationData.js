@@ -152,6 +152,11 @@ export const userDashBordTab = [
     name: "draft",
     hrfLink: "draft",
   },
+  {
+    _id: 4,
+    name: "settings",
+    hrfLink: "settings",
+  },
 ];
 
 export const userProfileTab = [
