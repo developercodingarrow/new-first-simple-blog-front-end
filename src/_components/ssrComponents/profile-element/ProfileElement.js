@@ -7,6 +7,7 @@ import { formatDate } from "@/src/_logicalFunctions/formatDate";
 export default function ProfileElement(props) {
   const { text, smallText, imgDirectory, imgUrl, imgAlt } = props;
   const date = formatDate(smallText);
+
   return (
     <div className={styles.flex_container}>
       <div className={styles.circle_img_wrapper}>

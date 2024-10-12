@@ -1,6 +1,9 @@
 "use client";
 
 export default function myImageLoader({ src, width, quality }) {
+  if (!src) {
+    return "../../../public/usersProfileImg/profile-pic.webp"; // Use a fallback image if src is undefined
+  }
   const isProduction = process.env.NEXT_PUBLIC_PRODUCTION === "true";
   const baseUrl = isProduction ? "http://3.143.124.47" : "";
 

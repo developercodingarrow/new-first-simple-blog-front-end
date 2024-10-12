@@ -9,6 +9,10 @@ export default function UserImagDetail(props) {
     openModal(apiData?.userImg?.url, apiData._id);
   };
 
+  const userImgSrc = apiData?.userImg?.url?.startsWith("http")
+    ? apiData.userImg.url // Google profile image
+    : `/usersProfileImg/${apiData?.userImg?.url || "profile-pic.webp"}`;
+
   return (
     <div className={styles.flex_container}>
       <div className={styles.title_wrapper}>
@@ -16,9 +20,8 @@ export default function UserImagDetail(props) {
       </div>
       <div className={styles.small_img_wrapper} onClick={handelOpenModel}>
         <Image
-          // src={imgData}
-          src={`/usersProfileImg/${apiData?.userImg?.url}`}
-          alt="user image"
+          src={userImgSrc}
+          alt={apiData?.userImg?.altText || "Profile Picture"}
           className={styles.img_style}
           width={500}
           height={500}
