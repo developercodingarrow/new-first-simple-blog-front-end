@@ -5,14 +5,13 @@ import { API_BASE_URL } from "../../../../config";
 
 // Get auth token from cookies
 
-export async function tagListAction() {
-  const cookieStore = cookies(); // Call cookies() in the server context
-  const authToken = cookieStore.get("jwt")?.value; // Get the token from cookies
+export async function tagListAction(authToken) {
   const url = `${API_BASE_URL}/private/tag/all-tags`;
   try {
     const res = await performGetAPIAction(url, authToken);
     return res.data;
   } catch (error) {
+    console.log("error----", error);
     return error;
   }
 }

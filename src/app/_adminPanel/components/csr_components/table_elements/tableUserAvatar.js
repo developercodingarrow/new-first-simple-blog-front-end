@@ -7,20 +7,25 @@ import userImg from "../../../../../../public/web-static-img/auther-image.jpg";
 export default function TableUserAvatar(props) {
   const { name, userName, imgData } = props;
 
+  const userImgSrc = imgData?.url?.startsWith("http")
+    ? imgData.url // Google profile image
+    : `/usersProfileImg/${imgData?.url || "profile-pic.webp"}`;
+
   return (
     <div className={styles.flex_container}>
       <div className={styles.circle_img_wrapper}>
         {imgData?.url && (
           <Image
-            src={`/usersProfileImg/${imgData.url}`}
-            alt={imgData.altText}
+            // src={`/usersProfileImg/${imgData.url}`}
+            src={userImgSrc}
+            alt={imgData?.altText || "Profile Picture"}
             width={500}
             height={500}
             className="circle_img_style"
           />
         )}
 
-        {!imgData?.url && (
+        {/* {!imgData?.url && (
           <Image
             src={userImg}
             alt="user-image"
@@ -28,7 +33,7 @@ export default function TableUserAvatar(props) {
             height={500}
             className="circle_img_style"
           />
-        )}
+        )} */}
       </div>
       <div className={styles.details_wrapper}>
         <div className={`dark_text_color small_text`}>{name}</div>
