@@ -34,3 +34,16 @@
   border: 2px solid rgb(244 244 245 / 1);
   background-color: #fff;
 }
+
+@media (max-width: 768px) {
+  .flex_container {
+    padding: 3px;
+  }
+
+  .search_icon_wrapper {
+    font-size: 12px;
+  }
+  .search_inputStyle {
+    font-size: 12px;
+  }
+}

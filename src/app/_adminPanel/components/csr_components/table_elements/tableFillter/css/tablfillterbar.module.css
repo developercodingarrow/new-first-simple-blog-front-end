@@ -15,7 +15,6 @@
 }
 
 .search_Compoent_wrraper {
-  /* border: 1px solid red; */
 }
 
 .single_inputForm {
@@ -35,4 +34,17 @@
 
 .btn_wrapper {
   /* border: 1px solid green; */
+}
+
+@media (max-width: 768px) {
+  .main_contatiner {
+  }
+  .inner_container {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+
+  .search_Compoent_wrraper {
+    width: 150px;
+  }
 }
