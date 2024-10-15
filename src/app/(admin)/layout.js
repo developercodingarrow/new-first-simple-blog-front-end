@@ -7,6 +7,8 @@ import AuthContextProvider from "../_contextApi/authContext";
 import { getSession } from "../lib/authentication";
 import DeleteModel from "@/src/components/client-components/models/DeleteModel";
 import ModelContextProvider from "../_contextApi/ModelContextApi";
+import ImgModelContextProvider from "../_contextApi/ImgModelContextApi";
+import AppContextProvider from "../_contextApi/AppContext";
 
 export default async function Mainlayout({ children }) {
   const userDetails = await getSession();
@@ -15,12 +17,16 @@ export default async function Mainlayout({ children }) {
       <body className={styles.body_style}>
         <div>
           <AuthContextProvider authData={userDetails}>
-            <FillterContextProvider>
-              <ModelContextProvider>
-                <DeleteModel />
-                <Layoutwrapper>{children}</Layoutwrapper>
-              </ModelContextProvider>
-            </FillterContextProvider>
+            <AppContextProvider>
+              <FillterContextProvider>
+                <ImgModelContextProvider>
+                  <ModelContextProvider>
+                    <DeleteModel />
+                    <Layoutwrapper>{children}</Layoutwrapper>
+                  </ModelContextProvider>
+                </ImgModelContextProvider>
+              </FillterContextProvider>
+            </AppContextProvider>
           </AuthContextProvider>
         </div>
       </body>

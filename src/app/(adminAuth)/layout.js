@@ -6,22 +6,25 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import ModelContextProvider from "../_contextApi/ModelContextApi";
 import TagContextProvider from "../_contextApi/TagContextApi";
 import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
+import AuthContextProvider from "../_contextApi/authContext";
 
 export default function layout({ children }) {
   return (
     <html lang="en">
       <body>
-        <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
-          <ModelContextProvider>
-            <TagContextProvider>
-              <div>
-                <NavBar />
-              </div>
-              <div className="children_wrapper">{children}</div>
-              <Footer />
-            </TagContextProvider>
-          </ModelContextProvider>
-        </GoogleOAuthProvider>
+        <AuthContextProvider>
+          <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
+            <ModelContextProvider>
+              <TagContextProvider>
+                <div>
+                  <NavBar />
+                </div>
+                <div className="children_wrapper">{children}</div>
+                <Footer />
+              </TagContextProvider>
+            </ModelContextProvider>
+          </GoogleOAuthProvider>
+        </AuthContextProvider>
       </body>
     </html>
   );

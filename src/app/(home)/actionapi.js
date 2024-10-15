@@ -23,3 +23,6 @@ export const tagfillterBlogs = async (query, page) => {
 
   return performGetAPIAction(url, null);
 };
+
+
+

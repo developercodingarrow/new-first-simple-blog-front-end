@@ -21,6 +21,8 @@ import ImgModelContextProvider from "../_contextApi/ImgModelContextApi";
 import TagsPageLayout from "@/src/components/tags/layout/TagsPageLayout";
 import TagContextProvider from "../_contextApi/TagContextApi";
 import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
+import SearchModel from "@/src/components/client-components/models/SearchModel";
+import AppContextProvider from "../_contextApi/AppContext";
 
 export const metadata = {
   title: "Fisrt blog website",
@@ -35,34 +37,37 @@ export default async function TagsLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <AuthContextProvider authData={userDetails}>
-          <ImgModelContextProvider>
-            <TagContextProvider>
-              <ModelContextProvider>
-                <BlogContextProvider>
-                  <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
-                    <ReportActionModel />
-                    <ReagisterAuthModel />
-                    <div>
-                      <NavBar userData={userDetails} />
-                      {!userDetails && <GoogleOneTap />}
-                    </div>
+        <AppContextProvider>
+          <AuthContextProvider authData={userDetails}>
+            <ImgModelContextProvider>
+              <TagContextProvider>
+                <ModelContextProvider>
+                  <BlogContextProvider>
+                    <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
+                      <ReportActionModel />
+                      <ReagisterAuthModel />
+                      <SearchModel />
+                      <div>
+                        <NavBar userData={userDetails} />
+                        {!userDetails && <GoogleOneTap />}
+                      </div>
 
-                    <div className="children_wrapper">
-                      <main>
-                        <div className={styles.main_banner}>
-                          <HomePageMainBanner />
-                        </div>
-                        <TagsPageLayout>{children}</TagsPageLayout>
-                      </main>
-                    </div>
-                    <Footer />
-                  </GoogleOAuthProvider>
-                </BlogContextProvider>
-              </ModelContextProvider>
-            </TagContextProvider>
-          </ImgModelContextProvider>
-        </AuthContextProvider>
+                      <div className="children_wrapper">
+                        <main>
+                          <div className={styles.main_banner}>
+                            <HomePageMainBanner />
+                          </div>
+                          <TagsPageLayout>{children}</TagsPageLayout>
+                        </main>
+                      </div>
+                      <Footer />
+                    </GoogleOAuthProvider>
+                  </BlogContextProvider>
+                </ModelContextProvider>
+              </TagContextProvider>
+            </ImgModelContextProvider>
+          </AuthContextProvider>
+        </AppContextProvider>
       </body>
     </html>
   );

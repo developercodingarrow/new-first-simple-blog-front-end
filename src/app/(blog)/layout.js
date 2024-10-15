@@ -14,6 +14,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import AuthContextProvider from "../_contextApi/authContext";
 import TagContextProvider from "../_contextApi/TagContextApi";
 import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
+import AppContextProvider from "../_contextApi/AppContext";
 
 export default async function layout({ children }) {
   const userDetails = await getSession();
@@ -21,26 +22,28 @@ export default async function layout({ children }) {
     <html lang="en">
       <body>
         <BlogContextProvider>
-          <ModelContextProvider>
-            <AuthContextProvider authData={userDetails}>
-              <TagContextProvider>
-                <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
-                  <ReportActionModel />
-                  <ReagisterAuthModel />
-                  <div>
+          <AppContextProvider>
+            <ModelContextProvider>
+              <AuthContextProvider authData={userDetails}>
+                <TagContextProvider>
+                  <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
+                    <ReportActionModel />
+                    <ReagisterAuthModel />
                     <div>
-                      <NavBar userData={userDetails} />
-                      {!userDetails && <GoogleOneTap />}
+                      <div>
+                        <NavBar userData={userDetails} />
+                        {!userDetails && <GoogleOneTap />}
+                      </div>
                     </div>
-                  </div>
-                  <div className="children_wrapper">
-                    <SingleBlogLayout>{children}</SingleBlogLayout>
-                  </div>
-                  <Footer />
-                </GoogleOAuthProvider>
-              </TagContextProvider>
-            </AuthContextProvider>
-          </ModelContextProvider>
+                    <div className="children_wrapper">
+                      <SingleBlogLayout>{children}</SingleBlogLayout>
+                    </div>
+                    <Footer />
+                  </GoogleOAuthProvider>
+                </TagContextProvider>
+              </AuthContextProvider>
+            </ModelContextProvider>
+          </AppContextProvider>
         </BlogContextProvider>
       </body>
     </html>

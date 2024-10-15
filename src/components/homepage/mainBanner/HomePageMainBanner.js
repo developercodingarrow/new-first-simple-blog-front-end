@@ -1,17 +1,35 @@
 import React from "react";
 import styles from "./css/mainbanner.module.css";
 import Image from "next/image";
+import { cookies } from "next/headers"; // Import the cookies function
 import main_bannerImg from "../../../../public/web-static-img/main-banner.png";
 export default function HomePageMainBanner() {
+  const cookieStore = cookies();
+  const banner = cookieStore.get("mainBanner")?.value;
+  // Parse the banner details from the cookie if it exists
+  let bannerDetails = null;
+  if (banner) {
+    try {
+      bannerDetails = JSON.parse(banner);
+    } catch (error) {
+      console.error("Error parsing banner JSON:", error);
+    }
+  }
+
+  console.log("main banner ---", bannerDetails);
   return (
     <div className={styles.com_compoanent}>
-      <Image
-        src={main_bannerImg}
-        width={900}
-        height={900}
-        alt="Main-banner"
-        className={styles.banner_imgStyle}
-      />
+      {bannerDetails ? (
+        <Image
+          src={`/mainbanner/${bannerDetails.bannerImg.url}`} // Use the correct path to the image
+          width={900}
+          height={900}
+          alt={bannerDetails.bannerImg.altText} // Use the alt text from the banner details
+          className={styles.banner_imgStyle}
+        />
+      ) : (
+        <p>No banner available</p> // Fallback message if no banner is found
+      )}
     </div>
   );
 }

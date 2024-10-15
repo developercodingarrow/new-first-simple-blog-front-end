@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./css/singleBlogLayout.module.css";
 import SideBanner from "../../server-components/banners/SideBanner";
+import AppDrawer from "../../appDrawer/AppDrawer";
 
 export default function SingleBlogLayout({ children }) {
   return (
     <div className={styles.main_container}>
+      <AppDrawer />
       <div className={styles.inner_container}>
         <div className={styles.banner_section}>
           <div className={styles.banner_wrapper}>

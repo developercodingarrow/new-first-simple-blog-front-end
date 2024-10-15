@@ -14,9 +14,12 @@ import {
   SlUser,
   TiDocumentText,
   BiTag,
+  HiMagnifyingGlass,
+  GiPowerButton,
 } from "../../ApplicationIcons";
 import Link from "next/link";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
+import { AuthContext } from "@/src/app/_contextApi/authContext";
 
 export default function Footer() {
   const {
@@ -25,6 +28,7 @@ export default function Footer() {
     handelOpenSearchModel,
     handelCloseSearchModel,
   } = useContext(ModelsContext);
+  const { authUser } = useContext(AuthContext);
   return (
     <div className={styles.com_conatiner}>
       <div className={styles.dekstop_wrapper}>
@@ -82,22 +86,28 @@ export default function Footer() {
           <HiOutlineHome />
         </Link>
 
-        <Link href={"/"} className={styles.mobile_footer_icon_wrapper}>
-          <MdOutlineAutoGraph />
+        <Link href={"/tags"} className={styles.mobile_footer_icon_wrapper}>
+          <BiTag />
         </Link>
-        <Link
-          href={"/"}
+        <div
           className={styles.mobile_footer_icon_wrapper}
           onClick={handelOpenSearchModel}
         >
-          <TiDocumentText />
-        </Link>
+          <HiMagnifyingGlass />
+        </div>
         <Link href={"/"} className={styles.mobile_footer_icon_wrapper}>
-          <BiTag />
+          <MdOutlineAutoGraph />
         </Link>
-        <Link href={"/"} className={styles.mobile_footer_icon_wrapper}>
-          <SlUser />
-        </Link>
+
+        {authUser ? (
+          <Link href={"/"} className={styles.mobile_footer_icon_wrapper}>
+            <SlUser />
+          </Link>
+        ) : (
+          <Link href={"/login"} className={styles.mobile_footer_icon_wrapper}>
+            <GiPowerButton />
+          </Link>
+        )}
       </div>
     </div>
   );

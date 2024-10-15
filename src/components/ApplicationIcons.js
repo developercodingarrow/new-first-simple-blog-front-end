@@ -25,6 +25,8 @@ import { IoArrowBack } from "react-icons/io5";
 import { FaUserCircle } from "react-icons/fa";
 import { SlLogout } from "react-icons/sl";
 import { HiMagnifyingGlass } from "react-icons/hi2";
+import { BsCloudUpload } from "react-icons/bs";
+import { GiPowerButton } from "react-icons/gi";
 
 export {
   FaUserCircle,
@@ -59,4 +61,6 @@ export {
   CiShare1,
   SlLogout,
   HiMagnifyingGlass,
+  BsCloudUpload,
+  GiPowerButton,
 };

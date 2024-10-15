@@ -23,6 +23,7 @@ import {
 } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
 import { RiAdminLine } from "react-icons/ri";
+import { CiImageOn } from "react-icons/ci";
 export {
   CiMenuFries,
   LuLayoutDashboard,
@@ -47,4 +48,5 @@ export {
   MdOutlineKeyboardArrowRight,
   IoIosArrowDown,
   RiAdminLine,
+  CiImageOn,
 };

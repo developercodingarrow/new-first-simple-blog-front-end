@@ -8,6 +8,7 @@ import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
 import ModelContextProvider from "../_contextApi/ModelContextApi";
 import AppContextProvider from "../_contextApi/AppContext";
 import TagContextProvider from "../_contextApi/TagContextApi";
+import AuthContextProvider from "../_contextApi/authContext";
 
 export default async function layout({ children }) {
   const userDetails = await getSession();
@@ -15,19 +16,21 @@ export default async function layout({ children }) {
     <html lang="en">
       <body>
         <AppContextProvider>
-          <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
-            <TagContextProvider>
-              <ModelContextProvider>
-                <div className={"navbar_wrapper"}>
-                  <NavBar userData={userDetails} />
-                </div>
-                <div className="children_wrapper">
-                  <main>{children}</main>
-                </div>
-                <Footer />
-              </ModelContextProvider>
-            </TagContextProvider>
-          </GoogleOAuthProvider>
+          <AuthContextProvider>
+            <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
+              <TagContextProvider>
+                <ModelContextProvider>
+                  <div className={"navbar_wrapper"}>
+                    <NavBar userData={userDetails} />
+                  </div>
+                  <div className="children_wrapper">
+                    <main>{children}</main>
+                  </div>
+                  <Footer />
+                </ModelContextProvider>
+              </TagContextProvider>
+            </GoogleOAuthProvider>
+          </AuthContextProvider>
         </AppContextProvider>
       </body>
     </html>

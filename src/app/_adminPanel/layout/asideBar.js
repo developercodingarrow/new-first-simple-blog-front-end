@@ -7,6 +7,7 @@ import {
   PiUsersThreeLight,
   BsCardList,
   GoTag,
+  CiImageOn,
 } from "../ApplicationIcons";
 import Link from "next/link";
 
@@ -35,6 +36,11 @@ const sidebarItems = [
     href: "/admindashboard/admin-tags",
     text: "Admin Tags List",
     icon: <GoTag />,
+  },
+  {
+    href: "/admindashboard/main-banner",
+    text: "Main Banner",
+    icon: <CiImageOn />,
   },
   // Add more items as needed
 ];

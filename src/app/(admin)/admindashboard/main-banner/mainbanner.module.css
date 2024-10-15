@@ -1,0 +1,14 @@
+.main_conntainer {
+  padding: 20px;
+}
+
+.page_header {
+  background: var(--th-white);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.component_wrraper {
+  margin-bottom: 50px;
+}
