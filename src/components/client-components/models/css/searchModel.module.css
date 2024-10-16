@@ -8,10 +8,16 @@
     width: 100vw;
     height: 100vh;
     position: fixed;
+    bottom: -100%;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 20;
     background-color: #fff;
     overflow: hidden;
+    transition: bottom 0.3s ease; /* This adds a smooth transition */
+  }
+
+  .conatiner.show {
+    bottom: 0px;
   }
 
   .model_closeBar {

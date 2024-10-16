@@ -76,17 +76,38 @@ export default function AppDrawer() {
 
   return (
     <>
-      {isMobleDrawer && (
-        <div className={styles.container} onClick={handelCloseMobileDrawer}>
-          <div className={styles.inner_container}>
-            <div className={styles.appDrawer_header}>
-              <div className={styles.auth_header_wrapper}>
-                {isAuth ? <AuthHeader /> : <HeaderLogin />}
-              </div>
+      <div
+        className={`${styles.container} ${
+          isMobleDrawer ? styles.show : ""
+        }`} /* Here you toggle the 'show' class */
+        onClick={handelCloseMobileDrawer}
+      >
+        <div className={styles.inner_container}>
+          <div className={styles.appDrawer_header}>
+            <div className={styles.auth_header_wrapper}>
+              {isAuth ? <AuthHeader /> : <HeaderLogin />}
             </div>
-            <div className={styles.appDrawer_option_wrapper}>
+          </div>
+          <div className={styles.appDrawer_option_wrapper}>
+            {" "}
+            {sidebarItems.map((item, index) => {
+              return (
+                <div className={styles.sideBar_itemsBox}>
+                  <Link href={item.href} className={styles.items_link_wrapper}>
+                    <span className={styles.item_iconBox}>{item.icon}</span>
+                    <span className={`${styles.item_textBox} `}>
+                      {item.text}
+                    </span>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+
+          {isAuth && (
+            <div className={styles.appDrawer_authoption_wrapper}>
               {" "}
-              {sidebarItems.map((item, index) => {
+              {sidebarAuthItems.map((item, index) => {
                 return (
                   <div className={styles.sideBar_itemsBox}>
                     <Link
@@ -102,59 +123,38 @@ export default function AppDrawer() {
                 );
               })}
             </div>
+          )}
 
-            {isAuth && (
-              <div className={styles.appDrawer_authoption_wrapper}>
-                {" "}
-                {sidebarAuthItems.map((item, index) => {
-                  return (
-                    <div className={styles.sideBar_itemsBox}>
-                      <Link
-                        href={item.href}
-                        className={styles.items_link_wrapper}
-                      >
-                        <span className={styles.item_iconBox}>{item.icon}</span>
-                        <span className={`${styles.item_textBox} `}>
-                          {item.text}
-                        </span>
-                      </Link>
-                    </div>
-                  );
-                })}
+          <div className={styles.inner_container_footer}>
+            <div className={styles.social_media_wrapper}>
+              <div className={styles.social_mediaHeading}>
+                <h2>Follow</h2>
               </div>
-            )}
+              <div className={styles.social_media_links}>
+                <Link href={"/"} className={styles.social_media_iconWrapper}>
+                  <FaFacebookSquare />
+                </Link>
+                <Link href={"/"} className={styles.social_media_iconWrapper}>
+                  <FaInstagram />
+                </Link>
 
-            <div className={styles.inner_container_footer}>
-              <div className={styles.social_media_wrapper}>
-                <div className={styles.social_mediaHeading}>
-                  <h2>Follow</h2>
-                </div>
-                <div className={styles.social_media_links}>
-                  <Link href={"/"} className={styles.social_media_iconWrapper}>
-                    <FaFacebookSquare />
-                  </Link>
-                  <Link href={"/"} className={styles.social_media_iconWrapper}>
-                    <FaInstagram />
-                  </Link>
-
-                  <Link href={"/"} className={styles.social_media_iconWrapper}>
-                    <FaLinkedin />
-                  </Link>
-                </div>
+                <Link href={"/"} className={styles.social_media_iconWrapper}>
+                  <FaLinkedin />
+                </Link>
               </div>
-              <div className={styles.offical_links_wrapper}>
-                {officalLinks.map((el, index) => {
-                  return (
-                    <Link href={"/"} className={styles.min_linkText}>
-                      {el.text}
-                    </Link>
-                  );
-                })}
-              </div>
+            </div>
+            <div className={styles.offical_links_wrapper}>
+              {officalLinks.map((el, index) => {
+                return (
+                  <Link href={"/"} className={styles.min_linkText}>
+                    {el.text}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }

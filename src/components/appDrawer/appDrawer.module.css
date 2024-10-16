@@ -10,9 +10,16 @@
     height: 100vh;
     position: fixed;
     top: 0px;
+    left: -100%;
     background-color: transparent;
     z-index: 100;
+    transition: left 0.3s ease; /* This adds a smooth transition */
   }
+
+  .container.show {
+    left: 0; /* Slide the AppDrawer into view */
+  }
+
   .inner_container {
     width: 80%;
     background: #fff;
