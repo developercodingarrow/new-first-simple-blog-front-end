@@ -1,0 +1,34 @@
+.layout_wrapper {
+  display: flex;
+  padding: 50px 150px;
+  column-gap: 5%;
+  min-height: 600px;
+}
+
+.content_side {
+  width: 60%;
+  position: relative;
+}
+
+.sticky_tab_wrapper {
+  margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+}
+
+.layout_side_bar {
+  width: 25%;
+}
+
+@media only screen and (max-width: 600px) {
+  .layout_wrapper {
+    padding: 10px 0px;
+  }
+
+  .content_side {
+    width: 100%;
+  }
+  .layout_side_bar {
+    display: none;
+  }
+}

@@ -23,6 +23,7 @@ import TagContextProvider from "../_contextApi/TagContextApi";
 import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
 import SearchModel from "@/src/components/client-components/models/SearchModel";
 import AppContextProvider from "../_contextApi/AppContext";
+import AppDrawer from "@/src/components/appDrawer/AppDrawer";
 
 export const metadata = {
   title: "Fisrt blog website",
@@ -47,6 +48,7 @@ export default async function TagsLayout({ children }) {
                       <ReportActionModel />
                       <ReagisterAuthModel />
                       <SearchModel />
+                      <AppDrawer />
                       <div>
                         <NavBar userData={userDetails} />
                         {!userDetails && <GoogleOneTap />}

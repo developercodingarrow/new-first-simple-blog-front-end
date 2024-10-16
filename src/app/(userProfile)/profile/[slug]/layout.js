@@ -13,6 +13,7 @@ import ReportActionModel from "@/src/components/client-components/models/ReportA
 import ReagisterAuthModel from "@/src/components/client-components/models/ReagisterAuthModel";
 import BlogContextProvider from "@/src/app/_contextApi/BlogContextApi";
 import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
+import AppDrawer from "@/src/components/appDrawer/AppDrawer";
 
 async function getData(slug) {
   try {
@@ -40,6 +41,7 @@ export default async function Profilelayout({ children, params }) {
               <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
                 <ReportActionModel />
                 <ReagisterAuthModel />
+                <AppDrawer />
                 <div>
                   <NavBar userData={userDetails} />
                   {!userDetails && <GoogleOneTap />}

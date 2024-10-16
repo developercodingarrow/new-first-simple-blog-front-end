@@ -23,6 +23,8 @@ import SearchModel from "@/src/components/client-components/models/SearchModel";
 import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
 import { getMainBanner } from "../utils/mainBannerAction";
 import AppContextProvider from "../_contextApi/AppContext";
+import HomePageLayout from "@/src/components/homepage/layout/HomePageLayout";
+import AppDrawer from "@/src/components/appDrawer/AppDrawer";
 
 export const metadata = {
   title: "Fisrt blog website",
@@ -48,6 +50,7 @@ export default async function RootLayout({ children }) {
                       <ReportActionModel />
                       <ReagisterAuthModel />
                       <SearchModel />
+                      <AppDrawer />
                       <div>
                         <NavBar userData={userDetails} />
                         {!userDetails && <GoogleOneTap />}
@@ -58,20 +61,10 @@ export default async function RootLayout({ children }) {
                           <div className={styles.page_banner_wrapper}>
                             <HomePageMainBanner />
                           </div>
-                          <div className={styles.layout_wrapper}>
-                            <div className={styles.content_side}>
-                              <div className={styles.sticky_tab_wrapper}>
-                                <TagTab
-                                  tabData={featureTags}
-                                  redirectType="query"
-                                />
-                              </div>
-                              {children}
-                            </div>
-                            <div className={styles.layout_side_bar}>
-                              <LayoutSideBar featureTag={featureTags} />
-                            </div>
-                          </div>
+                          <HomePageLayout featureTags={featureTags}>
+                            {" "}
+                            {children}{" "}
+                          </HomePageLayout>
                         </main>
                       </div>
                       <Footer />

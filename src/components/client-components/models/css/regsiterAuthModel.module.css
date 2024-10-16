@@ -48,11 +48,33 @@
 }
 
 .login_option {
-  border: 1px solid gray;
+  border: 1px solid var(--th-primary-color);
   margin-bottom: 20px;
   border-radius: 20px;
   padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #fff;
+  background-color: var(--th-primary-color);
+}
+.login_option:hover {
+  background-color: var(--th-primary-hover-color);
+}
+
+.close_icon_wrapper {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .main_conatiner {
+    padding: 10px;
+  }
+  .inner_container {
+    width: 100%;
+  }
+
+  .login_option {
+    padding: 5px;
+  }
 }

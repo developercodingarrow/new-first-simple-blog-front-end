@@ -4,6 +4,7 @@ import styles from "./css/regsiterAuthModel.module.css";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 import GoogleAuthClient from "../googleAuth/GoogleAuthClient";
 import Link from "next/link";
+import { IoCloseSharp } from "../../ApplicationIcons";
 
 export default function ReagisterAuthModel() {
   const { isAuthModel, handelCloseAuthModel } = useContext(ModelsContext);
@@ -18,7 +19,7 @@ export default function ReagisterAuthModel() {
                 className={styles.close_icon_wrapper}
                 onClick={handelCloseAuthModel}
               >
-                x{" "}
+                <IoCloseSharp />
               </div>{" "}
             </div>
             <div className={styles.model_heading_wrapper}>

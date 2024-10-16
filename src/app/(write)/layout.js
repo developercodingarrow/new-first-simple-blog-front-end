@@ -7,6 +7,7 @@ import TagContextProvider from "../_contextApi/TagContextApi";
 import ImgModelContextProvider from "../_contextApi/ImgModelContextApi";
 import AuthContextProvider from "../_contextApi/authContext";
 import { getSession } from "../lib/authentication";
+import AppDrawer from "@/src/components/appDrawer/AppDrawer";
 
 export default async function layout({ children }) {
   const userDetails = await getSession();
@@ -18,6 +19,7 @@ export default async function layout({ children }) {
             <TagContextProvider>
               <BlogContextProvider>
                 <ModelContextProvider>
+                  <AppDrawer />
                   <div>
                     <NavBar userData={userDetails} />
                   </div>
