@@ -8,10 +8,8 @@ import {
   HiOutlineHome,
   BiTag,
   FaInstagram,
-  FaPinterest,
   FaFacebookSquare,
   FaLinkedin,
-  FaXTwitte,
 } from "../ApplicationIcons";
 import { AppContext } from "@/src/app/_contextApi/AppContext";
 
