@@ -97,6 +97,13 @@
   font-size: 18px;
   color: var(--th-dark-blue-gray);
 }
+.comment_statsBox,
+.view_statsBox {
+  display: flex;
+  column-gap: 5px;
+  font-size: 14px;
+  align-items: center;
+}
 
 /* Mobile Styles */
 @media (max-width: 768px) {

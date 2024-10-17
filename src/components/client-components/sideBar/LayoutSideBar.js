@@ -36,7 +36,7 @@ export default function LayoutSideBar(props) {
           <LinkTag data={featureTags} />
         </div>
         <div className={styles.container_btn}>
-          <Link href={"/"} className="small_text_wrapper">
+          <Link href={"/tags"} className="small_text_wrapper">
             See more ..
           </Link>
         </div>
