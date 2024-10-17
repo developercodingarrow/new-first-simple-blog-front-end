@@ -33,8 +33,8 @@ export default function MainCard(props) {
               <Image
                 src={`/blogthumblin/${data.blogThumblin.url}`}
                 alt={data.blogThumblin.altText}
-                width={500}
-                height={500}
+                width={900}
+                height={900}
                 className={`img_style`}
               />
             </div>

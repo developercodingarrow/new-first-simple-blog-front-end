@@ -10,6 +10,7 @@ import Footer from "@/src/components/server-components/footer/Footer";
 import ImgModelContextProvider from "../_contextApi/ImgModelContextApi";
 import AppContextProvider from "../_contextApi/AppContext";
 import TagContextProvider from "../_contextApi/TagContextApi";
+import AppDrawer from "@/src/components/appDrawer/AppDrawer";
 
 export default async function layout({ children }) {
   const userDetails = await getSession();
@@ -21,6 +22,7 @@ export default async function layout({ children }) {
             <ImgModelContextProvider>
               <ModelContextProvider>
                 <TagContextProvider>
+                  <AppDrawer />
                   <div>
                     <NavBar userData={userDetails} />
                   </div>

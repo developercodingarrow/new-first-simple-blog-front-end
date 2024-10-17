@@ -10,12 +10,17 @@ import {
   FaInstagram,
   FaFacebookSquare,
   FaLinkedin,
+  LuLayoutDashboard,
 } from "../ApplicationIcons";
 import { AppContext } from "@/src/app/_contextApi/AppContext";
+import { AuthContext } from "@/src/app/_contextApi/authContext";
+import NavApiActionIcon from "../client-components/navbar/NavApiActionIcon";
 
 export default function AppDrawer() {
-  const [isAuth, setisAuth] = useState(true);
+  const { authUser } = useContext(AuthContext);
   const { isMobleDrawer, handelCloseMobileDrawer } = useContext(AppContext);
+
+  console.log(authUser);
 
   const sidebarItems = [
     {
@@ -25,14 +30,9 @@ export default function AppDrawer() {
     },
 
     {
-      href: "/blogs",
-      text: "Blogs ",
-      icon: <BiTag />,
-    },
-    {
       href: " /tags",
       text: "Tags ",
-      icon: <HiOutlineHome />,
+      icon: <BiTag />,
     },
 
     // Add more items as needed
@@ -40,23 +40,10 @@ export default function AppDrawer() {
 
   const sidebarAuthItems = [
     {
-      href: "/home",
+      href: "/userdashboard/profile",
       text: "DashBord",
-      icon: <HiOutlineHome />,
+      icon: <LuLayoutDashboard />,
     },
-
-    {
-      href: "/blogs",
-      text: "Create Blog ",
-      icon: <BiTag />,
-    },
-    {
-      href: " /tags",
-      text: "Tags ",
-      icon: <HiOutlineHome />,
-    },
-
-    // Add more items as needed
   ];
 
   const officalLinks = [
@@ -85,7 +72,11 @@ export default function AppDrawer() {
         <div className={styles.inner_container}>
           <div className={styles.appDrawer_header}>
             <div className={styles.auth_header_wrapper}>
-              {isAuth ? <AuthHeader /> : <HeaderLogin />}
+              {authUser ? (
+                <AuthHeader authUserDetail={authUser} />
+              ) : (
+                <HeaderLogin />
+              )}
             </div>
           </div>
           <div className={styles.appDrawer_option_wrapper}>
@@ -104,7 +95,7 @@ export default function AppDrawer() {
             })}
           </div>
 
-          {isAuth && (
+          {authUser && (
             <div className={styles.appDrawer_authoption_wrapper}>
               {" "}
               {sidebarAuthItems.map((item, index) => {
@@ -122,6 +113,24 @@ export default function AppDrawer() {
                   </div>
                 );
               })}
+            </div>
+          )}
+
+          {authUser && (
+            <div className={styles.appDrawer_authoption_wrapper}>
+              {" "}
+              <div className={styles.sideBar_itemsBox}>
+                <div className={styles.items_link_wrapper}>
+                  <span className={styles.item_iconBox}>
+                    {" "}
+                    <NavApiActionIcon />
+                  </span>
+                  <span className={`${styles.item_textBox} `}>
+                    {" "}
+                    Create Blog
+                  </span>
+                </div>
+              </div>
             </div>
           )}
 

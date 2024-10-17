@@ -20,6 +20,7 @@ import {
 import Link from "next/link";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 import { AuthContext } from "@/src/app/_contextApi/authContext";
+import NavApiActionIcon from "../../client-components/navbar/NavApiActionIcon";
 
 export default function Footer() {
   const {
@@ -89,15 +90,19 @@ export default function Footer() {
         <Link href={"/tags"} className={styles.mobile_footer_icon_wrapper}>
           <BiTag />
         </Link>
+
+        {authUser && (
+          <div className={styles.mobile_footer_icon_wrapper}>
+            <NavApiActionIcon />
+          </div>
+        )}
+
         <div
           className={styles.mobile_footer_icon_wrapper}
           onClick={handelOpenSearchModel}
         >
           <HiMagnifyingGlass />
         </div>
-        <Link href={"/"} className={styles.mobile_footer_icon_wrapper}>
-          <MdOutlineAutoGraph />
-        </Link>
 
         {authUser ? (
           <Link href={"/"} className={styles.mobile_footer_icon_wrapper}>

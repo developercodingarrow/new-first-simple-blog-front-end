@@ -27,6 +27,7 @@ import { SlLogout } from "react-icons/sl";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { BsCloudUpload } from "react-icons/bs";
 import { GiPowerButton } from "react-icons/gi";
+import { LuLayoutDashboard } from "react-icons/lu";
 
 export {
   FaUserCircle,
@@ -63,4 +64,5 @@ export {
   HiMagnifyingGlass,
   BsCloudUpload,
   GiPowerButton,
+  LuLayoutDashboard,
 };
