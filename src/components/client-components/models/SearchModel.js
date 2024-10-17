@@ -7,7 +7,8 @@ import { TagContext } from "@/src/app/_contextApi/TagContextApi";
 import Link from "next/link";
 import { IoCloseSharp } from "../../ApplicationIcons";
 export default function SearchModel() {
-  const { searchModel, handelCloseSearchModel } = useContext(ModelsContext);
+  const { searchModel, setsearchModel, handelCloseSearchModel } =
+    useContext(ModelsContext);
   const { filteredTags } = useContext(TagContext);
 
   return (
@@ -29,9 +30,15 @@ export default function SearchModel() {
           {filteredTags &&
             filteredTags.map((el, index) => {
               return (
-                <Link href={`/tags/${el.tagSlug}`} className={styles.tag_link}>
-                  {el.tagName}
-                </Link>
+                <>
+                  <Link
+                    href={`/tags/${el.tagSlug}`}
+                    className={styles.tag_link}
+                    onClick={handelCloseSearchModel}
+                  >
+                    {el.tagName}
+                  </Link>
+                </>
               );
             })}
         </div>
