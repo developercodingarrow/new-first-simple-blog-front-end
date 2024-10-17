@@ -30,15 +30,14 @@ export default function SearchModel() {
           {filteredTags &&
             filteredTags.map((el, index) => {
               return (
-                <>
+                <div key={index} onClick={handelCloseSearchModel}>
                   <Link
                     href={`/tags/${el.tagSlug}`}
                     className={styles.tag_link}
-                    onClick={handelCloseSearchModel}
                   >
                     {el.tagName}
                   </Link>
-                </>
+                </div>
               );
             })}
         </div>

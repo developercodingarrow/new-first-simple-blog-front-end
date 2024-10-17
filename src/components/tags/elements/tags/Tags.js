@@ -24,7 +24,7 @@ export default function Tags() {
         {filteredTags &&
           filteredTags.map((el, index) => {
             return (
-              <Link href={`${el.tagSlug}`} className={styles.tag_link}>
+              <Link href={`/tags/${el.tagSlug}`} className={styles.tag_link}>
                 {el.tagName}
               </Link>
             );

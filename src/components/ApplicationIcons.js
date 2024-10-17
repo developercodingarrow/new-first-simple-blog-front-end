@@ -29,6 +29,7 @@ import { BsCloudUpload } from "react-icons/bs";
 import { GiPowerButton } from "react-icons/gi";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { PiEyeThin } from "react-icons/pi";
 
 export {
   FaUserCircle,
@@ -67,4 +68,5 @@ export {
   GiPowerButton,
   LuLayoutDashboard,
   FaLongArrowAltRight,
+  PiEyeThin,
 };

@@ -35,11 +35,17 @@
 .card_title_wrapper {
   text-align: justify;
   margin-bottom: 10px;
+  color: var(--th-neutral-dark);
 }
 
 .card_meta_descreption {
   text-align: justify;
   height: 100px;
+  color: var(--th-neutral-dark);
+}
+
+.card_metaText {
+  font-size: 16px !important;
 }
 
 .cardFooter {
@@ -56,4 +62,17 @@
   display: flex;
   align-items: center;
   color: var(--th-dark-blue-gray);
+  column-gap: 10px;
+}
+.comment_statsBox,
+.view_statsBox {
+  display: flex;
+  column-gap: 5px;
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 600px) {
+  .card_container {
+    width: 100%;
+  }
 }
