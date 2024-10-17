@@ -4,6 +4,7 @@ import {
   HiOutlineHome,
   MdOutlineAutoGraph,
   FaPlus,
+  BiTag,
 } from "../../ApplicationIcons";
 import Link from "next/link";
 import NavApiActionIcon from "../../client-components/navbar/NavApiActionIcon";
@@ -25,9 +26,15 @@ export default function NavBarNavigations() {
         </Link>
         <Link href={"/"} className={styles.navigation_tab}>
           <div className="large_iconWrapper">
-            <NavApiActionIcon />
+            {" "}
+            <BiTag />
           </div>
         </Link>
+        <div href={"/"} className={styles.navigation_tab}>
+          <div className="large_iconWrapper">
+            <NavApiActionIcon />
+          </div>
+        </div>
       </div>
     </div>
   );
