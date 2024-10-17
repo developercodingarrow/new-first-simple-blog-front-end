@@ -136,7 +136,7 @@
 
   .inner_container_footer {
     position: absolute;
-    bottom: 0px;
+    bottom: 20px;
     width: 100%;
     padding: 5px;
   }
