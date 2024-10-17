@@ -35,5 +35,6 @@
   .content_wrapper {
     width: calc(100% - 10px);
     padding: 0px;
+    overflow: hidden;
   }
 }

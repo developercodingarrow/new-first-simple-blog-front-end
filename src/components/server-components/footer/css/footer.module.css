@@ -63,8 +63,8 @@
     bottom: 0px;
     width: 100%;
     margin-bottom: 0px;
-    padding: 0px;
-    height: 40px;
+    padding: 10px 2px;
+    height: 50px;
     background: var(--th-black-color);
   }
 

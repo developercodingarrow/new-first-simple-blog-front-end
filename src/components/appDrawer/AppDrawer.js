@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import styles from "./appDrawer.module.css";
 import AuthHeader from "./AuthHeader";
 import HeaderLogin from "./HeaderLogin";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
   HiOutlineHome,
@@ -15,8 +16,11 @@ import {
 import { AppContext } from "@/src/app/_contextApi/AppContext";
 import { AuthContext } from "@/src/app/_contextApi/authContext";
 import NavApiActionIcon from "../client-components/navbar/NavApiActionIcon";
+import { LogOutAction } from "@/src/app/utils/userAuthaction";
+import ClickBtn from "../client-components/elements/buttons/ClickBtn";
 
 export default function AppDrawer() {
+  const router = useRouter();
   const { authUser } = useContext(AuthContext);
   const { isMobleDrawer, handelCloseMobileDrawer } = useContext(AppContext);
 
@@ -61,6 +65,18 @@ export default function AppDrawer() {
     },
   ];
 
+  const handellogOut = async () => {
+    try {
+      const res = await LogOutAction();
+      console.log(res);
+      if (res.status === "success") {
+        router.refresh();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div
@@ -79,8 +95,8 @@ export default function AppDrawer() {
               )}
             </div>
           </div>
+
           <div className={styles.appDrawer_option_wrapper}>
-            {" "}
             {sidebarItems.map((item, index) => {
               return (
                 <div className={styles.sideBar_itemsBox}>
@@ -118,23 +134,20 @@ export default function AppDrawer() {
 
           {authUser && (
             <div className={styles.appDrawer_authoption_wrapper}>
-              {" "}
-              <div className={styles.sideBar_itemsBox}>
-                <div className={styles.items_link_wrapper}>
-                  <span className={styles.item_iconBox}>
-                    {" "}
-                    <NavApiActionIcon />
-                  </span>
-                  <span className={`${styles.item_textBox} `}>
-                    {" "}
-                    Create Blog
-                  </span>
+              <div className={styles.app_drwer_rightIcon}>
+                <div className={styles.action_icon_wrapper}>
+                  <NavApiActionIcon />
                 </div>
               </div>
             </div>
           )}
 
           <div className={styles.inner_container_footer}>
+            {authUser && (
+              <div className={styles.log_outBtn_wrapper}>
+                <div>Log Out </div>
+              </div>
+            )}
             <div className={styles.social_media_wrapper}>
               <div className={styles.social_mediaHeading}>
                 <h2>Follow</h2>
