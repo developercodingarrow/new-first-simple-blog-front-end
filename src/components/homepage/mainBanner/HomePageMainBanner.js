@@ -4,9 +4,8 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import defaultBanner from "../../../../public/web-static-img/main page banner.png";
 import { cookies } from "next/headers"; // Import the cookies function
-const DynamicImage = dynamic(() => import("next/image"), {
-  loading: () => <p>Loading...</p>, // Loading placeholder
-});
+const DynamicImage = dynamic(() => import("next/image"), { ssr: false });
+
 export default function HomePageMainBanner() {
   const cookieStore = cookies();
   const banner = cookieStore.get("mainBanner")?.value;
