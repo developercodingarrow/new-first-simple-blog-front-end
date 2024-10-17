@@ -78,7 +78,7 @@
   .tab_warpper {
     padding: 10px;
     font-size: var(--th-font-small-size);
-    font-weight: 400;
+    font-weight: bold;
   }
   .sticky {
     width: 100%;

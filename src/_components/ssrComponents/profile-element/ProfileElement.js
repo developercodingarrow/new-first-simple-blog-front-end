@@ -20,7 +20,7 @@ export default function ProfileElement(props) {
         />
       </div>
       <div className={styles.details_wrapper}>
-        <div className={`dark_text_color small_text`}>{text}</div>
+        <div className={`dark_text_color small_text_bold`}>{text}</div>
         <div className={`neutral_text_color min_text`}>{date}</div>
       </div>
     </div>

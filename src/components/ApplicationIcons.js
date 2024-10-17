@@ -28,6 +28,7 @@ import { HiMagnifyingGlass } from "react-icons/hi2";
 import { BsCloudUpload } from "react-icons/bs";
 import { GiPowerButton } from "react-icons/gi";
 import { LuLayoutDashboard } from "react-icons/lu";
+import { FaLongArrowAltRight } from "react-icons/fa";
 
 export {
   FaUserCircle,
@@ -65,4 +66,5 @@ export {
   BsCloudUpload,
   GiPowerButton,
   LuLayoutDashboard,
+  FaLongArrowAltRight,
 };

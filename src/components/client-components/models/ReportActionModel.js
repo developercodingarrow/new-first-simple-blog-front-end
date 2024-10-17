@@ -9,10 +9,12 @@ import SubmitBtn from "../elements/buttons/SubmitBtn";
 import toast, { Toaster } from "react-hot-toast";
 import { BlogContext } from "@/src/app/_contextApi/BlogContextApi";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
+import { AppContext } from "@/src/app/_contextApi/AppContext";
 
 export default function ReportActionModel(props) {
   const { isReportModel, setisReportModel, modelID, handelCloseModel } =
     useContext(ModelsContext);
+  const { isBtnLoadin, setisBtnLoadin } = useContext(AppContext);
   const { handelReportBlog } = useContext(BlogContext);
 
   const { handleSubmit, renderInput, isValid } = useCustomForm();
@@ -25,7 +27,7 @@ export default function ReportActionModel(props) {
 
     try {
       const res = await handelReportBlog(formData);
-      console.log("report res----", res);
+
       if (res.status === "success") {
         toast.success(res.message);
       }
@@ -63,7 +65,7 @@ export default function ReportActionModel(props) {
                     <div>
                       <SubmitBtn
                         btnText="Submit"
-                        btnLoading={isLoading}
+                        btnLoading={isBtnLoadin}
                         disabled={isValid}
                       />
                     </div>

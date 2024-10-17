@@ -4,6 +4,7 @@
   --th-font-mini-size: 12px;
   --th-font-small-size: 14px;
   --th-font-medium-size: 16px;
+  --th-m-font-larget-size: 18px;
   --th-letter-spacing: 1px;
   --th-m-letter-spacing: 0.5px;
   --th-primary-color: #2980b9;
@@ -150,26 +151,6 @@ a {
 a {
   text-decoration: none;
   font-family: sans-serif;
-}
-
-h1 {
-  font-family: sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  letter-spacing: 0.5px;
-}
-
-h2 {
-  font-family: sans-serif;
-  font-weight: 500;
-  font-size: 22px;
-}
-
-h3 {
-  font-weight: 400;
-  line-height: 1.3;
-  font-size: 18px;
-  font-family: Arial, sans-serif;
 }
 
 h4 {
@@ -338,35 +319,38 @@ ul {
   margin: 0px;
   padding: 0px;
 }
-/* li {
-  font-family: sans-serif;
-  text-transform: capitalize;
-  padding: 8px 16px;
-  font-size: 12px;
-  color: var(--th-seconder-white);
-  list-style: none;
+
+h1 {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.5px;
 }
 
-li:hover {
-  background-color: var(--th-black-selected);
-} */
+h2 {
+  font-family: Arial, sans-serif;
+  font-size: 22px;
+}
+
+h3 {
+  line-height: 1.3;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+}
 
 @media only screen and (max-width: 600px) {
   h1 {
-    font-family: sans-serif;
-    font-weight: 700;
-    font-size: 18px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: var(--th-m-font-larget-size);
     letter-spacing: 0.5px;
   }
   h2 {
-    font-family: sans-serif;
-    font-weight: 400;
-    font-size: 14px;
+    font-family: Arial, sans-serif;
+    font-size: var(--th-font-medium-size);
   }
 
   h3 {
     font-family: sans-serif;
-    font-weight: 300;
     font-size: var(--th-font-small-size);
   }
 
@@ -374,14 +358,24 @@ li:hover {
     font-weight: 500;
     line-height: 1.3;
     font-size: 16px;
-    font-family: Arial, sans-serif;
+    font-family: var(--th-font-family);
   }
   h5 {
-    font-family: Arial, sans-serif;
+    font-family: var(--th-font-family);
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
     letter-spacing: 1.2px;
+  }
+
+  .small_text_bold {
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    font-family: var(--th-font-family);
+    font-weight: 600;
+    text-transform: capitalize;
   }
 }
 

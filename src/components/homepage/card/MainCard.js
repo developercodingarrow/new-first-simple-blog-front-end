@@ -6,9 +6,11 @@ import Link from "next/link";
 import ProfileElement from "@/src/_components/ssrComponents/profile-element/ProfileElement";
 import ActionDotWrapper from "../../server-components/cards/ActionDotWrapper";
 import LikeActionWrapper from "../../server-components/cards/LikeActionWrapper";
+import { FaLongArrowAltRight } from "../../ApplicationIcons";
 
 export default function MainCard(props) {
   const { data } = props;
+
   return (
     <div className={styles.card}>
       <div className={styles.cardTopBar}>
@@ -51,17 +53,19 @@ export default function MainCard(props) {
           )}
 
           <div className={`${styles.metaDescription} `}>
-            <h3 className="lh">{data.metaDescription}</h3>
+            <h3>{data.metaDescription}</h3>
           </div>
         </div>
       </div>
       <div className={styles.cardFooter}>
         <div className={styles.likeSection}>
           <LikeActionWrapper postLikes={data.likes} elementID={data._id} />
+          <div className="small_text">{data?.viewCount}</div>
         </div>
+
         <div className={styles.arrowSection}>
           <Link href={`/blog/${data.slug}`} className={styles.arrowIcon}>
-            ➡
+            <FaLongArrowAltRight />
           </Link>
         </div>
       </div>
