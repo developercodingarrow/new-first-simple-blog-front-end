@@ -25,10 +25,10 @@ export async function updateUserProfilePic(formData) {
   const authToken = cookieStore.get("jwt")?.value;
   const url = `${API_BASE_URL}/private/users/update-user-profile-pic`;
   const method = "patch";
-  console.log("formData---", formData);
+
   try {
     const res = await ImageAPIAction(method, url, formData, authToken);
-    console.log("user image api---", res);
+
     return res.data;
   } catch (error) {
     return error;

@@ -15,7 +15,6 @@ import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 
 export default function BlogActionBar(props) {
   const { data } = props;
-  console.log(data);
 
   const {
     isOpenCommentModel,

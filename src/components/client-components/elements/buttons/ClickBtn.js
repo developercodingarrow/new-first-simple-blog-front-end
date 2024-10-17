@@ -5,8 +5,6 @@ import BtnLoading from "../../loadings/BtnLoading";
 export default function ClickBtn(props) {
   const { btnText, btnHandel, btndisable = true } = props;
 
-  console.log(btndisable);
-
   const handelClick = () => {
     btnHandel();
   };

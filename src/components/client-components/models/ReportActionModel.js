@@ -31,9 +31,7 @@ export default function ReportActionModel(props) {
       if (res.status === "success") {
         toast.success(res.message);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const handelModelClose = () => {

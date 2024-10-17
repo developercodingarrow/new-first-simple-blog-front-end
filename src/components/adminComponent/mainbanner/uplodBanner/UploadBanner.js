@@ -31,10 +31,7 @@ export default function UploadBanner() {
   const handelSubmitImg = async () => {
     try {
       const res = await handelcreateMainBanner(image, "bannerImg");
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

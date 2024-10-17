@@ -4,8 +4,6 @@ import styles from "./profileheader.module.css";
 import Image from "next/image";
 
 export default function ProfileHeader({ userData }) {
-  console.log("usr imag path ---", userData?.userImg?.url);
-
   return (
     <div className={styles.profile_header}>
       <div className={styles.user_image_wrapper}>

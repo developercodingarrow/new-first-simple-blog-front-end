@@ -90,7 +90,7 @@ export async function reportBlogAction(formData) {
   const method = "post";
   try {
     const res = await performAPIAction(method, url, formData, authToken);
-    console.log("reportBlogAction--- api", res);
+
     return res.data;
   } catch (error) {
     return error;

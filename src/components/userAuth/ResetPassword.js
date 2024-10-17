@@ -23,7 +23,7 @@ export default function ResetPassword() {
     try {
       setisBtnLoadin(true);
       const res = await userResetPassword(data, token);
-      console.log(res);
+
       if (res.error) {
         toast.error(res.error);
         setisBtnLoadin(false);

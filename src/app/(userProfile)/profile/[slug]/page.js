@@ -25,7 +25,7 @@ async function getData(slug) {
 export default async function UserProfilePage(pathname) {
   const slug = pathname.params?.slug;
   const initialData = await getData(slug);
-  console.log(initialData);
+
   return (
     <div>
       <div className={styles.about_header}>

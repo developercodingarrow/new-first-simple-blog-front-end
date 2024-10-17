@@ -7,7 +7,6 @@ import { deleteBlogApi, updateToDraft } from "@/src/app/utils/blogactions";
 export default function PubllishedBlogWrapper(props) {
   const router = useRouter();
   const { data } = props;
-  console.log("PubllishedBlogWrapper----", data);
 
   const handleEdit = (id, slug) => {
     router.push(`/new-blog/${id}`);
@@ -19,11 +18,9 @@ export default function PubllishedBlogWrapper(props) {
         id: actionId,
       };
       const res = await deleteBlogApi(data);
-      console.log(res);
+
       router.refresh();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const handelDeaft = async (actionId) => {
@@ -32,11 +29,9 @@ export default function PubllishedBlogWrapper(props) {
         id: actionId,
       };
       const res = await updateToDraft(data);
-      console.log("handel dreft---", res);
+
       router.refresh();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const editDeleteActions = [

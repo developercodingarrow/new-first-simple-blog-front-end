@@ -11,11 +11,9 @@ export default function UplodedImage() {
   const handelgetBanner = async () => {
     try {
       const res = await getMainBanner();
-      console.log("banner image res-----", res.bannerImg.url);
+
       setmainBanner(res.bannerImg?.url);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {

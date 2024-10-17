@@ -34,13 +34,11 @@ export default function UserDrawer() {
   const handellogOut = async () => {
     try {
       const res = await LogOutAction();
-      console.log(res);
+
       if (res.status === "success") {
         router.refresh();
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

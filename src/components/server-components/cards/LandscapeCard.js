@@ -8,7 +8,6 @@ import CardFooter from "./CardFooter";
 
 export default function LandscapeCard(props) {
   const { data } = props;
-  console.log("data---", data);
 
   return (
     <div className={styles.com_container}>

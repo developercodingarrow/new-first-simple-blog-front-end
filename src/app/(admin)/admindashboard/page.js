@@ -12,7 +12,7 @@ export default async function DashBordpage() {
   try {
     // Fetch the web stats using the auth token
     const res = await webStatsAction(authToken); // Pass the token to the action
-    console.log(res);
+
     if (res.data.status === "success") {
       webStats = res.data.results;
     } else {

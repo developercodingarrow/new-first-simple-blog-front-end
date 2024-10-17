@@ -26,16 +26,12 @@ export default function UserImgModel(props) {
   const handelSubmit = async () => {
     try {
       const res = await handeluplodUserPic(image, updateFor, imgModelId);
-      console.log("imag mode--", res);
+
       if (res.status === "success") {
-        console.log("result000--", res);
         setupdateData(res.data);
         updateUserDetail(res.data);
-        console.log("upadte user---");
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

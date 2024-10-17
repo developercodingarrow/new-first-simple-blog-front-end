@@ -69,7 +69,6 @@ export default function ModelContextProvider({ children }) {
   // input model end-----------
 
   const handelOpenAuthModel = () => {
-    console.log("auth model open");
     setisAuthModel(true);
   };
 
@@ -78,7 +77,6 @@ export default function ModelContextProvider({ children }) {
   };
 
   const handelOpenDeleteModel = (data, handler) => {
-    console.log(data);
     setid(data);
     setActionHandler(() => handler);
     setisDeleteModel(true);

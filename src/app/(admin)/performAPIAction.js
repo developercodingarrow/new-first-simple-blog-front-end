@@ -26,7 +26,6 @@ export const performAPIAction = async (
     const response = await axios(config);
     return response;
   } catch (error) {
-    console.log(error.response);
     return error.response;
   }
 };
@@ -45,7 +44,6 @@ export const performGetAPIAction = async (url, token = null, options = {}) => {
     const response = await axios.get(url, { headers, ...options });
     return response;
   } catch (error) {
-    console.log(error.response);
     return error.response;
   }
 };
@@ -76,7 +74,6 @@ export const ImageAPIAction = async (
     const response = await axios(config);
     return response;
   } catch (error) {
-    console.log(error.response);
     return error.response;
   }
 };

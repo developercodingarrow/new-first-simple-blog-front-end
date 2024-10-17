@@ -24,8 +24,6 @@ export default function AppDrawer() {
   const { authUser } = useContext(AuthContext);
   const { isMobleDrawer, handelCloseMobileDrawer } = useContext(AppContext);
 
-  console.log(authUser);
-
   const sidebarItems = [
     {
       href: "/",
@@ -68,13 +66,11 @@ export default function AppDrawer() {
   const handellogOut = async () => {
     try {
       const res = await LogOutAction();
-      console.log(res);
+
       if (res.status === "success") {
         router.refresh();
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (
@@ -99,7 +95,7 @@ export default function AppDrawer() {
           <div className={styles.appDrawer_option_wrapper}>
             {sidebarItems.map((item, index) => {
               return (
-                <div className={styles.sideBar_itemsBox}>
+                <div className={styles.sideBar_itemsBox} key={index}>
                   <Link href={item.href} className={styles.items_link_wrapper}>
                     <span className={styles.item_iconBox}>{item.icon}</span>
                     <span className={`${styles.item_textBox} `}>
@@ -116,7 +112,7 @@ export default function AppDrawer() {
               {" "}
               {sidebarAuthItems.map((item, index) => {
                 return (
-                  <div className={styles.sideBar_itemsBox}>
+                  <div className={styles.sideBar_itemsBox} key={index}>
                     <Link
                       href={item.href}
                       className={styles.items_link_wrapper}
@@ -168,7 +164,7 @@ export default function AppDrawer() {
             <div className={styles.offical_links_wrapper}>
               {officalLinks.map((el, index) => {
                 return (
-                  <Link href={"/"} className={styles.min_linkText}>
+                  <Link href={"/"} className={styles.min_linkText} key={index}>
                     {el.text}
                   </Link>
                 );

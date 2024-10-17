@@ -35,9 +35,7 @@ export default function BlogImgPreUploder(props) {
         toast.success(res.message);
         setapiImg(null);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (
@@ -60,7 +58,6 @@ export default function BlogImgPreUploder(props) {
             </div>
           ) : apiImg && apiImg.url ? (
             <>
-              {console.log("Image URL:", `/blogthumblin/${apiImg?.url}`)}
               <div className={styles.prev_img_container}>
                 <div
                   className={styles.img_remove_wrapper}

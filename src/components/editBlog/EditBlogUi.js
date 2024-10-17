@@ -121,16 +121,14 @@ export default function EditBlogUI(props) {
   const handelUpdateContent = async () => {
     try {
       const res = await upadteBlogContent(blogData, slug);
-      console.log(res);
+
       if (res.status === "Fails") {
         toast.error(res.message);
       }
       if (res.status === "success") {
         toast.success(res.message);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

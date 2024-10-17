@@ -10,7 +10,6 @@ export default function RepliesList(props) {
 
   const userId = authUser?._id;
   const { replies, comentID, handelDelete } = props;
-  console.log(replies);
 
   return (
     <div className={styles.replies_list}>

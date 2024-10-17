@@ -10,12 +10,12 @@ async function getData(slug) {
   if (!res.status === "success" || !res.result) {
     throw new Error("Data not found");
   }
-  console.log(res.result);
+
   return await res.result;
 }
 export default async function UserListPage() {
   const initialData = await getData();
-  console.log(initialData);
+
   return (
     <div>
       <UserWrapper data={initialData} />

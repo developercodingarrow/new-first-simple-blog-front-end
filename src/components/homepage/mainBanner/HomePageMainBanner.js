@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./css/mainbanner.module.css";
 import Image from "next/image";
+import defaultBanner from "../../../../public/web-static-img/main page banner.png";
 import { cookies } from "next/headers"; // Import the cookies function
-import main_bannerImg from "../../../../public/web-static-img/main-banner.png";
 export default function HomePageMainBanner() {
   const cookieStore = cookies();
   const banner = cookieStore.get("mainBanner")?.value;
@@ -16,7 +16,6 @@ export default function HomePageMainBanner() {
     }
   }
 
-  console.log("main banner ---", bannerDetails);
   return (
     <div className={styles.com_compoanent}>
       {bannerDetails ? (
@@ -28,7 +27,13 @@ export default function HomePageMainBanner() {
           className={styles.banner_imgStyle}
         />
       ) : (
-        <p>No banner available</p> // Fallback message if no banner is found
+        <Image
+          src={defaultBanner} // Use the correct path to the image
+          width={900}
+          height={900}
+          alt="Place you add "
+          className={styles.banner_imgStyle}
+        />
       )}
     </div>
   );

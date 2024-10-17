@@ -11,7 +11,6 @@ export async function tagListAction(authToken) {
     const res = await performGetAPIAction(url, authToken);
     return res.data;
   } catch (error) {
-    console.log("error----", error);
     return error;
   }
 }

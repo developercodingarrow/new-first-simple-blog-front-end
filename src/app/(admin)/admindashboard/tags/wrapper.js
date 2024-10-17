@@ -45,12 +45,11 @@ export default function Tagwrapper(props) {
       if (res.status === "success") {
         toast.success(res.message);
         setIsActionLoading(false); // Set action-specific loading state
-        console.log("tag featured", res);
+
         router.refresh();
       }
     } catch (error) {
       setIsActionLoading(false); // Set action-specific loading state
-      console.log(error);
     }
   };
 
@@ -63,25 +62,21 @@ export default function Tagwrapper(props) {
       const res = await deleteSingleTagAction(obj);
       if (res.status === "success") {
         toast.success(res.message);
-        console.log("delete tags", res);
+
         setIsActionLoading(false); // Set action-specific loading state
         router.refresh();
       }
     } catch (error) {
       setIsActionLoading(false); // Set action-specific loading state
-      console.log(error);
     }
   };
 
   const handelGetData = async () => {
     try {
       const res = await tagListAction();
-      console.log("result---", res.result);
 
       setallTags(res.result);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {

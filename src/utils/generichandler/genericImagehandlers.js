@@ -1,7 +1,6 @@
 // This GENERIC HANDLER FOR Update SINGLE IMAGE BY ID
 export const genericSingleImageHandler = (uploadFunction) => {
   return async (selectedFile, formData, imageFor, id = null) => {
-    // console.log(selectedFile, formData, imageFor, id);
     try {
       const formDataToSend = new FormData();
       formDataToSend.append(imageFor, selectedFile);
@@ -10,11 +9,9 @@ export const genericSingleImageHandler = (uploadFunction) => {
         formDataToSend.append(key, formData[key]);
       });
       const result = await uploadFunction(formDataToSend, id);
-      console.log("genrichandler-----", result);
+
       return result;
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 };
 
@@ -41,18 +38,15 @@ export const genericSingleImageWithOtherData = (handler) => {
       });
 
       const result = await handler(formDataToSend, id);
-      console.log("genericImageWithMetadataHandler-----", result);
+
       return result;
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 };
 
 // This GENERIC HANDLER FOR Update SINGLE IMAGE BY ID
 export const genericImageUplodHandler = (uploadFunction) => {
   return async (selectedFile, imageFor, id = null) => {
-    // console.log(selectedFile, formData, imageFor, id);
     try {
       const formDataToSend = new FormData();
       formDataToSend.append(imageFor, selectedFile);
@@ -63,10 +57,8 @@ export const genericImageUplodHandler = (uploadFunction) => {
       }
 
       const result = await uploadFunction(formDataToSend);
-      console.log("genrichandler-----", result);
+
       return result;
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 };

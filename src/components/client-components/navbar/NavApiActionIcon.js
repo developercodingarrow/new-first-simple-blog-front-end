@@ -10,7 +10,7 @@ export default function NavApiActionIcon() {
   const handelCreateBlogAction = async () => {
     try {
       const res = await createBlogAction();
-      console.log(res);
+
       if (res.status === "Error") {
         alert(res.message);
         return;
@@ -19,9 +19,7 @@ export default function NavApiActionIcon() {
         const pathId = res.result.id;
         router.push(`/new-blog/${pathId}`);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

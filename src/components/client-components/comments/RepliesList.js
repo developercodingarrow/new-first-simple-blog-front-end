@@ -9,7 +9,6 @@ export default function RepliesList(props) {
   const { isLogined } = useContext(AppContext);
   const userID = isLogined?._id;
   const { replies, comentID, handelDelete } = props;
-  console.log(replies);
 
   return (
     <div className={styles.replies_list}>

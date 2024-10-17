@@ -34,7 +34,7 @@ export default function UserAuthLayout(props) {
       setisBtnLoadin(true);
       const res = await formHandel(data);
       // Check if there's an error in the response
-      console.log(res);
+
       if (res.error) {
         toast.error(res.error);
         setisBtnLoadin(false);

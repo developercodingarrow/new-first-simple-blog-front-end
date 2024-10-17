@@ -18,7 +18,6 @@ export default async function TagListpage() {
       initialData = [];
     }
   } catch (error) {
-    console.error("Error fetching data:", error);
     initialData = null; // Handle the case where fetching fails
   }
   return (

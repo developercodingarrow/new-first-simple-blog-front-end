@@ -7,9 +7,7 @@ import { tagfillterBlogs } from "@/src/Actions/blogActions/blogAction";
 export default function HomePageBlogList({ pageQuery, oldData }) {
   const [data, setData] = useState(oldData);
 
-  useEffect(() => {
-    console.log("page load");
-  }, [pageQuery, oldData]);
+  useEffect(() => {}, [pageQuery, oldData]);
 
   useEffect(() => {
     async function fetchData() {

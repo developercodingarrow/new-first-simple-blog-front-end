@@ -10,27 +10,19 @@ export default function GoogleOneTap() {
 
   useGoogleOneTapLogin({
     onSuccess: async (credentialResponse) => {
-      console.log("test onTap");
       if (credentialResponse) {
-        console.log("enter");
-
         try {
           const res = await userGoogleLoginAction(
             credentialResponse.credential
           );
 
           if (res.status === "success") {
-            console.log(res.user, res.token);
             router.push("/");
           }
-        } catch (error) {
-          console.log(error);
-        }
+        } catch (error) {}
       }
     },
-    onError: () => {
-      console.log("Login Failed");
-    },
+    onError: () => {},
   });
 
   return (

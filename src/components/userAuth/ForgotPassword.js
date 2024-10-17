@@ -20,7 +20,7 @@ export default function ForgotPassword() {
     try {
       setisBtnLoadin(true);
       const res = await userForgotPasswordAction(data);
-      console.log(res);
+
       if (res.error) {
         toast.error(res.error);
         setisBtnLoadin(false);

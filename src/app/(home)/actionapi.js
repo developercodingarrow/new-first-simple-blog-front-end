@@ -3,7 +3,7 @@ import { performGetAPIAction } from "../utils/genericAction";
 import { API_BASE_URL } from "../../../config";
 export const tagfillterBlogs = async (query, page) => {
   //   testing purpose end
-  const limit = 3; // Static limit value
+  const limit = 100; // Static limit value
   let url = `${API_BASE_URL}/private/blog/fllterd-tag-blogs`;
 
   const queryParams = [];
@@ -23,6 +23,3 @@ export const tagfillterBlogs = async (query, page) => {
 
   return performGetAPIAction(url, null);
 };
-
-
-

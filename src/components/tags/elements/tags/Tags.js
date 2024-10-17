@@ -7,7 +7,6 @@ import TagSearchClient from "../searchTags/TagSearchClient";
 
 export default function Tags() {
   const { filteredTags } = useContext(TagContext);
-  console.log("alltags--", filteredTags);
 
   useEffect(() => {}, [filteredTags]);
   return (

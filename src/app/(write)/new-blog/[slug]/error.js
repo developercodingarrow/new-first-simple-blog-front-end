@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 
 export default function Error({ error, reset }) {
-  console.log(error);
   useEffect(() => {
     // Log the error to an error reporting service
   }, [error]);

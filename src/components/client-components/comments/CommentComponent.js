@@ -40,7 +40,6 @@ export default function CommentComponent(props) {
   const handelCreateComment = async (data) => {
     try {
       const res = await createComment(data);
-      console.log(res);
 
       // res.data.newComment.commentBy.userImg.url
       setComments([
@@ -58,14 +57,12 @@ export default function CommentComponent(props) {
         },
       ]);
       router.refresh();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const handleReplyAdded = (commentId, newReply) => {
     // Find the comment to update
-    console.log("new reply obj---", newReply);
+
     setComments((prevComments) =>
       prevComments.map((comment) =>
         comment.id === commentId
@@ -78,10 +75,7 @@ export default function CommentComponent(props) {
 
   const deleteComment = async (data) => {
     try {
-      console.log(data);
       const res = await deleteCommentApi(data); // Call the API function
-      console.log(res);
-      //
 
       if (res.data.status === "success") {
         const updatedComments = comments.filter(

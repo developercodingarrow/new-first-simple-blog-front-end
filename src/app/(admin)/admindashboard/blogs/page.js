@@ -12,7 +12,7 @@ export default async function BlogListpage() {
   try {
     // Fetch the web stats using the auth token
     const res = await blogsListAction(authToken);
-    console.log(res);
+
     if (res.status === "success") {
       initialData = res.result;
     } else {

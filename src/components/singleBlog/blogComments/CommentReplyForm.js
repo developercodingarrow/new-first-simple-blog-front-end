@@ -17,7 +17,6 @@ export default function CommentReplyForm({ commentId, onReplyAdded }) {
   const onSubmit = async (data) => {
     try {
       const res = await createReplyAction(data);
-      console.log("reply foem--", res);
 
       if (res.status === "Success") {
         const newTempReply = {
@@ -28,9 +27,7 @@ export default function CommentReplyForm({ commentId, onReplyAdded }) {
         onReplyAdded(data.commentId, newTempReply);
         reset(); // Reset form fields after successful submission
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

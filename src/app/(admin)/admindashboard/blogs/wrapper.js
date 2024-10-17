@@ -32,13 +32,11 @@ export default function Blogswrapper(props) {
         _id: data,
       };
       const res = await featuredBlogAction(obj);
-      console.log(res);
+
       if (res.status === "success") {
         toast.success(res.message);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

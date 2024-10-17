@@ -17,10 +17,7 @@ export default function GoogleAuthClient(props) {
         <>
           <GoogleLogin
             onSuccess={async (credentialResponse) => {
-              console.log(credentialResponse);
               if (credentialResponse) {
-                console.log("enter");
-
                 try {
                   const res = await userGoogleLoginAction(
                     credentialResponse.credential
@@ -29,14 +26,10 @@ export default function GoogleAuthClient(props) {
                   if (res.status === "success") {
                     router.push("/");
                   }
-                } catch (error) {
-                  console.log(error);
-                }
+                } catch (error) {}
               }
             }}
-            onError={() => {
-              console.log("Login Failed");
-            }}
+            onError={() => {}}
             useOneTap
           />
         </>

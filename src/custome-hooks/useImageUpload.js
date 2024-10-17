@@ -55,7 +55,6 @@ export default function useImageUpload() {
       ...prevData,
       [e.target.name]: e.target.value,
     }));
-    console.log(imgData);
   };
 
   const handleSave = async () => {

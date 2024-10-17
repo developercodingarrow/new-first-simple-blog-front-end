@@ -23,7 +23,7 @@ export default function OTP() {
     try {
       setisBtnLoadin(true);
       const res = await userotpVerfication(data, otp);
-      console.log("OTP---", res);
+
       if (res.error) {
         toast.error(res.error);
         setisBtnLoadin(false);
@@ -36,7 +36,6 @@ export default function OTP() {
       }
     } catch (error) {
       setisBtnLoadin(false);
-      console.log("erro,,,,", error);
     }
   };
 

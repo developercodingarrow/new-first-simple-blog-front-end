@@ -9,7 +9,6 @@ async function getData(slug) {
 
     // Handle blog fetch failure
     if (res?.error) {
-      console.log("Error returned from API:", res.error);
       throw new Error(res.error); // Properly throw the error
     }
 
@@ -23,8 +22,6 @@ export default async function editBlogpage(pathname) {
   const slug = pathname?.params?.slug;
 
   const initialData = await getData(slug);
-
-  console.log("edit page----", initialData);
 
   return (
     <div>

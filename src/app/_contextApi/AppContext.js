@@ -6,10 +6,8 @@ export const AppContext = createContext();
 export default function AppContextProvider({ children, bannerDetails }) {
   const [isBtnLoadin, setisBtnLoadin] = useState(false);
   const [isMobleDrawer, setisMobleDrawer] = useState(false);
+  
   useEffect(() => {
-    console.log("test app context");
-    // Store banner details in a cookie for testing
-    console.log("bannerDetails---", bannerDetails);
     if (bannerDetails) {
       Cookies.set("mainBanner", JSON.stringify(bannerDetails), { expires: 1 }); // Expires in 1 day
     }

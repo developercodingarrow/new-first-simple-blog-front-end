@@ -46,7 +46,6 @@ export default function AdminTagswrapper(props) {
       }
     } catch (error) {
       setIsActionLoading(false); // Set action-specific loading state
-      console.log(error);
     }
   };
 
@@ -64,19 +63,15 @@ export default function AdminTagswrapper(props) {
       }
     } catch (error) {
       setIsActionLoading(false); // Set action-specific loading state
-      console.log(error);
     }
   };
 
   const handelGetData = async () => {
     try {
       const res = await tagListAction();
-      console.log("result---", res.result);
 
       setallTags(res.result);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {

@@ -7,7 +7,7 @@ import ByGoogle from "./ByGoogle";
 
 export default function UserSettings() {
   const { authUser } = useContext(AuthContext);
-  console.log("authUser---", authUser);
+
   return (
     <div>
       {authUser.authBy === "form" && (

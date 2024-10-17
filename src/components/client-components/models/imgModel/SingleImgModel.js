@@ -32,13 +32,11 @@ export default function SingleImgModel(props) {
   const handelSubmitImg = async () => {
     try {
       const res = await updateHandler(image, imgData, "blogThumblin", id);
-      console.log("model response----", res);
+
       if (res.status === "success") {
         toast.success(res.message);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const handelModelClose = () => {

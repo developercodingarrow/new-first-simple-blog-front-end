@@ -10,8 +10,6 @@ import { FaRegComment, PiEyeThin } from "../../ApplicationIcons";
 export default function BoxCard(props) {
   const { data } = props;
 
-  console.log("tags-page---", data);
-
   return (
     <div className={styles.card_container}>
       <div className={styles.cardTopBar}>

@@ -12,7 +12,6 @@ async function getData(slug) {
 
     return await res.result;
   } catch (error) {
-    console.error("Error fetching data:", error);
     // throw new Error(`Failed to fetch data: ${error}`);
   }
 }

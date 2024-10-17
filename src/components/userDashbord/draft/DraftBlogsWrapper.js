@@ -8,8 +8,6 @@ export default function DraftBlogsWrapper(props) {
   const { data } = props;
   const router = useRouter();
 
-  console.log("draft page wrapper---", data);
-
   const handleEdit = (id, slug) => {
     router.push(`/new-blog/${id}`);
   };
@@ -20,11 +18,9 @@ export default function DraftBlogsWrapper(props) {
         id: actionId,
       };
       const res = await deleteBlogApi(data);
-      console.log(res);
+
       router.refresh();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
   const editDeleteActions = [
     { label: "Edit", handler: handleEdit },

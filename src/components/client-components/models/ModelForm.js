@@ -36,7 +36,7 @@ export default function ModelForm(props) {
     try {
       setisBtnLoadin(true);
       const res = await modelActionHandler(obj);
-      console.log(res);
+
       if (res.status === "Fails") {
         toast.error(res.message);
         setisBtnLoadin(false);
@@ -47,7 +47,6 @@ export default function ModelForm(props) {
         setisBtnLoadin(false);
       }
     } catch (error) {
-      console.log(error);
       setisBtnLoadin(false);
     }
   };
