@@ -16,6 +16,7 @@ import TagContextProvider from "../_contextApi/TagContextApi";
 import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
 import AppContextProvider from "../_contextApi/AppContext";
 import AppDrawer from "@/src/components/appDrawer/AppDrawer";
+import SearchModel from "@/src/components/client-components/models/SearchModel";
 
 export default async function layout({ children }) {
   const userDetails = await getSession();
@@ -30,6 +31,7 @@ export default async function layout({ children }) {
                   <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
                     <ReportActionModel />
                     <ReagisterAuthModel />
+                    <SearchModel />
                     <AppDrawer />
                     <div>
                       <div>
