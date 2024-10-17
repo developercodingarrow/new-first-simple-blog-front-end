@@ -3,6 +3,9 @@ import styles from "./css/mainbanner.module.css";
 import Image from "next/image";
 import defaultBanner from "../../../../public/web-static-img/main page banner.png";
 import { cookies } from "next/headers"; // Import the cookies function
+const DynamicImage = dynamic(() => import("next/image"), {
+  loading: () => <p>Loading...</p>, // Loading placeholder
+});
 export default function HomePageMainBanner() {
   const cookieStore = cookies();
   const banner = cookieStore.get("mainBanner")?.value;
@@ -18,23 +21,24 @@ export default function HomePageMainBanner() {
 
   return (
     <div className={styles.com_compoanent}>
-      {bannerDetails ? (
-        <Image
-          src={`/mainbanner/${bannerDetails.bannerImg.url}`} // Use the correct path to the image
-          width={900}
-          height={900}
-          alt={bannerDetails.bannerImg.altText} // Use the alt text from the banner details
-          className={styles.banner_imgStyle}
-        />
-      ) : (
-        <Image
-          src={defaultBanner} // Use the correct path to the image
-          width={900}
-          height={900}
-          alt="Place you add "
-          className={styles.banner_imgStyle}
-        />
-      )}
+      <DynamicImage
+        src={
+          bannerDetails
+            ? `/mainbanner/${bannerDetails.bannerImg.url}`
+            : defaultBanner
+        }
+        width={900} // You can adjust this width as per your layout requirements
+        height={900} // Adjust accordingly
+        alt={bannerDetails ? bannerDetails.bannerImg.altText : "Place you add"}
+        className={styles.banner_imgStyle}
+        loading="lazy" // This ensures images are lazy-loaded
+        placeholder="blur" // This shows a blurred image as a placeholder until the image is fully loaded
+        blurDataURL={
+          bannerDetails
+            ? `/mainbanner/${bannerDetails.bannerImg.url}?w=10&q=10`
+            : defaultBanner
+        }
+      />
     </div>
   );
 }
