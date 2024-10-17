@@ -10,9 +10,7 @@ import {
   FaLinkedin,
   FaXTwitter,
   HiOutlineHome,
-  MdOutlineAutoGraph,
   SlUser,
-  TiDocumentText,
   BiTag,
   HiMagnifyingGlass,
   GiPowerButton,
@@ -105,7 +103,10 @@ export default function Footer() {
         </div>
 
         {authUser ? (
-          <Link href={"/"} className={styles.mobile_footer_icon_wrapper}>
+          <Link
+            href={"/userdashboard/profile"}
+            className={styles.mobile_footer_icon_wrapper}
+          >
             <SlUser />
           </Link>
         ) : (

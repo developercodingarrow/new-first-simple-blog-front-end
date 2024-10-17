@@ -28,7 +28,7 @@ export default function AppDrawer() {
 
   const sidebarItems = [
     {
-      href: "/home",
+      href: "/",
       text: "Home",
       icon: <HiOutlineHome />,
     },
