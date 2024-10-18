@@ -11,6 +11,7 @@ export async function getMainBanner() {
     const res = await axios.get(url);
 
     if (res.data.status === "success" && res.data.result.length > 0) {
+      console.log(res.data.result);
       return res.data.result[0]; // Return the first banner
     }
   } catch (error) {

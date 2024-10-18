@@ -3,15 +3,9 @@ import { createContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 export const AppContext = createContext();
 
-export default function AppContextProvider({ children, bannerDetails }) {
+export default function AppContextProvider({ children }) {
   const [isBtnLoadin, setisBtnLoadin] = useState(false);
   const [isMobleDrawer, setisMobleDrawer] = useState(false);
-  
-  useEffect(() => {
-    if (bannerDetails) {
-      Cookies.set("mainBanner", JSON.stringify(bannerDetails), { expires: 1 }); // Expires in 1 day
-    }
-  }, [bannerDetails]); // Run effect if bannerDetails changes
 
   const handelOpenMobileDrawer = () => {
     setisMobleDrawer(true);

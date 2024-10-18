@@ -1,4 +1,5 @@
 import NavBar from "@/src/components/server-components/Navbar/NavBar";
+import { cookies } from "next/headers";
 import "../globals.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Footer from "@/src/components/server-components/footer/Footer";
@@ -21,7 +22,6 @@ import TagContextProvider from "../_contextApi/TagContextApi";
 import ImgModelContextProvider from "../_contextApi/ImgModelContextApi";
 import SearchModel from "@/src/components/client-components/models/SearchModel";
 import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
-import { getMainBanner } from "../utils/mainBannerAction";
 import AppContextProvider from "../_contextApi/AppContext";
 import HomePageLayout from "@/src/components/homepage/layout/HomePageLayout";
 import AppDrawer from "@/src/components/appDrawer/AppDrawer";
@@ -35,14 +35,13 @@ export default async function RootLayout({ children }) {
   const userDetails = await getSession();
   const verifiedTags = await getTagsWithRevalidation();
   const featureTags = await featureTagListAction();
-  const bannerDetails = await getMainBanner();
 
   return (
     <html lang="en">
       <body>
         <AuthContextProvider authData={userDetails}>
           <ImgModelContextProvider>
-            <AppContextProvider bannerDetails={bannerDetails}>
+            <AppContextProvider>
               <TagContextProvider verifiedTags={verifiedTags}>
                 <ModelContextProvider>
                   <BlogContextProvider>
