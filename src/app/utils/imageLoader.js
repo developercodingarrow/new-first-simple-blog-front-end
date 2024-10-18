@@ -5,7 +5,7 @@ export default function myImageLoader({ src, width, quality }) {
     return "../../../public/usersProfileImg/profile-pic.webp"; // Use a fallback image if src is undefined
   }
   const isProduction = process.env.NEXT_PUBLIC_PRODUCTION === "true";
-  const baseUrl = isProduction ? "http://pinbuzzers.com" : "";
+  const baseUrl = isProduction ? "https://pinbuzzers.com" : "";
 
   // Determine if the source is a public path or an external URL
   const isPublicPath = src.startsWith("/");
