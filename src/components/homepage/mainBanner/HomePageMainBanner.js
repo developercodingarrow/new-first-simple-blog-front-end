@@ -21,7 +21,6 @@ export default function HomePageMainBanner() {
       if (banner) {
         try {
           setBannerDetails(JSON.parse(banner));
-          setIsLoadedFromCookies(true); // Mark as loaded from cookies
         } catch (error) {
           console.error("Error parsing banner JSON from cookies:", error);
         }
@@ -60,7 +59,6 @@ export default function HomePageMainBanner() {
 
             // Update the state with the new banner details
             setBannerDetails(newBannerDetails);
-            setIsLoadedFromCookies(false); // Mark as updated from the API
           }
         } catch (error) {
           console.error("Error fetching updated banner:", error);
