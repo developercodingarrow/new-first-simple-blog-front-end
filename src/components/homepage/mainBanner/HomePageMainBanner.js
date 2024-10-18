@@ -13,7 +13,6 @@ const DynamicImage = dynamic(() => import("next/image"), { ssr: false });
 
 export default function HomePageMainBanner() {
   const [bannerDetails, setBannerDetails] = useState(null);
-  const [isLoadedFromCookies, setIsLoadedFromCookies] = useState(false);
 
   useEffect(() => {
     // First, load the banner details from cookies for fast display

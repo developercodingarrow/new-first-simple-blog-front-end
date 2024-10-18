@@ -9,6 +9,7 @@ import AuthContextProvider from "../_contextApi/authContext";
 import { getSession } from "../lib/authentication";
 import AppDrawer from "@/src/components/appDrawer/AppDrawer";
 import AppContextProvider from "../_contextApi/AppContext";
+import Footer from "@/src/components/server-components/footer/Footer";
 
 export default async function layout({ children }) {
   const userDetails = await getSession();
@@ -26,6 +27,9 @@ export default async function layout({ children }) {
                       <NavBar userData={userDetails} />
                     </div>
                     <div className="children_wrapper">{children}</div>
+                    <div>
+                      <Footer />
+                    </div>
                   </ModelContextProvider>
                 </BlogContextProvider>
               </TagContextProvider>
