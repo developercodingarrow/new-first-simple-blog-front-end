@@ -13,24 +13,31 @@ const DynamicImage = dynamic(() => import("next/image"), { ssr: false });
 
 export default function HomePageMainBanner() {
   const [bannerDetails, setBannerDetails] = useState(null);
+  const [isLoadedFromCookies, setIsLoadedFromCookies] = useState(false);
 
   useEffect(() => {
-    const banner = Cookies.get("mainBanner");
-    if (banner) {
-      try {
-        setBannerDetails(JSON.parse(banner));
-      } catch (error) {
-        console.error("Error parsing banner JSON from cookies:", error);
+    // First, load the banner details from cookies for fast display
+    const loadBannerFromCookies = () => {
+      const banner = Cookies.get("mainBanner");
+      if (banner) {
+        try {
+          setBannerDetails(JSON.parse(banner));
+          setIsLoadedFromCookies(true); // Mark as loaded from cookies
+        } catch (error) {
+          console.error("Error parsing banner JSON from cookies:", error);
+        }
       }
-    }
+    };
 
-    // Fetch updated banner data in the background if the timestamp is old
+    loadBannerFromCookies(); // Load immediately on mount
+
+    // Fetch updated banner data in the background
     const fetchUpdatedBanner = async () => {
       const bannerTimestamp = Cookies.get("bannerTimestamp");
       const now = new Date().getTime();
       const twelveHoursInMs = 12 * 60 * 60 * 1000;
 
-      // Check if the timestamp is older than 12 hours
+      // Only fetch the banner if the timestamp is older than 12 hours
       if (
         !bannerTimestamp ||
         now - parseInt(bannerTimestamp, 10) > twelveHoursInMs
@@ -54,6 +61,7 @@ export default function HomePageMainBanner() {
 
             // Update the state with the new banner details
             setBannerDetails(newBannerDetails);
+            setIsLoadedFromCookies(false); // Mark as updated from the API
           }
         } catch (error) {
           console.error("Error fetching updated banner:", error);
@@ -61,8 +69,9 @@ export default function HomePageMainBanner() {
       }
     };
 
+    // Call the background fetch function
     fetchUpdatedBanner();
-  }, []); // Only run once on mount
+  }, []); // Run only once on mount
 
   return (
     <div className={styles.com_compoanent}>
@@ -72,12 +81,14 @@ export default function HomePageMainBanner() {
             ? `/mainbanner/${bannerDetails.bannerImg.url}`
             : defaultBanner
         }
-        width={900} // Adjust width according to your layout
+        width={900} // Adjust width as per your layout requirements
         height={900} // Adjust height accordingly
-        alt={bannerDetails ? bannerDetails.bannerImg.altText : "Place your ad"}
+        alt={
+          bannerDetails ? bannerDetails.bannerImg.altText : "Placeholder image"
+        }
         className={styles.banner_imgStyle}
-        loading="lazy"
-        placeholder="blur"
+        loading="lazy" // Ensure lazy loading of images
+        placeholder="blur" // Show blurred placeholder until image loads
         blurDataURL={
           bannerDetails
             ? `/mainbanner/${bannerDetails.bannerImg.url}?w=10&q=10`
