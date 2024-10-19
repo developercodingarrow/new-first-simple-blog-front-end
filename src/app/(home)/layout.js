@@ -1,4 +1,5 @@
 import NavBar from "@/src/components/server-components/Navbar/NavBar";
+
 import { cookies } from "next/headers";
 import "../globals.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -27,8 +28,10 @@ import HomePageLayout from "@/src/components/homepage/layout/HomePageLayout";
 import AppDrawer from "@/src/components/appDrawer/AppDrawer";
 
 export const metadata = {
-  title: "Fisrt blog website",
-  description: "This is first Blog website",
+  title: "pinbuzzers",
+  template: "%s - pinbuzzers",
+  description:
+    "Pin your idea on Pinbuzzers and boot up your website with high traffic backlinking",
 };
 
 export default async function RootLayout({ children }) {
