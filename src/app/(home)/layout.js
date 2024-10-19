@@ -32,6 +32,34 @@ export const metadata = {
   template: "%s - pinbuzzers",
   description:
     "Pin your idea on Pinbuzzers and boot up your website with high traffic backlinking",
+  openGraph: {
+    title: "Pinbuzzers",
+    description:
+      "Pin your idea on Pinbuzzers and boot up your website with high traffic backlinking",
+    url: "https://www.pinbuzzers.com", // Replace with your actual URL
+    type: "website",
+    images: [
+      {
+        url: "https://pinbuzzers.com/web-static-img/Facebook-og-image.png", // Replace with the actual image URL
+        width: 1200,
+        height: 630,
+        alt: "Pinbuzzers Open Graph Image",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@pinbuzzers", // Replace with your Twitter handle
+    title: "Pinbuzzers",
+    description:
+      "Pin your idea on Pinbuzzers and boot up your website with high traffic backlinking",
+    images: [
+      {
+        url: "https://www.pinbuzzers.com/web-static-img/twiiter-og-image.png", // Replace with the actual Twitter image URL
+        alt: "Pinbuzzers Twitter Image",
+      },
+    ],
+  },
 };
 
 export default async function RootLayout({ children }) {
