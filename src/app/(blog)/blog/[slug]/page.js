@@ -18,7 +18,9 @@ export async function generateMetadata({ params }) {
       description: data.result.metaDescription || "Default description",
       images: [
         {
-          url: data.result.blogThumblin?.url || "/default-image.jpg",
+          url:
+            `https://pinbuzzers.com/blogthumblin/${data.result.blogThumblin?.url}` ||
+            "/default-image.jpg",
           alt: data.result.blogThumblin?.altText || "Blog Thumbnail",
         },
       ],
@@ -26,6 +28,14 @@ export async function generateMetadata({ params }) {
         publishedTime: data.result.publishedAt,
         authors: [data.result.author?.name || "Default Author"],
       },
+    },
+    twitter: {
+      cardType: "summary_large_image",
+      title: data.result.blogTitle || "Default Title",
+      description: data.result.metaDescription || "Default description",
+      image:
+        `https://pinbuzzers.com/blogthumblin/${data.result.blogThumblin?.url}` ||
+        defaultImage,
     },
     additionalMetaTags: [
       {
@@ -46,10 +56,10 @@ export async function generateMetadata({ params }) {
       datePublished: data.result.createdAt || new Date().toISOString(),
       publisher: {
         "@type": "Organization",
-        name: "Your Blog Name",
+        name: "pinbuzzers",
         logo: {
           "@type": "ImageObject",
-          url: "https://example.com/logo.png", // Replace with your logo URL
+          url: "https://pinbuzzers.com/web-static-img/dummy-logo.png", // Replace with your logo URL
         },
       },
     },
