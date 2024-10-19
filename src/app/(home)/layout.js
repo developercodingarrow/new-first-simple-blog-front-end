@@ -1,13 +1,11 @@
 import NavBar from "@/src/components/server-components/Navbar/NavBar";
-
-import { cookies } from "next/headers";
+import { inter, roboto, poppins, montserrat } from "../lib/fonts";
 import "../globals.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Footer from "@/src/components/server-components/footer/Footer";
 import GoogleOneTap from "@/src/components/client-components/googleAuth/GoogleOneTap";
 import ReportActionModel from "@/src/components/client-components/models/ReportActionModel";
 import styles from "./page.module.css";
-import LayoutSideBar from "@/src/components/client-components/sideBar/LayoutSideBar";
 import ReagisterAuthModel from "@/src/components/client-components/models/ReagisterAuthModel";
 import BlogContextProvider from "../_contextApi/BlogContextApi";
 import ModelContextProvider from "../_contextApi/ModelContextApi";
@@ -17,7 +15,6 @@ import {
   getTagsWithRevalidation,
   featureTagListAction,
 } from "../utils/tagActions";
-import TagTab from "@/src/components/client-components/tab/TagTab";
 import HomePageMainBanner from "@/src/components/homepage/mainBanner/HomePageMainBanner";
 import TagContextProvider from "../_contextApi/TagContextApi";
 import ImgModelContextProvider from "../_contextApi/ImgModelContextApi";
@@ -68,7 +65,10 @@ export default async function RootLayout({ children }) {
   const featureTags = await featureTagListAction();
 
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${inter.variable} ${roboto.variable} ${poppins.variable} ${montserrat.variable}`}
+    >
       <body>
         <AuthContextProvider authData={userDetails}>
           <ImgModelContextProvider>
