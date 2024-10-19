@@ -2,6 +2,17 @@ import React, { Suspense } from "react";
 import Loading from "../../loading";
 import SingleBlogWrapper from "@/src/components/singleBlog/singleBlogElements/blogwrapper/SingleBlogWrapper";
 import { API_BASE_URL } from "../../../../../config";
+import { cache } from "react";
+
+export async function generateStaticParams() {
+  const post = await fetch(
+    `${API_BASE_URL}/private/blog/fllterd-tag-blogs`
+  ).then((res) => res.json());
+  // console.log("generateStaticParams---", post.result);
+  return post.result.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export async function generateMetadata({ params }) {
   const res = await fetch(

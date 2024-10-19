@@ -7,7 +7,12 @@ import sampleImg from "../../../../public/web-static-img/side-banner-img.jpg";
 export default function SideBanner() {
   return (
     <Link href={"/"} className={styles.com_component}>
-      <Image src={sampleImg} width={200} className={styles.img_style} />
+      <Image
+        src={sampleImg}
+        width={200}
+        className={styles.img_style}
+        alt="side banner"
+      />
     </Link>
   );
 }
