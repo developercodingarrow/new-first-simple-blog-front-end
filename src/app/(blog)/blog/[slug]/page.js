@@ -8,8 +8,11 @@ export async function generateStaticParams() {
   const post = await fetch(
     `${API_BASE_URL}/private/blog/fllterd-tag-blogs`
   ).then((res) => res.json());
-  // console.log("generateStaticParams---", post.result);
-  return post.result.map((post) => ({
+
+  // Get the first 10 blog posts
+  const limitedPosts = post.result.slice(0, 10);
+
+  return limitedPosts.map((post) => ({
     slug: post.slug,
   }));
 }
