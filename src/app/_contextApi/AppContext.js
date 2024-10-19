@@ -14,6 +14,21 @@ export default function AppContextProvider({ children }) {
   const handelCloseMobileDrawer = () => {
     setisMobleDrawer(false);
   };
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      // Remove g_state cookie when the browser is closed
+      Cookies.remove("g_state");
+    };
+
+    // Add event listener for beforeunload
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      // Cleanup the event listener on component unmount
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
   return (
     <AppContext.Provider
       value={{
