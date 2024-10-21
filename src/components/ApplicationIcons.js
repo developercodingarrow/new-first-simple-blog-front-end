@@ -31,6 +31,10 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { PiEyeThin } from "react-icons/pi";
 
+import { IoMail } from "react-icons/io5";
+import { FaFacebookF } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { RiTwitterXLine } from "react-icons/ri";
 export {
   FaUserCircle,
   IoArrowBack,
@@ -69,4 +73,8 @@ export {
   LuLayoutDashboard,
   FaLongArrowAltRight,
   PiEyeThin,
+  IoMail,
+  FaFacebookF,
+  FaLinkedinIn,
+  RiTwitterXLine,
 };

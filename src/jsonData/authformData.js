@@ -139,7 +139,7 @@ export const upadteUserPasswordInput = [
     lable: "New password",
     inputType: "password",
     validation: {
-      required: "Password is required.",
+      required: "Name is required.",
     },
   },
 ];

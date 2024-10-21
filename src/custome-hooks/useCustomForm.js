@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import InputElemtns from "../components/client-components/elements/InputElemtns";
 import RadioElement from "../components/client-components/elements/RadioElement";
+import TextareaElement from "../components/client-components/elements/TextareaElement";
 
 export default function useCustomForm() {
   const {
@@ -34,6 +35,12 @@ export default function useCustomForm() {
           onChange: (selectedOption) => setValue(input.name, selectedOption),
           selectedOption: watch(input.name),
           inputLabel: input.label,
+        };
+        break;
+      case "textarea":
+        InputComponent = TextareaElement;
+        specificProps = {
+          inputplaceholder: input.placeholder,
         };
         break;
 
