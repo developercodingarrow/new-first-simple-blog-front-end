@@ -4,9 +4,18 @@ import Image from "next/image";
 import BlogActionBar from "../BlogActionBar/BlogActionBar";
 import CommentComponent from "../../blogComments/CommentComponent";
 import CommentModel from "@/src/components/client-components/models/CommentModel";
+import myImageLoader from "@/src/app/utils/imageLoader";
 
 export default function SingleBlogWrapper(props) {
   const { data } = props;
+
+  // Cache-busting parameter (optional)
+  const timestamp = new Date().getTime();
+
+  // Handle dynamic blog thumbnail URL
+  const blogThumbnailUrl =
+    data?.blogThumblin?.url || "/blogthumblin/default-image.webp"; // Fallback image
+
   return (
     <div className={styles.main_conatiner}>
       <CommentModel data={data} />
@@ -29,11 +38,15 @@ export default function SingleBlogWrapper(props) {
           {data.blogThumblin.url && (
             <div className={styles.ssr_img_wrapper}>
               <Image
-                src={`/blogthumblin/${data.blogThumblin.url}`}
+                loader={myImageLoader} // Use your custom image loader
+                src={blogThumbnailUrl} // Dynamic source for the blog thumbnail
                 className={styles.img_style}
-                alt={data.blogThumblin.altText}
+                alt={data.blogThumblin?.altText || "Blog Thumbnail"}
                 width={900}
                 height={900}
+                placeholder="blur" // Optional: Add blur placeholder effect while loading
+                blurDataURL="/path-to-placeholder-image.webp" // Placeholder image
+                key={timestamp} // Ensure cache busting when the image changes
               />
             </div>
           )}

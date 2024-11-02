@@ -3,11 +3,13 @@ import styles from "./css/linktag.module.css";
 import Link from "next/link";
 
 export default function LinkTag(props) {
-  const { data } = props;
+  const { data, limit } = props;
+
+  const limitedData = limit ? data.slice(0, limit) : data;
 
   return (
     <div className={styles.linkTag_wrapper}>
-      {data.map((el, index) => {
+      {limitedData.map((el, index) => {
         return (
           <Link
             href={`tags/${el?.tagSlug}`}

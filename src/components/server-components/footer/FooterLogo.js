@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./css/footerlogo.module.css";
 import Image from "next/image";
-import footer_logo from "../../../../public/web-static-img/footer-black-logo.png";
+import footer_logo from "../../../../public/web-static-img/pinbuzzers-back-logo.png";
+import Link from "next/link";
 export default function FooterLogo() {
   const logoUrl = "/web-static-img/footer-black-logo.png"; // Relative URL to the logo image
   const schema = {
@@ -11,18 +12,18 @@ export default function FooterLogo() {
     logo: `https://www.example.com${logoUrl}`, // Replace with your absolute logo URL
   };
   return (
-    <div className={styles.com_container}>
+    <Link href={"/"} className={styles.com_container}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <Image
         src={footer_logo}
-        width={900}
-        height={900}
+        width={1000}
+        height={1000}
         alt="Footer-logo"
         className={styles.footer_logoStyle}
       />
-    </div>
+    </Link>
   );
 }

@@ -24,7 +24,7 @@ export default function NavApiActionIcon() {
 
   return (
     <>
-      <div onClick={handelCreateBlogAction}>
+      <div onClick={handelCreateBlogAction} aria-label="Create new post">
         <FaPlus />
       </div>
     </>

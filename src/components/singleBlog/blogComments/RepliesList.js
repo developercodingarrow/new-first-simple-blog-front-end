@@ -5,6 +5,8 @@ import styles from "./css/commentcomponent.module.css";
 import userImg from "../../../../public/web-static-img/auther-image.jpg";
 import { MdDeleteForever } from "../../ApplicationIcons";
 import { AuthContext } from "@/src/app/_contextApi/authContext";
+import myImageLoader from "@/src/app/utils/imageLoader";
+
 export default function RepliesList(props) {
   const { authUser } = useContext(AuthContext);
 
@@ -18,11 +20,22 @@ export default function RepliesList(props) {
           <div className={styles.comment_profile}>
             <div className={styles.profile_pic_wrapper}>
               <Image
-                src={userImg}
-                alt="profile picture"
-                width={40}
-                height={40}
+                src={
+                  reply.replyBy?.userImg?.url.startsWith("http")
+                    ? reply.replyBy.userImg.url // Use the external URL
+                    : `/usersProfileImg/${
+                        reply.replyBy?.userImg?.url || "profile-pic.webp"
+                      }` // Fallback to local image
+                }
+                alt={`${
+                  reply.replyBy?.userImg?.altText || "User"
+                }'s profile picture`}
+                width={40} // Width of the profile picture
+                height={40} // Height of the profile picture
                 className={styles.profile_pic}
+                loader={myImageLoader} // Custom loader for image optimization
+                placeholder="blur" // Optional for placeholder effect
+                blurDataURL="/usersProfileImg/profile-pic.webp" // Default placeholder image
               />
             </div>
             <div className={styles.comment_content}>

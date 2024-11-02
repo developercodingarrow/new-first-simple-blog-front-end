@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./css/adminLoginUi.module.css";
 import { useRouter } from "next/navigation";
 import { RiAdminLine } from "../../ApplicationIcons";
@@ -7,21 +7,26 @@ import useCustomeAuthForm from "@/src/custome-hooks/useCustomeAuthForm";
 import { adminLoginInputs } from "../../jsonData/formData";
 import SubmitBtn from "@/src/components/client-components/elements/buttons/SubmitBtn";
 import { adminLoginAction } from "@/src/app/utils/adminactions";
+import { AppContext } from "@/src/app/_contextApi/AppContext";
 
 export default function AdminLoginUi() {
   const router = useRouter();
+  const { isBtnLoadin, setisBtnLoadin } = useContext(AppContext);
   const { renderInput, handleSubmit, updatedInputs, isValid, errors } =
     useCustomeAuthForm(adminLoginInputs, "LOGIN");
 
   const handleForm = async (data) => {
     try {
+      setisBtnLoadin(true);
       const res = await adminLoginAction(data);
       console.log(res);
       if (res.status === "success") {
         router.push("/admindashboard");
+        setisBtnLoadin(false);
       }
     } catch (error) {
       console.log(error);
+      setisBtnLoadin(false);
     }
   };
 
@@ -56,7 +61,11 @@ export default function AdminLoginUi() {
               })}
             </div>
             <div className={styles.submit_btn_wrapper}>
-              <SubmitBtn btnText="Login" />
+              <SubmitBtn
+                btnText="Login"
+                disabled={!isValid}
+                btnLoading={isBtnLoadin}
+              />
             </div>
           </form>
         </div>

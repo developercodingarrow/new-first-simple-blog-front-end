@@ -9,9 +9,7 @@ export default function MainBannerwrapper() {
       <div className={styles.page_header}>
         <h3> Main Banner</h3>
       </div>
-      <div className={styles.component_wrraper}>
-        <UplodedImage />
-      </div>
+
       <div className={styles.component_wrraper}>
         <UploadBanner />
       </div>

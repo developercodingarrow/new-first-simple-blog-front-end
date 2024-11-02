@@ -9,9 +9,17 @@
   border-radius: 50%;
   border: 2px solid var(--th-body-secondery-border-color);
   margin-right: 10px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.details_wrapper {
+.circle_img_style {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 @media (max-width: 768px) {

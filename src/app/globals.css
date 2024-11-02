@@ -8,6 +8,9 @@
   --th-letter-spacing: 1px;
   --th-m-letter-spacing: 0.5px;
   --th-primary-color: #2980b9;
+  --th-primary-color-hover: #1b5e86;
+  --th-focus-outline-color: #ffcc00; /* High visibility outline */
+  --th-button-text-color-hover: #f1f1f1; /* Slight change for hover */
   --th-primary-hover-color: #2471a3;
   --th-d-btn-padding: 12px 10px;
   --th-m-btn-padding: 10px 10px;
@@ -122,6 +125,12 @@ body {
   padding: 0px;
   box-sizing: border-box;
 }
+/* Final refactore  */
+.children_wrapper {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  min-height: 100vh;
+}
 
 /* .navbar_wrapper {
   position: relative;
@@ -170,11 +179,6 @@ h6 {
 
 .capitalize_text {
   text-transform: capitalize;
-}
-
-.children_wrapper {
-  margin-top: 50px;
-  margin-bottom: 50px;
 }
 
 .large_iconWrapper {
@@ -286,12 +290,21 @@ h6 {
 
 .link_btn {
   background-color: var(--th-primary-color);
+  color: var(--th-button-text-color); /* Ensuring readable text */
+  padding: 10px 20px; /* Adding padding for better clickability */
   text-transform: capitalize;
   font-family: sans-serif;
+  border-radius: 5px;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 16px;
 }
 
-.link_btn:hover {
-  background-color: var(--th-primary-hover-color);
+.link_btn:hover,
+.link_btn:focus {
+  background-color: var(--th-primary-color-hover);
+  outline: 2px solid var(--th-focus-outline-color);
+  color: var(--th-button-text-color-hover);
 }
 
 .larg_Link_Btn {

@@ -4,6 +4,7 @@ import styles from "./css/adminlayout.module.css";
 import { CiMenuFries, IoIosArrowDown } from "../ApplicationIcons";
 import Link from "next/link";
 import AsideBar from "./asideBar";
+import AdminDropDownMenu from "./AdminDropDownMenu";
 
 export default function AdminLayout({ children }) {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -65,11 +66,7 @@ export default function AdminLayout({ children }) {
                   <IoIosArrowDown />
                 </div>
               </div>
-              {profileDropDown && (
-                <div className={styles.profile_drop_down}>
-                  <div>Log Out </div>
-                </div>
-              )}
+              {profileDropDown && <AdminDropDownMenu />}
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import styles from "./css/socialmediadetails.module.css";
 import Link from "next/link";
+import { IoIosArrowForward } from "../../../../../ApplicationIcons";
 import {
   FaInstagram,
   FaPinterest,
@@ -55,15 +56,22 @@ export default function SocialMediaDetail(props) {
       <div className={styles.text_data_wrapper} onClick={handleOpen}>
         {textdata === undefined || textdata === null || textdata === "" ? (
           <>
-            {" "}
-            <span className={styles.text_style}>
-              Update Your Social Profile{" "}
-            </span>{" "}
+            <div className={styles.data_wrapper}>
+              <div className={styles.text_style}>
+                Update Your Social Profile
+              </div>
+              <div>
+                <IoIosArrowForward />
+              </div>
+            </div>
           </>
         ) : (
           <>
             <div className={styles.socila_media_iconStyle}>
-              {getSocialMediaIcon(title)}
+              <div>{getSocialMediaIcon(title)}</div>
+              <div>
+                <IoIosArrowForward />
+              </div>
             </div>
           </>
         )}

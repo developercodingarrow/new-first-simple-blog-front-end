@@ -6,7 +6,10 @@ import {
 } from "../generichandler/genericImagehandlers";
 // import { createBlogWithImg } from "@/src/Actions/blogActions/blogAction";
 import { UpdateBlogThumblin } from "@/src/app/utils/blogactions";
-import { publishedMainBanner } from "@/src/app/utils/mainBannerAction";
+import {
+  publishedMainBanner,
+  publishedSideBanner,
+} from "@/src/app/utils/mainBannerAction";
 
 // import { UpdateUserProfilePic } from "@/src/Actions/userActions/userAction";
 
@@ -23,3 +26,6 @@ export const handeluplodUserPic =
 
 export const handelcreateMainBanner =
   genericImageUplodHandler(publishedMainBanner);
+
+export const handelcreateSideBanner =
+  genericImageUplodHandler(publishedSideBanner);

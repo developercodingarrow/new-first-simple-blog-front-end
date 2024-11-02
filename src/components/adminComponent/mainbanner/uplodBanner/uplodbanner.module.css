@@ -42,6 +42,12 @@
 
 .footer_wrapper {
   display: flex;
+  justify-content: space-between;
+  column-gap: 10px;
+}
+
+.image_uplod_actionBtn_wrapper {
+  display: flex;
   justify-content: flex-end;
   column-gap: 10px;
 }

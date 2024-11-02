@@ -9,11 +9,13 @@ import TextClickBtn from "../../elements/buttons/TextClickBtn";
 import ClickBtn from "../../elements/buttons/ClickBtn";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 import { updateUserDetail } from "@/src/app/utils/userAuthaction";
+import { AppContext } from "@/src/app/_contextApi/AppContext";
 
 export default function UserImgModel(props) {
   const { updateFor, setupdateData, filePath } = props;
   const { handelCloseUserImgModel, imgUrl, imgModelId } =
     useContext(ModelsContext);
+  const { isBtnLoadin, setisBtnLoadin } = useContext(AppContext);
 
   const fileInputRef = useRef(null);
   const { previewImage, image, handleImageUpload, removeImg } =
@@ -25,13 +27,19 @@ export default function UserImgModel(props) {
 
   const handelSubmit = async () => {
     try {
+      setisBtnLoadin(true);
+      console.log("click btn");
       const res = await handeluplodUserPic(image, updateFor, imgModelId);
-
+      console.log("res---", res);
       if (res.status === "success") {
         setupdateData(res.data);
         updateUserDetail(res.data);
+        setisBtnLoadin(false);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log("error---", error);
+      setisBtnLoadin(false);
+    }
   };
 
   return (
@@ -99,7 +107,11 @@ export default function UserImgModel(props) {
             </section>
           </div>
           <div className={styles.model_footer}>
-            <ClickBtn btnText="Submit" btnHandel={handelSubmit} />
+            <ClickBtn
+              btnText="update pic"
+              btnHandel={handelSubmit}
+              btndisable={isBtnLoadin}
+            />
           </div>
         </div>
       </div>

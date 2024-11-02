@@ -20,6 +20,7 @@ import { IoIosArrowRoundDown } from "../../../ApplicationIcons";
 import TableDeleteIcon from "./TableDeleteIcon";
 import TableSkeleton from "./table skeleton/tableSkeleton";
 import useTableFillters from "../../../custome-hooks/useTableFillters";
+import TableText from "./tableText";
 
 export default function DynimicTable(props) {
   const {
@@ -146,8 +147,7 @@ const renderCellContent = (
       className = "numberCell";
       break;
     case "text":
-      s;
-      content = "text content";
+      content = <TableText data={elemnetdata} />;
       className = "text-cell";
       break;
     case "blodText":

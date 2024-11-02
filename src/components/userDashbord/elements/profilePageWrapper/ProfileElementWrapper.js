@@ -1,8 +1,7 @@
 "use client";
 import React, { useContext } from "react";
+import dynamic from "next/dynamic";
 import styles from "./css/profileElementWrapper.module.css";
-import InputModel from "@/src/components/client-components/models/InputModel";
-import UserImgModel from "@/src/components/client-components/models/imgModel/UserImgModel";
 import { AuthContext } from "@/src/app/_contextApi/authContext";
 import {
   userNameinput,
@@ -17,6 +16,19 @@ import UserImagDetail from "./pageElements/userImageDetail/UserImagDetail";
 import UserTextDetail from "./pageElements/userTextDetail/UserTextDetail";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
 import SocialMediaDetail from "./pageElements/socialmediadetail/SocialMediaDetail";
+const InputModel = dynamic(
+  () => import("@/src/components/client-components/models/InputModel"),
+  {
+    ssr: false,
+  }
+);
+const UserImgModel = dynamic(
+  () =>
+    import("@/src/components/client-components/models/imgModel/UserImgModel"),
+  {
+    ssr: false,
+  }
+);
 export default function ProfileElementWrapper() {
   const { authUser, setauthUser, handelUpdateUserProfile } =
     useContext(AuthContext);

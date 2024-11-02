@@ -10,6 +10,7 @@ export default function LayoutSideBar(props) {
   const { featureTag } = props;
   const [featureTags, setfeatureTags] = useState(featureTag);
   const [isSticky, setIsSticky] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -33,7 +34,7 @@ export default function LayoutSideBar(props) {
 
       <div className={styles.link_tab_container}>
         <div>
-          <LinkTag data={featureTags} />
+          <LinkTag data={featureTags} limit={10} />
         </div>
         <div className={styles.container_btn}>
           <Link href={"/tags"} className="small_text_wrapper">

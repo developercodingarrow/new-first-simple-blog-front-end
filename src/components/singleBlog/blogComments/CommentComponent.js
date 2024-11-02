@@ -16,6 +16,7 @@ import {
 } from "@/src/app/utils/commentactions";
 import { AuthContext } from "@/src/app/_contextApi/authContext";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
+import myImageLoader from "@/src/app/utils/imageLoader";
 
 export default function CommentComponent(props) {
   const { blogComments, blogId, blogBy } = props;
@@ -155,7 +156,11 @@ export default function CommentComponent(props) {
                 {...register("comment", { required: true })}
               />
 
-              <SubmitBtn btnText="comment" disabled={!isValid} />
+              <SubmitBtn
+                btnText="comment"
+                disabled={!isValid}
+                btnClass="comment_btn"
+              />
             </form>
           </div>
         ) : (
@@ -172,11 +177,23 @@ export default function CommentComponent(props) {
               <div className={styles.profile_pic_wrapper}>
                 {comment.commentBy?.userImg?.url ? (
                   <Image
-                    src={`/usersProfileImg/${comment.commentBy?.userImg?.url}`}
-                    alt={`${comment.commentBy?.userImg?.altText}'s profile picture`}
+                    src={
+                      comment.commentBy?.userImg?.url.startsWith("http")
+                        ? comment.commentBy.userImg.url
+                        : `/usersProfileImg/${
+                            comment.commentBy?.userImg?.url ||
+                            "profile-pic.webp"
+                          }` // Internal image
+                    }
+                    alt={`${
+                      comment.commentBy?.userImg?.altText || "User"
+                    }'s profile picture`}
                     width={500}
                     height={500}
                     className={styles.profile_pic}
+                    loader={myImageLoader} // Add your custom loader here for optimization if needed
+                    placeholder="blur"
+                    blurDataURL="/usersProfileImg/profile-pic.webp" // Default placeholder image
                   />
                 ) : (
                   <div className={styles.No_profile_pic_wrapper}>

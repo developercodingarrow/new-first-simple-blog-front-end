@@ -11,6 +11,7 @@ export async function createCommentAction(formData) {
   const method = "post";
   try {
     const res = await performAPIAction(method, url, formData, authToken);
+    console.log("createCommentAction----", res);
     return res.data;
   } catch (error) {
     return error;

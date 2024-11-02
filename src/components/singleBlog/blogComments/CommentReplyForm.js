@@ -46,7 +46,7 @@ export default function CommentReplyForm({ commentId, onReplyAdded }) {
         {...register("comment", { required: true })}
       />
 
-      <SubmitBtn btnText="Reply" disabled={!isValid} />
+      <SubmitBtn btnText="Reply" disabled={!isValid} btnClass="comment_btn" />
     </form>
   );
 }

@@ -74,3 +74,17 @@ export const contactsupportFormInputFileds = [
     },
   },
 ];
+
+export const bannerLinkInput = [
+  {
+    id: 1,
+    name: "bannerLink",
+    placeholder: "Enter Banner Link !",
+    type: "text",
+    lable: "Banner Link",
+    inputType: "text",
+    validation: {
+      required: "Banner Link is required.",
+    },
+  },
+];

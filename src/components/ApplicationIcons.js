@@ -35,6 +35,7 @@ import { IoMail } from "react-icons/io5";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { RiTwitterXLine } from "react-icons/ri";
+import { IoIosArrowForward } from "react-icons/io";
 export {
   FaUserCircle,
   IoArrowBack,
@@ -77,4 +78,5 @@ export {
   FaFacebookF,
   FaLinkedinIn,
   RiTwitterXLine,
+  IoIosArrowForward,
 };

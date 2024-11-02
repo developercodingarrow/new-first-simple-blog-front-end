@@ -2,11 +2,9 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./css/commentcomponent.module.css";
-import {
-  createComment,
-  createReplyAction,
-} from "@/src/Actions/commentActions/CommentActions";
+
 import SubmitBtn from "../elements/buttons/SubmitBtn";
+import { createReplyAction } from "@/src/app/utils/commentactions";
 export default function CommentReplyForm({ commentId, onReplyAdded }) {
   const {
     register,
@@ -44,7 +42,7 @@ export default function CommentReplyForm({ commentId, onReplyAdded }) {
       <input
         type="text"
         name="comment"
-        placeholder="Write a reply..."
+        placeholder="Write a reply"
         className={styles.reply_input}
         {...register("comment", { required: true })}
       />

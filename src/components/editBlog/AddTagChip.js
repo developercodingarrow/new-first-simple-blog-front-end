@@ -134,6 +134,7 @@ export default function AddTagChip(props) {
           btnText="Update"
           btnHandel={handleSubmit}
           btndisable={formIsValid}
+          btnClass="write_blogBtn"
         />
       </div>
 

@@ -84,7 +84,11 @@ export default function MainCard(props) {
         </div>
 
         <div className={styles.arrowSection}>
-          <Link href={`/blog/${data.slug}`} className={styles.arrowIcon}>
+          <Link
+            href={`/blog/${data.slug}`}
+            className={styles.arrowIcon}
+            aria-label={`Read more about ${data.blogTitle}`}
+          >
             <FaLongArrowAltRight />
           </Link>
         </div>

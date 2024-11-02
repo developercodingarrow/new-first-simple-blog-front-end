@@ -22,62 +22,33 @@ export const dekstopFooterLinks = [
   },
 
   {
-    id: 3,
-    name: "Blogs",
-    hrfLink: "/",
-  },
-
-  {
-    id: 4,
-    name: "about Us",
-    hrfLink: "/",
-  },
-
-  {
-    id: 5,
-    name: "Blogs",
-    hrfLink: "/",
-  },
-
-  {
     id: 6,
     name: "Tags ",
-    hrfLink: "/",
+    hrfLink: "/tags",
   },
 
   {
     id: 7,
-    name: "Support ",
-    hrfLink: "/",
-  },
-  {
-    id: 8,
-    name: "Tags ",
-    hrfLink: "/",
-  },
-
-  {
-    id: 9,
-    name: "Support ",
-    hrfLink: "/",
+    name: "contact support ",
+    hrfLink: "/contact-suppor",
   },
 ];
 
 export const termsLinks = [
   {
     id: 1,
-    name: "Terms",
-    hrfLink: "/",
+    name: "Terms & Conditions",
+    hrfLink: "/terms/pinbuzzers-terms-conditions",
   },
   {
     id: 2,
-    name: "Privacy",
-    hrfLink: "/",
+    name: "Privacy Policy",
+    hrfLink: "/terms/pinbuzzers-privacy-policy",
   },
   {
     id: 3,
-    name: "Cookies",
-    hrfLink: "/",
+    name: "contact support ",
+    hrfLink: "/contact-support",
   },
 ];
 

@@ -17,6 +17,13 @@
   text-align: end;
 }
 
+.data_wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  cursor: pointer;
+}
+
 .text_style {
   font-size: 14px;
 }
@@ -24,6 +31,9 @@
 .socila_media_iconStyle {
   color: var(--th-neutral-dark);
   cursor: pointer;
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
 }
 
 @media only screen and (max-width: 600px) {

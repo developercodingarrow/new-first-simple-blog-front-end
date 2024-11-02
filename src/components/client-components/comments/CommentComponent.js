@@ -4,13 +4,6 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import styles from "./css/commentcomponent.module.css";
 import Image from "next/image";
-import userImg from "../../../../public/web-static-img/auther-image.jpg"; // Replace with actual image path
-import {
-  createComment,
-  createReplyAction,
-  deleteCommentApi,
-  deleteCommentReplyApi,
-} from "@/src/Actions/commentActions/CommentActions";
 import RepliesList from "./RepliesList";
 import CommentReplyForm from "./CommentReplyForm";
 import { MdDeleteForever } from "../../ApplicationIcons";
@@ -18,6 +11,13 @@ import SubmitBtn from "../elements/buttons/SubmitBtn";
 import { FaUserCircle } from "../../ApplicationIcons";
 import { AuthContext } from "@/src/app/_contextApi/authContext";
 import { ModelsContext } from "@/src/app/_contextApi/ModelContextApi";
+import { AppContext } from "@/src/app/_contextApi/AppContext";
+import {
+  createCommentAction,
+  deleteCommentAction,
+  deleteCommentReplyAction,
+} from "@/src/app/utils/commentactions";
+import myImageLoader from "@/src/app/utils/imageLoader";
 
 export default function CommentComponent(props) {
   const { blogComments, blogId, blogBy } = props;
@@ -25,6 +25,7 @@ export default function CommentComponent(props) {
   const { authUser } = useContext(AuthContext);
   const { handelOpenAuthModel } = useContext(ModelsContext);
   const userID = authUser?._id;
+  const { isBtnLoadin, setisBtnLoadin } = useContext(AppContext);
 
   const {
     register,
@@ -39,8 +40,9 @@ export default function CommentComponent(props) {
 
   const handelCreateComment = async (data) => {
     try {
-      const res = await createComment(data);
-
+      setisBtnLoadin(true);
+      const res = await createCommentAction(data);
+      console.log("create comment res----", res);
       // res.data.newComment.commentBy.userImg.url
       setComments([
         ...comments,
@@ -56,8 +58,12 @@ export default function CommentComponent(props) {
           replies: [],
         },
       ]);
+      setisBtnLoadin(false);
       router.refresh();
-    } catch (error) {}
+    } catch (error) {
+      setisBtnLoadin(false);
+      console.log("error---", error);
+    }
   };
 
   const handleReplyAdded = (commentId, newReply) => {
@@ -75,7 +81,7 @@ export default function CommentComponent(props) {
 
   const deleteComment = async (data) => {
     try {
-      const res = await deleteCommentApi(data); // Call the API function
+      const res = await deleteCommentAction(data); // Call the API function
 
       if (res.data.status === "success") {
         const updatedComments = comments.filter(
@@ -102,7 +108,7 @@ export default function CommentComponent(props) {
         replyId: replyId,
       };
 
-      const res = await deleteCommentReplyApi(data);
+      const res = await deleteCommentReplyAction(data);
       if (res.data.status === "Success") {
         // Optimistically remove the reply from the UI
         const updatedComments = comments.map((comment) => {
@@ -148,13 +154,18 @@ export default function CommentComponent(props) {
               />
               <input
                 type="text"
-                placeholder="Add a Cooment"
+                placeholder="Add a Comment..."
                 name="comment"
                 className={styles.comment_input}
                 {...register("comment", { required: true })}
               />
 
-              <SubmitBtn btnText="comment" disabled={!isValid} />
+              {/* <SubmitBtn
+                btnText="com.."
+                btnLoading={isBtnLoadin}
+                disabled={!isValid}
+                btnClass="comment_btn"
+              /> */}
             </form>
           </div>
         ) : (
@@ -171,11 +182,23 @@ export default function CommentComponent(props) {
               <div className={styles.profile_pic_wrapper}>
                 {comment.commentBy?.userImg?.url ? (
                   <Image
-                    src={`/usersProfileImg/${comment.commentBy?.userImg?.url}`}
-                    alt={`${comment.commentBy?.userImg?.altText}'s profile picture`}
+                    src={
+                      comment.commentBy?.userImg?.url.startsWith("http")
+                        ? comment.commentBy.userImg.url
+                        : `/usersProfileImg/${
+                            comment.commentBy?.userImg?.url ||
+                            "profile-pic.webp"
+                          }` // Internal image
+                    }
+                    alt={`${
+                      comment.commentBy?.userImg?.altText || "User"
+                    }'s profile picture`}
                     width={500}
                     height={500}
                     className={styles.profile_pic}
+                    loader={myImageLoader} // Add your custom loader here for optimization if needed
+                    placeholder="blur"
+                    blurDataURL="/usersProfileImg/profile-pic.webp" // Default placeholder image
                   />
                 ) : (
                   <div className={styles.No_profile_pic_wrapper}>

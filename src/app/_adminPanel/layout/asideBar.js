@@ -8,6 +8,7 @@ import {
   BsCardList,
   GoTag,
   CiImageOn,
+  MdOutlineContactMail,
 } from "../ApplicationIcons";
 import Link from "next/link";
 
@@ -40,6 +41,17 @@ const sidebarItems = [
   {
     href: "/admindashboard/main-banner",
     text: "Main Banner",
+    icon: <CiImageOn />,
+  },
+
+  {
+    href: "/admindashboard/contact-enquiries",
+    text: "Enquire Contact",
+    icon: <MdOutlineContactMail />,
+  },
+  {
+    href: "/admindashboard/side-banner",
+    text: "Side banner",
     icon: <CiImageOn />,
   },
   // Add more items as needed

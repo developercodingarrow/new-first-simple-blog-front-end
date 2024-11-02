@@ -1,0 +1,24 @@
+.profile_drop_down {
+  position: absolute;
+  top: 40px;
+  right: 0px;
+  width: 120px;
+  background-color: #fff;
+  box-shadow: var(--th-box-shadow);
+  border-radius: 5px;
+}
+
+.menu_options {
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  text-transform: capitalize;
+  font-family: var(--font-montserrat);
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--th-separator);
+  cursor: pointer;
+}
+
+.menu_options:hover {
+  background-color: var(--th-light-body-bg);
+}

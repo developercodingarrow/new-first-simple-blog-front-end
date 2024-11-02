@@ -6,6 +6,7 @@ import {
   FaLinkedinIn,
   RiTwitterXLine,
 } from "../ApplicationIcons";
+import Link from "next/link";
 export default function ContactDetails() {
   return (
     <div className={styles.detail_container}>
@@ -22,15 +23,24 @@ export default function ContactDetails() {
         <h3>Socila Meida </h3>
       </div>
       <div className={styles.social_media_detail}>
-        <div className={`${styles.social_icon_Box} ${styles.fb_color}`}>
+        <Link
+          href={"https://www.facebook.com/PinBuzzers/"}
+          className={`${styles.social_icon_Box} ${styles.fb_color}`}
+        >
           <FaFacebookF />
-        </div>
-        <div className={`${styles.social_icon_Box} ${styles.in_color}`}>
+        </Link>
+        <Link
+          href={"https://www.linkedin.com/company/pinbuzzers/about/"}
+          className={`${styles.social_icon_Box} ${styles.in_color}`}
+        >
           <FaLinkedinIn />
-        </div>
-        <div className={`${styles.social_icon_Box} ${styles.twitter_x_color}`}>
+        </Link>
+        <Link
+          href={"https://x.com/PinBuzzers"}
+          className={`${styles.social_icon_Box} ${styles.twitter_x_color}`}
+        >
           <RiTwitterXLine />
-        </div>
+        </Link>
       </div>
     </div>
   );

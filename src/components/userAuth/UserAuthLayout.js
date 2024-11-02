@@ -89,6 +89,7 @@ export default function UserAuthLayout(props) {
                   btnText={formBtn}
                   disabled={!isValid}
                   btnLoading={isBtnLoadin}
+                  btnClass="auth_from_btn_style"
                 />
               </div>
             </form>

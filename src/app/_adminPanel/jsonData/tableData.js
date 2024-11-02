@@ -182,3 +182,13 @@ export const tagfaturetableColumns = [
     icon: "",
   },
 ];
+
+export const contactEnquiretableColumns = [
+  { label: "S No", key: "_id", component: "number", icon: "" },
+  { label: "Date", key: "updatedAt", component: "dateElement" },
+  { label: "subject", key: "subject", component: "blodText", icon: "" },
+  { label: "Name", key: "name", component: "text", icon: "" },
+  { label: "email", key: "email", component: "email", icon: "" },
+  { label: "number", key: "number", component: "text", icon: "" },
+  { label: "message", key: "message", component: "text", icon: "" },
+];

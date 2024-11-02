@@ -1,16 +1,19 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./uplodedimage.module.css";
 import mainBannerImg from "../../../../../public/web-static-img/main-banner.png";
 import Image from "next/image";
 import { getMainBanner } from "@/src/app/utils/mainBannerAction";
+import { AppContext } from "@/src/app/_contextApi/AppContext";
 
 export default function UplodedImage() {
   const [mainBanner, setmainBanner] = useState(null);
+  const { isBtnLoadin, setisBtnLoadin } = useContext(AppContext);
 
   const handelgetBanner = async () => {
     try {
       const res = await getMainBanner();
+      console.log("res uploaded image get ---", res);
 
       setmainBanner(res.bannerImg?.url);
     } catch (error) {}
@@ -18,7 +21,7 @@ export default function UplodedImage() {
 
   useEffect(() => {
     handelgetBanner();
-  }, []);
+  }, [isBtnLoadin, mainBanner]);
   return (
     <div className={styles.main_container}>
       {mainBanner && (

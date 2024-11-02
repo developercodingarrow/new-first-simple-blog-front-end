@@ -13,24 +13,32 @@ export default function NavBarNavigations() {
   return (
     <div className={styles.comp_container}>
       <div className={styles.inner_container}>
-        <Link href={"/"} className={styles.navigation_tab}>
+        <Link href={"/"} className={styles.navigation_tab} aria-label="Home">
           <div className="large_iconWrapper">
             <HiOutlineHome />
           </div>
         </Link>
-        <Link href={"/"} className={styles.navigation_tab}>
+        <Link
+          href={"/"}
+          className={styles.navigation_tab}
+          aria-label="website traffic boost"
+        >
           <div className="large_iconWrapper">
             {" "}
             <MdOutlineAutoGraph />
           </div>
         </Link>
-        <Link href={"/"} className={styles.navigation_tab}>
+        <Link
+          href={"/tags"}
+          className={styles.navigation_tab}
+          aria-label="Tags"
+        >
           <div className="large_iconWrapper">
             {" "}
             <BiTag />
           </div>
         </Link>
-        <div href={"/"} className={styles.navigation_tab}>
+        <div className={styles.navigation_tab} aria-label="Create new post">
           <div className="large_iconWrapper">
             <NavApiActionIcon />
           </div>

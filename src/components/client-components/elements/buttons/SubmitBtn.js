@@ -4,10 +4,10 @@ import styles from "./css/submitbtn.module.css";
 import BtnLoading from "../../loadings/BtnLoading";
 
 export default function SubmitBtn(props) {
-  // const { isBtnLoading } = useContext(AppContext);
-  const { btnText, btnLoading, disabled } = props;
+  const { btnText, btnLoading, disabled, btnClass } = props;
 
-  const btnClasses = `${styles.btn_style} ${
+  // Apply the passed btnClass if available, otherwise use the default btn_style
+  const btnClasses = `${styles[btnClass] || styles.btn_style} ${
     disabled ? styles.disabled_btn : ""
   }`;
   return (

@@ -10,6 +10,10 @@ import { handelUploadThumblin } from "@/src/utils/handlers/imageHandlers";
 import { upadteBlogContent } from "@/src/app/utils/blogactions";
 import BlogImgPreUploder from "./BlogImgPreUploder";
 import AddTagChip from "./AddTagChip";
+import {
+  CreateEditorModules,
+  CreateEditorformats,
+} from "@/src/jsonData/reactQuillTextEditor";
 
 export default function EditBlogUI(props) {
   const { apiData, slug } = props;
@@ -32,7 +36,7 @@ export default function EditBlogUI(props) {
     const isMetaDescriptionValid =
       blogData.metaDescription.length <= 160 &&
       blogData.metaDescription.trim() !== "";
-    const isBlogDescriptionValid = blogData.blogDescreption.length >= 50;
+    const isBlogDescriptionValid = blogData.blogDescreption.length > 50;
 
     setFormIsValid(
       isTitleValid && isMetaDescriptionValid && isBlogDescriptionValid
@@ -41,7 +45,7 @@ export default function EditBlogUI(props) {
 
   useEffect(() => {
     validateForm();
-  }, [blogData, errors]);
+  }, [blogData, blogData.blogDescreption, errors]);
 
   // Update state when apiData changes
   useEffect(() => {
@@ -67,13 +71,13 @@ export default function EditBlogUI(props) {
           ...prevErrors,
           blogTitle: "Title cannot be empty.",
         }));
-      } else if (value.length <= 10) {
+      } else if (value.length < 10 || value.length > 100) {
         setErrors((prevErrors) => ({
           ...prevErrors,
           blogTitle: "Title must be at least 10 characters long.",
         }));
       } else {
-        setErrors((prevErrors) => ({ ...prevErrors, title: "" }));
+        setErrors((prevErrors) => ({ ...prevErrors, blogTitle: "" }));
       }
     }
     // Validation for metaDescription
@@ -178,6 +182,8 @@ export default function EditBlogUI(props) {
               <ReactQuill
                 theme="snow"
                 value={blogData.blogDescreption}
+                modules={CreateEditorModules}
+                formats={CreateEditorformats}
                 onChange={handleQuillChange}
                 className={styles.editor_style}
                 style={{ minHeight: "500px", height: "auto" }}
@@ -198,9 +204,10 @@ export default function EditBlogUI(props) {
       <div className={styles.submit_topBar}>
         <div>
           <ClickBtn
-            btnText="Publish"
+            btnText="Publish.."
             btnHandel={handelUpdateContent}
             btndisable={formIsValid}
+            btnClass="write_blogBtn"
           />
         </div>
       </div>

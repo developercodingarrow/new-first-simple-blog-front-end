@@ -2,6 +2,47 @@
   /* border: 1px solid red; */
 }
 
+/* auth_from_btn_style */
+
+.auth_from_btn_style {
+  width: 100%;
+  padding: 12px 8px;
+  text-transform: uppercase;
+  background-color: var(--th-primary-color);
+  outline: none;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: var(--th-font-family);
+  font-size: var(--th-font-medium-size);
+  letter-spacing: var(--th-letter-spacing);
+  font-weight: bold;
+}
+
+.auth_from_btn_style:hover {
+  background-color: var(--th-primary-hover-color);
+}
+
+.comment_btn {
+  width: 100%;
+  padding: 8px;
+  text-transform: uppercase;
+  background-color: var(--th-primary-color);
+  outline: none;
+  border: none;
+  color: #fff;
+  border-radius: var(--th-d-btn-radius);
+  cursor: pointer;
+  font-family: var(--th-font-family);
+  font-size: var(--th-font-small-size);
+  letter-spacing: var(--th-letter-spacing);
+}
+
+.comment_btn:hover {
+  background-color: var(--th-primary-hover-color);
+}
+
 .btn_style {
   width: 100%;
   padding: var(--th-d-btn-padding);

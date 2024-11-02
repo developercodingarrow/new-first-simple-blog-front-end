@@ -85,7 +85,6 @@ export default function HomePageMainBanner() {
         }
         className={styles.banner_imgStyle}
         loading="lazy" // Ensure lazy loading of images
-        placeholder="blur" // Show blurred placeholder until image loads
       />
     </div>
   );

@@ -87,6 +87,7 @@ export default async function SingleBlogpage(pathname) {
   try {
     // Fetch the web stats using the auth token
     const res = await fetch(`${API_BASE_URL}/private/blog/get-blog/${slug}`);
+    // await new Promise((resolve) => setTimeout(resolve, 100000));
     const initalData = await res.json();
     data = initalData.result;
   } catch (error) {

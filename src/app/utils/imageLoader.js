@@ -1,18 +1,20 @@
 "use client";
 
 export default function myImageLoader({ src, width, quality }) {
+  // Fallback for missing or undefined `src`
   if (!src) {
-    return "../../../public/usersProfileImg/profile-pic.webp"; // Use a fallback image if src is undefined
+    return "/usersProfileImg/profile-pic.webp"; // Default fallback image path
   }
+
+  // Determine if we're in production mode
   const isProduction = process.env.NEXT_PUBLIC_PRODUCTION === "true";
-  const baseUrl = isProduction ? "https://pinbuzzers.com" : "";
 
-  // Determine if the source is a public path or an external URL
-  const isPublicPath = src.startsWith("/");
+  // If `src` starts with "http", it's an external URL (e.g., Google profile picture)
+  if (src.startsWith("http")) {
+    return src; // Return the external URL as is
+  }
 
-  // Construct the final image URL
-  const finalUrl = isPublicPath ? `${baseUrl}${src}` : src; // Use baseUrl only if it's a public path
-
-  // Return the image URL with query parameters
-  return `${finalUrl}?w=${width}&q=${quality || 75}`;
+  // If it's a local path, append the base URL in production
+  const baseUrl = isProduction ? "https://pinbuzzers.com" : ""; // Adjust the base URL as necessary
+  return `${baseUrl}${src}`; // Return the full path for internal images
 }

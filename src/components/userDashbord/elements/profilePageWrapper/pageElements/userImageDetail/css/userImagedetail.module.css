@@ -9,6 +9,12 @@
   font-family: Arial, sans-serif;
 }
 
+.image_wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
 .small_img_wrapper {
   width: 30px;
   height: 30px;

@@ -20,7 +20,22 @@
   display: flex;
   justify-content: flex-end;
   overflow: hidden;
+  align-items: center;
+  column-gap: 5px;
   text-align: end;
+  cursor: pointer;
+}
+
+.Textdata_wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  cursor: pointer;
+}
+.forward_arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .text_content_wrapper {

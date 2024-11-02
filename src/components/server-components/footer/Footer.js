@@ -42,6 +42,7 @@ export default function Footer() {
                   href={`${el.hrfLink}`}
                   className={styles.footer_link}
                   key={el.id}
+                  aria-label={el.name}
                 >
                   {el.name}
                 </Link>
@@ -49,30 +50,55 @@ export default function Footer() {
             })}
           </div>
           <div className={styles.footer_social_media_wrapper}>
-            <Link href={"/"} className={styles.social_media_iconWraper}>
+            <Link
+              href={"/"}
+              className={styles.social_media_iconWraper}
+              aria-label="LinkedIn"
+            >
               <FaLinkedin />
             </Link>
-            <Link href={"/"} className={styles.social_media_iconWraper}>
+            <Link
+              href={"/"}
+              className={styles.social_media_iconWraper}
+              aria-label="Twitter"
+            >
               <FaXTwitter />
             </Link>
 
-            <Link href={"/"} className={styles.social_media_iconWraper}>
+            <Link
+              href={"/"}
+              className={styles.social_media_iconWraper}
+              aria-label="Facebook"
+            >
               <FaFacebookSquare />
             </Link>
-            <Link href={"/"} className={styles.social_media_iconWraper}>
+            <Link
+              href={"/"}
+              className={styles.social_media_iconWraper}
+              aria-label="Pinterest"
+            >
               <FaPinterest />
             </Link>
-            <Link href={"/"} className={styles.social_media_iconWraper}>
+            <Link
+              href={"/"}
+              className={styles.social_media_iconWraper}
+              aria-label="Instagram"
+            >
               <FaInstagram />
             </Link>
           </div>
         </div>
         <div className={styles.dektop_footer_bootom_bar}>
           <div className={styles.bottom_left_side}>
-            <div className="small_text_wrapper">©2024 blogwebsit</div>
+            <div className="small_text_wrapper">©2024 pinbuzzers.com</div>
             {termsLinks.map((el, index) => {
               return (
-                <Link href={"/"} className="small_text_wrapper" key={el.id}>
+                <Link
+                  href={`${el.hrfLink}`}
+                  className="small_text_wrapper"
+                  key={el.id}
+                  aria-label={el.name}
+                >
                   {el.name}
                 </Link>
               );
@@ -81,7 +107,11 @@ export default function Footer() {
         </div>
       </div>
       <div className={styles.mobile_warpper}>
-        <Link href={"/"} className={styles.mobile_footer_icon_wrapper}>
+        <Link
+          href={"/"}
+          className={styles.mobile_footer_icon_wrapper}
+          aria-label="Home"
+        >
           <HiOutlineHome />
         </Link>
 
@@ -106,11 +136,16 @@ export default function Footer() {
           <Link
             href={"/userdashboard/profile"}
             className={styles.mobile_footer_icon_wrapper}
+            aria-label="user Profile"
           >
             <SlUser />
           </Link>
         ) : (
-          <Link href={"/login"} className={styles.mobile_footer_icon_wrapper}>
+          <Link
+            href={"/login"}
+            className={styles.mobile_footer_icon_wrapper}
+            aria-label="login"
+          >
             <GiPowerButton />
           </Link>
         )}

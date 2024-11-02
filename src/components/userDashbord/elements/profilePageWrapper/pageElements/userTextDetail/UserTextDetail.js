@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./css/usertextdetails.module.css";
-
+import { IoIosArrowForward } from "../../../../../ApplicationIcons";
 export default function UserTextDetail(props) {
   const {
     title,
@@ -33,9 +33,26 @@ export default function UserTextDetail(props) {
 
         <div className={styles[text_wrapper_style]} onClick={handleOpen}>
           {textdata === undefined || textdata === "undefined" ? (
-            <>click To Add... {title}</>
+            <>
+              {" "}
+              <div className={styles.Textdata_wrapper}>
+                <div> click To Add... {title} </div>
+                <div className={styles.forward_arrow}>
+                  {" "}
+                  <IoIosArrowForward />{" "}
+                </div>{" "}
+              </div>{" "}
+            </>
           ) : (
-            <>{textdata}</>
+            <>
+              <div className={styles.Textdata_wrapper}>
+                <div> {textdata} </div>
+                <div className={styles.forward_arrow}>
+                  {" "}
+                  <IoIosArrowForward />{" "}
+                </div>{" "}
+              </div>
+            </>
           )}
         </div>
       </div>

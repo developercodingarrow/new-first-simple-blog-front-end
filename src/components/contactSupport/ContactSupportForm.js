@@ -3,6 +3,8 @@ import React from "react";
 import styles from "./contactform.module.css";
 import { contactsupportFormInputFileds } from "@/src/jsonData/formData";
 import useCustomForm from "@/src/custome-hooks/useCustomForm";
+import SubmitBtn from "../client-components/elements/buttons/SubmitBtn";
+import { newContactEnquire } from "@/src/app/utils/contactActions";
 
 export default function ContactSupportForm() {
   const {
@@ -15,8 +17,14 @@ export default function ContactSupportForm() {
     errors,
   } = useCustomForm();
 
-  const handleForm = () => {
-    alert("ok");
+  const handleForm = async (data) => {
+    try {
+      console.log(data);
+      const res = await newContactEnquire(data);
+      console.log(res);
+    } catch (error) {
+      console.log("error", error);
+    }
   };
   return (
     <div className={styles.container}>
@@ -34,6 +42,8 @@ export default function ContactSupportForm() {
               </div>
             );
           })}
+
+          <SubmitBtn btnText="Send" />
         </form>
       </div>
     </div>

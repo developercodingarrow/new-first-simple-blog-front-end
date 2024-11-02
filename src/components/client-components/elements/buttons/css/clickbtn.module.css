@@ -2,6 +2,21 @@
   /* border: 1px solid red; */
 }
 
+.write_blogBtn {
+  width: 100%;
+  padding: 7px 10px;
+  text-transform: uppercase;
+  background-color: var(--th-primary-color);
+  outline: none;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: var(--th-font-family);
+  font-size: var(--th-font-small-size);
+  letter-spacing: var(--th-letter-spacing);
+}
+
 .btn_style {
   width: 100%;
   padding: var(--th-d-btn-padding);
@@ -34,7 +49,8 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .btn_style {
+  .btn_style,
+  .write_blogBtn {
     font-size: var(--th-font-mini-size);
     padding: var(--th-m-btn-padding);
     letter-spacing: var(--th-m-letter-spacing);
