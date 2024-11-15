@@ -6,10 +6,6 @@ export default function TableDeleteIcon(props) {
   const { data, handler } = props;
   const { handelOpenDeleteModel } = useContext(ModelsContext);
 
-  // const deletehandler = () => {
-  //   handler(data);
-  // };
-
   const handelOpenModel = () => {
     handelOpenDeleteModel(data, handler);
   };

@@ -9,6 +9,7 @@ import {
   GoTag,
   CiImageOn,
   MdOutlineContactMail,
+  MdReportGmailerrorred,
 } from "../ApplicationIcons";
 import Link from "next/link";
 
@@ -29,13 +30,13 @@ const sidebarItems = [
     icon: <BsCardList />,
   },
   {
-    href: " /admindashboard/tags",
-    text: "Tags List",
+    href: " /admindashboard/feature-tags",
+    text: "feature tags",
     icon: <GoTag />,
   },
   {
-    href: "/admindashboard/admin-tags",
-    text: "Admin Tags List",
+    href: "/admindashboard/verified-tags",
+    text: "verified tags",
     icon: <GoTag />,
   },
   {
@@ -53,6 +54,12 @@ const sidebarItems = [
     href: "/admindashboard/side-banner",
     text: "Side banner",
     icon: <CiImageOn />,
+  },
+
+  {
+    href: "/admindashboard/report-content",
+    text: "Report Blog",
+    icon: <MdReportGmailerrorred />,
   },
   // Add more items as needed
 ];

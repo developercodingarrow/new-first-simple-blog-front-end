@@ -4,14 +4,18 @@ import UserWrapper from "./wrapper";
 import { userListActions } from "@/src/app/utils/adminActions/authUserActions";
 
 async function getData(slug) {
-  const res = await userListActions(slug);
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
+  try {
+    const res = await userListActions(slug);
 
-  if (!res.status === "success" || !res.result) {
-    throw new Error("Data not found");
+    if (!res.status === "success" || !res.result) {
+      throw new Error("Data not found");
+    }
+
+    return res.result;
+  } catch (error) {
+    // Return an object with an error to handle in the UI
+    return { error: error.message };
   }
-
-  return await res.result;
 }
 export default async function UserListPage() {
   const initialData = await getData();

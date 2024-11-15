@@ -45,18 +45,6 @@ export async function publishedBlog(authToken) {
   }
 }
 
-// export async function publishedBlog() {
-//   const cookieStore = cookies();
-//   const authToken = cookieStore.get("jwt")?.value;
-//   const url = `${API_BASE_URL}/private/blog/my-published-blogs`;
-//   try {
-//     const res = await performGetAPIAction(url, authToken);
-//     return res.data;
-//   } catch (error) {
-//     return error;
-//   }
-// }
-
 export async function updateToDraft(formData) {
   const cookieStore = cookies();
   const authToken = cookieStore.get("jwt")?.value;

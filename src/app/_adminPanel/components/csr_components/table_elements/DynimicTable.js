@@ -19,14 +19,16 @@ import TableBooleanSwitch from "./tableBooleanSwitch";
 import { IoIosArrowRoundDown } from "../../../ApplicationIcons";
 import TableDeleteIcon from "./TableDeleteIcon";
 import TableSkeleton from "./table skeleton/tableSkeleton";
-import useTableFillters from "../../../custome-hooks/useTableFillters";
 import TableText from "./tableText";
+import ThreeStateSwitchBtn from "./ThreeStateSwitchBtn";
+import TablePopulatedEmail from "./TablePopulatedEmail";
 
 export default function DynimicTable(props) {
   const {
     tableColumns,
     tableSampleData,
     booleanSwithHandel,
+    threestateswitchHandler,
     handelSingleDelete,
     sorthandel,
     sortOrder,
@@ -46,12 +48,11 @@ export default function DynimicTable(props) {
     view: handelCheckBox,
     booleanSwicth: booleanSwithHandel,
     deleteIcon: handelSingleDelete,
+    threeStateSwitchBtn: threestateswitchHandler,
   };
   const actionhandler = {
     view: booleanSwithHandel,
   };
-
-  console.log("sortOrder----", sortOrder);
 
   return (
     <div className={styles.table_container}>
@@ -150,6 +151,10 @@ const renderCellContent = (
       content = <TableText data={elemnetdata} />;
       className = "text-cell";
       break;
+    case "populateEmail":
+      content = <TablePopulatedEmail data={elemnetdata} />;
+      className = "text-cell";
+      break;
     case "blodText":
       content = <TableBlodtext data={elemnetdata} />;
       className = "text-cell";
@@ -224,6 +229,18 @@ const renderCellContent = (
       if (handler) {
         content = (
           <TableBooleanSwitch
+            data={elemnetdata}
+            keyProp={keyProp}
+            completeData={completeData}
+            handler={handler}
+          />
+        );
+      }
+      break;
+    case "threeStateSwitchBtn":
+      if (handler) {
+        content = (
+          <ThreeStateSwitchBtn
             data={elemnetdata}
             keyProp={keyProp}
             completeData={completeData}

@@ -9,8 +9,10 @@ import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
 import AuthContextProvider from "../_contextApi/authContext";
 import AppContextProvider from "../_contextApi/AppContext";
 import AppDrawer from "@/src/components/appDrawer/AppDrawer";
+import { getTagsWithRevalidation } from "../utils/tagActions";
 
-export default function layout({ children }) {
+export default async function layout({ children }) {
+  const verifiedTags = await getTagsWithRevalidation();
   return (
     <html lang="en">
       <body>
@@ -18,7 +20,7 @@ export default function layout({ children }) {
           <AppContextProvider>
             <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
               <ModelContextProvider>
-                <TagContextProvider>
+                <TagContextProvider verifiedTags={verifiedTags}>
                   <AppDrawer />
                   <div>
                     <NavBar />

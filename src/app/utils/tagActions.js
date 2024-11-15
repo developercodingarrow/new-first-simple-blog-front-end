@@ -11,7 +11,13 @@ export async function featureTagListAction() {
     const res = await performGetAPIAction(url, authToken);
     return res.data.data;
   } catch (error) {
-    return { error: error };
+    // Check for specific error message from the backend
+    if (error.message.includes("No documents found with featured: true")) {
+      // Return empty array if no featured tags found
+      return [];
+    }
+    // For any other errors, return the error object
+    return { error: error.message || "An unexpected error occurred" };
   }
 }
 

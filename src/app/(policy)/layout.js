@@ -10,9 +10,11 @@ import NavBar from "@/src/components/server-components/Navbar/NavBar";
 import TagContextProvider from "../_contextApi/TagContextApi";
 import ModelContextProvider from "../_contextApi/ModelContextApi";
 import Footer from "@/src/components/server-components/footer/Footer";
+import { getTagsWithRevalidation } from "../utils/tagActions";
 
 export default async function Termslayout({ children }) {
   const userDetails = await getSession();
+  const verifiedTags = await getTagsWithRevalidation();
   return (
     <html lang="en">
       <body>
@@ -20,7 +22,7 @@ export default async function Termslayout({ children }) {
           <ModelContextProvider>
             <AuthContextProvider authData={userDetails}>
               <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
-                <TagContextProvider>
+                <TagContextProvider verifiedTags={verifiedTags}>
                   <div>
                     <NavBar userData={userDetails} />
                     {!userDetails && <GoogleOneTap />}

@@ -1,20 +1,16 @@
 import React, { Suspense } from "react";
-import styles from "./bloglistpage.module.css";
-import Blogswrapper from "./wrapper";
-import { blogsListAction } from "@/src/app/utils/adminActions/authBlogsActions";
 import { cookies } from "next/headers";
+import { reportListAction } from "@/src/app/utils/adminActions/authReportActions";
+import Reportwrapper from "./wrapper";
 
-
-
-
-export default async function BlogListpage() {
+export default async function Reportpage() {
   const cookieStore = cookies();
   const authToken = cookieStore.get("jwt")?.value;
 
   let initialData;
   try {
     // Fetch the web stats using the auth token
-    const res = await blogsListAction(authToken);
+    const res = await reportListAction(authToken);
 
     if (res.status === "success") {
       initialData = res.result;
@@ -27,7 +23,7 @@ export default async function BlogListpage() {
   }
   return (
     <div>
-      <Blogswrapper data={initialData} />
+      <Reportwrapper data={initialData} />
     </div>
   );
 }

@@ -10,16 +10,18 @@ import { getSession } from "../lib/authentication";
 import AppDrawer from "@/src/components/appDrawer/AppDrawer";
 import AppContextProvider from "../_contextApi/AppContext";
 import Footer from "@/src/components/server-components/footer/Footer";
+import { getTagsWithRevalidation } from "../utils/tagActions";
 
 export default async function layout({ children }) {
   const userDetails = await getSession();
+  const verifiedTags = await getTagsWithRevalidation();
   return (
     <html lang="en">
       <body>
         <AppContextProvider>
           <AuthContextProvider authData={userDetails}>
             <ImgModelContextProvider>
-              <TagContextProvider>
+              <TagContextProvider verifiedTags={verifiedTags}>
                 <BlogContextProvider>
                   <ModelContextProvider>
                     <AppDrawer />

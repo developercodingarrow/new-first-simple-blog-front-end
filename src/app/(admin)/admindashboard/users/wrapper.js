@@ -11,6 +11,7 @@ import { FillterContext } from "@/src/app/_adminPanel/context_api/FillterContext
 import useUserRoleColumns from "@/src/app/_adminPanel/custome-hooks/useUserRoleColumns";
 import TableFooter from "@/src/app/_adminPanel/components/csr_components/table_elements/table-footer/TableFooter";
 import { AuthContext } from "@/src/app/_contextApi/authContext";
+import NoContentMsg from "@/src/components/msgComponents/NoContentMsg";
 
 export default function UserWrapper(props) {
   const { data } = props;
@@ -29,10 +30,16 @@ export default function UserWrapper(props) {
         <TableFillterBar data={allusers} />
       </div>
       <div className={styles.table_wrapper}>
-        <DynimicTable
-          tableColumns={roleBasedColumns}
-          tableSampleData={visibalRows}
-        />
+        {visibalRows.length >= 1 ? (
+          <DynimicTable
+            tableColumns={roleBasedColumns}
+            tableSampleData={visibalRows}
+          />
+        ) : (
+          <div>
+            <NoContentMsg />
+          </div>
+        )}
       </div>
       <div className={styles.table_wrapper}>
         <TableFooter data={allusers} />

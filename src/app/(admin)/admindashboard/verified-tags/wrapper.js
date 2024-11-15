@@ -19,6 +19,7 @@ import {
   tagListAction,
 } from "@/src/app/utils/adminActions/authTagActions";
 import toast, { Toaster } from "react-hot-toast";
+import NoContentMsg from "@/src/components/msgComponents/NoContentMsg";
 
 export default function AdminTagswrapper(props) {
   const { data } = props;
@@ -34,14 +35,17 @@ export default function AdminTagswrapper(props) {
   });
 
   const handelDelete = async (data) => {
+    console.log("handelDelete---", data);
     try {
       const obj = {
-        _id: data,
+        id: data,
       };
       setIsActionLoading(true); // Set action-specific loading state
       const res = await deleteSingleTagAction(obj);
+      console.log("admintag delte--", res);
       if (res.status === "success") {
-        setIsActionLoading(false); // Set action-specific loading state
+        toast.success(res.message);
+        setIsActionLoading(false);
         router.refresh();
       }
     } catch (error) {
@@ -89,12 +93,18 @@ export default function AdminTagswrapper(props) {
         />
       </div>
       <div className={styles.table_wrapper}>
-        <DynimicTable
-          tableColumns={roleBasedColumns}
-          tableSampleData={visibalRows}
-          handelSingleDelete={handelDelete}
-          booleanSwithHandel={handelVerfication}
-        />
+        {visibalRows.length >= 1 ? (
+          <DynimicTable
+            tableColumns={roleBasedColumns}
+            tableSampleData={visibalRows}
+            handelSingleDelete={handelDelete}
+            booleanSwithHandel={handelVerfication}
+          />
+        ) : (
+          <div>
+            <NoContentMsg />
+          </div>
+        )}
       </div>
       <div className={styles.table_wrapper}>
         <TableFooter data={allTags} setIsActionLoading={setIsActionLoading} />

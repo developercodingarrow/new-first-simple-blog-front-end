@@ -27,6 +27,9 @@ import DynimicTable from "../../components/csr_components/table_elements/Dynimic
 import { usePathname, useParams } from "next/navigation";
 // import { UserDetailAction } from "../../admin_actions/adminUserApi";
 import useUserRoleColumns from "../../custome-hooks/useUserRoleColumns";
+import NoContentMsg from "@/src/components/msgComponents/NoContentMsg";
+import { formatDate } from "@/src/_logicalFunctions/formatDate";
+import Link from "next/link";
 
 export default function UserDetailUi(props) {
   const { data } = props;
@@ -77,6 +80,7 @@ export default function UserDetailUi(props) {
                 />
               </div>
               <div className={styles.user_name}>{data?.name}</div>
+              <div className={styles.bio_wrapper}>{data.bio}</div>
             </div>
           </div>
           <section className={styles.details_section}>
@@ -86,13 +90,17 @@ export default function UserDetailUi(props) {
                 <div className={styles.static_detail_text}>
                   <PiHandsPrayingThin />
                 </div>
-                <div className={styles.dynimic_detail_text}>28 jan 2024</div>
+                <div className={styles.dynimic_detail_text}>
+                  {formatDate(data.createdAt)}
+                </div>
               </div>
               <div className={styles.detail_row}>
                 <div className={styles.static_detail_text}>
                   <CiAt />
                 </div>
-                <div className={styles.dynimic_detail_text}>{data.name}</div>
+                <div className={styles.dynimic_detail_text}>
+                  {data.userName}
+                </div>
               </div>
               <div className={styles.detail_row}>
                 <div className={styles.static_detail_text}>
@@ -112,25 +120,37 @@ export default function UserDetailUi(props) {
                   <IoGlobeOutline />
                 </div>
                 <div className={styles.dynimic_detail_text}>
-                  www.dakshtooling.com
+                  {data?.businessWebsite
+                    ? data.businessWebsite
+                    : "Business website not updated"}
                 </div>
               </div>
             </div>
             <div className={styles.social_media_detail}>
-              <div className={`${styles.social_icon_Box} ${styles.fb_color}`}>
+              <a
+                href={data.facebook}
+                className={`${styles.social_icon_Box} ${styles.fb_color}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaFacebookF />
-              </div>
-              <div className={`${styles.social_icon_Box} ${styles.in_color}`}>
+              </a>
+              <a
+                href={data.facebook}
+                className={`${styles.social_icon_Box} ${styles.in_color}`}
+              >
                 <FaLinkedinIn />
-              </div>
-              <div
+              </a>
+              <a
+                href={data.twitter}
                 className={`${styles.social_icon_Box} ${styles.twitter_x_color}`}
               >
                 <RiTwitterXLine />
-              </div>
+              </a>
             </div>
           </section>
         </div>
+
         <div className={styles.table_conatiner}>
           <div className={styles.stats_header}>
             <div className={styles.Togle_tab_wrapper}>
@@ -168,20 +188,32 @@ export default function UserDetailUi(props) {
           <div className={styles.table_wrapper}>
             {activeTable === "table1" && (
               <div>
-                <DynimicTable
-                  tableColumns={roleBasedColumns}
-                  tableSampleData={publishedBlogs}
-                  booleanSwithHandel={handelswith}
-                />{" "}
+                {publishedBlogs.length >= 1 ? (
+                  <DynimicTable
+                    tableColumns={roleBasedColumns}
+                    tableSampleData={publishedBlogs}
+                    booleanSwithHandel={handelswith}
+                  />
+                ) : (
+                  <div>
+                    <NoContentMsg />
+                  </div>
+                )}
               </div>
             )}
             {activeTable === "table2" && (
               <div>
-                <DynimicTable
-                  tableColumns={roleBasedColumns}
-                  tableSampleData={drfatBlogs}
-                  booleanSwithHandel={handelswith}
-                />{" "}
+                {drfatBlogs.length >= 1 ? (
+                  <DynimicTable
+                    tableColumns={roleBasedColumns}
+                    tableSampleData={drfatBlogs}
+                    booleanSwithHandel={handelswith}
+                  />
+                ) : (
+                  <div>
+                    <NoContentMsg />
+                  </div>
+                )}
               </div>
             )}
           </div>

@@ -12,6 +12,7 @@ import TagContextProvider from "../_contextApi/TagContextApi";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
 import Footer from "@/src/components/server-components/footer/Footer";
+import { getTagsWithRevalidation } from "../utils/tagActions";
 
 export const metadata = {
   title: "Next.js",
@@ -20,6 +21,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const userDetails = await getSession();
+  const verifiedTags = await getTagsWithRevalidation();
   return (
     <html
       lang="en"
@@ -29,7 +31,7 @@ export default async function RootLayout({ children }) {
         <AppContextProvider>
           <ModelContextProvider>
             <AuthContextProvider authData={userDetails}>
-              <TagContextProvider>
+              <TagContextProvider verifiedTags={verifiedTags}>
                 <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
                   <div>
                     <NavBar userData={userDetails} />

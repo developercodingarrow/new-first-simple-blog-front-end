@@ -27,7 +27,7 @@ export default function ReportActionModel(props) {
 
     try {
       const res = await handelReportBlog(formData);
-
+      console.log("report action ---", res);
       if (res.status === "success") {
         toast.success(res.message);
       }

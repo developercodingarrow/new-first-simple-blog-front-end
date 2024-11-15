@@ -37,3 +37,23 @@
   background-color: #3b82f61a;
   text-transform: capitalize;
 }
+
+.moderation_review {
+  color: #e11d48; /* Change text color to red-pink */
+  border-color: #0000;
+  border-radius: 5px;
+  padding: 5px 6.5px;
+  font-size: 14px;
+  background-color: #e11d481a; /* Red-pink background */
+  text-transform: capitalize;
+}
+
+.suspension {
+  color: #6b7280; /* Change text color to gray */
+  border-color: #0000;
+  border-radius: 5px;
+  padding: 5px 6.5px;
+  font-size: 14px;
+  background-color: #6b72801a; /* Gray background */
+  text-transform: capitalize;
+}

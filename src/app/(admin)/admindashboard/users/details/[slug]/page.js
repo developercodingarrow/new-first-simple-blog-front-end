@@ -9,10 +9,9 @@ async function getData(slug) {
     if (!res.status === "success") {
       throw new Error("Data not found");
     }
-
     return await res.result;
   } catch (error) {
-    // throw new Error(`Failed to fetch data: ${error}`);
+    return { error: error.message };
   }
 }
 export default async function UserDetailpage(pathname) {
@@ -20,7 +19,6 @@ export default async function UserDetailpage(pathname) {
   const initialData = await getData(slug);
   return (
     <div>
-      <p>user Deatils</p>
       <UserDetailUi data={initialData} />
     </div>
   );

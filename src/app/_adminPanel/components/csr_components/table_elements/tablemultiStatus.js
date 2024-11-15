@@ -15,6 +15,11 @@ export default function TablemultiStatus(props) {
         return styles.pending;
       case "active":
         return styles.active;
+      case "moderation_review":
+        return styles.moderation_review;
+      case "suspension":
+        return styles.suspension;
+
       default:
         return "";
     }

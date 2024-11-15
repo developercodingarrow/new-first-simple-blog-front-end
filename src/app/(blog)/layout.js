@@ -17,9 +17,11 @@ import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
 import AppContextProvider from "../_contextApi/AppContext";
 import AppDrawer from "@/src/components/appDrawer/AppDrawer";
 import SearchModel from "@/src/components/client-components/models/SearchModel";
+import { getTagsWithRevalidation } from "../utils/tagActions";
 
 export default async function layout({ children }) {
   const userDetails = await getSession();
+  const verifiedTags = await getTagsWithRevalidation();
   return (
     <html lang="en">
       <body>
@@ -27,7 +29,7 @@ export default async function layout({ children }) {
           <AppContextProvider>
             <ModelContextProvider>
               <AuthContextProvider authData={userDetails}>
-                <TagContextProvider>
+                <TagContextProvider verifiedTags={verifiedTags}>
                   <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
                     <ReportActionModel />
                     <ReagisterAuthModel />

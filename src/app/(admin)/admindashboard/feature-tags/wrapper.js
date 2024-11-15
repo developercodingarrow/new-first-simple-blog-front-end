@@ -19,6 +19,7 @@ import {
   tagListAction,
 } from "@/src/app/utils/adminActions/authTagActions";
 import toast, { Toaster } from "react-hot-toast";
+import NoContentMsg from "@/src/components/msgComponents/NoContentMsg";
 
 export default function Tagwrapper(props) {
   const { data } = props;
@@ -62,7 +63,6 @@ export default function Tagwrapper(props) {
       const res = await deleteSingleTagAction(obj);
       if (res.status === "success") {
         toast.success(res.message);
-
         setIsActionLoading(false); // Set action-specific loading state
         router.refresh();
       }
@@ -95,12 +95,18 @@ export default function Tagwrapper(props) {
         />
       </div>
       <div className={styles.table_wrapper}>
-        <DynimicTable
-          tableColumns={roleBasedColumns}
-          tableSampleData={visibalRows}
-          handelSingleDelete={handelDelete}
-          booleanSwithHandel={handelFeatueTag}
-        />
+        {visibalRows.length >= 1 ? (
+          <DynimicTable
+            tableColumns={roleBasedColumns}
+            tableSampleData={visibalRows}
+            handelSingleDelete={handelDelete}
+            booleanSwithHandel={handelFeatueTag}
+          />
+        ) : (
+          <div>
+            <NoContentMsg />
+          </div>
+        )}
       </div>
       <div className={styles.table_wrapper}>
         <TableFooter data={allTags} />

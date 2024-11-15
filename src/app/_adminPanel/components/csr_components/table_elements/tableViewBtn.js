@@ -7,7 +7,7 @@ export default function TableViewBtn(props) {
   const { data, path } = props;
   return (
     <div>
-      <Link href={`/${path}/${data}`} className={style.view_link}>
+      <Link href={`/blog/${data}`} className={style.view_link}>
         view
       </Link>
     </div>

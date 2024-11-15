@@ -106,7 +106,7 @@ export const blogtableColumns = [
   { label: "Date", key: "updatedAt", component: "dateElement" },
   { label: "status", key: "status", component: "publishedstatus", icon: "" },
   {
-    label: "reportContent",
+    label: "ReportContent",
     key: "reportContent",
     component: "multiStatus",
     icon: "",
@@ -128,7 +128,12 @@ export const superAdminblogColumns = [
     component: "numberText",
     icon: "icon",
   },
-  { label: "switch", key: "featured", component: "booleanSwicth", icon: "" },
+  {
+    label: "Feature Action",
+    key: "featured",
+    component: "booleanSwicth",
+    icon: "",
+  },
 ];
 
 export const blogsSampleData = [
@@ -191,4 +196,53 @@ export const contactEnquiretableColumns = [
   { label: "email", key: "email", component: "email", icon: "" },
   { label: "number", key: "number", component: "text", icon: "" },
   { label: "message", key: "message", component: "text", icon: "" },
+];
+
+export const repotedBlogtableColumns = [
+  { label: "S No", key: "_id", component: "number", icon: "" },
+  {
+    label: "Thumblinser",
+    key: "blogThumblin",
+    component: "singleImg",
+    icon: "",
+  },
+
+  { label: "Title", key: "blogTitle", component: "blodText", icon: "" },
+  { label: "Date", key: "updatedAt", component: "dateElement" },
+  { label: "status", key: "status", component: "publishedstatus", icon: "" },
+  {
+    label: "Report Actions",
+    key: "reportAction",
+    component: "multiStatus",
+    icon: "",
+  },
+  {
+    label: "Report By",
+    key: "reportedBy",
+    component: "populateEmail",
+    icon: "",
+  },
+  {
+    label: "views",
+    key: "viewCount",
+    component: "numberText",
+    icon: "icon",
+  },
+  { label: "View", key: "slug", component: "view", icon: "" },
+];
+
+export const superAdminRepotedblogColumns = [
+  {
+    label: "ReportContent",
+    key: "reportContent",
+    component: "multiStatus",
+    icon: "",
+  },
+  {
+    label: "Report Action",
+    key: "reportContent",
+    component: "threeStateSwitchBtn",
+    icon: "",
+  },
+  { label: "Delete", key: "_id", component: "deleteIcon", icon: "" },
 ];

@@ -48,6 +48,12 @@
   text-transform: capitalize;
 }
 
+.bio_wrapper {
+  color: var(--ad-text-color);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
 .details_section {
   display: flex;
   justify-content: space-between;

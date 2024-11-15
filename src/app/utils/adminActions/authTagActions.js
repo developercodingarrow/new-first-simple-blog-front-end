@@ -61,6 +61,7 @@ export async function deleteSingleTagAction(formData) {
   const method = "delete";
   try {
     const res = await performAPIAction(method, url, formData, authToken);
+    console.log("deleteSingleTagAction---", res);
     return res.data;
   } catch (error) {
     return error;

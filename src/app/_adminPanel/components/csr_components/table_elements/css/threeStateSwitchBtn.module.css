@@ -1,0 +1,52 @@
+.switch {
+  position: relative;
+  width: 40px; /* Adjusted width */
+  height: 16px;
+  background-color: #ccc; /* Default background */
+  border-radius: 12px; /* Rounded for switch look */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.switch-circle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* Center vertically */
+  width: 14px; /* Size for the circle */
+  height: 14px; /* Size for the circle */
+  background-color: #fff; /* White circle */
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* State for "no-action" - Green background, circle on the left */
+.switch-no-action {
+  background-color: #4caf50; /* Green */
+}
+
+.switch-no-action .switch-circle {
+  transform: translate(20%, -50%); /* Move circle to the left */
+}
+
+/* State for "moderation_review" - Orange background, circle in the center */
+.switch-moderation {
+  background-color: #ff9800; /* Orange */
+}
+
+.switch-moderation .switch-circle {
+  transform: translate(100%, -50%); /* Circle stays in the center */
+}
+
+/* State for "suspension" - Red background, circle on the right */
+.switch-suspension {
+  background-color: #f44336; /* Red */
+}
+
+.switch-suspension .switch-circle {
+  transform: translate(160%, -50%); /* Move circle to the right */
+}
+
+/* Optional: Hover effect */
+.switch:hover {
+  opacity: 0.8;
+}

@@ -19,6 +19,7 @@ export const performGetAPIAction = async (url, token = null, options = {}) => {
     });
     return response;
   } catch (error) {
+    console.log("error---", error);
     throw new Error(error.response?.data?.message || "API request failed");
   }
 };

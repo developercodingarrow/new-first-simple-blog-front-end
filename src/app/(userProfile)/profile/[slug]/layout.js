@@ -14,6 +14,8 @@ import ReagisterAuthModel from "@/src/components/client-components/models/Reagis
 import BlogContextProvider from "@/src/app/_contextApi/BlogContextApi";
 import { GOOGLE_AUTH_CLIENT_ID } from "@/config";
 import AppDrawer from "@/src/components/appDrawer/AppDrawer";
+import { getTagsWithRevalidation } from "@/src/app/utils/tagActions";
+import TagContextProvider from "@/src/app/_contextApi/TagContextApi";
 
 async function getData(slug) {
   try {
@@ -31,32 +33,35 @@ export default async function Profilelayout({ children, params }) {
   const userDetails = await getSession();
   const slug = params?.slug;
   const userData = await getData(slug);
+  const verifiedTags = await getTagsWithRevalidation();
 
   return (
     <html lang="en">
       <body>
         <AuthContextProvider authData={userDetails}>
-          <ModelContextProvider>
-            <BlogContextProvider>
-              <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
-                <ReportActionModel />
-                <ReagisterAuthModel />
-                <AppDrawer />
-                <div>
-                  <NavBar userData={userDetails} />
-                  {!userDetails && <GoogleOneTap />}
-                </div>
-                <div className="children_wrapper">
-                  <UserProfileLayOut userData={userData}>
-                    {children}
-                  </UserProfileLayOut>
-                </div>
-                <div>
-                  <Footer />
-                </div>
-              </GoogleOAuthProvider>
-            </BlogContextProvider>
-          </ModelContextProvider>
+          <TagContextProvider verifiedTags={verifiedTags}>
+            <ModelContextProvider>
+              <BlogContextProvider>
+                <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
+                  <ReportActionModel />
+                  <ReagisterAuthModel />
+                  <AppDrawer />
+                  <div>
+                    <NavBar userData={userDetails} />
+                    {!userDetails && <GoogleOneTap />}
+                  </div>
+                  <div className="children_wrapper">
+                    <UserProfileLayOut userData={userData}>
+                      {children}
+                    </UserProfileLayOut>
+                  </div>
+                  <div>
+                    <Footer />
+                  </div>
+                </GoogleOAuthProvider>
+              </BlogContextProvider>
+            </ModelContextProvider>
+          </TagContextProvider>
         </AuthContextProvider>
       </body>
     </html>

@@ -25,6 +25,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { RiAdminLine } from "react-icons/ri";
 import { CiImageOn } from "react-icons/ci";
 import { MdOutlineContactMail } from "react-icons/md";
+import { MdReportGmailerrorred } from "react-icons/md";
 export {
   CiMenuFries,
   LuLayoutDashboard,
@@ -51,4 +52,5 @@ export {
   RiAdminLine,
   CiImageOn,
   MdOutlineContactMail,
+  MdReportGmailerrorred,
 };

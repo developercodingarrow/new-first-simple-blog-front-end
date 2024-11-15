@@ -1,7 +1,6 @@
 import React from "react";
 import "../globals.css";
 import NavBar from "@/src/components/server-components/Navbar/NavBar";
-
 import { getSession } from "../lib/authentication";
 import AuthContextProvider from "../_contextApi/authContext";
 import UserDashbordLayout from "@/src/components/userDashbord/layout/UserDashbordLayout";
@@ -11,9 +10,11 @@ import ImgModelContextProvider from "../_contextApi/ImgModelContextApi";
 import AppContextProvider from "../_contextApi/AppContext";
 import TagContextProvider from "../_contextApi/TagContextApi";
 import AppDrawer from "@/src/components/appDrawer/AppDrawer";
+import { getTagsWithRevalidation } from "../utils/tagActions";
 
 export default async function layout({ children }) {
   const userDetails = await getSession();
+  const verifiedTags = await getTagsWithRevalidation();
   return (
     <html lang="en">
       <body>
@@ -21,7 +22,7 @@ export default async function layout({ children }) {
           <AppContextProvider>
             <ImgModelContextProvider>
               <ModelContextProvider>
-                <TagContextProvider>
+                <TagContextProvider verifiedTags={verifiedTags}>
                   <AppDrawer />
                   <div>
                     <NavBar userData={userDetails} />

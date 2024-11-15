@@ -32,7 +32,7 @@ export const metadata = {
 
 export default async function TagsLayout({ children }) {
   const userDetails = await getSession();
-  // const verifiedTags = await getTagsWithRevalidation();
+  const verifiedTags = await getTagsWithRevalidation();
   const featureTags = await featureTagListAction();
 
   return (
@@ -41,7 +41,7 @@ export default async function TagsLayout({ children }) {
         <AppContextProvider>
           <AuthContextProvider authData={userDetails}>
             <ImgModelContextProvider>
-              <TagContextProvider>
+              <TagContextProvider verifiedTags={verifiedTags}>
                 <ModelContextProvider>
                   <BlogContextProvider>
                     <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>

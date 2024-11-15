@@ -77,6 +77,8 @@ export default function ModelContextProvider({ children }) {
   };
 
   const handelOpenDeleteModel = (data, handler) => {
+    console.log(data);
+    console.log(handler);
     setid(data);
     setActionHandler(() => handler);
     setisDeleteModel(true);

@@ -1,6 +1,7 @@
 import React from "react";
 import { tagfillterBlogs } from "./actionapi";
 import MainCard from "@/src/components/homepage/card/MainCard";
+import NoContentMsg from "@/src/components/msgComponents/NoContentMsg";
 
 async function getData(tagquery, page = 1) {
   try {
@@ -8,7 +9,6 @@ async function getData(tagquery, page = 1) {
     if (!res.data || !res.data.result) {
       throw new Error("Data not found");
     }
-
     return await res.data.result;
   } catch (error) {
     throw new Error(`Failed to fetch data: ${error}`);
@@ -22,7 +22,9 @@ export default async function Card(props) {
   return (
     <div>
       {initialData.length === 0 ? (
-        <div>There is no content</div>
+        <div>
+          <NoContentMsg />
+        </div>
       ) : (
         <div>
           {initialData.map((el, index) => {
